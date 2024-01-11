@@ -119,7 +119,7 @@ public class MobilemaxCamera : MonoBehaviour
         {
             SecondPosition = Input.mousePosition;
             delta = SecondPosition - FirstPosition;
-            targetOffset = lastOffset + transform.right * delta.x * 0.1f + transform.up * delta.y * 0.1f;
+            targetOffset = lastOffset + transform.right * delta.x * 0.01f + transform.up * delta.y * 0.01f;
 
         }
 

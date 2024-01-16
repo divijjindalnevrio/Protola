@@ -7,7 +7,8 @@ Shader "Custom/Mask"
 
   Pass
      {
-		 Blend Zero One 
+		 Blend Zero One
+         ZTest Always         
      }
   }
 

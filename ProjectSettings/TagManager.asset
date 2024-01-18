@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Counter
   - Basin
+  - Grid
   layers:
   - Default
   - TransparentFX

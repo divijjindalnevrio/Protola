@@ -582,7 +582,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f168bb960a41b49cdbba7360dd361db9, type: 3}
   m_Name: 
@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 865454832}
   m_Layer: 6
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3281,6 +3281,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   speed: 1
   currentBasin: {fileID: 0}
+  _instanciateBasin: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -4459,6 +4460,7 @@ MonoBehaviour:
   mainCam: {fileID: 330585545}
   speed: 20
   currentBasin: {fileID: 0}
+  _instanciateBasin: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 384

@@ -15,37 +15,42 @@ public class BasinMovement : MonoBehaviour
     private bool isBasinHit = false;
 
     private Color cubeMat;
-
-
-   
     private void Start()
     {
         
-        Input.multiTouchEnabled = false;
+        //Input.multiTouchEnabled = false;
     }
 
     void Update()
     {
-        if(currentBasin != null)
+        if(currentBasin != null && Input.touchCount == 1)
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
+                _isSelected = true;
                 Debug.Log("hit counter layer : ");
                 if(raycastHit.collider.tag  == "Basin" && isBasinHit == false)
                 {
                     Debug.Log("yes it is s basin");
                     _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
                     _instanciateBasin.transform.parent = currentBasin.transform.parent;
+                    currentBasin = _instanciateBasin;
                     isBasinHit = true;
                 }
-                ////currentBasin.transform.position = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);
-                Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
-                _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+                
+                if(_instanciateBasin != null && raycastHit.collider.tag == "Counter")
+                {
+                    Debug.Log("counter is selecting now ");
+                    Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
+                    _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+                    
+                }
+               
             }
+            
         }
-        
-       
+
 
         //if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         //{
@@ -55,18 +60,15 @@ public class BasinMovement : MonoBehaviour
 
         //}
 
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-           // _isSelected = true;
-        }
-
-        //if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        //if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         //{
-
-        //    _isSelected = false;
-        //    Destroy(currentBasin);
-        //    currentBasin = _instanciateBasin;
+        //   // _isSelected = true;
         //}
+
+        if (Input.touchCount >= 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            _isSelected = false;
+        }
 
 
     }

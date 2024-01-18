@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7416374092415284675}
   - component: {fileID: 5372261446059344749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Basin
-  m_TagString: Untagged
+  m_TagString: Basin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 464150241882718794}
   - component: {fileID: 1112712904640748287}
   - component: {fileID: 5447882297966299582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4943873897689343816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Basin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 279116743153650470}
   - component: {fileID: 5869566553040188031}
   - component: {fileID: 8944231517782687540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 3679537741498040638}
   - component: {fileID: 8185116411329345428}
   - component: {fileID: 6908612712023610331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8924200140707688450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}

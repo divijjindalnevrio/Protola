@@ -19,23 +19,29 @@ public class BasinMovement : MonoBehaviour
    
     private void Start()
     {
-        //cubeMat = currentBasin.GetComponent<MeshRenderer>().material.color;
+        
+        Input.multiTouchEnabled = false;
     }
 
     void Update()
     {
-        Debug.Log("eNTER :1");
-        
-        if (_isSelected)
+        if(currentBasin != null)
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit,float.MaxValue,layerMask))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
-                //currentBasin.transform.position = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);
+                Debug.Log("hit counter layer : ");
+                if(raycastHit.collider.tag  == "Basin")
+                {
+                    Debug.Log("yes it is s basin");
+                }
+                ////currentBasin.transform.position = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);
                 Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
                 currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
             }
         }
+        
+       
 
         //if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         //{
@@ -47,8 +53,7 @@ public class BasinMovement : MonoBehaviour
 
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
-            Debug.Log("IT WORKE HERESASA");
-            _isSelected = true;
+           // _isSelected = true;
         }
 
         //if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)

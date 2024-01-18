@@ -10,8 +10,9 @@ public class BasinMovement : MonoBehaviour
 
     public static bool _isSelected;
     public GameObject currentBasin;
-    private GameObject _instanciateBasin;
+    [SerializeField] private GameObject _instanciateBasin;
     public LayerMask layerMask;
+    private bool isBasinHit = false;
 
     private Color cubeMat;
 
@@ -31,13 +32,16 @@ public class BasinMovement : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
                 Debug.Log("hit counter layer : ");
-                if(raycastHit.collider.tag  == "Basin")
+                if(raycastHit.collider.tag  == "Basin" && isBasinHit == false)
                 {
                     Debug.Log("yes it is s basin");
+                    _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
+                    _instanciateBasin.transform.parent = currentBasin.transform.parent;
+                    isBasinHit = true;
                 }
                 ////currentBasin.transform.position = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);
                 Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
-                currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+                _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
             }
         }
         

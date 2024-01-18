@@ -69,6 +69,8 @@ public class MobilemaxCamera : MonoBehaviour
       */
     void LateUpdate()
     {
+        if (BasinMovement._isSelected == true)
+            return;
         // If Control and Alt and Middle button? ZOOM!
         if (Input.touchCount == 2)
         {

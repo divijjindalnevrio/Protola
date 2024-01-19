@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasinMovement : MonoBehaviour
 {
@@ -24,11 +25,16 @@ public class BasinMovement : MonoBehaviour
     private bool isBasinInstanciate = false;
     private bool isCounterInstanciate = false;
 
+    [SerializeField] private Slider lengthSlider;
+    [SerializeField] private Slider widthSlider;
+    [SerializeField] private Slider hightSlider;
+
     private Color cubeMat;
     private void Start()
     {
-        
+
         //Input.multiTouchEnabled = false;
+        
     }
 
     void Update()
@@ -40,7 +46,7 @@ public class BasinMovement : MonoBehaviour
         {
             _isSelected = false;
         }
-
+        //ChangingSizeOfCounter();
     }
 
     private void BasinMovementAndGerenartion()
@@ -139,4 +145,13 @@ public class BasinMovement : MonoBehaviour
 
     }
 
+
+    private void ChangingSizeOfCounter()
+    {
+        float length = lengthSlider.value;
+        float width =  widthSlider.value;
+        float hight =  hightSlider.value;
+        currentCounter.transform.localScale = new Vector3(length, width, hight);
+
+    }
 }

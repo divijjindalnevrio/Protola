@@ -13,6 +13,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private GameObject _instanciateBasin;
     public LayerMask layerMask;
     private bool isBasinHit = false;
+    private bool isBasinSelect = false;
 
     private Color cubeMat;
     private void Start()
@@ -30,7 +31,7 @@ public class BasinMovement : MonoBehaviour
             {
                 _isSelected = true;
                 Debug.Log("hit counter layer : ");
-                if(raycastHit.collider.tag  == "Basin" && isBasinHit == false)
+                if(raycastHit.collider.tag == "Basin" && isBasinHit == false)
                 {
                     Debug.Log("yes it is s basin");
                     _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
@@ -38,13 +39,14 @@ public class BasinMovement : MonoBehaviour
                     currentBasin = _instanciateBasin;
                     isBasinHit = true;
                 }
-                
+
                 if(_instanciateBasin != null && raycastHit.collider.tag == "Counter")
                 {
-                    Debug.Log("counter is selecting now ");
-                    Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
-                    _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
-                    
+                        Debug.Log("counter is selecting now ");
+                        Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
+                        _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+
+                   
                 }
                
             }
@@ -70,10 +72,7 @@ public class BasinMovement : MonoBehaviour
             _isSelected = false;
         }
 
-
     }
-
-
 
     public void BasinGererator()
     {

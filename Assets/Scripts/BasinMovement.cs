@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasinMovement : MonoBehaviour
 {
     [SerializeField] private GameObject basin;
+    [SerializeField] private GameObject hole;
 
     [SerializeField] private Camera mainCam;
     [SerializeField] private float speed = 1;
@@ -14,6 +15,7 @@ public class BasinMovement : MonoBehaviour
 
     public static bool _isSelected;
     public GameObject currentBasin;
+    public GameObject currentHole;
     public GameObject currentCounter;
 
     public LayerMask layerMask;
@@ -105,6 +107,7 @@ public class BasinMovement : MonoBehaviour
     private void CounterInstanciate()
     {
         _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, Quaternion.identity);
+        Destroy(currentCounter.gameObject);
         _instanciateCounter.transform.parent = currentCounter.transform.parent;
         currentCounter = _instanciateCounter;
         isCounterInstanciate = true;
@@ -116,12 +119,24 @@ public class BasinMovement : MonoBehaviour
     {
         if(this.gameObject.transform.childCount < 1)
         {
-            currentBasin = Instantiate(basin, transform.position, Quaternion.identity);
+            currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
             currentBasin.transform.parent = this.gameObject.transform;
-            currentBasin.transform.localPosition = new Vector3(1f, 0.4031f, 0);
+            Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.4031f, 0);
         }
        
     }
 
-    
+    public void HolwGererator()
+    {
+        if (currentCounter.gameObject.transform.childCount <= 1)
+        {
+            currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
+            currentHole.transform.parent = currentCounter.gameObject.transform;
+           // Vector3 currentHolePos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
+            currentHole.transform.localPosition =   new Vector3(0, -2.7f, 0);
+        }
+
+    }
+
 }

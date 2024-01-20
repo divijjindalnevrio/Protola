@@ -26,8 +26,8 @@ public class BasinMovement : MonoBehaviour
     private bool isCounterInstanciate = false;
 
     [SerializeField] private Slider lengthSlider;
-    [SerializeField] private Slider widthSlider;
     [SerializeField] private Slider hightSlider;
+    [SerializeField] private Slider depthSlider;
 
     private Color cubeMat;
     private void Start()
@@ -46,7 +46,7 @@ public class BasinMovement : MonoBehaviour
         {
             _isSelected = false;
         }
-        //ChangingSizeOfCounter();
+        ChangingSizeOfCounter();
     }
 
     private void BasinMovementAndGerenartion()
@@ -149,9 +149,9 @@ public class BasinMovement : MonoBehaviour
     private void ChangingSizeOfCounter()
     {
         float length = lengthSlider.value;
-        float width =  widthSlider.value;
         float hight =  hightSlider.value;
-        currentCounter.transform.localScale = new Vector3(length, width, hight);
+        float depth =  depthSlider.value;
+        currentCounter.transform.localScale = new Vector3(length, hight, depth);
 
     }
 }

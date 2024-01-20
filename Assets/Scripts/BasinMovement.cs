@@ -15,6 +15,8 @@ public class BasinMovement : MonoBehaviour
     private GameObject _instanciateCounter;
 
     public static bool _isSelected;
+    private bool _isBasinInstanciate = false;
+    private bool _isHoleInstanciate = false;
     public GameObject currentBasin;
     public GameObject currentHole;
     public GameObject currentCounter;
@@ -34,7 +36,9 @@ public class BasinMovement : MonoBehaviour
     {
 
         //Input.multiTouchEnabled = false;
-        
+
+
+
     }
 
     void Update()
@@ -101,7 +105,7 @@ public class BasinMovement : MonoBehaviour
                 if (_instanciateCounter != null && raycastHit.collider.tag == "Counter")
                 {
                     Vector3 targetPosition = new Vector3(raycastHit.point.x, currentCounter.transform.position.y, raycastHit.point.z);
-                    _instanciateCounter.transform.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
+                    _instanciateCounter.transform.parent.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
                 }
 
             }
@@ -123,24 +127,26 @@ public class BasinMovement : MonoBehaviour
 
     public void BasinGererator()
     {
-        if(this.gameObject.transform.childCount < 1)
+        if(_isBasinInstanciate == false)
         {
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
-            currentBasin.transform.parent = this.gameObject.transform;
+            currentBasin.transform.parent = currentCounter.gameObject.transform.parent;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.4031f, 0);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.296f, 0);
+            _isBasinInstanciate = true;
         }
        
     }
 
     public void HolwGererator()
     {
-        if (currentCounter.gameObject.transform.childCount <= 1)
+        if (_isHoleInstanciate == false)
         {
             currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
-            currentHole.transform.parent = currentCounter.gameObject.transform;
+            currentHole.transform.parent = currentCounter.gameObject.transform.parent;
            // Vector3 currentHolePos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentHole.transform.localPosition =   new Vector3(0, -2.7f, 0);
+            currentHole.transform.localPosition =   new Vector3(0, -0.12f, 0);
+            _isHoleInstanciate = true;
         }
 
     }
@@ -151,7 +157,8 @@ public class BasinMovement : MonoBehaviour
         float length = lengthSlider.value;
         float hight =  hightSlider.value;
         float depth =  depthSlider.value;
-        currentCounter.transform.localScale = new Vector3(length, hight, depth);
+        currentCounter.transform.localScale = new Vector3(length, currentCounter.transform.localScale.y, depth);
+        currentCounter.transform.parent.position = new Vector3(currentCounter.transform.parent.position.x, hight, currentCounter.transform.parent.position.z);
 
     }
 }

@@ -26,6 +26,7 @@ public class BasinMovement : MonoBehaviour
 
     private bool isBasinInstanciate = false;
     private bool isCounterInstanciate = false;
+    private bool isCounterSelected = false;
 
     [SerializeField] private Slider lengthSlider;
     [SerializeField] private Slider hightSlider;
@@ -34,11 +35,7 @@ public class BasinMovement : MonoBehaviour
     private Color cubeMat;
     private void Start()
     {
-
         //Input.multiTouchEnabled = false;
-
-
-
     }
 
     void Update()
@@ -96,23 +93,39 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
-                _isSelected = true;
+             
                 if (raycastHit.collider.tag == "Counter" && isCounterInstanciate == false)
                 {
                     CounterInstanciate();
                 }
 
-                if (_instanciateCounter != null && raycastHit.collider.tag == "Counter")
+                if (_instanciateCounter != null && raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
+                    isCounterSelected = true;
+                    currentCounter.GetComponent<MeshRenderer>().material.color = Color.cyan;
+                    
+                }
+
+                if (isCounterSelected && raycastHit.collider.tag == "Counter" &&  Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    _isSelected = true;
                     Vector3 targetPosition = new Vector3(raycastHit.point.x, currentCounter.transform.position.y, raycastHit.point.z);
                     _instanciateCounter.transform.parent.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
                 }
 
-            }
+                if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended &&  raycastHit.collider.tag == "Grid")
+                {
+                    isCounterSelected = false;
+                    currentCounter.GetComponent<MeshRenderer>().material.color = Color.white;
+                }
 
+            }
+           
         }
 
-    }
+       
+
+}
 
     private void CounterInstanciate()
     {

@@ -160,7 +160,7 @@ public class BasinMovement : MonoBehaviour
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
             currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.95f, 0);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.3f, 0);
             _isBasinInstanciate = true;
         }
        
@@ -172,7 +172,7 @@ public class BasinMovement : MonoBehaviour
         {
             currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
             currentHole.transform.parent = currentCounter.transform;
-            currentHole.transform.localPosition =   new Vector3(0, 0.5332f, 0);
+            currentHole.transform.localPosition =   new Vector3(0, -0.1247f, 0);
             _isHoleInstanciate = true;
         }
 
@@ -185,7 +185,7 @@ public class BasinMovement : MonoBehaviour
         float hight =  hightSlider.value;
         float depth =  depthSlider.value;
         currentCounter.transform.GetChild(0).transform.localScale = new Vector3(length, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
-        currentCounter.transform.GetChild(0).transform.position = new Vector3(counterWhole.transform.position.x, hight, counterWhole.transform.position.z);
+        currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, hight, currentCounter.transform.position.z);
 
     }
 }

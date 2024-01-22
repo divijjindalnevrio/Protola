@@ -11,6 +11,8 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Camera mainCam;
     [SerializeField] private float speed = 1;
     [SerializeField] private float Counterspeed = 1;
+    [SerializeField] private GameObject counterWhole;
+
     private GameObject _instanciateBasin;
     private GameObject _instanciateCounter;
 
@@ -102,8 +104,8 @@ public class BasinMovement : MonoBehaviour
                 if (isCounterSelected && raycastHit.collider.tag == "Counter" &&  Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
                     _isSelected = true;
-                    Vector3 targetPosition = new Vector3(raycastHit.point.x, currentCounter.transform.position.y, raycastHit.point.z);
-                    _instanciateCounter.transform.parent.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
+                    Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.transform.position.y, raycastHit.point.z);
+                    counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
                 }
 
                 if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended &&  raycastHit.collider.tag == "Grid")
@@ -143,7 +145,7 @@ public class BasinMovement : MonoBehaviour
             _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
         }
 
-        if(isBasinSelected && _instanciateBasin != null && Input.GetTouch(0).phase == TouchPhase.Ended)
+        if(isBasinSelected && _instanciateBasin != null && Input.GetTouch(0).phase == TouchPhase.Ended && rayHit.collider.CompareTag("Counter"))
         {
            // Destroy((current.transform.parent.Find("Basin").gameObject));
             Debug.Log("basin got Deleted");
@@ -160,7 +162,7 @@ public class BasinMovement : MonoBehaviour
     private void BasinInstanciate()
     {
         _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
-        _instanciateBasin.transform.parent = currentBasin.transform.parent;
+        _instanciateBasin.transform.parent = counterWhole.gameObject.transform.GetChild(1).transform;
         currentBasin = _instanciateBasin;
         isBasinInstanciate = true;
     }
@@ -182,9 +184,9 @@ public class BasinMovement : MonoBehaviour
         if(_isBasinInstanciate == false)
         {
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
-            currentBasin.transform.parent = currentCounter.gameObject.transform.parent;
+            currentBasin.transform.parent = counterWhole.gameObject.transform.GetChild(1).transform;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.296f, 0);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.291f, 0);
             _isBasinInstanciate = true;
         }
        
@@ -210,7 +212,7 @@ public class BasinMovement : MonoBehaviour
         float hight =  hightSlider.value;
         float depth =  depthSlider.value;
         currentCounter.transform.localScale = new Vector3(length, currentCounter.transform.localScale.y, depth);
-        currentCounter.transform.parent.position = new Vector3(currentCounter.transform.parent.position.x, hight, currentCounter.transform.parent.position.z);
+        counterWhole.transform.position = new Vector3(counterWhole.transform.position.x, hight, counterWhole.transform.position.z);
 
     }
 }

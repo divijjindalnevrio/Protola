@@ -27,6 +27,7 @@ public class BasinMovement : MonoBehaviour
     private bool isBasinInstanciate = false;
     private bool isCounterInstanciate = false;
     private bool isCounterSelected = false;
+    private bool isBasinSelected = false;
 
     [SerializeField] private Slider lengthSlider;
     [SerializeField] private Slider hightSlider;
@@ -57,7 +58,7 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
-                _isSelected = true;
+               
                 if (raycastHit.collider.tag == "Basin" && isBasinInstanciate == false)
                 {
                     BasinInstanciate();
@@ -65,6 +66,7 @@ public class BasinMovement : MonoBehaviour
 
                 if (_instanciateBasin != null && raycastHit.collider.tag == "Counter")
                 {
+                    _isSelected = true;
                     Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
                     _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
                 }
@@ -75,14 +77,6 @@ public class BasinMovement : MonoBehaviour
 
     }
 
-
-    private void BasinInstanciate()
-    {
-        _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
-        _instanciateBasin.transform.parent = currentBasin.transform.parent;
-        currentBasin = _instanciateBasin;
-        isBasinInstanciate = true;
-    }
 
 
 
@@ -103,7 +97,6 @@ public class BasinMovement : MonoBehaviour
                 {
                     isCounterSelected = true;
                     currentCounter.GetComponent<MeshRenderer>().material.color = Color.cyan;
-                    
                 }
 
                 if (isCounterSelected && raycastHit.collider.tag == "Counter" &&  Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -119,13 +112,59 @@ public class BasinMovement : MonoBehaviour
                     currentCounter.GetComponent<MeshRenderer>().material.color = Color.white;
                 }
 
+                /////
+                ///
+                SinkMovement(raycastHit);
+
+
+
             }
            
         }
 
-       
-
 }
+
+    private void SinkMovement(RaycastHit rayHit)
+    {
+
+        if (rayHit.collider.tag == "Basin" && isBasinSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            BasinInstanciate();
+            isBasinSelected = true;
+            Debug.Log("basin got selected");
+            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.red;
+
+        }
+
+        if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            _isSelected = true;
+            Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
+            _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+        }
+
+        if(isBasinSelected && _instanciateBasin != null && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+           // Destroy((current.transform.parent.Find("Basin").gameObject));
+            Debug.Log("basin got Deleted");
+        }
+
+        if (isBasinSelected && Input.GetTouch(0).phase == TouchPhase.Ended && rayHit.collider.tag == "Grid")
+        {
+            isBasinSelected = false;
+            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.white;
+        }
+    }
+
+
+    private void BasinInstanciate()
+    {
+        _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
+        _instanciateBasin.transform.parent = currentBasin.transform.parent;
+        currentBasin = _instanciateBasin;
+        isBasinInstanciate = true;
+    }
+
 
     private void CounterInstanciate()
     {

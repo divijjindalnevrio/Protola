@@ -35,16 +35,15 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Slider hightSlider;
     [SerializeField] private Slider depthSlider;
 
-    private Color cubeMat;
     private void Start()
     {
-        //Input.multiTouchEnabled = false;
+        
     }
 
     void Update()
     {
-        // BasinMovementAndGerenartion();
-        CounterMovementAndGerenartion();
+  
+        CounterAndSinkMovementAndGerenartion();
 
         if (Input.touchCount >= 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
@@ -53,36 +52,7 @@ public class BasinMovement : MonoBehaviour
         ChangingSizeOfCounter();
     }
 
-    private void BasinMovementAndGerenartion()
-    {
-        if (currentBasin != null && Input.touchCount == 1)
-        {
-            Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
-            {
-               
-                if (raycastHit.collider.tag == "Basin" && isBasinInstanciate == false)
-                {
-                    BasinInstanciate();
-                }
-
-                if (_instanciateBasin != null && raycastHit.collider.tag == "Counter")
-                {
-                    _isSelected = true;
-                    Vector3 targetPosition = new Vector3(raycastHit.point.x, currentBasin.transform.position.y, raycastHit.point.z);
-                    _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
-                }
-
-            }
-
-        }
-
-    }
-
-
-
-
-    private void CounterMovementAndGerenartion()
+    private void CounterAndSinkMovementAndGerenartion()
     {
         if (Input.touchCount == 1)
         {
@@ -98,7 +68,7 @@ public class BasinMovement : MonoBehaviour
                 if (_instanciateCounter != null && raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     isCounterSelected = true;
-                    currentCounter.GetComponent<MeshRenderer>().material.color = Color.cyan;
+                    currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.cyan;
                 }
 
                 if (isCounterSelected && raycastHit.collider.tag == "Counter" &&  Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -111,7 +81,7 @@ public class BasinMovement : MonoBehaviour
                 if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended &&  raycastHit.collider.tag == "Grid")
                 {
                     isCounterSelected = false;
-                    currentCounter.GetComponent<MeshRenderer>().material.color = Color.white;
+                    currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
                 }
 
                 /////
@@ -162,9 +132,9 @@ public class BasinMovement : MonoBehaviour
     private void BasinInstanciate()
     {
         _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
-        _instanciateBasin.transform.parent = counterWhole.gameObject.transform.GetChild(1).transform;
+        _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
         currentBasin = _instanciateBasin;
-        isBasinInstanciate = true;
+        //isBasinInstanciate = true;
     }
 
 
@@ -175,6 +145,10 @@ public class BasinMovement : MonoBehaviour
         _instanciateCounter.transform.parent = currentCounter.transform.parent;
         currentCounter = _instanciateCounter;
         isCounterInstanciate = true;
+        if(_isBasinInstanciate)
+        {
+            currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
+        }
     }
 
 
@@ -184,9 +158,9 @@ public class BasinMovement : MonoBehaviour
         if(_isBasinInstanciate == false)
         {
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
-            currentBasin.transform.parent = counterWhole.gameObject.transform.GetChild(1).transform;
+            currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.291f, 0);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.95f, 0);
             _isBasinInstanciate = true;
         }
        
@@ -197,9 +171,8 @@ public class BasinMovement : MonoBehaviour
         if (_isHoleInstanciate == false)
         {
             currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
-            currentHole.transform.parent = currentCounter.gameObject.transform.parent;
-           // Vector3 currentHolePos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentHole.transform.localPosition =   new Vector3(0, -0.12f, 0);
+            currentHole.transform.parent = currentCounter.transform;
+            currentHole.transform.localPosition =   new Vector3(0, 0.5332f, 0);
             _isHoleInstanciate = true;
         }
 
@@ -211,8 +184,8 @@ public class BasinMovement : MonoBehaviour
         float length = lengthSlider.value;
         float hight =  hightSlider.value;
         float depth =  depthSlider.value;
-        currentCounter.transform.localScale = new Vector3(length, currentCounter.transform.localScale.y, depth);
-        counterWhole.transform.position = new Vector3(counterWhole.transform.position.x, hight, counterWhole.transform.position.z);
+        currentCounter.transform.GetChild(0).transform.localScale = new Vector3(length, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
+        currentCounter.transform.GetChild(0).transform.position = new Vector3(counterWhole.transform.position.x, hight, counterWhole.transform.position.z);
 
     }
 }

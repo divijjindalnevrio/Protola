@@ -5,11 +5,13 @@ using UnityEngine;
 public class RotationScript : MonoBehaviour
 {
     [SerializeField] private Transform basin;
+    [SerializeField] private Transform counter;
     [SerializeField] private float speed = 10;
     [SerializeField] private BasinMovement basinMovement;
 
     private Quaternion target ;
-    private bool _isRightButtonPressed;
+    private bool _isBasinButtonPressed;
+    private bool _isCounterButtonPressed;
     private float rightRotation = 0f;
 
     private void Start()
@@ -22,13 +24,18 @@ public class RotationScript : MonoBehaviour
         if(basinMovement.currentBasin != null)                                      //<--------------- need to refactor here
         {
             basin = basinMovement.currentBasin.transform;
+            counter = basinMovement.currentCounter.transform;
 
-            if (_isRightButtonPressed == true)
+            if (_isBasinButtonPressed == true)
             {
                 basin.rotation = RotationObject(basin.gameObject);
             }
 
-            basin.rotation = RotationObject(basin.gameObject);
+            if(_isCounterButtonPressed)
+            {
+                counter.rotation = RotationObject(counter.gameObject);
+            }
+          
 
         }
        
@@ -41,9 +48,15 @@ public class RotationScript : MonoBehaviour
         return objectRotation;
     }
 
-    public void SetTriggerOn()
+    public void SetBasinToRotate()
     {
-        _isRightButtonPressed = true;
+        _isCounterButtonPressed = false;
+        _isBasinButtonPressed = true;
+    }
+    public void SetCounterToRotate()
+    {
+        _isBasinButtonPressed = false;
+        _isCounterButtonPressed = true;
     }
 
     public void SettingRightRotateValue()

@@ -65,26 +65,30 @@ public class BasinMovement : MonoBehaviour
                 //    CounterInstanciate();
                 //}
 
-       
-
-                if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
+                if(isBasinSelected != true)
                 {
-                    isCounterSelected = true;
-                    currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.cyan;
+                    if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
+                    {
+                        isCounterSelected = true;
+                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.cyan;
+                    }
+
+                    if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
+                    {
+                        _isSelected = true;
+                        Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.transform.position.y, raycastHit.point.z);
+                        counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
+                    }
+
+                    if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended && raycastHit.collider.tag == "Grid")
+                    {
+                        isCounterSelected = false;
+                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+                    }
+
                 }
 
-                if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
-                {
-                    _isSelected = true;
-                    Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.transform.position.y, raycastHit.point.z);
-                    counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
-                }
-
-                if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended && raycastHit.collider.tag == "Grid")
-                {
-                    isCounterSelected = false;
-                    currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
-                }
+               
 
                 /////
                 ///

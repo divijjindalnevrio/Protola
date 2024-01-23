@@ -59,7 +59,8 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
-             
+
+                
                 if (raycastHit.collider.tag == "Counter" && isCounterInstanciate == false)
                 {
                     CounterInstanciate();
@@ -71,14 +72,14 @@ public class BasinMovement : MonoBehaviour
                     currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.cyan;
                 }
 
-                if (isCounterSelected && raycastHit.collider.tag == "Counter" &&  Input.GetTouch(0).phase == TouchPhase.Moved)
+                if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
                     _isSelected = true;
                     Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.transform.position.y, raycastHit.point.z);
                     counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
                 }
 
-                if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended &&  raycastHit.collider.tag == "Grid")
+                if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended && raycastHit.collider.tag == "Grid")
                 {
                     isCounterSelected = false;
                     currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
@@ -91,6 +92,9 @@ public class BasinMovement : MonoBehaviour
 
 
             }
+            else {
+
+            }
            
         }
 
@@ -98,12 +102,19 @@ public class BasinMovement : MonoBehaviour
 
     private void SinkMovement(RaycastHit rayHit)
     {
+        if (isBasinSelected && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            isBasinSelected = false;
+            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.white;
+            int BasinCount = currentCounter.transform.GetChild(1).transform.childCount;
+            Destroy(currentCounter.transform.GetChild(1).transform.GetChild(0).gameObject);
+            Debug.Log("Basin count : " + BasinCount);
 
+        }
         if (rayHit.collider.tag == "Basin" && isBasinSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             BasinInstanciate();
             isBasinSelected = true;
-            Debug.Log("basin got selected");
             currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.red;
 
         }
@@ -115,17 +126,13 @@ public class BasinMovement : MonoBehaviour
             _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
         }
 
-        if(isBasinSelected && _instanciateBasin != null && Input.GetTouch(0).phase == TouchPhase.Ended && rayHit.collider.CompareTag("Counter"))
-        {
-           // Destroy((current.transform.parent.Find("Basin").gameObject));
-            Debug.Log("basin got Deleted");
-        }
+        //if(isBasinSelected && _instanciateBasin != null && Input.GetTouch(0).phase == TouchPhase.Ended && rayHit.collider.CompareTag("Counter"))
+        //{
+        //   // Destroy((current.transform.parent.Find("Basin").gameObject));
+        //    Debug.Log("basin got Deleted");
+        //}
 
-        if (isBasinSelected && Input.GetTouch(0).phase == TouchPhase.Ended && rayHit.collider.tag == "Grid")
-        {
-            isBasinSelected = false;
-            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.white;
-        }
+        
     }
 
 
@@ -175,7 +182,7 @@ public class BasinMovement : MonoBehaviour
             currentHole.transform.localPosition =   new Vector3(0, -0.1247f, 0);
             _isHoleInstanciate = true;
         }
-
+            
     }
 
 

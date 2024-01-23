@@ -60,13 +60,14 @@ public class BasinMovement : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
 
-                
-                if (raycastHit.collider.tag == "Counter" && isCounterInstanciate == false)
-                {
-                    CounterInstanciate();
-                }
+                //if (raycastHit.collider.tag == "Counter" && isCounterInstanciate == false)
+                //{
+                //    CounterInstanciate();
+                //}
 
-                if (_instanciateCounter != null && raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
+       
+
+                if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     isCounterSelected = true;
                     currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.cyan;
@@ -89,13 +90,8 @@ public class BasinMovement : MonoBehaviour
                 ///
                 SinkMovement(raycastHit);
 
-
-
             }
-            else {
 
-            }
-           
         }
 
 }
@@ -119,20 +115,13 @@ public class BasinMovement : MonoBehaviour
 
         }
 
-        if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
+        if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
         {
             _isSelected = true;
             Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
             _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
         }
 
-        //if(isBasinSelected && _instanciateBasin != null && Input.GetTouch(0).phase == TouchPhase.Ended && rayHit.collider.CompareTag("Counter"))
-        //{
-        //   // Destroy((current.transform.parent.Find("Basin").gameObject));
-        //    Debug.Log("basin got Deleted");
-        //}
-
-        
     }
 
 
@@ -148,7 +137,6 @@ public class BasinMovement : MonoBehaviour
     private void CounterInstanciate()
     {
         _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, Quaternion.identity);
-        Destroy(currentCounter.gameObject);
         _instanciateCounter.transform.parent = currentCounter.transform.parent;
         currentCounter = _instanciateCounter;
         isCounterInstanciate = true;

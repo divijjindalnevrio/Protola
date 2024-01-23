@@ -21,24 +21,22 @@ public class RotationScript : MonoBehaviour
 
     void Update()
     {
-        if(basinMovement.currentBasin != null)                                      //<--------------- need to refactor here
+                                                                        //<--------------- need to refactor here
+
+        if (basinMovement.currentBasin != null)
         {
             basin = basinMovement.currentBasin.transform;
-            counter = basinMovement.currentCounter.transform;
-
             if (_isBasinButtonPressed == true)
             {
                 basin.rotation = RotationObject(basin.gameObject);
             }
-
-            if(_isCounterButtonPressed)
-            {
-                counter.rotation = RotationObject(counter.gameObject);
-            }
-          
-
         }
-       
+        if (_isCounterButtonPressed)
+        {
+            counter = basinMovement.currentCounter.transform;
+            counter.rotation = RotationObject(counter.gameObject);
+        }
+
     }
 
     private Quaternion RotationObject(GameObject gameObject)

@@ -17,7 +17,7 @@ public class BasinMovement : MonoBehaviour
     private GameObject _instanciateCounter;
 
     public static bool _isSelected;
-    private bool _isBasinInstanciate = false;
+    private bool _isBasinGenerate = false;
     private bool _isHoleInstanciate = false;
     public GameObject currentBasin;
     public GameObject currentHole;
@@ -145,7 +145,7 @@ public class BasinMovement : MonoBehaviour
         _instanciateCounter.transform.parent = currentCounter.transform.parent;
         currentCounter = _instanciateCounter;
         isCounterInstanciate = true;
-        if(_isBasinInstanciate)
+        if(_isBasinGenerate)
         {
             currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
         }
@@ -155,13 +155,13 @@ public class BasinMovement : MonoBehaviour
 
     public void BasinGererator()
     {
-        if(_isBasinInstanciate == false)
+        if(_isBasinGenerate == false)
         {
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
             currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
             currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.3f, 0);
-            _isBasinInstanciate = true;
+            _isBasinGenerate = true;
         }
        
     }
@@ -187,5 +187,10 @@ public class BasinMovement : MonoBehaviour
         currentCounter.transform.GetChild(0).transform.localScale = new Vector3(length, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
         currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, hight, currentCounter.transform.position.z);
 
+    }
+
+    public void DeleteWholeCounter()
+    {
+        Destroy(counterWhole);
     }
 }

@@ -65,12 +65,12 @@ public class BasinMovement : MonoBehaviour
                 //    CounterInstanciate();
                 //}
 
-                if(isBasinSelected != true)
+                if(isBasinSelected == false)
                 {
                     if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                     {
                         isCounterSelected = true;
-                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.cyan;
+                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
                     }
 
                     if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -88,11 +88,14 @@ public class BasinMovement : MonoBehaviour
 
                 }
 
-               
 
                 /////
                 ///
-                SinkMovement(raycastHit);
+                if(isCounterSelected == false)
+                {
+                    SinkMovement(raycastHit);
+                }
+                
 
             }
 
@@ -115,6 +118,7 @@ public class BasinMovement : MonoBehaviour
         {
             BasinInstanciate();
             isBasinSelected = true;
+            currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
             currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.red;
 
         }
@@ -159,7 +163,7 @@ public class BasinMovement : MonoBehaviour
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
             currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.3f, 0);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.568f, 0);
             _isBasinGenerate = true;
         }
        
@@ -190,6 +194,17 @@ public class BasinMovement : MonoBehaviour
 
     public void DeleteWholeCounter()
     {
-        Destroy(counterWhole);
+        if(isCounterSelected)
+        {
+            Destroy(counterWhole);
+
+        }
+        if(isBasinSelected)
+        {
+            Destroy(currentBasin);
+            _isBasinGenerate = false;
+
+        }
+
     }
 }

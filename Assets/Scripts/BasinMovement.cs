@@ -163,7 +163,7 @@ public class BasinMovement : MonoBehaviour
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
             currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
             Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.84f, 0);
+            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.618f, 0);
             _isBasinGenerate = true;
         }
        

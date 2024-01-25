@@ -4,5 +4,5 @@ using UnityEngine;
 
 static public class BasinModel
 {
-    public static GameObject CurrentBasin;
+    //public static GameObject CurrentBasin;
 }

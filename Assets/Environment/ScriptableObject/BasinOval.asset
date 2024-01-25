@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86933b5798944f88b490fe5527e49ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 58aae76c0cb92433ba7b6d79f004e933, type: 3}
   m_Name: BasinOval
   m_EditorClassIdentifier: 
-  BasinType: Oval
-  BasinOval:
+  BasinType:
   - {fileID: 615421486395270001, guid: 255bc2e2599f14093811fc0e614ad697, type: 3}

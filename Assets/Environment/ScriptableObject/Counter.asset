@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58aae76c0cb92433ba7b6d79f004e933, type: 3}
-  m_Name: BasinBlock
+  m_Script: {fileID: 11500000, guid: e863735767866447c92e880234752932, type: 3}
+  m_Name: Counter
   m_EditorClassIdentifier: 
-  BasinType: []
+  counterType: []

@@ -3218,6 +3218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227306141}
+  - component: {fileID: 1227306142}
   m_Layer: 0
   m_Name: CounterWhole
   m_TagString: Untagged
@@ -3243,6 +3244,19 @@ Transform:
   - {fileID: 749940159}
   m_Father: {fileID: 1426068422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1227306142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227306140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c945c1456854aa49ee5059ab6061d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
 --- !u!1 &1262713954
 GameObject:
   m_ObjectHideFlags: 0

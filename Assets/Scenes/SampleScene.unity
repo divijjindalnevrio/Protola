@@ -5051,6 +5051,7 @@ MonoBehaviour:
   lengthSlider: {fileID: 955800249}
   hightSlider: {fileID: 1501013928}
   depthSlider: {fileID: 397409303}
+  defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

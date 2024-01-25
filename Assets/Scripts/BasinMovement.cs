@@ -34,6 +34,8 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Slider lengthSlider;
     [SerializeField] private Slider hightSlider;
     [SerializeField] private Slider depthSlider;
+    [SerializeField] private Material defaultMat;
+
 
     private void Start()
     {
@@ -108,7 +110,7 @@ public class BasinMovement : MonoBehaviour
         if (isBasinSelected && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             isBasinSelected = false;
-            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.white;
+            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = defaultMat.color;
             int BasinCount = currentCounter.transform.GetChild(1).transform.childCount;
             Destroy(currentCounter.transform.GetChild(1).transform.GetChild(0).gameObject);
             Debug.Log("Basin count : " + BasinCount);

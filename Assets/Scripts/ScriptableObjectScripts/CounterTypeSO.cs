@@ -17,7 +17,7 @@ public class CounterTypeSO : ScriptableObject
         counterModel.depth = depth;
     }
 
-    public void SetCounterRotation(Vector3 rotation, Vector3 position)
+    public void SetCounterRotationAndPosition(Vector3 rotation, Vector3 position)
     {
         counterModel.rotaton = rotation;
         counterModel.rotaton = position;

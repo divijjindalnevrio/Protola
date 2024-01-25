@@ -36,7 +36,11 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Slider depthSlider;
     [SerializeField] private Material defaultMat;
 
+    [SerializeField] private CounterTypeSO counterTypeSO;
 
+    private float length;
+    private float hight;
+    private float depth;
     private void Start()
     {
         
@@ -103,7 +107,7 @@ public class BasinMovement : MonoBehaviour
 
         }
 
-}
+    }
 
     private void SinkMovement(RaycastHit rayHit)
     {
@@ -122,7 +126,6 @@ public class BasinMovement : MonoBehaviour
             isBasinSelected = true;
             currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
             currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.red;
-
         }
 
         if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
@@ -156,8 +159,6 @@ public class BasinMovement : MonoBehaviour
         }
     }
 
-
-
     public void BasinGererator()
     {
         if(_isBasinGenerate == false)
@@ -186,9 +187,9 @@ public class BasinMovement : MonoBehaviour
 
     private void ChangingSizeOfCounter()
     {
-        float length = lengthSlider.value;
-        float hight =  hightSlider.value;
-        float depth =  depthSlider.value;
+         length = lengthSlider.value;
+         hight =  hightSlider.value;
+         depth =  depthSlider.value;
         currentCounter.transform.GetChild(0).transform.localScale = new Vector3(length, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
         currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, hight, currentCounter.transform.position.z);
 
@@ -207,6 +208,20 @@ public class BasinMovement : MonoBehaviour
             _isBasinGenerate = false;
 
         }
+
+    }
+
+
+    public void Json()
+    {
+        Vector3 rotation = currentCounter.transform.eulerAngles;
+        Vector3 position = counterWhole.transform.position;
+        Debug.Log("rot&pos : " + rotation + position);
+        counterTypeSO.SetCounterRotationAndPosition(rotation, position);
+        counterTypeSO.SettingCounterSize(length, hight, depth);
+        string jsonFormat = JsonUtility.ToJson(counterTypeSO.counterModel);
+        Debug.Log("jsonFormat : " + jsonFormat);
+
 
     }
 }

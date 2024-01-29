@@ -27,7 +27,4 @@ public class CounterTypeSO : ScriptableObject
     {
         counterModel.texture = texture;
     }
-
-
-
 }

@@ -216,12 +216,15 @@ public class BasinMovement : MonoBehaviour
     {
         Vector3 rotation = currentCounter.transform.eulerAngles;
         Vector3 position = counterWhole.transform.position;
-        Debug.Log("rot&pos : " + rotation + position);
         counterTypeSO.SetCounterRotationAndPosition(rotation, position);
         counterTypeSO.SettingCounterSize(length, hight, depth);
         string jsonFormat = JsonUtility.ToJson(counterTypeSO.counterModel);
         Debug.Log("jsonFormat : " + jsonFormat);
+    }
 
-
+    public void CreateInstanceOfSo()
+    {
+        CounterTypeSO CountSo = ScriptableObject.CreateInstance<CounterTypeSO>();
+        Debug.Log("CreateInstanceOfSo" + CountSo.GetType());
     }
 }

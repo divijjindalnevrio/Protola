@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SetCounterToRotate
         m_Mode: 1
@@ -1541,7 +1541,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SettingRightRotateValue
         m_Mode: 1
@@ -2321,7 +2321,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SetCounterToRotate
         m_Mode: 1
@@ -2333,7 +2333,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SettingLefttRotateValue
         m_Mode: 1
@@ -2868,7 +2868,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SetBasinToRotate
         m_Mode: 1
@@ -2880,7 +2880,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SettingRightRotateValue
         m_Mode: 1
@@ -3013,7 +3013,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SetBasinToRotate
         m_Mode: 1
@@ -3025,7 +3025,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 7566046292836486871}
+      - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SettingLefttRotateValue
         m_Mode: 1
@@ -3255,6 +3255,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1227306141}
   - component: {fileID: 1227306142}
+  - component: {fileID: 1227306143}
+  - component: {fileID: 1227306144}
   m_Layer: 0
   m_Name: CounterWhole
   m_TagString: Untagged
@@ -3292,6 +3294,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c945c1456854aa49ee5059ab6061d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
+--- !u!114 &1227306143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227306140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea3c139f0a4c4c16926fe2755166d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basin: {fileID: 0}
+  counter: {fileID: 0}
+  speed: 10
+  basinMovement: {fileID: 1227306144}
+--- !u!114 &1227306144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227306140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18c94f0ce6714a5d8efd33c2e7f26f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basin: {fileID: 615421486395270001, guid: 255bc2e2599f14093811fc0e614ad697, type: 3}
+  hole: {fileID: 428094686038336724, guid: 8a8e3d8e24a134c108cb1671b835d9de, type: 3}
+  mainCam: {fileID: 330585545}
+  speed: 20
+  Counterspeed: 40
+  counterWhole: {fileID: 1227306140}
+  currentBasin: {fileID: 0}
+  currentHole: {fileID: 0}
+  currentCounter: {fileID: 1393768697}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 384
+  CounterlayerMask:
+    serializedVersion: 2
+    m_Bits: 480
+  lengthSlider: {fileID: 955800249}
+  hightSlider: {fileID: 1501013928}
+  depthSlider: {fileID: 397409303}
+  defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
 --- !u!1 &1262713954
 GameObject:
@@ -3545,7 +3595,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7566046292836486872}
+      - m_Target: {fileID: 1227306144}
         m_TargetAssemblyTypeName: BasinMovement, Assembly-CSharp
         m_MethodName: DeleteWholeCounter
         m_Mode: 1
@@ -4542,7 +4592,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7566046292836486872}
+      - m_Target: {fileID: 1227306144}
         m_TargetAssemblyTypeName: BasinMovement, Assembly-CSharp
         m_MethodName: BasinGererator
         m_Mode: 1
@@ -5184,7 +5234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &2386634676357011649
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,15 +31,15 @@ public class BasinMovement : MonoBehaviour
     private bool isCounterSelected = false;
     private bool isBasinSelected = false;
 
-    [SerializeField] private Slider lengthSlider;
-    [SerializeField] private Slider hightSlider;
+    [SerializeField] private Slider widthSlider;
+    [SerializeField] private Slider thicknessSlider;
     [SerializeField] private Slider depthSlider;
     [SerializeField] private Material defaultMat;
 
     [SerializeField] private CounterTypeSO counterTypeSO;
 
-    private float length;
-    private float hight;
+    private float width;
+    private float thickness;
     private float depth;
     private void Start()
     {
@@ -195,11 +195,11 @@ public class BasinMovement : MonoBehaviour
 
     private void ChangingSizeOfCounter()
     {
-         length = lengthSlider.value;
-         hight =  hightSlider.value;
+         width = widthSlider.value;
+         thickness = thicknessSlider.value;
          depth =  depthSlider.value;
-        currentCounter.transform.GetChild(0).transform.localScale = new Vector3(length, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
-        currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, hight, currentCounter.transform.position.z);
+        currentCounter.transform.GetChild(0).transform.localScale = new Vector3(width, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
+        currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, thickness, currentCounter.transform.position.z);
 
     }
 
@@ -225,7 +225,7 @@ public class BasinMovement : MonoBehaviour
         Vector3 rotation = currentCounter.transform.eulerAngles;
         Vector3 position = counterWhole.transform.position;
         counterTypeSO.SetCounterRotationAndPosition(rotation, position);
-        counterTypeSO.SettingCounterSize(length, hight, depth);
+       // counterTypeSO.SettingCounterSize(length, hight, depth);
         string jsonFormat = JsonUtility.ToJson(counterTypeSO.counterModel);
         Debug.Log("jsonFormat : " + jsonFormat);
     }

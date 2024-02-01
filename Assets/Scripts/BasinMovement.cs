@@ -114,7 +114,7 @@ public class BasinMovement : MonoBehaviour
         if (isBasinSelected && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             isBasinSelected = false;
-            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = defaultMat.color;
+            currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
             int BasinCount = currentCounter.transform.GetChild(1).transform.childCount;
             Destroy(currentCounter.transform.GetChild(1).transform.GetChild(0).gameObject);
             Debug.Log("Basin count : " + BasinCount);
@@ -125,7 +125,7 @@ public class BasinMovement : MonoBehaviour
             BasinInstanciate();
             isBasinSelected = true;
             currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
-            currentBasin.transform.GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.color = Color.red;
+            currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
         }
 
         if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
@@ -163,13 +163,21 @@ public class BasinMovement : MonoBehaviour
     {
         if(_isBasinGenerate == false)
         {
+            SettingBasinPosition();
+
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
             currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
-            Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
-            currentBasin.transform.localPosition = currentCounterPos + new Vector3(1f, 0.618f, 0);
+            //Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
+            currentBasin.transform.localPosition = new Vector3(0f, -0.001f, 0);
             _isBasinGenerate = true;
         }
-       
+
+    }
+
+    private void SettingBasinPosition()
+    {
+        Vector3 basinPos = new Vector3(0f, currentCounter.transform.GetChild(0).localScale.y / 2, 0f);
+        currentCounter.transform.GetChild(1).transform.localPosition = basinPos;
     }
 
     public void HolwGererator()

@@ -13,20 +13,20 @@ public class MainUiController : MonoBehaviour
         // assign ui elements to dictonary!
         uiModel = GetComponent<UiModel>();
         uiModel.AddUiElementsToDictonary();
-        sliders = uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").gameObject;
+        sliders = uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").gameObject;
         InitialButtoUiState();
 
-        Debug.Log("AddUiElementsToDictonary : " + uiModel.UiBuoonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].name + uiModel.UiBuoonsAndElementsDict.Count);
+        Debug.Log("AddUiElementsToDictonary : " + uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].name + uiModel.UiButtonsAndElementsDict.Count);
     }
 
     public void InitialButtoUiState()
     {
         uiModel.SetAllUiElementsToFalse(null);
-        uiModel.UiBuoonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
-        uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].SetActive(true);
-        uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].SetActive(true);
+        uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
         SetAllSlidersToFalse();
-        uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find(uiModel.lastSliderActiveName).gameObject.SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find(uiModel.lastSliderActiveName).gameObject.SetActive(true);
     }
 
     public void SettingSliderToActive(string sliderName)
@@ -35,19 +35,19 @@ public class MainUiController : MonoBehaviour
         {
             case "Depth":
                 SetAllSlidersToFalse();
-                uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Depth").gameObject.SetActive(true);
+                uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Depth").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Depth";
                 break;
 
             case "Width":
                 SetAllSlidersToFalse();
-                uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Width").gameObject.SetActive(true);
+                uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Width").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Width";
                 break;
 
             case "Thickness":
                 SetAllSlidersToFalse();
-                uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Thickness").gameObject.SetActive(true);
+                uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Thickness").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Thickness";
                 break;
         }
@@ -63,25 +63,46 @@ public class MainUiController : MonoBehaviour
 
     public void SelectingSurfaceColor()
     {
-        uiModel.SetAllUiElementsToFalse("SurfaceSizeAndColorButtonsTop");
-        uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
-        uiModel.UiBuoonsAndElementsDict["SurfaceColorContent"].SetActive(true);
+        SetBackgroundAndContenetActive("SurfaceSizeAndColorButtonsTop");
+        uiModel.UiButtonsAndElementsDict["SurfaceColorContent"].SetActive(true);
     }
 
     public void PickColor()
     {
-        uiModel.SetAllUiElementsToFalse("PalaceAndBaseColorButtonsTop");
-        uiModel.UiBuoonsAndElementsDict["PalaceAndBaseColorButtonsTop"].SetActive(true);
-        uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
-        uiModel.UiBuoonsAndElementsDict["PalaceColorsContent"].transform.gameObject.SetActive(true);
+        SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
+        uiModel.UiButtonsAndElementsDict["PalaceAndBaseColorButtonsTop"].SetActive(true);
+        uiModel.UiButtonsAndElementsDict["PalaceColorsContent"].transform.gameObject.SetActive(true);
     }
 
     public void Granulates()
     {
-        uiModel.SetAllUiElementsToFalse("PalaceAndBaseColorButtonsTop");
-        uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
-        uiModel.UiBuoonsAndElementsDict["GranulatesContent"].transform.gameObject.SetActive(true);
+        SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
+        uiModel.UiButtonsAndElementsDict["GranulatesContent"].transform.gameObject.SetActive(true);
+
+    }
+    public void BaseColor()
+    {
+        SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
+        uiModel.UiButtonsAndElementsDict["BaseColorsContent"].SetActive(true);
 
     }
 
+    public void AddObject()
+    {
+        SetBackgroundAndContenetActive("SurfaceSizeAndColorButtonsTop");
+        uiModel.UiButtonsAndElementsDict["AddObjectContent"].SetActive(true);
+    }
+        
+    public void ShowBasinModelUi()
+    {
+        SetBackgroundAndContenetActive("SinkButtonsTop");
+        uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform.gameObject.SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SinkModelContent"].SetActive(true);
+    }
+
+    private void SetBackgroundAndContenetActive(string contenet)
+    {
+        uiModel.SetAllUiElementsToFalse(contenet);
+        uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
+    }
 }

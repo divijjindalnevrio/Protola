@@ -5,22 +5,22 @@ using UnityEngine;
 public class UiModel : MonoBehaviour
 {
   
-    public List<GameObject> UiBuoonsAndElementsList = new List<GameObject>();
-    public Dictionary<string, GameObject> UiBuoonsAndElementsDict = new Dictionary<string, GameObject>();
+    public List<GameObject> UiButtonsAndElementsList = new List<GameObject>();
+    public Dictionary<string, GameObject> UiButtonsAndElementsDict = new Dictionary<string, GameObject>();
     public string lastSliderActiveName = "Width";
 
     public void AddUiElementsToDictonary()
     {
-        foreach (GameObject listitem in UiBuoonsAndElementsList)
+        foreach (GameObject listitem in UiButtonsAndElementsList)
         {
-            UiBuoonsAndElementsDict.Add(listitem.name, listitem);
+            UiButtonsAndElementsDict.Add(listitem.name, listitem);
             listitem.SetActive(false);
         }
     }
 
     public void SetAllUiElementsToFalse(string TopButtonName)
     {
-        foreach (GameObject listitem in UiBuoonsAndElementsList)
+        foreach (GameObject listitem in UiButtonsAndElementsList)
         {
             if (listitem.name == TopButtonName) continue;
             Debug.Log("SetAllUiElementsToFalse : " + listitem.name);

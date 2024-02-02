@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MainUiController : MonoBehaviour
 {
@@ -101,6 +102,12 @@ public class MainUiController : MonoBehaviour
     public void SelectingSurfaceColor()
     {
         SetBackgroundAndContenetActive("SurfaceSizeAndColorButtonsTop");
+        GameObject surfaceColorContent = uiModel.UiButtonsAndElementsDict["SurfaceColorContent"];
+        surfaceColorContent.SetActive(true);  
+    }
+    public void SelectingSinkSurfaceColor()
+    {
+        SetBackgroundAndContenetActive("SinkButtonsTop");
         uiModel.UiButtonsAndElementsDict["SurfaceColorContent"].SetActive(true);
     }
 

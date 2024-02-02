@@ -22,6 +22,7 @@ public class BasinMovement : MonoBehaviour
     public GameObject currentBasin;
     public GameObject currentHole;
     public GameObject currentCounter;
+    public GameObject currentSelectedObject;
 
     public LayerMask layerMask;
     public LayerMask CounterlayerMask;
@@ -76,7 +77,8 @@ public class BasinMovement : MonoBehaviour
                     if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                     {
                         isCounterSelected = true;
-                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
+                        currentSelectedObject = currentCounter;
+                        //currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
                     }
 
                     if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -89,6 +91,7 @@ public class BasinMovement : MonoBehaviour
                     if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended && raycastHit.collider.tag == "Grid")
                     {
                         isCounterSelected = false;
+                        currentSelectedObject = null;
                         currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
                     }
 

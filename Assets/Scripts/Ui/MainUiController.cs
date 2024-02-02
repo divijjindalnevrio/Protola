@@ -6,7 +6,7 @@ public class MainUiController : MonoBehaviour
 {
     private UiModel uiModel;
     private GameObject sliders;
-    
+
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class MainUiController : MonoBehaviour
         sliders = uiModel.UiBuoonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").gameObject;
         InitialButtoUiState();
 
-        Debug.Log("AddUiElementsToDictonary : " + uiModel.UiBuoonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].name  + uiModel.UiBuoonsAndElementsDict.Count);
+        Debug.Log("AddUiElementsToDictonary : " + uiModel.UiBuoonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].name + uiModel.UiBuoonsAndElementsDict.Count);
     }
 
     public void InitialButtoUiState()
@@ -31,7 +31,7 @@ public class MainUiController : MonoBehaviour
 
     public void SettingSliderToActive(string sliderName)
     {
-        switch(sliderName)
+        switch (sliderName)
         {
             case "Depth":
                 SetAllSlidersToFalse();
@@ -55,7 +55,7 @@ public class MainUiController : MonoBehaviour
 
     private void SetAllSlidersToFalse()
     {
-        foreach(Transform child in sliders.transform)
+        foreach (Transform child in sliders.transform)
         {
             child.gameObject.SetActive(false);
         }
@@ -67,4 +67,21 @@ public class MainUiController : MonoBehaviour
         uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
         uiModel.UiBuoonsAndElementsDict["SurfaceColorContent"].SetActive(true);
     }
+
+    public void PickColor()
+    {
+        uiModel.SetAllUiElementsToFalse("PalaceAndBaseColorButtonsTop");
+        uiModel.UiBuoonsAndElementsDict["PalaceAndBaseColorButtonsTop"].SetActive(true);
+        uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
+        uiModel.UiBuoonsAndElementsDict["PalaceColorsContent"].transform.gameObject.SetActive(true);
+    }
+
+    public void Granulates()
+    {
+        uiModel.SetAllUiElementsToFalse("PalaceAndBaseColorButtonsTop");
+        uiModel.UiBuoonsAndElementsDict["Background"].SetActive(true);
+        uiModel.UiBuoonsAndElementsDict["GranulatesContent"].transform.gameObject.SetActive(true);
+
+    }
+
 }

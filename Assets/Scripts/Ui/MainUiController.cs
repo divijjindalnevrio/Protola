@@ -6,6 +6,7 @@ public class MainUiController : MonoBehaviour
 {
     private UiModel uiModel;
     private GameObject sliders;
+    private GameObject ModelShapesContent;
 
 
     void Start()
@@ -14,9 +15,8 @@ public class MainUiController : MonoBehaviour
         uiModel = GetComponent<UiModel>();
         uiModel.AddUiElementsToDictonary();
         sliders = uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").gameObject;
+        ModelShapesContent = uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("ModelShapesContent ").gameObject;
         InitialButtoUiState();
-
-        Debug.Log("AddUiElementsToDictonary : " + uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].name + uiModel.UiButtonsAndElementsDict.Count);
     }
 
     public void InitialButtoUiState()
@@ -35,27 +35,64 @@ public class MainUiController : MonoBehaviour
         {
             case "Depth":
                 SetAllSlidersToFalse();
-                uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Depth").gameObject.SetActive(true);
+                sliders.transform.Find("Depth").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Depth";
                 break;
 
             case "Width":
                 SetAllSlidersToFalse();
-                uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Width").gameObject.SetActive(true);
+                sliders.transform.Find("Width").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Width";
                 break;
 
             case "Thickness":
                 SetAllSlidersToFalse();
-                uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find("Thickness").gameObject.SetActive(true);
+                sliders.transform.Find("Thickness").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Thickness";
                 break;
         }
     }
 
+    public void SettingSinkShapeContentToActive(string sinkShape)
+    {
+        switch (sinkShape)
+        {
+            case "Round":
+                SetAllSinkShapeContentToFalse();
+                ModelShapesContent.transform.Find("Round").gameObject.SetActive(true);
+               // uiModel.lastSliderActiveName = "Round";
+                break;
+
+            case "Oval":
+                SetAllSinkShapeContentToFalse();
+                ModelShapesContent.transform.Find("Oval").gameObject.SetActive(true);
+               // uiModel.lastSliderActiveName = "Oval";
+                break;
+
+            case "Block":
+                SetAllSinkShapeContentToFalse();
+                ModelShapesContent.transform.Find("Block").gameObject.SetActive(true);
+                //uiModel.lastSliderActiveName = "Block";
+                break;
+
+            case "Kehto":
+                SetAllSinkShapeContentToFalse();
+                ModelShapesContent.transform.Find("Kehto").gameObject.SetActive(true);
+               // uiModel.lastSliderActiveName = "Kehto";
+                break;
+        }
+    }
     private void SetAllSlidersToFalse()
     {
         foreach (Transform child in sliders.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
+    private void SetAllSinkShapeContentToFalse()
+    {
+        foreach (Transform child in ModelShapesContent.transform)
         {
             child.gameObject.SetActive(false);
         }
@@ -105,4 +142,7 @@ public class MainUiController : MonoBehaviour
         uiModel.SetAllUiElementsToFalse(contenet);
         uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
     }
+
+
+
 }

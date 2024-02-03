@@ -31,6 +31,7 @@ public class BasinMovement : MonoBehaviour
     private bool isCounterInstanciate = false;
     private bool isCounterSelected = false;
     private bool isBasinSelected = false;
+    private bool isInstanciateBasinMoved = false;
 
     [SerializeField] private Slider widthSlider;
     [SerializeField] private Slider thicknessSlider;
@@ -67,18 +68,13 @@ public class BasinMovement : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
 
-                //if (raycastHit.collider.tag == "Counter" && isCounterInstanciate == false)
-                //{
-                //    CounterInstanciate();
-                //}
-
                 if(isBasinSelected == false)
                 {
                     if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                     {
                         isCounterSelected = true;
                         currentSelectedObject = currentCounter;
-                        //currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
+                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
                     }
 
                     if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -114,28 +110,41 @@ public class BasinMovement : MonoBehaviour
 
     private void SinkMovement(RaycastHit rayHit)
     {
-        if (isBasinSelected && Input.GetTouch(0).phase == TouchPhase.Ended)
+        if (isBasinSelected && isInstanciateBasinMoved && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
-            isBasinSelected = false;
-            currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
-            int BasinCount = currentCounter.transform.GetChild(1).transform.childCount;
-            Destroy(currentCounter.transform.GetChild(1).transform.GetChild(0).gameObject);
-            Debug.Log("Basin count : " + BasinCount);
+            //isBasinSelected = false;
+            isInstanciateBasinMoved = false;
+            //currentSelectedObject = null;
+           // currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
+            Destroy(_instanciateBasin.gameObject);
+            isBasinInstanciate = false;
 
         }
         if (rayHit.collider.tag == "Basin" && isBasinSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
-            BasinInstanciate();
             isBasinSelected = true;
+            currentSelectedObject = currentBasin;
             currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
             currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
         }
 
         if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
         {
+            if (isBasinInstanciate == false)
+            {
+                BasinInstanciate(); 
+            }
             _isSelected = true;
+            isBasinSelected = true;
+            isInstanciateBasinMoved = true;
             Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
-            _instanciateBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+            currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+        }
+        if(rayHit.collider.tag == "Grid" && isInstanciateBasinMoved == false && isBasinSelected)
+        {
+            isBasinSelected = false;
+            currentSelectedObject = null;
+            currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
         }
 
     }
@@ -144,9 +153,10 @@ public class BasinMovement : MonoBehaviour
     private void BasinInstanciate()
     {
         _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
+        _instanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
         _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
-        currentBasin = _instanciateBasin;
-        //isBasinInstanciate = true;
+        //currentBasin = _instanciateBasin;
+        isBasinInstanciate = true;
     }
 
 

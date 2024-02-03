@@ -8,6 +8,9 @@ public class UiModel : MonoBehaviour
     public List<GameObject> UiButtonsAndElementsList = new List<GameObject>();
     public Dictionary<string, GameObject> UiButtonsAndElementsDict = new Dictionary<string, GameObject>();
     public string lastSliderActiveName = "Width";
+    public string lastModelShapeActiveName = "Round";
+    public string PreviousUiState;
+    public string TopActiveButton = "SurfaceSize";
 
     public void AddUiElementsToDictonary()
     {
@@ -26,5 +29,10 @@ public class UiModel : MonoBehaviour
             Debug.Log("SetAllUiElementsToFalse : " + listitem.name);
             listitem.SetActive(false);
         }
+    }
+
+    public void SetTopActiveButtons(string activeButtonName)
+    {
+        TopActiveButton = activeButtonName;
     }
 }

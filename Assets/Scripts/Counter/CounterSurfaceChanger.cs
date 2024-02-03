@@ -18,6 +18,8 @@ public class CounterSurfaceChanger : MonoBehaviour
     public void ChangingCounterSurface(int material)
     {
         GameObject selectedObjcet = basinMovement.currentSelectedObject;
+        if(selectedObjcet == null) { return; }
+
         if (selectedObjcet.CompareTag("Basin"))
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material = counterMat[material];
@@ -31,6 +33,8 @@ public class CounterSurfaceChanger : MonoBehaviour
     public void ChangingCounterSurfaceColor(int color)
     {
         GameObject selectedObjcet = basinMovement.currentSelectedObject;
+        if (selectedObjcet == null) { return; }
+
         if (selectedObjcet.CompareTag("Basin"))
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = colors[color];

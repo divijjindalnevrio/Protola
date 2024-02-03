@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MainUiController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class MainUiController : MonoBehaviour
     {
         uiModel.SetAllUiElementsToFalse(null);
         uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].transform.Find("SurfaceSize").gameObject.GetComponent<Button>().Select();
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].SetActive(true);
         uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
         SetAllSlidersToFalse();
@@ -61,28 +63,53 @@ public class MainUiController : MonoBehaviour
             case "Round":
                 SetAllSinkShapeContentToFalse();
                 ModelShapesContent.transform.Find("Round").gameObject.SetActive(true);
-               // uiModel.lastSliderActiveName = "Round";
+                uiModel.lastModelShapeActiveName = "Round";
                 break;
 
             case "Oval":
                 SetAllSinkShapeContentToFalse();
                 ModelShapesContent.transform.Find("Oval").gameObject.SetActive(true);
-               // uiModel.lastSliderActiveName = "Oval";
+                uiModel.lastModelShapeActiveName = "Oval";
                 break;
 
             case "Block":
                 SetAllSinkShapeContentToFalse();
                 ModelShapesContent.transform.Find("Block").gameObject.SetActive(true);
-                //uiModel.lastSliderActiveName = "Block";
+                uiModel.lastModelShapeActiveName = "Block";
                 break;
 
             case "Kehto":
                 SetAllSinkShapeContentToFalse();
                 ModelShapesContent.transform.Find("Kehto").gameObject.SetActive(true);
-               // uiModel.lastSliderActiveName = "Kehto";
+                uiModel.lastModelShapeActiveName = "Kehto";
                 break;
         }
     }
+
+    public void GoingBackToPreviousUiState()
+    {
+        switch (uiModel.TopActiveButton)
+        {
+            case "SurfaceSize":
+                InitialButtoUiState();
+                uiModel.TopActiveButton = "SurfaceSize";
+                break;
+
+            case "SurfaceColor":
+                uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
+                SelectingSurfaceColor();
+                uiModel.TopActiveButton = "SurfaceSize";
+                break;
+
+            case "AddObject":
+                uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
+                AddObject();
+                uiModel.TopActiveButton = "SurfaceSize";
+                break;
+        }
+
+    }
+
     private void SetAllSlidersToFalse()
     {
         foreach (Transform child in sliders.transform)
@@ -139,9 +166,10 @@ public class MainUiController : MonoBehaviour
         
     public void ShowBasinModelUi()
     {
-        SetBackgroundAndContenetActive("SinkButtonsTop");
+        SetBackgroundAndContenetActive("SinkButtonsTop");   // active top buttons here 
         uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform.gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["SinkModelContent"].SetActive(true);
+        SettingSinkShapeContentToActive(uiModel.lastModelShapeActiveName);                       // <--- checking here the last active model shape
     }
 
     private void SetBackgroundAndContenetActive(string contenet)
@@ -151,5 +179,14 @@ public class MainUiController : MonoBehaviour
     }
 
 
+    ///////
+    ///
 
+    private void PreviousSurfaceColor()
+    {
+        uiModel.UiButtonsAndElementsDict["SurfaceColorContent"].gameObject.SetActive(true);
+        GameObject surfaceColorContent = uiModel.UiButtonsAndElementsDict["SurfaceColorContent"];
+        surfaceColorContent.SetActive(true);
+
+    }
 }

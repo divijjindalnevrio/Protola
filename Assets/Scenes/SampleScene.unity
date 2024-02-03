@@ -9610,7 +9610,7 @@ MonoBehaviour:
     m_Bits: 384
   CounterlayerMask:
     serializedVersion: 2
-    m_Bits: 480
+    m_Bits: 448
   widthSlider: {fileID: 831580694}
   thicknessSlider: {fileID: 1187545048}
   depthSlider: {fileID: 1581739702}

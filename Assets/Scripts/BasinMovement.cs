@@ -152,7 +152,7 @@ public class BasinMovement : MonoBehaviour
 
     private void BasinInstanciate()
     {
-        _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, Quaternion.identity);
+        _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, currentBasin.transform.localRotation);
         _instanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
         _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
         //currentBasin = _instanciateBasin;

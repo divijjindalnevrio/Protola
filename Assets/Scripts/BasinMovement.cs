@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class BasinMovement : MonoBehaviour
 {
+    [SerializeField] private UiModel uiModel;
     [SerializeField] private GameObject basin;
     [SerializeField] private GameObject hole;
 

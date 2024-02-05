@@ -12,6 +12,7 @@ public class MainUiController : MonoBehaviour
     private Transform SurfaceSizeAndColorButtonsTop;
     private Transform palaceAndBaseColorButtonsTop;
     private Transform sinkButtonsTop;
+    private Transform baseColorsContent;
 
 
 
@@ -31,6 +32,7 @@ public class MainUiController : MonoBehaviour
         SurfaceSizeAndColorButtonsTop = uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].transform;
         palaceAndBaseColorButtonsTop = uiModel.UiButtonsAndElementsDict["PalaceAndBaseColorButtonsTop"].transform;
         sinkButtonsTop = uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform;
+        baseColorsContent = uiModel.UiButtonsAndElementsDict["BaseColorsContent"].transform;
     }
 
     public void InitialButtoUiState()
@@ -222,6 +224,15 @@ public class MainUiController : MonoBehaviour
     }
 
    
+    public void HighLightButton(Transform buttonTransform, string name)
+    {
+        foreach (Transform child in buttonTransform)
+        {
+            if (child.name == name) continue;
+            child.Find("SelectedState").transform.gameObject.SetActive(false);
+        }
+
+    }
 
     private void DeselectAllButtons(Transform topButtons)
     {

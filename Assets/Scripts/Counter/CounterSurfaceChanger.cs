@@ -6,7 +6,10 @@ public class CounterSurfaceChanger : MonoBehaviour
 {
     [SerializeField] private List<Material> counterMat = new List<Material>();
     [SerializeField] private BasinMovement basinMovement;
-    
+    [SerializeField] private MainUiController mainUiController;
+    [SerializeField] private UiModel uiModel;
+
+
 
     public List<Color> colors = new List<Color>();
 
@@ -15,7 +18,7 @@ public class CounterSurfaceChanger : MonoBehaviour
         
     }
 
-    public void ChangingCounterSurface(int material)
+    public void ChangingCounterSurfaceTexture(int material)
     {
         GameObject selectedObjcet = basinMovement.currentSelectedObject;
         if(selectedObjcet == null) { return; }
@@ -30,6 +33,7 @@ public class CounterSurfaceChanger : MonoBehaviour
         }
         
     }
+
     public void ChangingCounterSurfaceColor(int color)
     {
         GameObject selectedObjcet = basinMovement.currentSelectedObject;
@@ -38,10 +42,12 @@ public class CounterSurfaceChanger : MonoBehaviour
         if (selectedObjcet.CompareTag("Basin"))
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = colors[color];
+           
         }
         else
         {
-            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.color = colors[color]; 
+            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.color = colors[color];
+           
         }
 
     }

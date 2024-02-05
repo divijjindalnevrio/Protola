@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BasinMovement : MonoBehaviour
@@ -32,6 +33,7 @@ public class BasinMovement : MonoBehaviour
     private bool isCounterSelected = false;
     private bool isBasinSelected = false;
     private bool isInstanciateBasinMoved = false;
+    private bool isPointerOverGameObject = false;
 
     [SerializeField] private Slider widthSlider;
     [SerializeField] private Slider thicknessSlider;
@@ -62,13 +64,14 @@ public class BasinMovement : MonoBehaviour
 
     private void CounterAndSinkMovementAndGerenartion()
     {
+       
         if (Input.touchCount == 1)
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
-
-                if(isBasinSelected == false)
+                Debug.Log("RAYCAST HIT WITH OBJECT'S LAYER : " + raycastHit.collider.name);
+                if (isBasinSelected == false)
                 {
                     if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
                     {
@@ -84,11 +87,21 @@ public class BasinMovement : MonoBehaviour
                         counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
                     }
 
-                    if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Ended && raycastHit.collider.tag == "Grid")
+                    if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                     {
-                        isCounterSelected = false;
-                        currentSelectedObject = null;
-                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+                        if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
+                        {
+                            Debug.Log("Touched the UI");
+                            isCounterSelected = false;
+                            currentSelectedObject = null;
+                            currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+                           
+                        }
+                        //else
+                        //{
+                        //    return;
+                        //}
+                       
                     }
 
                 }
@@ -96,11 +109,11 @@ public class BasinMovement : MonoBehaviour
 
                 /////
                 ///
-                if(isCounterSelected == false)
+                if (isCounterSelected == false)
                 {
                     SinkMovement(raycastHit);
                 }
-                
+
 
             }
 
@@ -110,6 +123,8 @@ public class BasinMovement : MonoBehaviour
 
     private void SinkMovement(RaycastHit rayHit)
     {
+       
+
         if (isBasinSelected && isInstanciateBasinMoved && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             //isBasinSelected = false;
@@ -140,11 +155,21 @@ public class BasinMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
             currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
         }
-        if(rayHit.collider.tag == "Grid" && isInstanciateBasinMoved == false && isBasinSelected)
+        if (rayHit.collider.tag == "Grid" && isInstanciateBasinMoved == false && isBasinSelected)
         {
-            isBasinSelected = false;
-            currentSelectedObject = null;
-            currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
+            
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                return;
+            }
+            else if(!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+        
+                isBasinSelected = false;
+                currentSelectedObject = null;
+                currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
+            }
+
         }
 
     }

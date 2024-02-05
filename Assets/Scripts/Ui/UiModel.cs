@@ -10,7 +10,9 @@ public class UiModel : MonoBehaviour
     public string lastSliderActiveName = "Width";
     public string lastModelShapeActiveName = "Round";
     public string PreviousUiState;
-    public string TopActiveButton = "SurfaceSize";
+    public string TopActiveButton;
+    
+
 
     public void AddUiElementsToDictonary()
     {

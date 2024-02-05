@@ -16,8 +16,5 @@ public class UiBackAndForthState : MonoBehaviour
         
     }
 
-    public void GoingBackToPreviousUiState()
-    {
-
-    }
+   
 }

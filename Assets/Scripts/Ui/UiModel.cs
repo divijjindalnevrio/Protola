@@ -11,11 +11,8 @@ public class UiModel : MonoBehaviour
     public string lastModelShapeActiveName = "Round";
     public string PreviousUiState;
     public string TopActiveButton;
-    public Color SelectedCounterColor = Color.white;
-    public Color SelectedBasinColor = Color.white;
-
-
-
+    public GameObject PalaceColorTemplate;
+   
 
     public void AddUiElementsToDictonary()
     {

@@ -13,6 +13,7 @@ public class MainUiController : MonoBehaviour
     private Transform palaceAndBaseColorButtonsTop;
     private Transform sinkButtonsTop;
     private Transform baseColorsContent;
+    [SerializeField] UiButtonsGenerator uiButtonsGenerator;
 
 
 
@@ -25,6 +26,7 @@ public class MainUiController : MonoBehaviour
         ModelShapesContent = uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("ModelShapesContent ").gameObject;
         GettingAllTopMainThreeUiButtons();
         InitialButtoUiState();
+        GeneratingPalaceButtons();
     }
 
     private void GettingAllTopMainThreeUiButtons()
@@ -34,6 +36,13 @@ public class MainUiController : MonoBehaviour
         sinkButtonsTop = uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform;
         baseColorsContent = uiModel.UiButtonsAndElementsDict["BaseColorsContent"].transform;
     }
+    private void GeneratingPalaceButtons()
+    {
+        Transform textureButtonTrans = baseColorsContent.transform.Find("SelectAndPick").transform.Find("TexturesButtons").transform;
+        uiButtonsGenerator.ButtonGenerator(9, uiModel.PalaceColorTemplate, textureButtonTrans);
+        uiButtonsGenerator.AddColorToPalaceTextureButtons();
+    }
+
 
     public void InitialButtoUiState()
     {
@@ -191,7 +200,8 @@ public class MainUiController : MonoBehaviour
         DeselectAllButtons(palaceAndBaseColorButtonsTop);
         palaceAndBaseColorButtonsTop.Find("BaseColor").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
-        uiModel.UiButtonsAndElementsDict["BaseColorsContent"].SetActive(true);
+        baseColorsContent.gameObject.SetActive(true);
+       
 
     }
 

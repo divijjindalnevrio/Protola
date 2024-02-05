@@ -8,10 +8,9 @@ public class CounterSurfaceChanger : MonoBehaviour
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
-
-
-
     public List<Color> colors = new List<Color>();
+
+
 
     void Start()
     {

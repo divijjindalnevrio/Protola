@@ -10,6 +10,8 @@ public class MainUiController : MonoBehaviour
     private GameObject sliders;
     private GameObject ModelShapesContent;
     private Transform SurfaceSizeAndColorButtonsTop;
+    private Transform palaceAndBaseColorButtonsTop;
+    private Transform sinkButtonsTop;
 
 
 
@@ -20,11 +22,17 @@ public class MainUiController : MonoBehaviour
         uiModel.AddUiElementsToDictonary();
         sliders = uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").gameObject;
         ModelShapesContent = uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("ModelShapesContent ").gameObject;
-        SurfaceSizeAndColorButtonsTop = uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].transform;
+        GettingAllTopMainThreeUiButtons();
         InitialButtoUiState();
     }
 
-    
+    private void GettingAllTopMainThreeUiButtons()
+    {
+        SurfaceSizeAndColorButtonsTop = uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].transform;
+        palaceAndBaseColorButtonsTop = uiModel.UiButtonsAndElementsDict["PalaceAndBaseColorButtonsTop"].transform;
+        sinkButtonsTop = uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform;
+    }
+
     public void InitialButtoUiState()
     {
         uiModel.SetAllUiElementsToFalse(null);
@@ -37,7 +45,7 @@ public class MainUiController : MonoBehaviour
         SetAllSlidersToFalse();
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find(uiModel.lastSliderActiveName).gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Buttons").transform.Find(uiModel.lastSliderActiveName)
-            .GetComponent<Button>().Select();
+        .GetComponent<Button>().Select();
             
     }
 
@@ -152,12 +160,17 @@ public class MainUiController : MonoBehaviour
     }
     public void SelectingSinkSurfaceColor()
     {
+        DeselectAllButtons(sinkButtonsTop);
+        sinkButtonsTop.Find("SinkColor").transform.Find("Background")
+        .GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("SinkButtonsTop");
         uiModel.UiButtonsAndElementsDict["SurfaceColorContent"].SetActive(true);
     }
 
     public void PickColor()
     {
+        DeselectAllButtons(palaceAndBaseColorButtonsTop);
+        palaceAndBaseColorButtonsTop.Find("PalaceColor").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
         uiModel.UiButtonsAndElementsDict["PalaceAndBaseColorButtonsTop"].SetActive(true);
         uiModel.UiButtonsAndElementsDict["PalaceColorsContent"].transform.gameObject.SetActive(true);
@@ -165,12 +178,16 @@ public class MainUiController : MonoBehaviour
 
     public void Granulates()
     {
+        DeselectAllButtons(palaceAndBaseColorButtonsTop);
+        palaceAndBaseColorButtonsTop.Find("Granulates").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
         uiModel.UiButtonsAndElementsDict["GranulatesContent"].transform.gameObject.SetActive(true);
 
     }
     public void BaseColor()
     {
+        DeselectAllButtons(palaceAndBaseColorButtonsTop);
+        palaceAndBaseColorButtonsTop.Find("BaseColor").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
         uiModel.UiButtonsAndElementsDict["BaseColorsContent"].SetActive(true);
 
@@ -187,9 +204,14 @@ public class MainUiController : MonoBehaviour
         
     public void ShowBasinModelUi()
     {
+        DeselectAllButtons(sinkButtonsTop);
+       
+        sinkButtonsTop.Find("Model").transform.Find("Background")
+        .GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("SinkButtonsTop");   // active top buttons here 
         uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform.gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["SinkModelContent"].SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("Buttons").transform.Find("Round").GetComponent<Button>().Select();
         SettingSinkShapeContentToActive(uiModel.lastModelShapeActiveName);                       // <--- checking here the last active model shape
     }
 

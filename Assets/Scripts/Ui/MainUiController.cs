@@ -9,6 +9,8 @@ public class MainUiController : MonoBehaviour
     private UiModel uiModel;
     private GameObject sliders;
     private GameObject ModelShapesContent;
+    private Transform SurfaceSizeAndColorButtonsTop;
+
 
 
     void Start()
@@ -18,18 +20,25 @@ public class MainUiController : MonoBehaviour
         uiModel.AddUiElementsToDictonary();
         sliders = uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").gameObject;
         ModelShapesContent = uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("ModelShapesContent ").gameObject;
+        SurfaceSizeAndColorButtonsTop = uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].transform;
         InitialButtoUiState();
     }
 
+    
     public void InitialButtoUiState()
     {
         uiModel.SetAllUiElementsToFalse(null);
-        uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
-        uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].transform.Find("SurfaceSize").gameObject.GetComponent<Button>().Select();
+        SurfaceSizeAndColorButtonsTop.gameObject.SetActive(true);
+        DeselectAllButtons(SurfaceSizeAndColorButtonsTop);
+        SurfaceSizeAndColorButtonsTop.Find("SurfaceSize").transform.Find("Background")
+        .GetComponent<Image>().color = Color.cyan;
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].SetActive(true);
         uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
         SetAllSlidersToFalse();
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find(uiModel.lastSliderActiveName).gameObject.SetActive(true);
+        uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Buttons").transform.Find(uiModel.lastSliderActiveName)
+            .GetComponent<Button>().Select();
+            
     }
 
     public void SettingSliderToActive(string sliderName)
@@ -40,18 +49,24 @@ public class MainUiController : MonoBehaviour
                 SetAllSlidersToFalse();
                 sliders.transform.Find("Depth").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Depth";
+                SurfaceSizeAndColorButtonsTop.Find("SurfaceSize").transform
+                .Find("Background").GetComponent<Image>().color = Color.cyan;
                 break;
 
             case "Width":
                 SetAllSlidersToFalse();
                 sliders.transform.Find("Width").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Width";
+                SurfaceSizeAndColorButtonsTop.Find("SurfaceSize").transform
+                .Find("Background").GetComponent<Image>().color = Color.cyan;
                 break;
 
             case "Thickness":
                 SetAllSlidersToFalse();
                 sliders.transform.Find("Thickness").gameObject.SetActive(true);
                 uiModel.lastSliderActiveName = "Thickness";
+                SurfaceSizeAndColorButtonsTop.Find("SurfaceSize").transform
+               .Find("Background").GetComponent<Image>().color = Color.cyan;
                 break;
         }
     }
@@ -96,13 +111,13 @@ public class MainUiController : MonoBehaviour
                 break;
 
             case "SurfaceColor":
-                uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
+                SurfaceSizeAndColorButtonsTop.gameObject.SetActive(true);
                 SelectingSurfaceColor();
                 uiModel.TopActiveButton = "SurfaceSize";
                 break;
 
             case "AddObject":
-                uiModel.UiButtonsAndElementsDict["SurfaceSizeAndColorButtonsTop"].SetActive(true);
+                SurfaceSizeAndColorButtonsTop.gameObject.SetActive(true);
                 AddObject();
                 uiModel.TopActiveButton = "SurfaceSize";
                 break;
@@ -128,6 +143,9 @@ public class MainUiController : MonoBehaviour
 
     public void SelectingSurfaceColor()
     {
+        DeselectAllButtons(SurfaceSizeAndColorButtonsTop);
+        SurfaceSizeAndColorButtonsTop.Find("SurfaceColor").transform.Find("Background")
+        .GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("SurfaceSizeAndColorButtonsTop");
         GameObject surfaceColorContent = uiModel.UiButtonsAndElementsDict["SurfaceColorContent"];
         surfaceColorContent.SetActive(true);  
@@ -160,6 +178,9 @@ public class MainUiController : MonoBehaviour
 
     public void AddObject()
     {
+        DeselectAllButtons(SurfaceSizeAndColorButtonsTop);
+        SurfaceSizeAndColorButtonsTop.Find("AddObject").transform.Find("Background")
+        .GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("SurfaceSizeAndColorButtonsTop");
         uiModel.UiButtonsAndElementsDict["AddObjectContent"].SetActive(true);
     }
@@ -178,15 +199,18 @@ public class MainUiController : MonoBehaviour
         uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
     }
 
+   
 
-    ///////
-    ///
-
-    private void PreviousSurfaceColor()
+    private void DeselectAllButtons(Transform topButtons)
     {
-        uiModel.UiButtonsAndElementsDict["SurfaceColorContent"].gameObject.SetActive(true);
-        GameObject surfaceColorContent = uiModel.UiButtonsAndElementsDict["SurfaceColorContent"];
-        surfaceColorContent.SetActive(true);
+        foreach (Transform child in topButtons)
+        {
+            child.Find("Background").GetComponent<Image>().color = Color.white;
+        }
 
     }
+
+    
+   
+   
 }

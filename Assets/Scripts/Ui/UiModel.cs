@@ -11,7 +11,8 @@ public class UiModel : MonoBehaviour
     public string lastModelShapeActiveName = "Round";
     public string PreviousUiState;
     public string TopActiveButton;
-    
+    public Color SelectedColor;
+
 
 
     public void AddUiElementsToDictonary()

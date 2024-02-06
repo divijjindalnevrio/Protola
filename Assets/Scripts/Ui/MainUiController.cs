@@ -26,7 +26,7 @@ public class MainUiController : MonoBehaviour
         ModelShapesContent = uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("ModelShapesContent ").gameObject;
         GettingAllTopMainThreeUiButtons();
         InitialButtoUiState();
-        GeneratingPalaceButtons();
+       // GeneratingPalaceButtons();
     }
 
     private void GettingAllTopMainThreeUiButtons()

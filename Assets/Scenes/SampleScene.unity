@@ -4302,7 +4302,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -4312,7 +4312,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -4362,12 +4362,12 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 140
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -4438,12 +4438,12 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangingCounterSurfaceTexture
+      value: ChangingSurfaceGranulateTexture
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: GranulatesTextureButton
+      value: HighlightGranulatesTextureButton
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -5748,7 +5748,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -5758,7 +5758,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -5808,12 +5808,12 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -5884,12 +5884,12 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangingCounterSurfaceTexture
+      value: ChangingSurfaceGranulateTexture
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: GranulatesTextureButton
+      value: HighlightGranulatesTextureButton
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -10318,8 +10318,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f52094aec07154d7c98da55a5d66f345, type: 2}
   - {fileID: 2100000, guid: 2839c001fd9b34557b9ccc13b07939a3, type: 2}
   - {fileID: 2100000, guid: 35adfdf25d882494695ab551f2a363cd, type: 2}
-  - {fileID: 2100000, guid: 0e63a60b7e7b54cfa881dd22a8f6d95f, type: 2}
-  - {fileID: 2100000, guid: 8a1f11356405e4962a99874b9625d147, type: 2}
+  - {fileID: 2100000, guid: 26cd67bdf4e11487ca6aa4c6e29afc9e, type: 2}
+  - {fileID: 2100000, guid: 6230196dc226844df8b854e3a7400f1d, type: 2}
   basinMovement: {fileID: 1227306144}
   mainUiController: {fileID: 0}
   uiModel: {fileID: 0}
@@ -17562,7 +17562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2033723816
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18970,6 +18970,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1393768698}
     m_Modifications:
+    - target: {fileID: 2290235269492327995, guid: 01b09caa779404f07a5032410ed99bb6,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290235269492327995, guid: 01b09caa779404f07a5032410ed99bb6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26cd67bdf4e11487ca6aa4c6e29afc9e, type: 2}
     - target: {fileID: 4691396395964206424, guid: 01b09caa779404f07a5032410ed99bb6,
         type: 3}
       propertyPath: m_LocalPosition.x

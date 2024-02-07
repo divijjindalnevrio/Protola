@@ -57,7 +57,7 @@ public class UiButtonsGenerator : MonoBehaviour
 
     }
 
-    public void GranulatesTextureButton(int button)
+    public void HighlightGranulatesTextureButton(int button)
     {
         DisableAllHighLightButton(GranulatesTextureButtons);
         GranulatesTextureButtons[button].transform.Find("SelectedState").gameObject.SetActive(true);

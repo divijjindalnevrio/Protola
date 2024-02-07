@@ -10,8 +10,6 @@ public class CounterSurfaceChanger : MonoBehaviour
     [SerializeField] private UiModel uiModel;
     public List<Color> colors = new List<Color>();
 
-
-
     void Start()
     {
         
@@ -31,6 +29,22 @@ public class CounterSurfaceChanger : MonoBehaviour
             selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material = counterMat[material];
         }
         
+    }
+
+    public void ChangingSurfaceGranulateTexture(int material)
+    {
+        GameObject selectedObjcet = basinMovement.currentSelectedObject;
+        if (selectedObjcet == null) { return; }
+
+        if (selectedObjcet.CompareTag("Basin"))
+        {
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material = counterMat[material];
+        }
+        else
+        {
+            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material = counterMat[material];
+        }
+
     }
 
     public void ChangingCounterSurfaceColor(int color)

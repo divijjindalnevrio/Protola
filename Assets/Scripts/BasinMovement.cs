@@ -78,7 +78,8 @@ public class BasinMovement : MonoBehaviour
                     {
                         isCounterSelected = true;
                         currentSelectedObject = currentCounter;
-                        currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.gray;
+                        currentCounter.transform.GetChild(0).transform.Find("SelectedDashCube").gameObject.SetActive(true);
+
                     }
 
                     if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -95,7 +96,7 @@ public class BasinMovement : MonoBehaviour
                             Debug.Log("Touched the UI");
                             isCounterSelected = false;
                             currentSelectedObject = null;
-                            currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+                            currentCounter.transform.GetChild(0).transform.Find("SelectedDashCube").gameObject.SetActive(false);
                            
                         }
                         //else

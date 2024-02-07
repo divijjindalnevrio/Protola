@@ -54,11 +54,13 @@ public class CounterSurfaceChanger : MonoBehaviour
 
         if (selectedObjcet.CompareTag("Basin"))
         {
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = null;
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = colors[color];
            
         }
         else
         {
+            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.mainTexture = null;
             selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.color = colors[color];
            
         }

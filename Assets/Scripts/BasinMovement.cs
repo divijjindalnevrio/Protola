@@ -25,6 +25,8 @@ public class BasinMovement : MonoBehaviour
     public GameObject currentHole;
     public GameObject currentCounter;
     public GameObject currentSelectedObject;
+    public GameObject SelectedDashLineCube;
+    public GameObject SelectedDashLineBasin;
 
     public LayerMask layerMask;
     public LayerMask CounterlayerMask;
@@ -78,7 +80,7 @@ public class BasinMovement : MonoBehaviour
                     {
                         isCounterSelected = true;
                         currentSelectedObject = currentCounter;
-                        currentCounter.transform.GetChild(0).transform.Find("SelectedDashCube").gameObject.SetActive(true);
+                        currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
 
                     }
 
@@ -96,7 +98,7 @@ public class BasinMovement : MonoBehaviour
                             Debug.Log("Touched the UI");
                             isCounterSelected = false;
                             currentSelectedObject = null;
-                            currentCounter.transform.GetChild(0).transform.Find("SelectedDashCube").gameObject.SetActive(false);
+                            currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
                            
                         }
                         //else
@@ -142,7 +144,7 @@ public class BasinMovement : MonoBehaviour
             isBasinSelected = true;
             currentSelectedObject = currentBasin;
             currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
-            currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
         }
 
         if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
@@ -169,7 +171,7 @@ public class BasinMovement : MonoBehaviour
         
                 isBasinSelected = false;
                 currentSelectedObject = null;
-                currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
+                currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false); ;
             }
 
         }
@@ -180,6 +182,7 @@ public class BasinMovement : MonoBehaviour
     private void BasinInstanciate()
     {
         _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, currentBasin.transform.localRotation);
+        _instanciateBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
         _instanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
         _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
         //currentBasin = _instanciateBasin;
@@ -206,8 +209,11 @@ public class BasinMovement : MonoBehaviour
             SettingBasinPosition();
 
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
+            GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
+            selectedDashCube.name = "SelectedDashLineBasin";
+            selectedDashCube.transform.SetParent(currentBasin.transform, false);
             currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
-            //Vector3 currentCounterPos = new Vector3(currentCounter.transform.localPosition.x, 0f, currentCounter.transform.localPosition.z);
+            
             currentBasin.transform.localPosition = new Vector3(0f, -0.001f, 0);
             _isBasinGenerate = true;
         }

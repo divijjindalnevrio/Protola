@@ -209,6 +209,7 @@ public class BasinMovement : MonoBehaviour
             SettingBasinPosition();
 
             currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
+            currentBasin.name = "Basin";
             GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
             selectedDashCube.name = "SelectedDashLineBasin";
             selectedDashCube.transform.SetParent(currentBasin.transform, false);

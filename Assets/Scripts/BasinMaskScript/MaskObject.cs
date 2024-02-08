@@ -9,6 +9,7 @@ public class MaskObject : MonoBehaviour
     private void OnEnable()
     {
         ObjMasked = GameObject.FindGameObjectWithTag("Counter");
+       
     }
     void Start()
     {
@@ -16,13 +17,6 @@ public class MaskObject : MonoBehaviour
     }
 
 
-    //private void RawFun()
-    //{
-    //    for (int i = 0; i < ObjMasked.Length; i++)
-    //    {
-    //        ObjMasked[i].GetComponent<MeshRenderer>().material.renderQueue = 3002;
-    //    }
-    //}
 
 }
 

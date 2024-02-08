@@ -5,6 +5,7 @@ using UnityEngine;
 public class CounterSurfaceChanger : MonoBehaviour
 {
     [SerializeField] private List<Material> counterMat = new List<Material>();
+    [SerializeField] private List<Texture> counterTex = new List<Texture>();
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
@@ -24,9 +25,11 @@ public class CounterSurfaceChanger : MonoBehaviour
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material = counterMat[material];
         }
+
         else
         {
             selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material = counterMat[material];
+            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.renderQueue = 3002;
         }
         
     }

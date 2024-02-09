@@ -53,8 +53,8 @@ public class MainUiController : MonoBehaviour
         .GetComponent<Image>().color = Color.cyan;
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].SetActive(true);
         uiModel.UiButtonsAndElementsDict["Background"].SetActive(true);
-        SetAllSlidersToFalse();
-        uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find(uiModel.lastSliderActiveName).gameObject.SetActive(true);
+       // SetAllSlidersToFalse();
+        //uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Sliders").transform.Find(uiModel.lastSliderActiveName).gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["SurfaceSizeContent"].transform.Find("Buttons").transform.Find(uiModel.lastSliderActiveName)
         .GetComponent<Button>().Select();
             

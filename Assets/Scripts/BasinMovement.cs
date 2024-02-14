@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum SelectedObject { none,basin, counter, hole }
 public class BasinMovement : MonoBehaviour
 {
+    
+
     [SerializeField] private UiModel uiModel;
     [SerializeField] private GameObject basin;
     [SerializeField] private GameObject hole;
@@ -24,7 +27,6 @@ public class BasinMovement : MonoBehaviour
     public GameObject currentBasin;
     public GameObject currentHole;
     public GameObject currentCounter;
-    public GameObject currentSelectedObject;
     public GameObject SelectedDashLineCube;
     public GameObject SelectedDashLineBasin;
 
@@ -36,7 +38,8 @@ public class BasinMovement : MonoBehaviour
     private bool isCounterSelected = false;
     private bool isBasinSelected = false;
     private bool isInstanciateBasinMoved = false;
-    private bool isPointerOverGameObject = false;
+    public bool isPointerOverUI = false;
+    public SelectedObject selectedObject;
 
     [SerializeField] private Slider widthSlider;
     [SerializeField] private Slider thicknessSlider;
@@ -48,6 +51,9 @@ public class BasinMovement : MonoBehaviour
     private float width;
     private float thickness;
     private float depth;
+
+    
+
     private void Start()
     {
         
@@ -55,14 +61,36 @@ public class BasinMovement : MonoBehaviour
 
     void Update()
     {
-  
-        CounterAndSinkMovementAndGerenartion();
+
+        
+        if (!IsPointerOverUIObject())
+        {
+            Debug.Log("BASIN MOVEMENT isPointerOverGameObject : User is not on UI");
+            CounterAndSinkMovementAndGerenartion();
+        }
+        else {
+            Debug.Log("BASIN MOVEMENT isPointerOverGameObject : User is on UI");
+        }
+       
 
         if (Input.touchCount >= 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             _isSelected = false;
         }
         ChangingSizeOfCounter();
+    }
+
+    public bool IsPointerOverUIObject()      //Called to check if the pointer is over a ui object
+    {
+        bool value = false;
+        for (int i = 0; i < Input.touches.Length; i++)
+        {
+            int Index = i;
+            value = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(Index).fingerId);
+            if (value)
+                break;
+        }
+        return value;
     }
 
     private void CounterAndSinkMovementAndGerenartion()
@@ -73,56 +101,71 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
+                Debug.Log("BASIN MOVEMENT isPointerOverGameObject : User is on UI : " + isCounterSelected + "  " + isBasinSelected);
                 Debug.Log("RAYCAST HIT WITH OBJECT'S LAYER : " + raycastHit.collider.name);
-                if (isBasinSelected == false)
+                CheckAndUpdateSelectedElement(raycastHit);
+
+                if (selectedObject == SelectedObject.counter)
                 {
-                    if (raycastHit.collider.tag == "Counter" && isCounterSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
-                    {
-                        isCounterSelected = true;
-                        currentSelectedObject = currentCounter;
-                        currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
-
-                    }
-
-                    if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
-                    {
-                        _isSelected = true;
-                        Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.transform.position.y, raycastHit.point.z);
-                        counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
-                    }
-
-                    if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                    {
-                        if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
-                        {
-                            Debug.Log("Touched the UI");
-                            isCounterSelected = false;
-                            currentSelectedObject = null;
-                            currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
-                           
-                        }
-                        //else
-                        //{
-                        //    return;
-                        //}
-                       
-                    }
-
+                    CounterMovement(raycastHit);
                 }
 
-
-                /////
-                ///
-                if (isCounterSelected == false)
+                else if (selectedObject == SelectedObject.basin)
                 {
                     SinkMovement(raycastHit);
                 }
 
-
+                else { }
             }
 
         }
 
+    }
+
+    private RaycastHit CheckAndUpdateSelectedElement(RaycastHit raycastHit)
+    {
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            if (raycastHit.collider.tag == "Counter")
+            {
+               // isCounterSelected = true;
+                selectedObject = SelectedObject.counter;
+                currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+            }
+            else if (raycastHit.collider.tag == "Basin")
+            {
+               // isBasinSelected = true;
+                selectedObject = SelectedObject.basin;
+                currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
+                currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+            }
+        }
+
+        return raycastHit;
+    }
+
+    private RaycastHit CounterMovement(RaycastHit raycastHit)
+    {
+        
+
+        if (isCounterSelected && raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            _isSelected = true;
+            Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.transform.position.y, raycastHit.point.z);
+            counterWhole.transform.position = Vector3.Lerp(counterWhole.transform.position, targetPosition, Time.deltaTime * Counterspeed);
+        }
+
+        if (isCounterSelected && Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
+        {
+            Debug.Log("Touched the UI");
+            isCounterSelected = false;
+            selectedObject = SelectedObject.none;
+            currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+
+
+        }
+
+        return raycastHit;
     }
 
     private void SinkMovement(RaycastHit rayHit)
@@ -133,19 +176,12 @@ public class BasinMovement : MonoBehaviour
         {
             //isBasinSelected = false;
             isInstanciateBasinMoved = false;
-            //currentSelectedObject = null;
            // currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
             Destroy(_instanciateBasin.gameObject);
             isBasinInstanciate = false;
 
         }
-        if (rayHit.collider.tag == "Basin" && isBasinSelected == false && Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            isBasinSelected = true;
-            currentSelectedObject = currentBasin;
-            currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
-            currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
-        }
+        
 
         if (isBasinSelected && rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
         {
@@ -161,19 +197,10 @@ public class BasinMovement : MonoBehaviour
         }
         if (rayHit.collider.tag == "Grid" && isInstanciateBasinMoved == false && isBasinSelected)
         {
-            
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            {
-                return;
-            }
-            else if(!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            {
-        
-                isBasinSelected = false;
-                currentSelectedObject = null;
-                currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false); ;
-            }
-
+            Debug.Log("ispointeroverUi : 2");
+            isBasinSelected = false;
+            selectedObject = SelectedObject.none;
+            currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false); ;
         }
 
     }
@@ -282,4 +309,7 @@ public class BasinMovement : MonoBehaviour
         CounterTypeSO CountSo = ScriptableObject.CreateInstance<CounterTypeSO>();
         Debug.Log("CreateInstanceOfSo" + CountSo.GetType());
     }
+
+
+
 }

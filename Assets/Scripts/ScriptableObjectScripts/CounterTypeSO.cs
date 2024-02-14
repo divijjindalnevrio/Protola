@@ -8,7 +8,6 @@ public class CounterTypeSO : ScriptableObject
 {
     public CounterModel counterModel;
     public List<GameObject> counterType = new List<GameObject>();
-    public bool isCounterSelected;
 
     public void SettingCounterSize(float length, float hight, float depth)
     {

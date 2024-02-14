@@ -18,7 +18,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void ChangingCounterSurfaceTexture(int material)
     {
-        GameObject selectedObjcet = basinMovement.currentSelectedObject;
+        GameObject selectedObjcet = basinMovement.selectedObject;
         if(selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))

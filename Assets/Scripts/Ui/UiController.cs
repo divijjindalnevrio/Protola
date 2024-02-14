@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class UiController : MonoBehaviour
 {
-   
+    public BasinMovement basinMovement;
+
     void Start()
     {
         
@@ -17,6 +18,12 @@ public class UiController : MonoBehaviour
         if(IsPointerOverUIObject())
         {
             BasinMovement._isSelected = true;
+            basinMovement.isPointerOverUI = true;
+            Debug.Log("pointerisovermainui");
+        }
+        else
+        {
+            basinMovement.isPointerOverUI = false;
         }
     }
     private void OnMouseEnter()

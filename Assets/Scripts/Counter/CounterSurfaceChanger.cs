@@ -18,7 +18,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void ChangingCounterSurfaceTexture(int material)
     {
-        GameObject selectedObjcet = basinMovement.selectedObject;
+        GameObject selectedObjcet = basinMovement.SelectedGameobject;
         if(selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))
@@ -36,7 +36,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void ChangingSurfaceGranulateTexture(int material)
     {
-        GameObject selectedObjcet = basinMovement.currentSelectedObject;
+        GameObject selectedObjcet = basinMovement.SelectedGameobject;
         if (selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))
@@ -52,7 +52,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void ChangingCounterSurfaceColor(int color)
     {
-        GameObject selectedObjcet = basinMovement.currentSelectedObject;
+        GameObject selectedObjcet = basinMovement.SelectedGameobject;
         if (selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))

@@ -23,12 +23,12 @@ public class RotationScript : MonoBehaviour
                                                                             //<--------------- need to refactor here
 
        
-        if (basinMovement.currentSelectedObject != null && _isRotateButtonPressed)
+        if (basinMovement.SelectedGameobject != null && _isRotateButtonPressed && basinMovement.selectedObject != SelectedObject.none)
         {
-            rotateObj = basinMovement.currentSelectedObject.transform;
+            rotateObj = basinMovement.SelectedGameobject.transform;
             rotateObj.rotation = RotationObject(rotateObj.gameObject);
         }
-
+         
     }
 
     private Quaternion RotationObject(GameObject gameObject)
@@ -41,12 +41,19 @@ public class RotationScript : MonoBehaviour
   
     public void SettingRightRotateValue()
     {
-        rightRotation = rightRotation + 90f;
+        if(basinMovement.selectedObject != SelectedObject.none)
+        {
+            rightRotation = rightRotation + 90f;
+        }
+       
     }
 
     public void SettingLefttRotateValue()
     {
-        rightRotation = rightRotation - 90f;
+        if (basinMovement.selectedObject != SelectedObject.none)
+        {
+            rightRotation = rightRotation - 90f;
+        }
     }
 
     public void setRotateButtonToTrue()

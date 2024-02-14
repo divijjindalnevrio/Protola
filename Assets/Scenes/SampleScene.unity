@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.9764151, g: 0.98309004, b: 1, a: 1}
+  m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 6f5287782d8a6431a9f3cfe18349bc43, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -2885,6 +2885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b03e8ca034e432ead4003c95ed9548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basinMovement: {fileID: 1227306144}
   uiButtonsGenerator: {fileID: 390144154}
 --- !u!114 &390144153
 MonoBehaviour:
@@ -11341,18 +11342,20 @@ MonoBehaviour:
   currentBasin: {fileID: 0}
   currentHole: {fileID: 0}
   currentCounter: {fileID: 1393768697}
-  currentSelectedObject: {fileID: 0}
   SelectedDashLineCube: {fileID: 3806058320348913619, guid: 9e484c8d739434c569419d6afb8e02a4,
     type: 3}
   SelectedDashLineBasin: {fileID: 2203974841986546031, guid: f583dc086fada481689d1176d9fb1a0c,
     type: 3}
+  SelectedGameobject: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
   CounterlayerMask:
     serializedVersion: 2
     m_Bits: 448
-  isPointerOverGameObject: 0
+  isPointerOverUI: 0
+  isUiCanvasIsOpen: 0
+  selectedObject: 0
   widthSlider: {fileID: 831580694}
   thicknessSlider: {fileID: 1187545048}
   depthSlider: {fileID: 1581739702}
@@ -17225,6 +17228,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 390144149}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 153157003}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -21698,16 +21713,18 @@ MonoBehaviour:
   currentBasin: {fileID: 0}
   currentHole: {fileID: 0}
   currentCounter: {fileID: 1393768697}
-  currentSelectedObject: {fileID: 0}
   SelectedDashLineCube: {fileID: 0}
   SelectedDashLineBasin: {fileID: 0}
+  SelectedGameobject: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
   CounterlayerMask:
     serializedVersion: 2
     m_Bits: 480
-  isPointerOverGameObject: 0
+  isPointerOverUI: 0
+  isUiCanvasIsOpen: 0
+  selectedObject: 0
   widthSlider: {fileID: 0}
   thicknessSlider: {fileID: 0}
   depthSlider: {fileID: 397409303}

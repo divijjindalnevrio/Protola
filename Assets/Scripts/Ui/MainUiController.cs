@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class MainUiController : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class MainUiController : MonoBehaviour
     private Transform palaceAndBaseColorButtonsTop;
     private Transform sinkButtonsTop;
     private Transform baseColorsContent;
+    [SerializeField] private BasinMovement basinMovement;
     [SerializeField] UiButtonsGenerator uiButtonsGenerator;
-
+    private string basin = "basin";
 
 
     void Start()
@@ -26,7 +28,23 @@ public class MainUiController : MonoBehaviour
         ModelShapesContent = uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("ModelShapesContent ").gameObject;
         GettingAllTopMainThreeUiButtons();
         InitialButtoUiState();
-       // GeneratingPalaceButtons();
+        // GeneratingPalaceButtons();
+        basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+    }
+
+    private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
+    {
+        var OnGameobjectSelectedArgs = e;
+        if (e == SelectedObject.basin)
+        {
+            ShowBasinModelUi();
+        }
+
+        if(e == SelectedObject.counter)
+        {
+            InitialButtoUiState();
+        }
+
     }
 
     private void GettingAllTopMainThreeUiButtons()

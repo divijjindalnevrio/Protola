@@ -68,14 +68,8 @@ public class BasinMovement : MonoBehaviour
 
         if (!IsPointerOverUIObject())
         {
-            Debug.Log("BASIN MOVEMENT isPointerOverGameObject : User is not on UI");
             CounterAndSinkMovementAndGerenartion();
         }
-        else {
-            Debug.Log("BASIN MOVEMENT isPointerOverGameObject : User is on UI");
-        }
-       
-
         if (Input.touchCount >= 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             _isSelected = false;
@@ -105,15 +99,16 @@ public class BasinMovement : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
                 CheckAndUpdateSelectedElement(raycastHit);
-
                 if (selectedObject == SelectedObject.counter)
                 {
                     CounterMovement(raycastHit);
+                    
                 }
 
                 else if (selectedObject == SelectedObject.basin)
                 {
                     SinkMovement(raycastHit);
+                    
                 }
 
                 else { }
@@ -154,7 +149,6 @@ public class BasinMovement : MonoBehaviour
     private RaycastHit CounterMovement(RaycastHit raycastHit)
     {
 
-        Debug.Log("movement it enterd counter ");
         if (raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             _isSelected = true;
@@ -164,7 +158,6 @@ public class BasinMovement : MonoBehaviour
 
         if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
         {
-            Debug.Log("Touched the UI");
             selectedObject = SelectedObject.none;
             currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
 
@@ -176,16 +169,15 @@ public class BasinMovement : MonoBehaviour
 
     private void SinkMovement(RaycastHit rayHit)
     {
-        Debug.Log("movement it enterd sink");
+        _isSelected = true;
+
         if (isInstanciateBasinMoved && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             isInstanciateBasinMoved = false;
            // currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
             Destroy(_instanciateBasin.gameObject);
             isBasinInstanciate = false;
-
         }
-        
 
         if (rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
         {
@@ -193,7 +185,7 @@ public class BasinMovement : MonoBehaviour
             {
                 BasinInstanciate(); 
             }
-            _isSelected = true;
+            //_isSelected = true;
             isInstanciateBasinMoved = true;
             Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
             currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);

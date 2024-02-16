@@ -7,6 +7,7 @@ using UnityEngine;
 public class CounterTypeSO : ScriptableObject
 {
     public CounterModel counterModel;
+    public GameObject CurrenetCounter;
     public List<GameObject> counterType = new List<GameObject>();
 
     public void SettingCounterSize(float length, float hight, float depth)

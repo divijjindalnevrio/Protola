@@ -35,7 +35,7 @@ public class BasinMovement : MonoBehaviour
     public LayerMask layerMask;
     public LayerMask CounterlayerMask;
 
-    private bool isBasinInstanciate = false;
+    public bool isBasinInstanciate = false;
     private bool isCounterInstanciate = false;
     private bool isCounterSelected = false;
     private bool isBasinSelected = false;
@@ -47,7 +47,8 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Slider widthSlider;
     [SerializeField] private Slider thicknessSlider;
     [SerializeField] private Slider depthSlider;
-    [SerializeField] private Material defaultMat;
+    public Material defaultMat;
+    [SerializeField] private BasinsGenerator basinsGenerator;
 
     [SerializeField] private CounterTypeSO counterTypeSO;
 
@@ -62,11 +63,10 @@ public class BasinMovement : MonoBehaviour
         
     }
 
-
     void Update()
     {
 
-        if (!IsPointerOverUIObject())
+        if (!isPointerOverUI)
         {
             CounterAndSinkMovementAndGerenartion();
         }
@@ -76,20 +76,7 @@ public class BasinMovement : MonoBehaviour
         }
         ChangingSizeOfCounter();
     }
-
-    public bool IsPointerOverUIObject()      //Called to check if the pointer is over a ui object
-    {
-        bool value = false;
-        for (int i = 0; i < Input.touches.Length; i++)
-        {
-            int Index = i;
-            value = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(Index).fingerId);
-            if (value)
-                break;
-        }
-        return value;
-    }
-
+  
     private void CounterAndSinkMovementAndGerenartion()
     {
        
@@ -135,11 +122,12 @@ public class BasinMovement : MonoBehaviour
             {
                // isBasinSelected = true;
                 selectedObject = SelectedObject.basin;
-                SelectedGameobject = currentBasin;
-                currentBasin.transform.localPosition = new Vector3(currentBasin.transform.localPosition.x, currentBasin.transform.localPosition.y + .0010f, currentBasin.transform.localPosition.z);
+                SelectedGameobject = basinsGenerator.currentBasin;
+                basinsGenerator.currentBasin.transform.localPosition = new Vector3(basinsGenerator.currentBasin.transform.localPosition.x, basinsGenerator.currentBasin.transform.localPosition.y + .0010f,
+                basinsGenerator.currentBasin.transform.localPosition.z);
                 DeselectingAllDashLines();
                 OnGameobjectSelected.Invoke(this, selectedObject);
-                currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+                basinsGenerator.currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
             }
         }
 
@@ -175,7 +163,7 @@ public class BasinMovement : MonoBehaviour
         {
             isInstanciateBasinMoved = false;
            // currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
-            Destroy(_instanciateBasin.gameObject);
+            Destroy(basinsGenerator.InstanciateBasin);
             isBasinInstanciate = false;
         }
 
@@ -183,32 +171,30 @@ public class BasinMovement : MonoBehaviour
         {
             if (isBasinInstanciate == false)
             {
-                BasinInstanciate(); 
+                basinsGenerator.BasinInstanciate();
             }
-            //_isSelected = true;
             isInstanciateBasinMoved = true;
-            Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
-            currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+            Vector3 targetPosition = new Vector3(rayHit.point.x, basinsGenerator.currentBasin.transform.position.y, rayHit.point.z);
+            basinsGenerator.currentBasin.transform.position = Vector3.Lerp(basinsGenerator.currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
         }
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Debug.Log("ispointeroverUi : 2");
             selectedObject = SelectedObject.none;
-            currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
+            basinsGenerator.currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
         }
 
     }
 
 
-    private void BasinInstanciate()
-    {
-        _instanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, currentBasin.transform.localRotation);
-        _instanciateBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
-        _instanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
-        _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
-        //currentBasin = _instanciateBasin;
-        isBasinInstanciate = true;
-    }
+    //private void BasinInstanciate()
+    //{
+    //    _instanciateBasin = Instantiate(basinsGenerator.currentBasin, basinsGenerator.currentBasin.transform.position, basinsGenerator.currentBasin.transform.localRotation);
+    //    _instanciateBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
+    //    _instanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
+    //    _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
+    //    //currentBasin = _instanciateBasin;
+    //    isBasinInstanciate = true;
+    //}
 
 
     private void CounterInstanciate()
@@ -223,30 +209,30 @@ public class BasinMovement : MonoBehaviour
         }
     }
 
-    public void BasinGererator()
-    {
-        if(_isBasinGenerate == false)
-        {
-            SettingBasinPosition();
+    //public void BasinGererator()
+    //{
+    //    if(_isBasinGenerate == false)
+    //    {
+    //        SettingBasinPosition();
 
-            currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
-            currentBasin.name = "Basin";
-            GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
-            selectedDashCube.name = "SelectedDashLineBasin";
-            selectedDashCube.transform.SetParent(currentBasin.transform, false);
-            currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
+    //        currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
+    //        currentBasin.name = "Basin";
+    //        GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
+    //        selectedDashCube.name = "SelectedDashLineBasin";
+    //        selectedDashCube.transform.SetParent(currentBasin.transform, false);
+    //        currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
             
-            currentBasin.transform.localPosition = new Vector3(0f, -0.001f, 0);
-            _isBasinGenerate = true;
-        }
+    //        currentBasin.transform.localPosition = new Vector3(0f, -0.001f, 0);
+    //        _isBasinGenerate = true;
+    //    }
 
-    }
+    //}
 
-    private void SettingBasinPosition()
-    {
-        Vector3 basinPos = new Vector3(0f, currentCounter.transform.GetChild(0).localScale.y / 2, 0f);
-        currentCounter.transform.GetChild(1).transform.localPosition = basinPos;
-    }
+    //private void SettingBasinPosition()
+    //{
+    //    Vector3 basinPos = new Vector3(0f, currentCounter.transform.GetChild(0).localScale.y / 2, 0f);
+    //    currentCounter.transform.GetChild(1).transform.localPosition = basinPos;
+    //}
 
     public void HolwGererator()
     {
@@ -280,7 +266,7 @@ public class BasinMovement : MonoBehaviour
         }
         if(selectedObject == SelectedObject.basin)
         {
-            Destroy(currentBasin);
+            Destroy(basinsGenerator.currentBasin);
             _isBasinGenerate = false;
 
         }
@@ -289,12 +275,10 @@ public class BasinMovement : MonoBehaviour
 
     private void DeselectingAllDashLines()
     {
-        if(currentBasin && currentCounter != null)
+        if (basinsGenerator.currentBasin && currentCounter != null)
         {
-            Debug.Log("both got executed : 1");
-            currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
+            basinsGenerator.currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
             currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
-            Debug.Log("both got executed : 2");
         }
 
     }

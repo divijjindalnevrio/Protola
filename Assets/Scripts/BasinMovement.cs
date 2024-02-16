@@ -190,7 +190,7 @@ public class BasinMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.transform.position.y, rayHit.point.z);
             currentBasin.transform.position = Vector3.Lerp(currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
         }
-        if (rayHit.collider.tag == "Grid" && isInstanciateBasinMoved == false)
+        if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Debug.Log("ispointeroverUi : 2");
             selectedObject = SelectedObject.none;

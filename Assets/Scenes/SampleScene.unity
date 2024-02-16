@@ -11563,6 +11563,7 @@ GameObject:
   - component: {fileID: 1227306144}
   - component: {fileID: 1227306145}
   - component: {fileID: 1227306146}
+  - component: {fileID: 1227306147}
   m_Layer: 0
   m_Name: CounterWhole
   m_TagString: Untagged
@@ -11711,6 +11712,22 @@ MonoBehaviour:
   currentBasin: {fileID: 0}
   InstanciateBasin: {fileID: 0}
   basinMovement: {fileID: 1227306144}
+--- !u!114 &1227306147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227306140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83782427cda841b19a9e8073a56f2e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hole: {fileID: 428094686038336724, guid: 8a8e3d8e24a134c108cb1671b835d9de, type: 3}
+  currentHole: {fileID: 0}
+  basinMovement: {fileID: 1227306144}
+  IsHoleInstanciate: 0
 --- !u!1 &1234714367
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,8 +94,7 @@ public class BasinMovement : MonoBehaviour
 
                 else if (selectedObject == SelectedObject.basin)
                 {
-                    SinkMovement(raycastHit);
-                    
+                    SinkMovement(raycastHit); 
                 }
 
                 else { }

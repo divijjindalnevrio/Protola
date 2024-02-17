@@ -15570,6 +15570,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1046593975}
     m_Modifications:
+    - target: {fileID: 563224462239506167, guid: b2a839180a2ba430e832b42b7ea6421d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 563224462239506167, guid: b2a839180a2ba430e832b42b7ea6421d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1227306146}
+    - target: {fileID: 563224462239506167, guid: b2a839180a2ba430e832b42b7ea6421d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BasinGererator
+      objectReference: {fileID: 0}
+    - target: {fileID: 563224462239506167, guid: b2a839180a2ba430e832b42b7ea6421d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BasinsGenerator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 563224462239506167, guid: b2a839180a2ba430e832b42b7ea6421d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: basin_new
+      objectReference: {fileID: 0}
     - target: {fileID: 2688408177671655439, guid: b2a839180a2ba430e832b42b7ea6421d,
         type: 3}
       propertyPath: m_Name
@@ -20551,7 +20576,7 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -20592,6 +20617,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: BasinsGenerator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: OT 48
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}

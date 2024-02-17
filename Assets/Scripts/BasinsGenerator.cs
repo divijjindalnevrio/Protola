@@ -21,11 +21,11 @@ public class BasinsGenerator : MonoBehaviour
         SettingBasinToDict();
     }
 
-    public void BasinGererator()
+    public void BasinGererator(string basinName)
     {
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
         SettingBasinPosition(currentBasinObj);
-        currentBasin = Instantiate(Basin, CounterSO.CurrenetCounter.transform.position, Quaternion.identity);
+        currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position, Quaternion.identity);
         currentBasin.name = "Basin";
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
         selectedDashCube.name = "SelectedDashLineBasin";

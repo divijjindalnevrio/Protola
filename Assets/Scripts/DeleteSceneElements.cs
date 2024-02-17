@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DeleteSceneElements : MonoBehaviour
 {
-    [SerializeField] private BasinsGenerator basinsGenerator;
-    [SerializeField] private BasinMovement basinMovement;
+    private BasinsGenerator basinsGenerator;
+    private BasinMovement basinMovement;
 
     void Start()
     {
-        basinMovement = GetComponent<BasinMovement>();
-        basinsGenerator = GetComponent<BasinsGenerator>();
+        basinMovement = transform.Find("CounterWhole").GetComponent<BasinMovement>();
+        basinsGenerator = transform.Find("CounterWhole").GetComponent<BasinsGenerator>();
+
     }
 
     public void RemoveSelectedBasinAndCounter()

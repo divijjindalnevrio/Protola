@@ -11,7 +11,6 @@ public class BasinMovement : MonoBehaviour
     
 
     [SerializeField] private UiModel uiModel;
-    [SerializeField] private GameObject basin;
     [SerializeField] private GameObject hole;
 
     [SerializeField] private Camera mainCam;
@@ -19,14 +18,11 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private float Counterspeed = 1;
     public GameObject counterWhole;
 
-    private GameObject _instanciateBasin;
-    private GameObject _instanciateCounter;
+    
 
     public static bool _isSelected;
     private bool _isBasinGenerate = false;
     private bool _isHoleInstanciate = false;
-   // public GameObject currentBasin;
-    public GameObject currentHole;
     public GameObject currentCounter;
     public GameObject SelectedDashLineCube;
     public GameObject SelectedDashLineBasin;
@@ -75,7 +71,7 @@ public class BasinMovement : MonoBehaviour
         {
             _isSelected = false;
         }
-        ChangingSizeOfCounter();
+
     }
   
     private void CounterAndSinkMovementAndGerenartion()
@@ -187,91 +183,25 @@ public class BasinMovement : MonoBehaviour
 
     }
 
-
-    //private void BasinInstanciate()
+    //private void CounterInstanciate()
     //{
-    //    _instanciateBasin = Instantiate(basinsGenerator.currentBasin, basinsGenerator.currentBasin.transform.position, basinsGenerator.currentBasin.transform.localRotation);
-    //    _instanciateBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
-    //    _instanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
-    //    _instanciateBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
-    //    //currentBasin = _instanciateBasin;
-    //    isBasinInstanciate = true;
-    //}
-
-
-    private void CounterInstanciate()
-    {
-        _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, Quaternion.identity);
-        _instanciateCounter.transform.parent = currentCounter.transform.parent;
-        currentCounter = _instanciateCounter;
-        isCounterInstanciate = true;
-        if(_isBasinGenerate)
-        {
-           // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
-        }
-    }
-
-    //public void BasinGererator()
-    //{
-    //    if(_isBasinGenerate == false)
+    //    _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, Quaternion.identity);
+    //    _instanciateCounter.transform.parent = currentCounter.transform.parent;
+    //    currentCounter = _instanciateCounter;
+    //    isCounterInstanciate = true;
+    //    if(_isBasinGenerate)
     //    {
-    //        SettingBasinPosition();
-
-    //        currentBasin = Instantiate(basin, currentCounter.transform.position, Quaternion.identity);
-    //        currentBasin.name = "Basin";
-    //        GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
-    //        selectedDashCube.name = "SelectedDashLineBasin";
-    //        selectedDashCube.transform.SetParent(currentBasin.transform, false);
-    //        currentBasin.transform.parent = currentCounter.transform.GetChild(1).transform;
-            
-    //        currentBasin.transform.localPosition = new Vector3(0f, -0.001f, 0);
-    //        _isBasinGenerate = true;
+    //       // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;          < ---- Need to see in here.
     //    }
-
     //}
-
-    //private void SettingBasinPosition()
-    //{
-    //    Vector3 basinPos = new Vector3(0f, currentCounter.transform.GetChild(0).localScale.y / 2, 0f);
-    //    currentCounter.transform.GetChild(1).transform.localPosition = basinPos;
-    //}
-
-    //public void HolwGererator()
-    //{
-    //    if (_isHoleInstanciate == false)
-    //    {
-    //        currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
-    //        currentHole.transform.parent = currentCounter.transform;
-    //        currentHole.transform.localPosition =   new Vector3(0, -0.1247f, 0);
-    //        _isHoleInstanciate = true;
-    //    }
-            
-    //}
-
 
     private void ChangingSizeOfCounter()
     {
-         width = widthSlider.value;
-         thickness = thicknessSlider.value;
-         depth =  depthSlider.value;
+        width = widthSlider.value;
+        thickness = thicknessSlider.value;
+        depth =  depthSlider.value;
         currentCounter.transform.GetChild(0).transform.localScale = new Vector3(width, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
         currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, thickness, currentCounter.transform.position.z);
-
-    }
-
-    public void DeleteWholeCounter()
-    {
-        if(selectedObject == SelectedObject.counter)
-        {
-            Destroy(counterWhole);
-
-        }
-        if(selectedObject == SelectedObject.basin)
-        {
-            Destroy(basinsGenerator.currentBasin);
-            _isBasinGenerate = false;
-
-        }
 
     }
 
@@ -284,23 +214,5 @@ public class BasinMovement : MonoBehaviour
         }
 
     }
-
-    public void Json()
-    {
-        Vector3 rotation = currentCounter.transform.eulerAngles;
-        Vector3 position = counterWhole.transform.position;
-        counterTypeSO.SetCounterRotationAndPosition(rotation, position);
-       // counterTypeSO.SettingCounterSize(length, hight, depth);
-        string jsonFormat = JsonUtility.ToJson(counterTypeSO.counterModel);
-        Debug.Log("jsonFormat : " + jsonFormat);
-    }
-
-    public void CreateInstanceOfSo()
-    {
-        CounterTypeSO CountSo = ScriptableObject.CreateInstance<CounterTypeSO>();
-        Debug.Log("CreateInstanceOfSo" + CountSo.GetType());
-    }
-
-
 
 }

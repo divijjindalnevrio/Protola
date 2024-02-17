@@ -11599,7 +11599,6 @@ GameObject:
   - component: {fileID: 1227306145}
   - component: {fileID: 1227306146}
   - component: {fileID: 1227306147}
-  - component: {fileID: 1227306148}
   m_Layer: 0
   m_Name: CounterWhole
   m_TagString: Untagged
@@ -11666,14 +11665,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiModel: {fileID: 390144151}
-  basin: {fileID: 1267388045117128289, guid: 9e2e9c752dc194dc48c03bdbf129c9c8, type: 3}
   hole: {fileID: 428094686038336724, guid: 8a8e3d8e24a134c108cb1671b835d9de, type: 3}
   mainCam: {fileID: 330585545}
   speed: 20
   Counterspeed: 40
   counterWhole: {fileID: 1227306140}
-  currentBasin: {fileID: 0}
-  currentHole: {fileID: 0}
   currentCounter: {fileID: 1393768697}
   SelectedDashLineCube: {fileID: 3806058320348913619, guid: 9e484c8d739434c569419d6afb8e02a4,
     type: 3}
@@ -11765,20 +11761,6 @@ MonoBehaviour:
   currentHole: {fileID: 0}
   basinMovement: {fileID: 1227306144}
   IsHoleInstanciate: 0
---- !u!114 &1227306148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227306140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 377a792f374f047c08690a91b39675a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basinsGenerator: {fileID: 0}
-  basinMovement: {fileID: 0}
 --- !u!1 &1234714367
 GameObject:
   m_ObjectHideFlags: 0
@@ -12490,7 +12472,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1227306148}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DeleteSceneElements, Assembly-CSharp
         m_MethodName: RemoveSelectedBasinAndCounter
         m_Mode: 1
@@ -13311,6 +13293,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426068422}
+  - component: {fileID: 1426068424}
+  - component: {fileID: 1426068423}
+  - component: {fileID: 1426068425}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -13336,6 +13321,47 @@ Transform:
   - {fileID: 7566046292836486870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426068423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426068421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377a792f374f047c08690a91b39675a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1426068424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426068421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a549e4fbbeb34b58805fd53c8b5317e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCounter: {fileID: 1393768697}
+  currentWhole: {fileID: 1227306140}
+--- !u!114 &1426068425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426068421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b200afeb3553846c2b384ddac9db0b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  widthSlider: {fileID: 831580694}
+  thicknessSlider: {fileID: 1187545048}
+  depthSlider: {fileID: 1581739702}
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0
@@ -22469,14 +22495,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiModel: {fileID: 0}
-  basin: {fileID: 615421486395270001, guid: 255bc2e2599f14093811fc0e614ad697, type: 3}
   hole: {fileID: 428094686038336724, guid: 8a8e3d8e24a134c108cb1671b835d9de, type: 3}
   mainCam: {fileID: 330585545}
   speed: 20
   Counterspeed: 40
   counterWhole: {fileID: 1227306140}
-  currentBasin: {fileID: 0}
-  currentHole: {fileID: 0}
   currentCounter: {fileID: 1393768697}
   SelectedDashLineCube: {fileID: 0}
   SelectedDashLineBasin: {fileID: 0}

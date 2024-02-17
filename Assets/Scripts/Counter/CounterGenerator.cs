@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class CounterGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public GameObject currentCounter;
+    public GameObject currentWhole;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CounterInstanciate()
     {
-        
+        //_instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, Quaternion.identity);
+        //_instanciateCounter.transform.parent = currentCounter.transform.parent;
+        //currentCounter = _instanciateCounter;
+        //isCounterInstanciate = true;
+        //if (_isBasinGenerate)
+        //{
+        //    // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
+        //}
     }
 }

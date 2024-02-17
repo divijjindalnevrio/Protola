@@ -12,18 +12,19 @@ public class BasinsGenerator : MonoBehaviour
     public GameObject InstanciateBasin;
     public bool IsBasinGenerated = false;
     [SerializeField] private BasinMovement basinMovement;
-
     public event Action OnBasinGenrate;
+    private BasinTypeSO AllBasinsSo;
+    private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
+
     void Start()
     {
-        
+        SettingBasinToDict();
     }
 
     public void BasinGererator()
     {
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
         SettingBasinPosition(currentBasinObj);
-
         currentBasin = Instantiate(Basin, CounterSO.CurrenetCounter.transform.position, Quaternion.identity);
         currentBasin.name = "Basin";
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
@@ -42,12 +43,12 @@ public class BasinsGenerator : MonoBehaviour
         basinMovement.selectedObject = SelectedObject.basin;
         basinMovement.SelectedGameobject = currentBasin;
     }
+
     private void SettingBasinPosition(Transform currentBasinObj)
     {
         Transform currentCounterObj = this.transform.Find("CounterBase").transform.Find("Counter").transform;
         Vector3 basinPos = new Vector3(0f, currentCounterObj.position.y / 2, 0f);
         currentBasinObj.localPosition = basinPos;
-
     }
 
     public void BasinInstanciate()
@@ -60,5 +61,12 @@ public class BasinsGenerator : MonoBehaviour
         basinMovement.isBasinInstanciate = true;
     }
 
-
+    private void SettingBasinToDict()
+    {
+        AllBasinsSo = (BasinTypeSO)Resources.Load("AllBasinSo");
+        foreach (GameObject basin in AllBasinsSo.BasinType)
+        {
+            basins.Add(basin.name, basin);
+        }
+    }
 }

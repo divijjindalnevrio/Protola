@@ -25,12 +25,13 @@ public class BasinMovement : MonoBehaviour
     public static bool _isSelected;
     private bool _isBasinGenerate = false;
     private bool _isHoleInstanciate = false;
-    public GameObject currentBasin;
+   // public GameObject currentBasin;
     public GameObject currentHole;
     public GameObject currentCounter;
     public GameObject SelectedDashLineCube;
     public GameObject SelectedDashLineBasin;
     public GameObject SelectedGameobject;
+    private Transform currentBasin;
 
     public LayerMask layerMask;
     public LayerMask CounterlayerMask;
@@ -85,6 +86,7 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
+
                 CheckAndUpdateSelectedElement(raycastHit);
                 if (selectedObject == SelectedObject.counter)
                 {
@@ -94,7 +96,8 @@ public class BasinMovement : MonoBehaviour
 
                 else if (selectedObject == SelectedObject.basin)
                 {
-                    SinkMovement(raycastHit); 
+                   
+                    SinkMovement(raycastHit , currentBasin); 
                 }
 
                 else { }
@@ -119,14 +122,14 @@ public class BasinMovement : MonoBehaviour
             }
             else if (raycastHit.collider.tag == "Basin")
             {
-               // isBasinSelected = true;
+                // isBasinSelected = true;
+                currentBasin = basinsGenerator.currentBasin.transform;
                 selectedObject = SelectedObject.basin;
                 SelectedGameobject = basinsGenerator.currentBasin;
-                basinsGenerator.currentBasin.transform.localPosition = new Vector3(basinsGenerator.currentBasin.transform.localPosition.x, basinsGenerator.currentBasin.transform.localPosition.y + .0010f,
-                basinsGenerator.currentBasin.transform.localPosition.z);
+                currentBasin.localPosition = new Vector3(currentBasin.localPosition.x, currentBasin.localPosition.y + .0010f, currentBasin.localPosition.z);
                 DeselectingAllDashLines();
                 OnGameobjectSelected.Invoke(this, selectedObject);
-                basinsGenerator.currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+                currentBasin.Find("SelectedDashLineBasin").gameObject.SetActive(true);
             }
         }
 
@@ -154,7 +157,7 @@ public class BasinMovement : MonoBehaviour
         return raycastHit;
     }
 
-    private void SinkMovement(RaycastHit rayHit)
+    private void SinkMovement(RaycastHit rayHit, Transform currentBasin)
     {
         _isSelected = true;
 
@@ -173,13 +176,13 @@ public class BasinMovement : MonoBehaviour
                 basinsGenerator.BasinInstanciate();
             }
             isInstanciateBasinMoved = true;
-            Vector3 targetPosition = new Vector3(rayHit.point.x, basinsGenerator.currentBasin.transform.position.y, rayHit.point.z);
-            basinsGenerator.currentBasin.transform.position = Vector3.Lerp(basinsGenerator.currentBasin.transform.position, targetPosition, Time.deltaTime * speed);
+            Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.position.y, rayHit.point.z);
+            currentBasin.position = Vector3.Lerp(currentBasin.position, targetPosition, Time.deltaTime * speed);
         }
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;
-            basinsGenerator.currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
+            currentBasin.Find("SelectedDashLineBasin").gameObject.SetActive(false);
         }
 
     }
@@ -204,7 +207,7 @@ public class BasinMovement : MonoBehaviour
         isCounterInstanciate = true;
         if(_isBasinGenerate)
         {
-            currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
+           // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
         }
     }
 

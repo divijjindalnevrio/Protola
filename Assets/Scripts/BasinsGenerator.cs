@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BasinsGenerator : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BasinsGenerator : MonoBehaviour
     public bool IsBasinGenerated = false;
     [SerializeField] private BasinMovement basinMovement;
 
+    public event Action OnBasinGenrate;
     void Start()
     {
         
@@ -28,11 +30,18 @@ public class BasinsGenerator : MonoBehaviour
         selectedDashCube.name = "SelectedDashLineBasin";
         selectedDashCube.transform.SetParent(currentBasin.transform, false);
         currentBasin.transform.parent = currentBasinObj.transform;
-
+        SettingBasinSelected();
         currentBasin.transform.localPosition = new Vector3(0f, -1.47f, 0);
-
+        OnBasinGenrate?.Invoke();
     }
 
+    private void SettingBasinSelected()
+    {
+        basinMovement.DeselectingAllDashLines();
+        currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+        basinMovement.selectedObject = SelectedObject.basin;
+        basinMovement.SelectedGameobject = currentBasin;
+    }
     private void SettingBasinPosition(Transform currentBasinObj)
     {
         Transform currentCounterObj = this.transform.Find("CounterBase").transform.Find("Counter").transform;

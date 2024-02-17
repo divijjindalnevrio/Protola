@@ -20541,11 +20541,16 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
@@ -20555,7 +20560,17 @@ PrefabInstance:
       objectReference: {fileID: 390144152}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1227306146}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
@@ -20565,12 +20580,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: BasinGererator
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MainUiController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BasinsGenerator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

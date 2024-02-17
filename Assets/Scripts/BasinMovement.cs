@@ -44,7 +44,7 @@ public class BasinMovement : MonoBehaviour
 
     private void Start()
     {
-        
+        basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
     }
 
     void Update()
@@ -80,7 +80,7 @@ public class BasinMovement : MonoBehaviour
                 else if (selectedObject == SelectedObject.basin)
                 {
                    
-                    SinkMovement(raycastHit , currentBasin); 
+                    SinkMovement(raycastHit); 
                 }
 
                 else { }
@@ -111,7 +111,6 @@ public class BasinMovement : MonoBehaviour
             else if (raycastHit.collider.tag == "Basin")
             {
                 // isBasinSelected = true;
-                currentBasin = basinsGenerator.currentBasin.transform;
                 selectedObject = SelectedObject.basin;
                 SelectedGameobject = basinsGenerator.currentBasin;
                 currentBasin.localPosition = new Vector3(currentBasin.localPosition.x, currentBasin.localPosition.y + .0010f, currentBasin.localPosition.z);
@@ -143,7 +142,7 @@ public class BasinMovement : MonoBehaviour
         return raycastHit;
     }
 
-    private void SinkMovement(RaycastHit rayHit, Transform currentBasin)
+    private void SinkMovement(RaycastHit rayHit)
     {
         _isSelected = true;
 
@@ -195,7 +194,7 @@ public class BasinMovement : MonoBehaviour
 
     //}
 
-    private void DeselectingAllDashLines()
+    public void DeselectingAllDashLines()
     {
         if (basinsGenerator.currentBasin && currentCounter != null)
         {
@@ -205,4 +204,9 @@ public class BasinMovement : MonoBehaviour
 
     }
 
+    private void SettingCurrentBasin()
+    {
+        currentBasin = basinsGenerator.currentBasin.transform;
+        
+    }
 }

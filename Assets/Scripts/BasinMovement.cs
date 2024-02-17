@@ -17,7 +17,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Camera mainCam;
     [SerializeField] private float speed = 1;
     [SerializeField] private float Counterspeed = 1;
-    [SerializeField] private GameObject counterWhole;
+    public GameObject counterWhole;
 
     private GameObject _instanciateBasin;
     private GameObject _instanciateCounter;
@@ -233,17 +233,17 @@ public class BasinMovement : MonoBehaviour
     //    currentCounter.transform.GetChild(1).transform.localPosition = basinPos;
     //}
 
-    public void HolwGererator()
-    {
-        if (_isHoleInstanciate == false)
-        {
-            currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
-            currentHole.transform.parent = currentCounter.transform;
-            currentHole.transform.localPosition =   new Vector3(0, -0.1247f, 0);
-            _isHoleInstanciate = true;
-        }
+    //public void HolwGererator()
+    //{
+    //    if (_isHoleInstanciate == false)
+    //    {
+    //        currentHole = Instantiate(hole, currentCounter.transform.position, Quaternion.identity);
+    //        currentHole.transform.parent = currentCounter.transform;
+    //        currentHole.transform.localPosition =   new Vector3(0, -0.1247f, 0);
+    //        _isHoleInstanciate = true;
+    //    }
             
-    }
+    //}
 
 
     private void ChangingSizeOfCounter()

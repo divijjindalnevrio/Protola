@@ -9037,6 +9037,41 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1227306147}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HolwGererator
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HoleGeneration, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11564,6 +11599,7 @@ GameObject:
   - component: {fileID: 1227306145}
   - component: {fileID: 1227306146}
   - component: {fileID: 1227306147}
+  - component: {fileID: 1227306148}
   m_Layer: 0
   m_Name: CounterWhole
   m_TagString: Untagged
@@ -11711,6 +11747,7 @@ MonoBehaviour:
   CounterSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
   currentBasin: {fileID: 0}
   InstanciateBasin: {fileID: 0}
+  IsBasinGenerated: 0
   basinMovement: {fileID: 1227306144}
 --- !u!114 &1227306147
 MonoBehaviour:
@@ -11728,6 +11765,20 @@ MonoBehaviour:
   currentHole: {fileID: 0}
   basinMovement: {fileID: 1227306144}
   IsHoleInstanciate: 0
+--- !u!114 &1227306148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227306140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377a792f374f047c08690a91b39675a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basinsGenerator: {fileID: 0}
+  basinMovement: {fileID: 0}
 --- !u!1 &1234714367
 GameObject:
   m_ObjectHideFlags: 0
@@ -12439,9 +12490,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1227306144}
-        m_TargetAssemblyTypeName: BasinMovement, Assembly-CSharp
-        m_MethodName: DeleteWholeCounter
+      - m_Target: {fileID: 1227306148}
+        m_TargetAssemblyTypeName: DeleteSceneElements, Assembly-CSharp
+        m_MethodName: RemoveSelectedBasinAndCounter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

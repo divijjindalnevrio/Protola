@@ -9,6 +9,7 @@ public class BasinsGenerator : MonoBehaviour
     public CounterTypeSO CounterSO;
     public GameObject currentBasin;
     public GameObject InstanciateBasin;
+    public bool IsBasinGenerated = false;
     [SerializeField] private BasinMovement basinMovement;
 
     void Start()

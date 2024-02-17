@@ -11665,11 +11665,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiModel: {fileID: 390144151}
-  hole: {fileID: 428094686038336724, guid: 8a8e3d8e24a134c108cb1671b835d9de, type: 3}
   mainCam: {fileID: 330585545}
   speed: 20
   Counterspeed: 40
-  counterWhole: {fileID: 1227306140}
   currentCounter: {fileID: 1393768697}
   SelectedDashLineCube: {fileID: 3806058320348913619, guid: 9e484c8d739434c569419d6afb8e02a4,
     type: 3}
@@ -11688,6 +11686,7 @@ MonoBehaviour:
   selectedObject: 0
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 1227306146}
+  counterGenerator: {fileID: 1426068424}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
 --- !u!114 &1227306145
 MonoBehaviour:
@@ -22492,11 +22491,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiModel: {fileID: 0}
-  hole: {fileID: 428094686038336724, guid: 8a8e3d8e24a134c108cb1671b835d9de, type: 3}
   mainCam: {fileID: 330585545}
   speed: 20
   Counterspeed: 40
-  counterWhole: {fileID: 1227306140}
   currentCounter: {fileID: 1393768697}
   SelectedDashLineCube: {fileID: 0}
   SelectedDashLineBasin: {fileID: 0}
@@ -22513,6 +22510,7 @@ MonoBehaviour:
   selectedObject: 0
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 0}
+  counterGenerator: {fileID: 0}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
 --- !u!1001 &8094339781833060473
 PrefabInstance:

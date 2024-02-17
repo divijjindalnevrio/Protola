@@ -41,17 +41,11 @@ public class BasinMovement : MonoBehaviour
     public bool isUiCanvasIsOpen = false;
     public SelectedObject selectedObject;
 
-    [SerializeField] private Slider widthSlider;
-    [SerializeField] private Slider thicknessSlider;
-    [SerializeField] private Slider depthSlider;
     public Material defaultMat;
     [SerializeField] private BasinsGenerator basinsGenerator;
 
     [SerializeField] private CounterTypeSO counterTypeSO;
 
-    private float width;
-    private float thickness;
-    private float depth;
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
 
@@ -195,15 +189,15 @@ public class BasinMovement : MonoBehaviour
     //    }
     //}
 
-    private void ChangingSizeOfCounter()
-    {
-        width = widthSlider.value;
-        thickness = thicknessSlider.value;
-        depth =  depthSlider.value;
-        currentCounter.transform.GetChild(0).transform.localScale = new Vector3(width, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
-        currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, thickness, currentCounter.transform.position.z);
+    //private void ChangingSizeOfCounter()
+    //{
+    //    width = widthSlider.value;
+    //    thickness = thicknessSlider.value;
+    //    depth = depthSlider.value;
+    //    currentCounter.transform.GetChild(0).transform.localScale = new Vector3(width, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
+    //    currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, thickness, currentCounter.transform.position.z);
 
-    }
+    //}
 
     private void DeselectingAllDashLines()
     {

@@ -6,7 +6,7 @@ public class CounterGenerator : MonoBehaviour
 {
 
     public GameObject currentCounter;
-    public GameObject currentWhole;
+    public GameObject counterWhole;
 
     void Start()
     {

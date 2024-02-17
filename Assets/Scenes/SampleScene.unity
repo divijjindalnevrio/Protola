@@ -11686,9 +11686,6 @@ MonoBehaviour:
   isPointerOverUI: 0
   isUiCanvasIsOpen: 0
   selectedObject: 0
-  widthSlider: {fileID: 831580694}
-  thicknessSlider: {fileID: 1187545048}
-  depthSlider: {fileID: 1581739702}
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 1227306146}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
@@ -12472,7 +12469,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1426068423}
         m_TargetAssemblyTypeName: DeleteSceneElements, Assembly-CSharp
         m_MethodName: RemoveSelectedBasinAndCounter
         m_Mode: 1
@@ -13346,7 +13343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCounter: {fileID: 1393768697}
-  currentWhole: {fileID: 1227306140}
+  counterWhole: {fileID: 1227306140}
 --- !u!114 &1426068425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22514,9 +22511,6 @@ MonoBehaviour:
   isPointerOverUI: 0
   isUiCanvasIsOpen: 0
   selectedObject: 0
-  widthSlider: {fileID: 0}
-  thicknessSlider: {fileID: 0}
-  depthSlider: {fileID: 397409303}
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 0}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}

@@ -6,12 +6,13 @@ public class DeleteSceneElements : MonoBehaviour
 {
     private BasinsGenerator basinsGenerator;
     private BasinMovement basinMovement;
+    private CounterGenerator counterGenerator;
 
     void Start()
     {
         basinMovement = transform.Find("CounterWhole").GetComponent<BasinMovement>();
         basinsGenerator = transform.Find("CounterWhole").GetComponent<BasinsGenerator>();
-
+        counterGenerator = GetComponent<CounterGenerator>();
     }
 
     public void RemoveSelectedBasinAndCounter()
@@ -22,9 +23,8 @@ public class DeleteSceneElements : MonoBehaviour
         }
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
-            Destroy(basinMovement.counterWhole.gameObject);
+            Destroy(counterGenerator.counterWhole.gameObject);
             basinsGenerator.IsBasinGenerated = false;
-
         }
 
     }

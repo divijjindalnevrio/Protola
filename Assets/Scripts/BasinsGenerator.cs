@@ -43,8 +43,8 @@ public class BasinsGenerator : MonoBehaviour
     {
         if (basinMovement.selectedObject == SelectedObject.basin)
         {
-            lastSelectedBasinPos = currentBasin.transform.localPosition;
-            Destroy(currentBasin.gameObject);
+            lastSelectedBasinPos = basinMovement.SelectedGameobject.transform.localPosition;
+            Destroy( basinMovement.SelectedGameobject.gameObject);
         }
 
         return lastSelectedBasinPos;
@@ -68,7 +68,8 @@ public class BasinsGenerator : MonoBehaviour
 
     public void BasinInstanciate()
     {
-        InstanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, currentBasin.transform.localRotation);
+        Transform selectedGameobject = basinMovement.SelectedGameobject.transform;
+        InstanciateBasin = Instantiate(selectedGameobject.gameObject,selectedGameobject.position, selectedGameobject.localRotation);
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = basinMovement.defaultMat.color;
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;

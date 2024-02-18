@@ -114,7 +114,7 @@ public class BasinMovement : MonoBehaviour
                // SelectedGameobject = basinsGenerator.currentBasin;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
-               // SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
+            //    SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
                 Debug.Log("nameofthebasin : " + SelectedGameobject.transform.Find("Cube").name);
                 currentBasin.localPosition = new Vector3(currentBasin.localPosition.x, currentBasin.localPosition.y + .0010f, currentBasin.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
@@ -151,7 +151,6 @@ public class BasinMovement : MonoBehaviour
         if (isInstanciateBasinMoved && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             isInstanciateBasinMoved = false;
-           // currentBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = defaultMat.color;
             Destroy(basinsGenerator.InstanciateBasin);
             isBasinInstanciate = false;
         }
@@ -163,8 +162,8 @@ public class BasinMovement : MonoBehaviour
                 basinsGenerator.BasinInstanciate();
             }
             isInstanciateBasinMoved = true;
-            Vector3 targetPosition = new Vector3(rayHit.point.x, currentBasin.position.y, rayHit.point.z);
-            currentBasin.position = Vector3.Lerp(currentBasin.position, targetPosition, Time.deltaTime * speed);
+            Vector3 targetPosition = new Vector3(rayHit.point.x, SelectedGameobject.transform.position.y, rayHit.point.z);
+            SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
         }
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {

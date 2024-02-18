@@ -20,11 +20,13 @@ public class DeleteSceneElements : MonoBehaviour
         if (basinMovement.selectedObject == SelectedObject.basin)
         {
             Destroy(basinsGenerator.currentBasin.gameObject);
+            basinMovement.selectedObject = SelectedObject.none;
         }
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
             Destroy(counterGenerator.counterWhole.gameObject);
             basinsGenerator.IsBasinGenerated = false;
+            basinMovement.selectedObject = SelectedObject.none;
         }
 
     }

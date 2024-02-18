@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CounterGenerator : MonoBehaviour
 {
-
+    [SerializeField] BasinMovement basinMovement;
     public GameObject currentCounter;
     public GameObject counterWhole;
 
-    void Start()
+    void Awake()
     {
         
+    }
+    void Start()
+    {
+        SettingCounterSelected();
     }
 
     private void CounterInstanciate()
@@ -23,5 +27,12 @@ public class CounterGenerator : MonoBehaviour
         //{
         //    // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
         //}
+    }
+       private void SettingCounterSelected()
+    {
+        currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+        basinMovement.selectedObject = SelectedObject.counter;
+        basinMovement.SelectedGameobject = currentCounter.transform.Find("Counter").gameObject;
+        basinMovement.counterWhole = this.counterWhole.transform;
     }
 }

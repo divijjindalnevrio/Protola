@@ -24,18 +24,14 @@ public class BasinsGenerator : MonoBehaviour
     public void BasinGererator(string basinName)
     {
         Vector3 lastSelectedBasinPos = Vector3.zero;
-        if(basinMovement.selectedObject == SelectedObject.basin)
-        {
-            lastSelectedBasinPos = currentBasin.transform.localPosition;
-            Debug.Log("lastSelectedBasinPos : " + lastSelectedBasinPos);
-            Destroy(currentBasin.gameObject);
-        }
+        lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
+
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
         SettingBasinPosition(currentBasinObj);
         currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos, Quaternion.identity);
         currentBasin.name = "Basin";
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
-        selectedDashCube.name = "SelectedDashLineBasin";
+        selectedDashCube.name = "SelectedDashLineCube";
         selectedDashCube.transform.SetParent(currentBasin.transform, false);
         currentBasin.transform.parent = currentBasinObj.transform;
         SettingBasinSelected();
@@ -43,10 +39,22 @@ public class BasinsGenerator : MonoBehaviour
         OnBasinGenrate?.Invoke();
     }
 
+    private Vector3 SettinglastSelectedBasinPos(Vector3 lastSelectedBasinPos)
+    {
+        if (basinMovement.selectedObject == SelectedObject.basin)
+        {
+            lastSelectedBasinPos = currentBasin.transform.localPosition;
+            Destroy(currentBasin.gameObject);
+        }
+
+        return lastSelectedBasinPos;
+    }
+
+
     private void SettingBasinSelected()
     {
         basinMovement.DeselectingAllDashLines();
-        currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+        currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
         basinMovement.selectedObject = SelectedObject.basin;
         basinMovement.SelectedGameobject = currentBasin;
     }
@@ -61,7 +69,7 @@ public class BasinsGenerator : MonoBehaviour
     public void BasinInstanciate()
     {
         InstanciateBasin = Instantiate(currentBasin, currentBasin.transform.position, currentBasin.transform.localRotation);
-        InstanciateBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
+        InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = basinMovement.defaultMat.color;
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
         //currentBasin = _instanciateBasin;

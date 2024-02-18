@@ -11674,6 +11674,7 @@ MonoBehaviour:
   SelectedDashLineBasin: {fileID: 2203974841986546031, guid: f583dc086fada481689d1176d9fb1a0c,
     type: 3}
   SelectedGameobject: {fileID: 0}
+  counterWhole: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
@@ -13341,6 +13342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a549e4fbbeb34b58805fd53c8b5317e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basinMovement: {fileID: 1227306144}
   currentCounter: {fileID: 1393768697}
   counterWhole: {fileID: 1227306140}
 --- !u!114 &1426068425
@@ -22568,6 +22570,7 @@ MonoBehaviour:
   SelectedDashLineCube: {fileID: 0}
   SelectedDashLineBasin: {fileID: 0}
   SelectedGameobject: {fileID: 0}
+  counterWhole: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 384

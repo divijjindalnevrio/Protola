@@ -13,7 +13,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private Camera mainCam;
     [SerializeField] private float speed = 1;
     [SerializeField] private float Counterspeed = 1;
-    //public GameObject counterWhole;
+
 
     public static bool _isSelected;
     public GameObject currentCounter;
@@ -21,7 +21,7 @@ public class BasinMovement : MonoBehaviour
     public GameObject SelectedDashLineBasin;
     public GameObject SelectedGameobject;
     private Transform currentBasin;
-    private Transform counterWhole;
+    public Transform counterWhole;
     public LayerMask layerMask;
     public LayerMask CounterlayerMask;
 
@@ -97,11 +97,10 @@ public class BasinMovement : MonoBehaviour
         {
             if (raycastHit.collider.tag == "Counter")
             {
-                // isCounterSelected = true;
-                counterWhole = counterGenerator.counterWhole.transform;
+                // counterWhole = counterGenerator.counterWhole.transform;
                 selectedObject = SelectedObject.counter;
-                SelectedGameobject = currentCounter;
                 DeselectingAllDashLines();
+                 SelectedGameobject = raycastHit.collider.gameObject;
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 if (basinsGenerator.InstanciateBasin != null)
                 {
@@ -111,16 +110,15 @@ public class BasinMovement : MonoBehaviour
             }
             else if (raycastHit.collider.tag == "Basin")
             {
-                // isBasinSelected = true;
                 selectedObject = SelectedObject.basin;
                // SelectedGameobject = basinsGenerator.currentBasin;
+                DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
                // SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
                 Debug.Log("nameofthebasin : " + SelectedGameobject.transform.Find("Cube").name);
                 currentBasin.localPosition = new Vector3(currentBasin.localPosition.x, currentBasin.localPosition.y + .0010f, currentBasin.localPosition.z);
-                DeselectingAllDashLines();
                 OnGameobjectSelected.Invoke(this, selectedObject);
-                SelectedGameobject.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+                SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
             }
         }
 
@@ -171,7 +169,7 @@ public class BasinMovement : MonoBehaviour
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;
-            currentBasin.Find("SelectedDashLineBasin").gameObject.SetActive(false);
+            currentBasin.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }
 
     }
@@ -200,10 +198,9 @@ public class BasinMovement : MonoBehaviour
 
     public void DeselectingAllDashLines()
     {
-        if (basinsGenerator.currentBasin && currentCounter != null)
+        if (SelectedGameobject != null)
         {
-            basinsGenerator.currentBasin.transform.Find("SelectedDashLineBasin").gameObject.SetActive(false);
-            currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }
 
     }
@@ -211,6 +208,7 @@ public class BasinMovement : MonoBehaviour
     private void SettingCurrentBasin()
     {
         currentBasin = basinsGenerator.currentBasin.transform;
-        
     }
+
+   
 }

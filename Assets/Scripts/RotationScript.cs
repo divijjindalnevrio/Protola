@@ -25,8 +25,17 @@ public class RotationScript : MonoBehaviour
        
         if (basinMovement.SelectedGameobject != null && _isRotateButtonPressed && basinMovement.selectedObject != SelectedObject.none)
         {
-            rotateObj = basinMovement.SelectedGameobject.transform;
-            rotateObj.rotation = RotationObject(rotateObj.gameObject);
+            if(basinMovement.selectedObject == SelectedObject.counter)
+            {
+                rotateObj = basinMovement.SelectedGameobject.transform.parent;
+                rotateObj.rotation = RotationObject(rotateObj.gameObject);
+            }
+            else
+            {
+                rotateObj = basinMovement.SelectedGameobject.transform;
+                rotateObj.rotation = RotationObject(rotateObj.gameObject);
+            }
+            
         }
          
     }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
 public enum SelectedObject { none,basin, counter, hole }
@@ -112,11 +113,14 @@ public class BasinMovement : MonoBehaviour
             {
                 // isBasinSelected = true;
                 selectedObject = SelectedObject.basin;
-                SelectedGameobject = basinsGenerator.currentBasin;
+               // SelectedGameobject = basinsGenerator.currentBasin;
+                SelectedGameobject = raycastHit.collider.gameObject;
+               // SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
+                Debug.Log("nameofthebasin : " + SelectedGameobject.transform.Find("Cube").name);
                 currentBasin.localPosition = new Vector3(currentBasin.localPosition.x, currentBasin.localPosition.y + .0010f, currentBasin.localPosition.z);
                 DeselectingAllDashLines();
                 OnGameobjectSelected.Invoke(this, selectedObject);
-                currentBasin.Find("SelectedDashLineBasin").gameObject.SetActive(true);
+                SelectedGameobject.transform.Find("SelectedDashLineBasin").gameObject.SetActive(true);
             }
         }
 

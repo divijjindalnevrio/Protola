@@ -116,7 +116,7 @@ public class BasinMovement : MonoBehaviour
                 SelectedGameobject = raycastHit.collider.gameObject;
             //    SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
                 Debug.Log("nameofthebasin : " + SelectedGameobject.transform.Find("Cube").name);
-                currentBasin.localPosition = new Vector3(currentBasin.localPosition.x, currentBasin.localPosition.y + .0010f, currentBasin.localPosition.z);
+                SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
             }
@@ -168,7 +168,7 @@ public class BasinMovement : MonoBehaviour
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;
-            currentBasin.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }
 
     }

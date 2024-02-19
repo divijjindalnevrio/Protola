@@ -17,18 +17,17 @@ public class DeleteSceneElements : MonoBehaviour
 
     public void RemoveSelectedBasinAndCounter()
     {
-        // if (basinMovement.selectedObject == SelectedObject.basin)
-        // {
-        //     Destroy(basinsGenerator.currentBasin.gameObject);
-        //     basinMovement.selectedObject = SelectedObject.none;
-        // }
-        // if (basinMovement.selectedObject == SelectedObject.counter)
-        // {
-        //     Destroy(counterGenerator.counterWhole.gameObject);
-        //     basinsGenerator.IsBasinGenerated = false;
-        //     basinMovement.selectedObject = SelectedObject.none;
-        // }
-        Destroy(basinMovement.SelectedGameobject);
-        basinMovement.selectedObject = SelectedObject.none;
+        if (basinMovement.selectedObject == SelectedObject.basin)
+        {
+            Destroy(basinMovement.SelectedGameobject);
+            basinMovement.selectedObject = SelectedObject.none;
+        }
+        if (basinMovement.selectedObject == SelectedObject.counter)
+        {
+            Destroy(counterGenerator.counterWhole.gameObject);
+            basinMovement.selectedObject = SelectedObject.none;
+        }
+        //Destroy(basinMovement.SelectedGameobject);
+        //basinMovement.selectedObject = SelectedObject.none;
     }
 }

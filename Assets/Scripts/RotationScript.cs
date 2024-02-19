@@ -11,7 +11,8 @@ public class RotationScript : MonoBehaviour
 
     private Quaternion target ;
     private bool _isRotateButtonPressed;
-    private float rightRotation = 0f;
+    public float BasinRotationVal = 0f;
+    public float CounterRotationVal = 0f;
 
     private void Start()
     {
@@ -28,21 +29,22 @@ public class RotationScript : MonoBehaviour
             if(basinMovement.selectedObject == SelectedObject.counter)
             {
                 rotateObj = basinMovement.SelectedGameobject.transform.parent;
-                rotateObj.rotation = RotationObject(rotateObj.gameObject);
+                rotateObj.rotation = RotationObject(rotateObj.gameObject,CounterRotationVal);
             }
-            else
+            if (basinMovement.selectedObject == SelectedObject.basin)
             {
                 rotateObj = basinMovement.SelectedGameobject.transform;
-                rotateObj.rotation = RotationObject(rotateObj.gameObject);
+                Debug.Log("BASINROTATION value :" + rotateObj.transform.eulerAngles);
+                rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
             }
             
         }
          
     }
 
-    private Quaternion RotationObject(GameObject gameObject)
+    private Quaternion RotationObject(GameObject gameObject, float RotationVal)
     {
-        target = Quaternion.Euler(gameObject.transform.eulerAngles.x, rightRotation, gameObject.transform.eulerAngles.z);
+        target = Quaternion.Euler(gameObject.transform.eulerAngles.x, RotationVal, gameObject.transform.eulerAngles.z);
         Quaternion objectRotation = Quaternion.Slerp(gameObject.transform.rotation, target, Time.deltaTime * speed);
         return objectRotation;
     }
@@ -52,7 +54,23 @@ public class RotationScript : MonoBehaviour
     {
         if(basinMovement.selectedObject != SelectedObject.none)
         {
-            rightRotation = rightRotation + 90f;
+            if(basinMovement.selectedObject == SelectedObject.basin)
+            {
+                BasinRotationVal = BasinRotationVal + 90f;
+                if (BasinRotationVal > 360)
+                {
+                    BasinRotationVal = 90f;
+                }
+            }
+            else
+            {
+                CounterRotationVal = CounterRotationVal + 90f;
+                if (CounterRotationVal > 360)
+                {
+                    CounterRotationVal = 90f;
+                }
+            }
+            
         }
        
     }
@@ -61,8 +79,26 @@ public class RotationScript : MonoBehaviour
     {
         if (basinMovement.selectedObject != SelectedObject.none)
         {
-            rightRotation = rightRotation - 90f;
+            if (basinMovement.selectedObject == SelectedObject.basin)
+            {
+                BasinRotationVal = BasinRotationVal - 90f;
+                if (BasinRotationVal < -360)
+                {
+                    BasinRotationVal = -90f;
+                }
+            }
+            else
+            {
+                CounterRotationVal = CounterRotationVal - 90f;
+                if (CounterRotationVal < -360)
+                {
+                    CounterRotationVal = -90f;
+                }
+            }
+
         }
+
+
     }
 
     public void setRotateButtonToTrue()

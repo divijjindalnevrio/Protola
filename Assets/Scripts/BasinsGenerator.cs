@@ -24,6 +24,7 @@ public class BasinsGenerator : MonoBehaviour
     public void BasinGererator(string basinName)
     {
         Vector3 lastSelectedBasinPos = Vector3.zero;
+    
         lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
 
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;

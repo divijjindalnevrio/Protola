@@ -115,7 +115,6 @@ public class BasinMovement : MonoBehaviour
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
             //    SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
-                Debug.Log("nameofthebasin : " + SelectedGameobject.transform.Find("Cube").name);
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);

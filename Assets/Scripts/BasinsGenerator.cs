@@ -15,8 +15,8 @@ public class BasinsGenerator : MonoBehaviour
     public event Action OnBasinGenrate;
     private BasinTypeSO AllBasinsSo;
     private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
-    private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
-
+    [SerializeField] private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
+    [SerializeField] private RotationScript rotationScript;
     void Start()
     {
         SettingBasinToDict();
@@ -25,6 +25,8 @@ public class BasinsGenerator : MonoBehaviour
     public void BasinGererator(string basinName)
     {
         Vector3 lastSelectedBasinPos = Vector3.zero;
+        rotationScript.BasinRotationVal = 0f;
+        lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
         lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
 
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
@@ -46,6 +48,7 @@ public class BasinsGenerator : MonoBehaviour
         {
             lastSelectedBasinPos = basinMovement.SelectedGameobject.transform.localPosition;
             lastSelectedBasinRotation = basinMovement.SelectedGameobject.transform.rotation;
+            rotationScript.BasinRotationVal = basinMovement.SelectedGameobject.transform.eulerAngles.y;
             Destroy( basinMovement.SelectedGameobject.gameObject);
         }
         return lastSelectedBasinPos;

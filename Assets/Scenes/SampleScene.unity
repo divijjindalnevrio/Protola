@@ -11745,6 +11745,8 @@ MonoBehaviour:
   InstanciateBasin: {fileID: 0}
   IsBasinGenerated: 0
   basinMovement: {fileID: 1227306144}
+  lastSelectedBasinRotation: {x: 0, y: 0, z: 0, w: 1}
+  rotationScript: {fileID: 1227306143}
 --- !u!114 &1227306147
 MonoBehaviour:
   m_ObjectHideFlags: 0

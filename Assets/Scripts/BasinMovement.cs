@@ -101,7 +101,7 @@ public class BasinMovement : MonoBehaviour
                 // counterWhole = counterGenerator.counterWhole.transform;
                 selectedObject = SelectedObject.counter;
                 DeselectingAllDashLines();
-                 SelectedGameobject = raycastHit.collider.gameObject;
+                SelectedGameobject = raycastHit.collider.gameObject;
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 if (basinsGenerator.InstanciateBasin != null)
                 {
@@ -113,8 +113,8 @@ public class BasinMovement : MonoBehaviour
             {
                 selectedObject = SelectedObject.basin;
                 DeselectingAllDashLines();
-                rotationScript.BasinRotationVal = 0f;
                 SelectedGameobject = raycastHit.collider.gameObject;
+                rotationScript.BasinRotationVal = 0f + SelectedGameobject.transform.eulerAngles.y;
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);

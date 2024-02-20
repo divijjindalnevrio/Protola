@@ -37,6 +37,7 @@ public class BasinMovement : MonoBehaviour
     public Material defaultMat;
     [SerializeField] private BasinsGenerator basinsGenerator;
     [SerializeField] private CounterGenerator counterGenerator;
+    [SerializeField] private RotationScript rotationScript;
 
     [SerializeField] private CounterTypeSO counterTypeSO;
 
@@ -111,10 +112,9 @@ public class BasinMovement : MonoBehaviour
             else if (raycastHit.collider.tag == "Basin")
             {
                 selectedObject = SelectedObject.basin;
-               // SelectedGameobject = basinsGenerator.currentBasin;
                 DeselectingAllDashLines();
+                rotationScript.BasinRotationVal = 0f;
                 SelectedGameobject = raycastHit.collider.gameObject;
-            //    SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.blue;
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);

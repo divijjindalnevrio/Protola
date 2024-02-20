@@ -21,15 +21,15 @@ public class RotationScript : MonoBehaviour
 
     void Update()
     {
-                                                                            //<--------------- need to refactor here
+        //<--------------- need to refactor here
 
-       
+
         if (basinMovement.SelectedGameobject != null && _isRotateButtonPressed && basinMovement.selectedObject != SelectedObject.none)
         {
-            if(basinMovement.selectedObject == SelectedObject.counter)
+            if (basinMovement.selectedObject == SelectedObject.counter)
             {
                 rotateObj = basinMovement.SelectedGameobject.transform.parent;
-                rotateObj.rotation = RotationObject(rotateObj.gameObject,CounterRotationVal);
+                rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
             }
             if (basinMovement.selectedObject == SelectedObject.basin)
             {
@@ -37,9 +37,9 @@ public class RotationScript : MonoBehaviour
                 Debug.Log("BASINROTATION value :" + rotateObj.transform.eulerAngles);
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
             }
-            
+
         }
-         
+
     }
 
     private Quaternion RotationObject(GameObject gameObject, float RotationVal)

@@ -11690,6 +11690,7 @@ MonoBehaviour:
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 1227306146}
   counterGenerator: {fileID: 1426068424}
+  rotationScript: {fileID: 1227306143}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
 --- !u!114 &1227306145
 MonoBehaviour:
@@ -22588,6 +22589,7 @@ MonoBehaviour:
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 0}
   counterGenerator: {fileID: 0}
+  rotationScript: {fileID: 0}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
 --- !u!1001 &8094339781833060473
 PrefabInstance:

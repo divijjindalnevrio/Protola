@@ -15,6 +15,7 @@ public class BasinsGenerator : MonoBehaviour
     public event Action OnBasinGenrate;
     private BasinTypeSO AllBasinsSo;
     private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
+    private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
 
     void Start()
     {
@@ -24,12 +25,11 @@ public class BasinsGenerator : MonoBehaviour
     public void BasinGererator(string basinName)
     {
         Vector3 lastSelectedBasinPos = Vector3.zero;
-    
         lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
 
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
         SettingBasinPosition(currentBasinObj);
-        currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos, Quaternion.identity);
+        currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos, lastSelectedBasinRotation);
         currentBasin.name = "Basin";
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
         selectedDashCube.name = "SelectedDashLineCube";
@@ -45,9 +45,9 @@ public class BasinsGenerator : MonoBehaviour
         if (basinMovement.selectedObject == SelectedObject.basin)
         {
             lastSelectedBasinPos = basinMovement.SelectedGameobject.transform.localPosition;
+            lastSelectedBasinRotation = basinMovement.SelectedGameobject.transform.rotation;
             Destroy( basinMovement.SelectedGameobject.gameObject);
         }
-
         return lastSelectedBasinPos;
     }
 

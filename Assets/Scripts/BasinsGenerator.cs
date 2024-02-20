@@ -15,7 +15,7 @@ public class BasinsGenerator : MonoBehaviour
     public event Action OnBasinGenrate;
     private BasinTypeSO AllBasinsSo;
     private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
-    [SerializeField] private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
+    private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
     [SerializeField] private RotationScript rotationScript;
     void Start()
     {

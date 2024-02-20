@@ -30,7 +30,7 @@ public class BasinsGenerator : MonoBehaviour
         lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
 
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
-        SettingBasinPosition(currentBasinObj);
+        //SettingBasinPosition(currentBasinObj);
         currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos, lastSelectedBasinRotation);
         currentBasin.name = "Basin";
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
@@ -38,7 +38,7 @@ public class BasinsGenerator : MonoBehaviour
         selectedDashCube.transform.SetParent(currentBasin.transform, false);
         currentBasin.transform.parent = currentBasinObj.transform;
         SettingBasinSelected();
-        currentBasin.transform.localPosition = new Vector3(lastSelectedBasinPos.x, -1.47f, lastSelectedBasinPos.z);
+        currentBasin.transform.localPosition = new Vector3(lastSelectedBasinPos.x, 0.02f, lastSelectedBasinPos.z);
         OnBasinGenrate?.Invoke();
     }
 

@@ -46,6 +46,7 @@ public class BasinMovement : MonoBehaviour
 
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
+    public event Action OnGameobjectMoving;
 
     private void Start()
     {
@@ -140,18 +141,19 @@ public class BasinMovement : MonoBehaviour
             _isSelected = true;
             if (isCounterInstanciate == false)
             {
-                Debug.Log("is it enter  here : ");
                 counterGenerator.CounterInstanciate();
                 isCounterInstanciate = true;
             }
             isInstanciateCounterMoved = true;
             Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
             counterWhole.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
+            OnGameobjectMoving();
         }
 
         if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
         {
             selectedObject = SelectedObject.none;
+            OnGameobjectSelected.Invoke(this, selectedObject);
             currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }
 
@@ -178,10 +180,12 @@ public class BasinMovement : MonoBehaviour
             isInstanciateBasinMoved = true;
             Vector3 targetPosition = new Vector3(rayHit.point.x, SelectedGameobject.transform.position.y, rayHit.point.z);
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
+            OnGameobjectMoving();
         }
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;
+            OnGameobjectSelected.Invoke(this, selectedObject);
             SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }
 

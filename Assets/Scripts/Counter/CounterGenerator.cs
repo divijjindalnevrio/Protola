@@ -18,6 +18,7 @@ public class CounterGenerator : MonoBehaviour
     {
         _instanciateCounter = Instantiate(counterWhole, counterWhole.transform.position, Quaternion.identity);
         _instanciateCounter.GetComponent<BasinMovement>().enabled = false;
+        Destroy(_instanciateCounter.transform.Find("WorldUiCanvas").gameObject);
         _instanciateCounter.transform.parent = counterWhole.transform.parent;
         //currentCounter = _instanciateCounter;
         //if (_isBasinGenerate)

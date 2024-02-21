@@ -11,6 +11,7 @@ public class WorldCanvas : MonoBehaviour
     void Start()
     {
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+        basinMovement.OnGameobjectMoving += SettingWorldUiCanvasToFalse;
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
@@ -23,7 +24,6 @@ public class WorldCanvas : MonoBehaviour
         {
             SettingWorldUiCanvasToFalse();
         }
-       
 
     }
 

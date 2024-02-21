@@ -26,10 +26,13 @@ public class BasinMovement : MonoBehaviour
     public LayerMask CounterlayerMask;
 
     public bool isBasinInstanciate = false;
+    public bool isCounterInstanciate = false;
 
     private bool isCounterSelected = false;
 
     private bool isInstanciateBasinMoved = false;
+    private bool isInstanciateCounterMoved = false;
+
     public bool isPointerOverUI = false;
     public bool isUiCanvasIsOpen = false;
     public SelectedObject selectedObject;
@@ -51,7 +54,6 @@ public class BasinMovement : MonoBehaviour
 
     void Update()
     {
-
         if (!isPointerOverUI)
         {
             CounterAndSinkMovementAndGerenartion();
@@ -102,7 +104,7 @@ public class BasinMovement : MonoBehaviour
                 selectedObject = SelectedObject.counter;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
-                OnGameobjectSelected.Invoke(this, selectedObject);
+               // OnGameobjectSelected.Invoke(this, selectedObject);
                 if (basinsGenerator.InstanciateBasin != null)
                 {
                     Destroy(basinsGenerator.InstanciateBasin);
@@ -126,10 +128,23 @@ public class BasinMovement : MonoBehaviour
 
     private RaycastHit CounterMovement(RaycastHit raycastHit)
     {
+        if (isInstanciateCounterMoved && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            isInstanciateCounterMoved = false;
+            Destroy(counterGenerator._instanciateCounter);
+            isCounterInstanciate = false;
+        }
 
         if (raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             _isSelected = true;
+            if (isCounterInstanciate == false)
+            {
+                Debug.Log("is it enter  here : ");
+                counterGenerator.CounterInstanciate();
+                isCounterInstanciate = true;
+            }
+            isInstanciateCounterMoved = true;
             Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
             counterWhole.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
         }

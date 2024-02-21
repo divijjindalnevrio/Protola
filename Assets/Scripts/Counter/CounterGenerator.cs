@@ -32,4 +32,24 @@ public class CounterGenerator : MonoBehaviour
         basinMovement.SelectedGameobject = currentCounter.transform.Find("Counter").gameObject;
         basinMovement.counterWhole = this.counterWhole.transform;
     }
+
+    public void AddingCounter()
+    {
+        GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject,
+        currentCounter.transform.position + new Vector3(5f, 0f, 0f), Quaternion.identity);
+        DestroyPreviousBasins(cunterbase);
+        cunterbase.transform.SetParent(cunterbase.transform.parent, false);
+    }
+
+    private static void DestroyPreviousBasins(GameObject cunterbase)
+    {
+        Transform basinParent = cunterbase.transform.Find("Basin").transform;
+        if (basinParent.childCount > 0)
+        {
+            foreach (Transform child in basinParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 }

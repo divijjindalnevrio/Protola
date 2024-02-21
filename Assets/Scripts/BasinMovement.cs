@@ -104,7 +104,7 @@ public class BasinMovement : MonoBehaviour
                 selectedObject = SelectedObject.counter;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
-               // OnGameobjectSelected.Invoke(this, selectedObject);
+                OnGameobjectSelected.Invoke(this, selectedObject);
                 if (basinsGenerator.InstanciateBasin != null)
                 {
                     Destroy(basinsGenerator.InstanciateBasin);

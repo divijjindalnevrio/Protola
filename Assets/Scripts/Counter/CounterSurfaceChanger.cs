@@ -28,8 +28,9 @@ public class CounterSurfaceChanger : MonoBehaviour
 
         else
         {
-            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material = counterMat[material];
-            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.renderQueue = 3002;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material = counterMat[material];
+            Debug.Log("Counter color got changed : ");
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material.renderQueue = 3002;
         }
         
     }
@@ -45,7 +46,7 @@ public class CounterSurfaceChanger : MonoBehaviour
         }
         else
         {
-            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material = counterMat[material];
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material = counterMat[material];
         }
 
     }
@@ -63,8 +64,8 @@ public class CounterSurfaceChanger : MonoBehaviour
         }
         else
         {
-            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.mainTexture = null;
-            selectedObjcet.transform.Find("Counter").GetComponent<MeshRenderer>().material.color = colors[color];
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = null;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = colors[color];
            
         }
 

@@ -12016,6 +12016,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   isBasinInstanciate: 0
+  isCounterInstanciate: 0
   isPointerOverUI: 0
   isUiCanvasIsOpen: 0
   selectedObject: 0
@@ -14009,6 +14010,7 @@ MonoBehaviour:
   basinMovement: {fileID: 1227306144}
   currentCounter: {fileID: 1393768697}
   counterWhole: {fileID: 1227306140}
+  _instanciateCounter: {fileID: 0}
 --- !u!114 &1426068425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23249,6 +23251,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 480
   isBasinInstanciate: 0
+  isCounterInstanciate: 0
   isPointerOverUI: 0
   isUiCanvasIsOpen: 0
   selectedObject: 0

@@ -101,7 +101,6 @@ public class BasinMovement : MonoBehaviour
         {
             if (raycastHit.collider.tag == "Counter")
             {
-                // counterWhole = counterGenerator.counterWhole.transform;
                 selectedObject = SelectedObject.counter;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;

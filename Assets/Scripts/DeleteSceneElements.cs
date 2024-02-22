@@ -7,6 +7,7 @@ public class DeleteSceneElements : MonoBehaviour
     private BasinsGenerator basinsGenerator;
     private BasinMovement basinMovement;
     private CounterGenerator counterGenerator;
+    [SerializeField] private WorldCanvas worldCanvas;
 
     void Start()
     {
@@ -21,11 +22,13 @@ public class DeleteSceneElements : MonoBehaviour
         {
             Destroy(basinMovement.SelectedGameobject);
             basinMovement.selectedObject = SelectedObject.none;
+            worldCanvas.SettingWorldUiCanvasToFalse();
         }
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
-            Destroy(counterGenerator.counterWhole.gameObject);
+            Destroy(counterGenerator.currentCounter.gameObject);
             basinMovement.selectedObject = SelectedObject.none;
+            worldCanvas.SettingWorldUiCanvasToFalse();
         }
         //Destroy(basinMovement.SelectedGameobject);
         //basinMovement.selectedObject = SelectedObject.none;

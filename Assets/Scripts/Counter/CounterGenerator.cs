@@ -8,6 +8,7 @@ public class CounterGenerator : MonoBehaviour
     public GameObject currentCounter;
     public GameObject counterWhole;
     public GameObject _instanciateCounter;
+    [SerializeField] private WorldCanvas worldCanvas;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class CounterGenerator : MonoBehaviour
         GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject,
         currentCounter.transform.position + new Vector3(5f, 0f, 0f), Quaternion.identity);
         DestroyPreviousBasins(cunterbase);
-        cunterbase.transform.SetParent(cunterbase.transform.parent, false);
+        cunterbase.transform.SetParent(counterWhole.transform, false);
     }
 
     private static void DestroyPreviousBasins(GameObject cunterbase)

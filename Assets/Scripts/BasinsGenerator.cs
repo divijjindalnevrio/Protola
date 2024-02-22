@@ -17,6 +17,8 @@ public class BasinsGenerator : MonoBehaviour
     private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
     private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
     [SerializeField] private RotationScript rotationScript;
+    [SerializeField] private WorldCanvas worldCanvas;
+
     void Start()
     {
         SettingBasinToDict();
@@ -60,6 +62,7 @@ public class BasinsGenerator : MonoBehaviour
         basinMovement.DeselectingAllDashLines();
         currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
         basinMovement.selectedObject = SelectedObject.basin;
+        worldCanvas.SettingWorldUiCanvasToTrue();
         basinMovement.SelectedGameobject = currentBasin;
     }
 

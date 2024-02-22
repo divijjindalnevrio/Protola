@@ -14162,6 +14162,8 @@ MonoBehaviour:
   widthSlider: {fileID: 831580694}
   thicknessSlider: {fileID: 1187545048}
   depthSlider: {fileID: 1581739702}
+  currentCounter: {fileID: 0}
+  basinMovement: {fileID: 1227306144}
 --- !u!114 &1426068426
 MonoBehaviour:
   m_ObjectHideFlags: 0

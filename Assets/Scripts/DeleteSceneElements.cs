@@ -26,11 +26,9 @@ public class DeleteSceneElements : MonoBehaviour
         }
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
-            Destroy(counterGenerator.currentCounter.gameObject);
+            Destroy(basinMovement.SelectedGameobject);
             basinMovement.selectedObject = SelectedObject.none;
             worldCanvas.SettingWorldUiCanvasToFalse();
         }
-        //Destroy(basinMovement.SelectedGameobject);
-        //basinMovement.selectedObject = SelectedObject.none;
     }
 }

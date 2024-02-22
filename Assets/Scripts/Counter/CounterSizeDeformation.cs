@@ -14,11 +14,22 @@ public class CounterSizeDeformation : MonoBehaviour
     private float depth;
     private CounterGenerator counterGenerator;
     [SerializeField] private Transform currentCounter;
+    [SerializeField] private BasinMovement basinMovement;
     void Start()
     {
         counterGenerator = GetComponent<CounterGenerator>();
         currentCounter = counterGenerator.currentCounter.transform;
         counterGenerator.OnCounterAdded += GettingCurrentCounter;
+        basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+
+    }
+
+    private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
+    {
+        if(e == SelectedObject.counter)
+        {
+            GettingCurrentCounter();
+        }
     }
 
     private void Update()
@@ -39,6 +50,6 @@ public class CounterSizeDeformation : MonoBehaviour
 
     private void GettingCurrentCounter()
     {
-        currentCounter = counterGenerator.currentCounter.transform;
+        currentCounter = basinMovement.currentCounter.transform;
     }
 }

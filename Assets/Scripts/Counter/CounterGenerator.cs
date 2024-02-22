@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CounterGenerator : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class CounterGenerator : MonoBehaviour
     public GameObject counterWhole;
     public GameObject _instanciateCounter;
     [SerializeField] private WorldCanvas worldCanvas;
+    public event Action OnCounterAdded;
 
     void Start()
     {
         SettingCounterSelected();
+       
     }
 
     public void CounterInstanciate()
@@ -39,7 +42,10 @@ public class CounterGenerator : MonoBehaviour
     {
         GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject,
         currentCounter.transform.position + new Vector3(5f, 0f, 0f), Quaternion.identity);
+        currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         DestroyPreviousBasins(cunterbase);
+        currentCounter = cunterbase;
+        OnCounterAdded();
         cunterbase.transform.SetParent(counterWhole.transform, false);
     }
 

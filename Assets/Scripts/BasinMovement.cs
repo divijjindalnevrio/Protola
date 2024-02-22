@@ -41,7 +41,6 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private BasinsGenerator basinsGenerator;
     [SerializeField] private CounterGenerator counterGenerator;
     [SerializeField] private RotationScript rotationScript;
-
     [SerializeField] private CounterTypeSO counterTypeSO;
 
 
@@ -51,6 +50,7 @@ public class BasinMovement : MonoBehaviour
     private void Start()
     {
         basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
+        counterGenerator.OnCounterAdded += SettingCurrentSelectedObject;
     }
 
     void Update()
@@ -146,7 +146,7 @@ public class BasinMovement : MonoBehaviour
             }
             isInstanciateCounterMoved = true;
             Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
-            counterWhole.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
+            currentCounter.transform.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
             OnGameobjectMoving();
         }
 
@@ -225,6 +225,12 @@ public class BasinMovement : MonoBehaviour
     private void SettingCurrentBasin()
     {
         currentBasin = basinsGenerator.currentBasin.transform;
+    }
+    private void SettingCurrentSelectedObject()
+    {
+        // setting added counter to selected
+        currentCounter = counterGenerator.currentCounter;
+        SelectedGameobject = counterGenerator.currentCounter.transform.Find("Counter").gameObject;
     }
 
    

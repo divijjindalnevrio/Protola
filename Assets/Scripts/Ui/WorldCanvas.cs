@@ -5,11 +5,12 @@ using System;
 
 public class WorldCanvas : MonoBehaviour
 {
-    public GameObject WorldUiCanvas;
+    private GameObject WorldUiCanvasButtons;
     [SerializeField] private BasinMovement basinMovement;
 
     void Start()
     {
+        WorldUiCanvasButtons = transform.Find("AllWorldButtons").gameObject;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnGameobjectMoving += SettingWorldUiCanvasToFalse;
     }
@@ -29,12 +30,13 @@ public class WorldCanvas : MonoBehaviour
 
     public void SettingWorldUiCanvasToTrue()
     {
-        WorldUiCanvas.SetActive(true);
+        WorldUiCanvasButtons.SetActive(true);
+        WorldUiCanvasButtons.transform.position = basinMovement.currentCounter.transform.position;
     }
 
     public void SettingWorldUiCanvasToFalse()
     {
-        WorldUiCanvas.SetActive(false);
+        WorldUiCanvasButtons.SetActive(false);
     }
 
 

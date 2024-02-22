@@ -10636,7 +10636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458d56e5b993244059e8b7b7c8909a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldUiCanvas: {fileID: 1979668097}
   basinMovement: {fileID: 1227306144}
 --- !u!1001 &1026988191
 PrefabInstance:

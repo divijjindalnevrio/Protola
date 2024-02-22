@@ -191,28 +191,6 @@ public class BasinMovement : MonoBehaviour
 
     }
 
-    //private void CounterInstanciate()
-    //{
-    //    _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, Quaternion.identity);
-    //    _instanciateCounter.transform.parent = currentCounter.transform.parent;
-    //    currentCounter = _instanciateCounter;
-    //    isCounterInstanciate = true;
-    //    if(_isBasinGenerate)
-    //    {
-    //       // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;          < ---- Need to see in here.
-    //    }
-    //}
-
-    //private void ChangingSizeOfCounter()
-    //{
-    //    width = widthSlider.value;
-    //    thickness = thicknessSlider.value;
-    //    depth = depthSlider.value;
-    //    currentCounter.transform.GetChild(0).transform.localScale = new Vector3(width, currentCounter.transform.GetChild(0).transform.localScale.y, depth);
-    //    currentCounter.transform.position = new Vector3(currentCounter.transform.position.x, thickness, currentCounter.transform.position.z);
-
-    //}
-
     public void DeselectingAllDashLines()
     {
         if (SelectedGameobject != null)

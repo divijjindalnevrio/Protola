@@ -15,7 +15,7 @@ public class CounterGenerator : MonoBehaviour
     void Start()
     {
         SettingCounterSelected();
-       
+
     }
 
     public void CounterInstanciate()
@@ -40,13 +40,14 @@ public class CounterGenerator : MonoBehaviour
 
     public void AddingCounter()
     {
-        GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject,
-        currentCounter.transform.position + new Vector3(5f, 0f, 0f), Quaternion.identity);
+        GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject,currentCounter.transform.position, Quaternion.identity);
+        cunterbase.transform.position = currentCounter.transform.localPosition + new Vector3(5f,0f,0f);
         currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         DestroyPreviousBasins(cunterbase);
         currentCounter = cunterbase;
-        OnCounterAdded();
+        basinMovement.currentCounter = cunterbase;
         cunterbase.transform.SetParent(counterWhole.transform, false);
+        OnCounterAdded();
     }
 
     private static void DestroyPreviousBasins(GameObject cunterbase)

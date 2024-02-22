@@ -7,12 +7,14 @@ public class WorldCanvas : MonoBehaviour
 {
     private GameObject WorldUiCanvasButtons;
     [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private CounterGenerator counterGenerator;
 
     void Start()
     {
         WorldUiCanvasButtons = transform.Find("AllWorldButtons").gameObject;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnGameobjectMoving += SettingWorldUiCanvasToFalse;
+        counterGenerator.OnCounterAdded += SettingWorldUiCanvasToTrue;
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
@@ -31,7 +33,7 @@ public class WorldCanvas : MonoBehaviour
     public void SettingWorldUiCanvasToTrue()
     {
         WorldUiCanvasButtons.SetActive(true);
-        WorldUiCanvasButtons.transform.position = basinMovement.currentCounter.transform.position;
+        WorldUiCanvasButtons.transform.parent.position = basinMovement.currentCounter.transform.position;
     }
 
     public void SettingWorldUiCanvasToFalse()

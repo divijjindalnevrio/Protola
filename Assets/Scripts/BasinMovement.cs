@@ -102,6 +102,7 @@ public class BasinMovement : MonoBehaviour
                 selectedObject = SelectedObject.counter;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
+                rotationScript.CounterRotationVal = 0f + SelectedGameobject.transform.eulerAngles.y;
                 currentCounter = SelectedGameobject.transform.parent.gameObject;
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 if (basinsGenerator.InstanciateBasin != null)

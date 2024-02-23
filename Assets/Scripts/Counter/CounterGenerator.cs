@@ -61,7 +61,8 @@ public class CounterGenerator : MonoBehaviour
     {
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
-            lastSelectedCounterRotation = basinMovement.SelectedGameobject.transform.rotation;
+            rotaionval = basinMovement.SelectedGameobject.transform.rotation;
+            //lastSelectedCounterRotation = basinMovement.SelectedGameobject.transform.rotation;
             rotationScript.CounterRotationVal = basinMovement.SelectedGameobject.transform.eulerAngles.y;
         }
         return rotaionval;

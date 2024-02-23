@@ -48,6 +48,7 @@ public class CounterGenerator : MonoBehaviour
         basinMovement.currentCounter = cunterbase;
         cunterbase.transform.SetParent(counterWhole.transform, false);
         OnCounterAdded();
+        currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().material.renderQueue = 3002;
     }
 
     private static void DestroyPreviousBasins(GameObject cunterbase)

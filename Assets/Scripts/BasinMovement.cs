@@ -139,7 +139,7 @@ public class BasinMovement : MonoBehaviour
             _isSelected = true;
             if (isCounterInstanciate == false)
             {
-                counterGenerator.CounterInstanciate();
+                counterGenerator.CounterInstanciate(SelectedGameobject.transform.rotation);
                 isCounterInstanciate = true;
             }
             isInstanciateCounterMoved = true;

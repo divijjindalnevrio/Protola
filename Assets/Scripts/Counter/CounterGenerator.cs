@@ -20,9 +20,9 @@ public class CounterGenerator : MonoBehaviour
 
     }
 
-    public void CounterInstanciate()
+    public void CounterInstanciate(Quaternion currentObjRotation)
     {
-        _instanciateCounter = Instantiate(basinMovement.currentCounter, basinMovement.currentCounter.transform.position, Quaternion.identity);
+        _instanciateCounter = Instantiate(basinMovement.currentCounter, basinMovement.currentCounter.transform.position, currentObjRotation);
        // _instanciateCounter.GetComponent<BasinMovement>().enabled = false;
        // Destroy(_instanciateCounter.transform.Find("WorldUiCanvas").gameObject);
         _instanciateCounter.transform.parent = counterWhole.transform.parent;

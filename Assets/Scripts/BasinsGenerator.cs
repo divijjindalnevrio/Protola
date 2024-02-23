@@ -38,7 +38,7 @@ public class BasinsGenerator : MonoBehaviour
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
         selectedDashCube.name = "SelectedDashLineCube";
         selectedDashCube.transform.SetParent(currentBasin.transform, false);
-        currentBasin.transform.parent = currentBasinObj.transform;
+        currentBasin.transform.parent = basinMovement.currentCounter.transform.Find("Basin").transform;
         SettingBasinSelected();
         currentBasin.transform.localPosition = new Vector3(lastSelectedBasinPos.x, 0.02f, lastSelectedBasinPos.z);
         OnBasinGenrate?.Invoke();

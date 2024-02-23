@@ -152,6 +152,7 @@ public class BasinMovement : MonoBehaviour
         if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
         {
             selectedObject = SelectedObject.none;
+            SelectedGameobject = null;
             OnGameobjectSelected.Invoke(this, selectedObject);
             currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }
@@ -184,6 +185,7 @@ public class BasinMovement : MonoBehaviour
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;
+            SelectedGameobject = null;
             OnGameobjectSelected.Invoke(this, selectedObject);
             SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         }

@@ -74,12 +74,10 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
-
                 CheckAndUpdateSelectedElement(raycastHit);
                 if (selectedObject == SelectedObject.counter)
                 {
                     CounterMovement(raycastHit);
-                    
                 }
 
                 else if (selectedObject == SelectedObject.basin)

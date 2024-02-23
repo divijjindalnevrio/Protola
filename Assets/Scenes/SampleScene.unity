@@ -14143,6 +14143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basinMovement: {fileID: 1227306144}
+  rotationScript: {fileID: 1227306143}
   currentCounter: {fileID: 1393768697}
   counterWhole: {fileID: 1227306140}
   _instanciateCounter: {fileID: 0}

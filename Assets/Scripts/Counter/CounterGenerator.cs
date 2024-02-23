@@ -6,11 +6,13 @@ using System;
 public class CounterGenerator : MonoBehaviour
 {
     [SerializeField] BasinMovement basinMovement;
+    [SerializeField] RotationScript rotationScript;
     public GameObject currentCounter;
     public GameObject counterWhole;
     public GameObject _instanciateCounter;
     [SerializeField] private WorldCanvas worldCanvas;
     public event Action OnCounterAdded;
+    private Quaternion lastSelectedCounterRotation = Quaternion.Euler(Vector3.zero);
 
     void Start()
     {
@@ -40,8 +42,12 @@ public class CounterGenerator : MonoBehaviour
 
     public void AddingCounter()
     {
-        GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject,currentCounter.transform.position, Quaternion.identity);
-        cunterbase.transform.position = currentCounter.transform.localPosition + new Vector3(5f,0f,0f);
+        lastSelectedCounterRotation = Quaternion.Euler(Vector3.zero);
+        rotationScript.CounterRotationVal = 0f;
+        lastSelectedCounterRotation = SettinglastSelectedCounterRotation(lastSelectedCounterRotation);
+
+        GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject, basinMovement.SelectedGameobject.transform.parent.position, lastSelectedCounterRotation);
+        cunterbase.transform.position = basinMovement.SelectedGameobject.transform.parent.transform.localPosition + new Vector3(5f,0f,0f);
         currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         DestroyPreviousBasins(cunterbase);
         currentCounter = cunterbase;
@@ -49,6 +55,16 @@ public class CounterGenerator : MonoBehaviour
         cunterbase.transform.SetParent(counterWhole.transform, false);
         OnCounterAdded();
         currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().material.renderQueue = 3002;
+    }
+
+    private Quaternion SettinglastSelectedCounterRotation(Quaternion rotaionval)
+    {
+        if (basinMovement.selectedObject == SelectedObject.counter)
+        {
+            lastSelectedCounterRotation = basinMovement.SelectedGameobject.transform.rotation;
+            rotationScript.CounterRotationVal = basinMovement.SelectedGameobject.transform.eulerAngles.y;
+        }
+        return rotaionval;
     }
 
     private static void DestroyPreviousBasins(GameObject cunterbase)

@@ -44,6 +44,11 @@ public class MainUiController : MonoBehaviour
         {
             InitialButtoUiState();
         }
+        if(e == SelectedObject.none)
+        {
+            SelectingSurfaceColor();
+        }
+
 
     }
 

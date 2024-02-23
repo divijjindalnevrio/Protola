@@ -78,7 +78,6 @@ public class BasinsGenerator : MonoBehaviour
         Transform selectedGameobject = basinMovement.SelectedGameobject.transform;
         InstanciateBasin = Instantiate(selectedGameobject.gameObject,selectedGameobject.position, selectedGameobject.localRotation);
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
-        //InstanciateBasin.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = basinMovement.defaultMat.color;
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
         basinMovement.isBasinInstanciate = true;
     }

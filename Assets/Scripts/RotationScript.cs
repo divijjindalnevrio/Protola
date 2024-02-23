@@ -50,7 +50,7 @@ public class RotationScript : MonoBehaviour
     }
 
   
-    public void SettingRightRotateValue()
+    public void SettingRightRotateValue()                  //<--------------- need to refactor here
     {
         if(basinMovement.selectedObject != SelectedObject.none)
         {

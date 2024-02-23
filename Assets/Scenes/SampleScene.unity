@@ -1623,7 +1623,7 @@ PrefabInstance:
     - target: {fileID: 563224462239506167, guid: b2a839180a2ba430e832b42b7ea6421d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: DB120
+      value: OV_48
       objectReference: {fileID: 0}
     - target: {fileID: 2688408177671655439, guid: b2a839180a2ba430e832b42b7ea6421d,
         type: 3}

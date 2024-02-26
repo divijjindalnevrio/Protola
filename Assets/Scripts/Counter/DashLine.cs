@@ -23,10 +23,9 @@ public class DashLine : MonoBehaviour
     [SerializeField] private LineRenderer frontRight;
     [SerializeField] private LineRenderer backLeft;
     [SerializeField] private LineRenderer backRight;
+
     void Start()
     {
-       
-     
         
     }
     // Update is called once per frame

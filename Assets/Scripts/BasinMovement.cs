@@ -42,10 +42,12 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private CounterGenerator counterGenerator;
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private CounterTypeSO counterTypeSO;
+    [SerializeField] private BasinBound basinBound;
 
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
     public event Action OnGameobjectMoving;
+    public event Action OnCounterStopMoving;
 
     private void Start()
     {
@@ -133,6 +135,7 @@ public class BasinMovement : MonoBehaviour
             isInstanciateCounterMoved = false;
             Destroy(counterGenerator._instanciateCounter);
             isCounterInstanciate = false;
+            OnCounterStopMoving();
         }
 
         if (raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -147,6 +150,7 @@ public class BasinMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
             currentCounter.transform.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
             OnGameobjectMoving();
+            
         }
 
         if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
@@ -155,6 +159,7 @@ public class BasinMovement : MonoBehaviour
             //SelectedGameobject = null;
             OnGameobjectSelected.Invoke(this, selectedObject);
             currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+           
         }
 
         return raycastHit;
@@ -171,17 +176,18 @@ public class BasinMovement : MonoBehaviour
             isBasinInstanciate = false;
         }
 
-        if (rayHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
+        if (rayHit.collider.tag == "Basin" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
         {
             if (isBasinInstanciate == false)
             {
                 basinsGenerator.BasinInstanciate();
             }
             isInstanciateBasinMoved = true;
-            Vector3 targetPosition = new Vector3(rayHit.point.x, SelectedGameobject.transform.position.y, rayHit.point.z);
+            Vector3 targetPosition = new Vector3(basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).x, SelectedGameobject.transform.position.y, basinBound.ClapOnXAxis(rayHit,SelectedGameobject.transform).z);
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
             OnGameobjectMoving();
         }
+
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;

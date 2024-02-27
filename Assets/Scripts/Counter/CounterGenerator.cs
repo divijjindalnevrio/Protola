@@ -62,7 +62,6 @@ public class CounterGenerator : MonoBehaviour
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
             rotaionval = basinMovement.SelectedGameobject.transform.rotation;
-            //lastSelectedCounterRotation = basinMovement.SelectedGameobject.transform.rotation;
             rotationScript.CounterRotationVal = basinMovement.SelectedGameobject.transform.eulerAngles.y;
         }
         return rotaionval;
@@ -78,5 +77,25 @@ public class CounterGenerator : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+    }
+
+    public void DisableAllBasinsCollider()
+    {
+        Transform basinParent = basinMovement.currentCounter.transform.Find("Basin").transform;
+        foreach (Transform child in basinParent)
+        {
+            child.GetComponent<BoxCollider>().enabled = false;
+        }
+        
+    }
+
+    public void EnableAllBasinsCollider()
+    {
+        Transform basinParent = basinMovement.currentCounter.transform.Find("Basin").transform;
+        foreach (Transform child in basinParent)
+        {
+            child.GetComponent<BoxCollider>().enabled = true;
+        }
+
     }
 }

@@ -36,7 +36,7 @@ public class BasinMovement : MonoBehaviour
     public bool isPointerOverUI = false;
     public bool isUiCanvasIsOpen = false;
     public SelectedObject selectedObject;
-
+    
     public Material defaultMat;
     [SerializeField] private BasinsGenerator basinsGenerator;
     [SerializeField] private CounterGenerator counterGenerator;
@@ -135,6 +135,7 @@ public class BasinMovement : MonoBehaviour
             isInstanciateCounterMoved = false;
             Destroy(counterGenerator._instanciateCounter);
             isCounterInstanciate = false;
+            counterGenerator.EnableAllBasinsCollider();
             OnCounterStopMoving();
         }
 
@@ -147,10 +148,11 @@ public class BasinMovement : MonoBehaviour
                 isCounterInstanciate = true;
             }
             isInstanciateCounterMoved = true;
+            counterGenerator.DisableAllBasinsCollider();
             Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
             currentCounter.transform.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
             OnGameobjectMoving();
-            
+
         }
 
         if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")

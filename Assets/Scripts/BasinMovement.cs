@@ -176,7 +176,7 @@ public class BasinMovement : MonoBehaviour
             isBasinInstanciate = false;
         }
 
-        if (rayHit.collider.tag == "Basin" && Input.GetTouch(0).phase == TouchPhase.Moved && isCounterSelected != true)
+        if (rayHit.collider.tag == "Basin" && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject == SelectedObject.basin)
         {
             if (isBasinInstanciate == false)
             {

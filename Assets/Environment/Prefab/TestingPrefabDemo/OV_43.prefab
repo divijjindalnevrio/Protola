@@ -103,6 +103,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -712522065548440559, guid: c1d7a2be09568425c855580b94953152,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basin
+      objectReference: {fileID: 0}
     - target: {fileID: -630939621396423661, guid: c1d7a2be09568425c855580b94953152,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -112,6 +117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 710183102880238943, guid: c1d7a2be09568425c855580b94953152,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c1d7a2be09568425c855580b94953152,
         type: 3}
@@ -171,8 +181,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.46306527, y: 0.12652767, z: 1}
-  m_Center: {x: 0, y: -0.06358683, z: 0}
+  m_Size: {x: 0.46306527, y: 0.13093278, z: 0.43963462}
+  m_Center: {x: 0, y: -0.061384276, z: 0}
 --- !u!1 &7493614910000315478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 710183102880238943, guid: c1d7a2be09568425c855580b94953152,

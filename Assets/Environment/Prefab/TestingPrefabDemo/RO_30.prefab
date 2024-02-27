@@ -96,12 +96,17 @@ PrefabInstance:
     - target: {fileID: -2624782462256974580, guid: c5dd8721a8edf4824b08a58b634b7217,
         type: 3}
       propertyPath: m_Name
-      value: Basin
+      value: Cube
       objectReference: {fileID: 0}
     - target: {fileID: -2624782462256974580, guid: c5dd8721a8edf4824b08a58b634b7217,
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2624782462256974580, guid: c5dd8721a8edf4824b08a58b634b7217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basin
       objectReference: {fileID: 0}
     - target: {fileID: -630939621396423661, guid: c5dd8721a8edf4824b08a58b634b7217,
         type: 3}
@@ -112,6 +117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 710183102880238943, guid: c5dd8721a8edf4824b08a58b634b7217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c5dd8721a8edf4824b08a58b634b7217,
         type: 3}
@@ -190,5 +200,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32989752, y: 0.13513952, z: 1}
-  m_Center: {x: 0.001637578, y: -0.06756976, z: 0}
+  m_Size: {x: 0.32989752, y: 0.13923573, z: 1}
+  m_Center: {x: 0.001637578, y: -0.06552166, z: 0}

@@ -179,6 +179,7 @@ public class BasinMovement : MonoBehaviour
             isBasinInstanciate = false;
             basinCanMove = false;
         }
+        ///
 
         if (rayHit.collider.tag == "Basin" && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject == SelectedObject.basin)
         {
@@ -196,7 +197,8 @@ public class BasinMovement : MonoBehaviour
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
             OnGameobjectMoving();
         }
-
+        ////
+      
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;

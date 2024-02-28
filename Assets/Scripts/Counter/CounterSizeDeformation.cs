@@ -54,8 +54,5 @@ public class CounterSizeDeformation : MonoBehaviour
         currentCounter = basinMovement.currentCounter.transform;
     }
 
-    private void OnPointerExit()
-    {
-        Debug.Log("Slider is stop moving : ");
-    }
+    
 }

@@ -275,8 +275,5 @@ public class MainUiController : MonoBehaviour
         }
 
     }
-
-    
-   
-   
+ 
 }

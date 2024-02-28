@@ -24,18 +24,10 @@ public class BasinBound : MonoBehaviour
     void Start()
     {
         basinMovement.OnCounterStopMoving += GetMaxAndMinXPosition;
-        basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         GettingMeshVertices();
         GetMaxAndMinXPosition();
     }
 
-    private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
-    {
-       if(e == SelectedObject.basin)
-        {
-
-        }
-    }
 
     private void GettingMeshVertices()
     {
@@ -79,7 +71,7 @@ public class BasinBound : MonoBehaviour
     public Vector3 ClapOnXAxis(RaycastHit pointHit, Transform basinSize)
     {
         x = Mathf.Clamp(pointHit.point.x, xMin + basinSize.localScale.x/2, xMax - basinSize.localScale.x/2);
-        z = Mathf.Clamp(pointHit.point.z, zMin + basinSize.localScale.z / 2, zMax - basinSize.localScale.z / 2);
+        z = Mathf.Clamp(pointHit.point.z, zMin + basinSize.localScale.z/2, zMax - basinSize.localScale.z/2);
 
         // z = Mathf.Clamp(pointHit.point.z, zMin + 0.5f, zMax - 0.5f);
 

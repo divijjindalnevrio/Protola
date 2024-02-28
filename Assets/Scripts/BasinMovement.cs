@@ -32,6 +32,7 @@ public class BasinMovement : MonoBehaviour
 
     private bool isInstanciateBasinMoved = false;
     private bool isInstanciateCounterMoved = false;
+    private bool basinCanMove = false;
 
     public bool isPointerOverUI = false;
     public bool isUiCanvasIsOpen = false;
@@ -176,16 +177,22 @@ public class BasinMovement : MonoBehaviour
             isInstanciateBasinMoved = false;
             Destroy(basinsGenerator.InstanciateBasin);
             isBasinInstanciate = false;
+            basinCanMove = false;
         }
 
         if (rayHit.collider.tag == "Basin" && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject == SelectedObject.basin)
+        {
+            basinCanMove = true;
+        }
+
+        if(basinCanMove)
         {
             if (isBasinInstanciate == false)
             {
                 basinsGenerator.BasinInstanciate();
             }
             isInstanciateBasinMoved = true;
-            Vector3 targetPosition = new Vector3(basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).x, SelectedGameobject.transform.position.y, basinBound.ClapOnXAxis(rayHit,SelectedGameobject.transform).z);
+            Vector3 targetPosition = new Vector3(basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).x, SelectedGameobject.transform.position.y, basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).z);
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
             OnGameobjectMoving();
         }

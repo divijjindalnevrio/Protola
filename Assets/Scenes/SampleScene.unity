@@ -13772,6 +13772,7 @@ MonoBehaviour:
   basinsGenerator: {fileID: 1227306146}
   basinDashLinePoints: []
   basinVertices: []
+  vector3s: []
 --- !u!1 &1234714367
 GameObject:
   m_ObjectHideFlags: 0

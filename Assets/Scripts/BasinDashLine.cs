@@ -12,6 +12,7 @@ public class BasinDashLine : MonoBehaviour
     public List<GameObject> basinDashLinePoints = new List<GameObject>();
 
     public List<Vector3> basinVertices = new List<Vector3>();
+    public List<Vector3> vector3s = new List<Vector3>();
 
     void Start()
     {
@@ -34,6 +35,14 @@ public class BasinDashLine : MonoBehaviour
     private void RestTheSelectedDashLineBasin()
     {
         GettingDashLinePoints();
+        foreach(Vector3 child in vector3s)
+        {
+           foreach(GameObject obj in basinDashLinePoints)
+            {
+                obj.transform.localPosition = child;
+                Debug.Log("CHECK VAL HERE : " + obj.transform.localPosition);
+            }
+        }
     }
 
     private void GettingDashLinePoints()
@@ -54,11 +63,22 @@ public class BasinDashLine : MonoBehaviour
     private void GetTheBasinVertices()
     {
         MeshFilter basinMeshFilter = CurrentBasin.transform.Find("Cube").GetComponent<MeshFilter>();
-        Vector3[] vector3s = basinMeshFilter.mesh.vertices;
-        foreach(Vector3 index in vector3s)
-        {
-            basinVertices.Add(basinMeshFilter.transform.TransformPoint(index));
-        }
-        basinVertices = basinVertices.Distinct().ToList();
+        BoxCollider b = CurrentBasin.GetComponent<BoxCollider>();
+
+        //foreach (Vector3 index in vector3s)
+        //{
+        //    basinVertices.Add(basinMeshFilter.transform.TransformPoint(index));
+        //}
+        //basinVertices = basinVertices.Distinct().ToList();
+
+        vector3s.Clear();
+        vector3s.Add(b.center + new Vector3(-b.size.x, -b.size.y, -b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.size.x, -b.size.y, -b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.size.x, -b.size.y, b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(-b.size.x, -b.size.y, b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(-b.size.x, b.size.y, -b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.size.x, b.size.y, -b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.size.x, b.size.y, b.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(-b.size.x, b.size.y, b.size.z) * 0.5f);
     }
 }

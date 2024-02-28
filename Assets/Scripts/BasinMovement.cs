@@ -122,6 +122,7 @@ public class BasinMovement : MonoBehaviour
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+                basinBound.GetMaxAndMinXPosition();
             }
         }
 
@@ -158,7 +159,6 @@ public class BasinMovement : MonoBehaviour
         if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
         {
             selectedObject = SelectedObject.none;
-            //SelectedGameobject = null;
             OnGameobjectSelected.Invoke(this, selectedObject);
             currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
            
@@ -193,9 +193,10 @@ public class BasinMovement : MonoBehaviour
         if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             selectedObject = SelectedObject.none;
-            //SelectedGameobject = null;
             OnGameobjectSelected.Invoke(this, selectedObject);
             SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+           
+
         }
 
     }

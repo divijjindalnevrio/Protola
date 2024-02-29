@@ -49,7 +49,7 @@ public class BasinMovement : MonoBehaviour
     public event EventHandler<SelectedObject> OnGameobjectSelected;
     public event Action OnGameobjectMoving;
     public event Action OnCounterStopMoving;
-
+    public event Action OnBasinStopMoving;
     private void Start()
     {
         basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
@@ -183,6 +183,7 @@ public class BasinMovement : MonoBehaviour
             Destroy(basinsGenerator.InstanciateBasin);
             isBasinInstanciate = false;
             basinCanMove = false;
+            OnBasinStopMoving();
         }
         ///
 

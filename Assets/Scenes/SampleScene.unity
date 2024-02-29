@@ -15892,6 +15892,7 @@ MonoBehaviour:
   counterWhole: {fileID: 1227306140}
   _instanciateCounter: {fileID: 0}
   worldCanvas: {fileID: 1022433466}
+  grayMat: {fileID: 2100000, guid: 5b816e9e3858f4d58b5389dbb15f352a, type: 2}
 --- !u!114 &1426068425
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,24 +14,35 @@ public class CounterGenerator : MonoBehaviour
     public event Action OnCounterAdded;
     private Quaternion lastSelectedCounterRotation = Quaternion.Euler(Vector3.zero);
 
+    [SerializeField] private Material grayMat;
+    private Material defaultObjectMat;
     void Start()
     {
         SettingCounterSelected();
-
+        basinMovement.OnCounterStopMoving += SetObjectDefaultMat;
     }
 
     public void CounterInstanciate(Quaternion currentObjRotation)
     {
-        _instanciateCounter = Instantiate(basinMovement.currentCounter, basinMovement.currentCounter.transform.position, currentObjRotation);
-       // _instanciateCounter.GetComponent<BasinMovement>().enabled = false;
-       // Destroy(_instanciateCounter.transform.Find("WorldUiCanvas").gameObject);
+        GameObject currentCounter = basinMovement.currentCounter;
+        _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, currentObjRotation);
+
         _instanciateCounter.transform.parent = counterWhole.transform.parent;
-        //currentCounter = _instanciateCounter;
-        //if (_isBasinGenerate)
-        //{
-        //    // currentBasin = _instanciateCounter.transform.GetChild(1).transform.GetChild(0).gameObject;
-        //}
+        SettingGrayMatToOboject(currentCounter.transform);
+
     }
+
+    private void SettingGrayMatToOboject(Transform selectedGameobject)
+    {
+        defaultObjectMat = selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material;
+        selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material = grayMat;
+    }
+
+    private void SetObjectDefaultMat()
+    {
+        basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().material = defaultObjectMat;
+    }
+
     private void SettingCounterSelected()
     {
         currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(true);

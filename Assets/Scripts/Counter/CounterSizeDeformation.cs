@@ -15,6 +15,7 @@ public class CounterSizeDeformation : MonoBehaviour
     private CounterGenerator counterGenerator;
     [SerializeField] private Transform currentCounter;
     [SerializeField] private BasinMovement basinMovement;
+
     void Start()
     {
         counterGenerator = GetComponent<CounterGenerator>();

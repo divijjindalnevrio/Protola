@@ -46,7 +46,8 @@ public class CounterSurfaceChanger : MonoBehaviour
         }
         else
         {
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material = counterMat[material];
+            // for counter
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = counterTex[material];
         }
 
     }
@@ -64,7 +65,8 @@ public class CounterSurfaceChanger : MonoBehaviour
         }
         else
         {
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = null;
+            // for counter
+           // selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = null;
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = colors[color];
            
         }

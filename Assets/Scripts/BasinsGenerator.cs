@@ -18,10 +18,13 @@ public class BasinsGenerator : MonoBehaviour
     private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private WorldCanvas worldCanvas;
+    [SerializeField] private Material grayMat;
+    private Material defaultObjectMat;
 
     void Start()
     {
         SettingBasinToDict();
+        basinMovement.OnBasinStopMoving += SetObjectDefaultMat;
     }
 
     public void BasinGererator(string basinName)
@@ -79,7 +82,20 @@ public class BasinsGenerator : MonoBehaviour
         InstanciateBasin = Instantiate(selectedGameobject.gameObject,selectedGameobject.position, selectedGameobject.localRotation);
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
+        SettingGrayMatToOboject(selectedGameobject);
         basinMovement.isBasinInstanciate = true;
+    }
+
+
+    public void SettingGrayMatToOboject(Transform selectedGameobject)
+    {
+        defaultObjectMat = selectedGameobject.Find("Cube").GetComponent<MeshRenderer>().material;
+        selectedGameobject.Find("Cube").GetComponent<MeshRenderer>().material = grayMat;
+    }
+
+    private void SetObjectDefaultMat()
+    {
+        basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material = defaultObjectMat;
     }
 
     private void SettingBasinToDict()

@@ -85,7 +85,6 @@ public class BasinMovement : MonoBehaviour
 
                 else if (selectedObject == SelectedObject.basin)
                 {
-                   
                     SinkMovement(raycastHit); 
                 }
 
@@ -204,8 +203,6 @@ public class BasinMovement : MonoBehaviour
             selectedObject = SelectedObject.none;
             OnGameobjectSelected.Invoke(this, selectedObject);
             SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
-           
-
         }
 
     }

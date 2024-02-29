@@ -13686,7 +13686,7 @@ MonoBehaviour:
   isBasinInstanciate: 0
   isCounterInstanciate: 0
   isPointerOverUI: 0
-  isUiCanvasIsOpen: 0
+  isUiCanvasIsOpen: 1
   selectedObject: 0
   defaultMat: {fileID: 2100000, guid: 58b38b18666c04c4f8661d9946c4a34c, type: 2}
   basinsGenerator: {fileID: 1227306146}

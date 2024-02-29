@@ -22,7 +22,7 @@ public class BasinDashLine : MonoBehaviour
     private void BasinsGenerator_OnBasinGenrate()
     {
         AssignCurrentBasin();
-        //GetTheBasinVertices();
+        GetTheBasinVertices();
         RestTheSelectedDashLineBasin();
         
     }
@@ -35,14 +35,11 @@ public class BasinDashLine : MonoBehaviour
     private void RestTheSelectedDashLineBasin()
     {
         GettingDashLinePoints();
-        foreach(Vector3 child in vector3s)
+        for (int j = 0; j < 8; j++)
         {
-           foreach(GameObject obj in basinDashLinePoints)
-            {
-                obj.transform.localPosition = child;
-                Debug.Log("CHECK VAL HERE : " + obj.transform.localPosition);
-            }
+            basinDashLinePoints[j].transform.localPosition = vector3s[j];
         }
+        
     }
 
     private void GettingDashLinePoints()
@@ -72,13 +69,17 @@ public class BasinDashLine : MonoBehaviour
         //basinVertices = basinVertices.Distinct().ToList();
 
         vector3s.Clear();
-        vector3s.Add(b.center + new Vector3(-b.size.x, -b.size.y, -b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.size.x, -b.size.y, -b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.size.x, -b.size.y, b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(-b.size.x, -b.size.y, b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(-b.size.x, b.size.y, -b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.size.x, b.size.y, -b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.size.x, b.size.y, b.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(-b.size.x, b.size.y, b.size.z) * 0.5f);
+        Debug.Log("GetTheBasinVertices Center : " + b.center);
+        Debug.Log("GetTheBasinVertices xLen : " + b.bounds.size.x);
+        Debug.Log("GetTheBasinVertices yLen : " + b.bounds.size.y);
+        Debug.Log("GetTheBasinVertices zLen : " + b.bounds.size.z);
+        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, -b.bounds.size.y, -b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.bounds.size.x, -b.bounds.size.y, -b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.bounds.size.x, -b.bounds.size.y, b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, -b.bounds.size.y, b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, b.bounds.size.y, -b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.bounds.size.x, b.bounds.size.y, -b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(b.bounds.size.x, b.bounds.size.y, b.bounds.size.z) * 0.5f);
+        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, b.bounds.size.y, b.bounds.size.z) * 0.5f);
     }
 }

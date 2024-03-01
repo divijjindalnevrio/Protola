@@ -15940,6 +15940,7 @@ MonoBehaviour:
   counterGranulateTex:
   - {fileID: 2800000, guid: 45ec6e2efb3a24f9ebc804e0fb10ddf7, type: 3}
   - {fileID: 2800000, guid: 83776e0fc8c864aaa97ec77b3b879393, type: 3}
+  colorDefaultTex: {fileID: 2800000, guid: 45ec6e2efb3a24f9ebc804e0fb10ddf7, type: 3}
   basinMovement: {fileID: 1227306144}
   mainUiController: {fileID: 0}
   uiModel: {fileID: 0}

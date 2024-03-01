@@ -5,8 +5,10 @@ using UnityEngine;
 public class CounterSurfaceChanger : MonoBehaviour
 {
     [SerializeField] private List<Material> counterMat = new List<Material>();
+
     [SerializeField] private List<Texture> counterTex = new List<Texture>();
     [SerializeField] private List<Texture> counterGranulateTex = new List<Texture>();
+    [SerializeField] private Texture colorDefaultTex;
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
@@ -71,7 +73,8 @@ public class CounterSurfaceChanger : MonoBehaviour
         else
         {
             // for counter
-           // selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = null;
+            // selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = null;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = colors[color];
             lastSelectedColor = colors[color];
 

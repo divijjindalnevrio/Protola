@@ -13,6 +13,7 @@ public class CounterSurfaceChanger : MonoBehaviour
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
     private Color lastSelectedColor = Color.white;
+    private Color basinlastSelectedColor = Color.white;
     public List<Color> colors = new List<Color>();
 
     void Start()
@@ -49,7 +50,7 @@ public class CounterSurfaceChanger : MonoBehaviour
         if (selectedObjcet.CompareTag("Basin"))
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = counterGranulateTex[material];
-            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = lastSelectedColor;
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = basinlastSelectedColor;
         }
 
         else
@@ -69,14 +70,16 @@ public class CounterSurfaceChanger : MonoBehaviour
         if (selectedObjcet.CompareTag("Basin"))
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
+
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = colors[color];
-           
+            basinlastSelectedColor = colors[color];
         }
         else
         {
             // for counter
-            // selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = null;
+
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
+
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = colors[color];
             lastSelectedColor = colors[color];
 

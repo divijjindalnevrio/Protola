@@ -73,13 +73,14 @@ public class BasinDashLine : MonoBehaviour
         Debug.Log("GetTheBasinVertices xLen : " + b.bounds.size.x);
         Debug.Log("GetTheBasinVertices yLen : " + b.bounds.size.y);
         Debug.Log("GetTheBasinVertices zLen : " + b.bounds.size.z);
-        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, -b.bounds.size.y, -b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.bounds.size.x, -b.bounds.size.y, -b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.bounds.size.x, -b.bounds.size.y, b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, -b.bounds.size.y, b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, b.bounds.size.y, -b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.bounds.size.x, b.bounds.size.y, -b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(b.bounds.size.x, b.bounds.size.y, b.bounds.size.z) * 0.5f);
-        vector3s.Add(b.center + new Vector3(-b.bounds.size.x, b.bounds.size.y, b.bounds.size.z) * 0.5f);
+
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, -b.size.y * 1f, -b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, -b.size.y * 1f, -b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, -b.size.y * 1f, b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, -b.size.y * 1f, b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, b.size.y * 1f, -b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, b.size.y * 1f, -b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, b.size.y * 1f, b.size.z * 1f));
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, b.size.y * 1f, b.size.z * 1f));
     }
 }

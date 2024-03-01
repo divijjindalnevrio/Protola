@@ -176,7 +176,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7271018, y: 0.13749012, z: 1}
+  m_Size: {x: 0.84929067, y: 0.13749012, z: 0.5091393}
   m_Center: {x: -0.0012995154, y: -0.062192783, z: 0}
 --- !u!1 &4299936080757963036 stripped
 GameObject:

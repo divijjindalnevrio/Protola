@@ -27,7 +27,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
         if (selectedObjcet.CompareTag("Basin"))
         {
-            //selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.white;
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.white;
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = counterTex[material];
         }
 
@@ -48,8 +48,10 @@ public class CounterSurfaceChanger : MonoBehaviour
 
         if (selectedObjcet.CompareTag("Basin"))
         {
-            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material = counterMat[material];
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = counterGranulateTex[material];
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = lastSelectedColor;
         }
+
         else
         {
             // for counter
@@ -66,7 +68,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
         if (selectedObjcet.CompareTag("Basin"))
         {
-            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = null;
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = colors[color];
            
         }

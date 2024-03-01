@@ -44,6 +44,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private CounterTypeSO counterTypeSO;
     [SerializeField] private BasinBound basinBound;
+ 
 
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;

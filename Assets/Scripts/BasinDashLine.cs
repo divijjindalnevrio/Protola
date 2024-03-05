@@ -14,6 +14,8 @@ public class BasinDashLine : MonoBehaviour
     public List<Vector3> basinVertices = new List<Vector3>();
     public List<Vector3> vector3s = new List<Vector3>();
 
+    public List<Vector2> vector2s = new List<Vector2>();
+
     void Start()
     {
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
@@ -62,25 +64,48 @@ public class BasinDashLine : MonoBehaviour
         MeshFilter basinMeshFilter = CurrentBasin.transform.Find("Cube").GetComponent<MeshFilter>();
         BoxCollider b = CurrentBasin.GetComponent<BoxCollider>();
 
-        //foreach (Vector3 index in vector3s)
-        //{
-        //    basinVertices.Add(basinMeshFilter.transform.TransformPoint(index));
-        //}
-        //basinVertices = basinVertices.Distinct().ToList();
-
         vector3s.Clear();
         Debug.Log("GetTheBasinVertices Center : " + b.center);
-        Debug.Log("GetTheBasinVertices xLen : " + b.bounds.size.x);
-        Debug.Log("GetTheBasinVertices yLen : " + b.bounds.size.y);
-        Debug.Log("GetTheBasinVertices zLen : " + b.bounds.size.z);
 
-        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, -b.size.y * 1f, -b.size.z * 1f) );
-        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, -b.size.y * 1f, -b.size.z * 1f) );
-        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, -b.size.y * 1f, b.size.z * 1f) );
-        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, -b.size.y * 1f, b.size.z * 1f) );
-        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, b.size.y * 1f, -b.size.z * 1f) );
-        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, b.size.y * 1f, -b.size.z * 1f) );
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, -b.size.y * 1f, -b.size.z * 1f));
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, -b.size.y * 1f, -b.size.z * 1f));
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, -b.size.y * 1f, b.size.z * 1f));
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, -b.size.y * 1f, b.size.z * 1f));
+        vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, b.size.y * 1f, -b.size.z * 1f));
+        vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, b.size.y * 1f, -b.size.z * 1f));
         vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, b.size.y * 1f, b.size.z * 1f));
         vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, b.size.y * 1f, b.size.z * 1f));
+        ConvertingToVectorTwo();
+        CalculateBasinMidpoint(b);
+        
     }
+
+    private void ConvertingToVectorTwo()
+    {
+        vector2s.Clear();
+        foreach (Vector3 val in vector3s)
+        {
+            var vector2Val = new Vector3(val.x, val.z);
+            vector2s.Add(vector2Val);
+        }
+        vector2s = vector2s.Distinct().ToList();
+    }
+
+    private void CalculateBasinMidpoint(BoxCollider b)
+    {
+        Debug.Log("Basin posiion here :" + basinMovement.SelectedGameobject.transform.position);
+
+        Vector3 basinCenterPoint =CurrentBasin.transform.position;
+        Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
+        Vector3 centerValue = new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z+ basinSize.z * 1f);
+
+        Vector3 centerValueSecond = new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
+
+        float test = basinCenterPoint.x - basinSize.x;
+        Debug.Log("Basin last value :" + centerValue + " " + centerValueSecond +  " " + test);
+
+    }
+
+
+
 }

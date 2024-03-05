@@ -19,16 +19,29 @@ public class BasinDashLine : MonoBehaviour
     void Start()
     {
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
+        basinMovement.OnGameobjectMoving += BasinMovement_OnGameobjectMoving;
+    }
+
+    private void BasinMovement_OnGameobjectMoving()
+    {
+        if(CurrentBasin != null)
+        {
+            AssignBasinAndGetBasinVertices();
+        }
+        
     }
 
     private void BasinsGenerator_OnBasinGenrate()
     {
+        AssignBasinAndGetBasinVertices();
+    }
+
+    private void AssignBasinAndGetBasinVertices()
+    {
         AssignCurrentBasin();
         GetTheBasinVertices();
         RestTheSelectedDashLineBasin();
-        
     }
-
     private void AssignCurrentBasin()
     {
         CurrentBasin = basinMovement.SelectedGameobject;
@@ -95,14 +108,16 @@ public class BasinDashLine : MonoBehaviour
     {
         Debug.Log("Basin posiion here :" + basinMovement.SelectedGameobject.transform.position);
 
-        Vector3 basinCenterPoint =CurrentBasin.transform.position;
+        Vector3 basinCenterPoint = CurrentBasin.transform.position;
+        Debug.Log("basinCenterPoint : " + CurrentBasin.transform.position);
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
-        Vector3 centerValue = new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z+ basinSize.z * 1f);
+        Vector3 basinEdgePointOne = new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f);
+        Vector3 basinEdgePointTwo = new Vector3(basinCenterPoint.x, basinCenterPoint.y, - (basinCenterPoint.z + basinSize.z * 1f));
 
-        Vector3 centerValueSecond = new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
+        Vector3 basinEdgePointThree = new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
+        Vector3 basinEdgePointFour  =  new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
 
-        float test = basinCenterPoint.x - basinSize.x;
-        Debug.Log("Basin last value :" + centerValue + " " + centerValueSecond +  " " + test);
+        Debug.Log("basinCenterPointAll basinEdgePointsVal :" + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
 
     }
 

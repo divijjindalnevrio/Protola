@@ -7,6 +7,7 @@ using System.Linq;
 public class BasinDashLine : MonoBehaviour
 {
     public GameObject CurrentBasin;
+    public BoxCollider b;
     public BasinMovement basinMovement;
     [SerializeField] private BasinsGenerator basinsGenerator;
     public List<GameObject> basinDashLinePoints = new List<GameObject>();
@@ -42,6 +43,7 @@ public class BasinDashLine : MonoBehaviour
     private void AssignCurrentBasin()
     {
         CurrentBasin = basinMovement.SelectedGameobject;
+        b = CurrentBasin.GetComponent<BoxCollider>();
     }
 
     private void RestTheSelectedDashLineBasin()
@@ -103,7 +105,6 @@ public class BasinDashLine : MonoBehaviour
 
     private void CalculateBasinMidpoint(BoxCollider b)
     {
-       
         basinEdgePoints.Clear();
         Vector3 basinCenterPoint = CurrentBasin.transform.position;
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);

@@ -4,40 +4,42 @@ using UnityEngine;
 
 public class CounterEdgePoint : MonoBehaviour
 {
-    private GameObject TopFourPointsObj;
+    [SerializeField] private GameObject TopFourPointsObj;
     [SerializeField] private CounterGenerator counterGenerator;
     [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private CounterSizeDeformation counterSizeDeformation;
+    [SerializeField] private BasinDashLine basinDashLine;
+    [SerializeField] private BasinsGenerator basinsGenerator;
     [SerializeField] private List<Vector3> counterTopFourPoints = new List<Vector3>();
 
-    [SerializeField] private CounterSizeDeformation counterSizeDeformation;
     
 
     void Start()
     {
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
-        basinMovement.OnCounterMoving += BasinMovement_OnCounterMoving;
+        basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
+        basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
     }
 
-    void Update()
+    private void BasinsGenerator_OnBasinGenrate()       // <----- on basin generate 
     {
-    
-        
+        GettingCounterEmptyGameobjectPoints();
+        GettingCounterEmptyGameobjectPointsPosition();
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
     {
-        if(e == SelectedObject.counter)
+        if(e == SelectedObject.basin)
         {
             GettingCounterEmptyGameobjectPoints();
         }
     }
 
-    private void BasinMovement_OnCounterMoving()
+    private void BasinMovement_OnBasinMoving()
     {
         GettingCounterEmptyGameobjectPointsPosition();
     }
 
-   
     private void GettingCounterEmptyGameobjectPoints()
     {
         TopFourPointsObj = basinMovement.SelectedGameobject.transform.Find("SelectedDashLineCube").transform.Find("TopLineRenderer").gameObject;
@@ -53,8 +55,7 @@ public class CounterEdgePoint : MonoBehaviour
             Vector3 totalval = child.transform.position + new Vector3(0, counterSizeDeformation.currentCounterPosition.y, 0);
             counterTopFourPoints.Add(totalval);
 
-          
-            Debug.Log("All valu here  " + totalval);
+            Debug.Log("All valu here  " + totalval + " " + basinDashLine.basinEdgePoints[0]);
         }
 
     }

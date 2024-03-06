@@ -13785,6 +13785,7 @@ MonoBehaviour:
   basinVertices: []
   vector3s: []
   vector2s: []
+  basinEdgePoints: []
 --- !u!1 &1234714367
 GameObject:
   m_ObjectHideFlags: 0
@@ -15922,6 +15923,7 @@ MonoBehaviour:
   depthSlider: {fileID: 1581739702}
   currentCounter: {fileID: 0}
   basinMovement: {fileID: 1227306144}
+  currentCounterPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1426068426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16007,10 +16009,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be77e0337513a4fe182394d6005a3306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TopFourPointsObj: {fileID: 0}
   counterGenerator: {fileID: 1426068424}
   basinMovement: {fileID: 1227306144}
-  counterTopFourPoints: []
   counterSizeDeformation: {fileID: 1426068425}
+  basinDashLine: {fileID: 1227306149}
+  basinsGenerator: {fileID: 1227306146}
+  counterTopFourPoints: []
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0

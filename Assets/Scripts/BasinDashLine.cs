@@ -15,6 +15,7 @@ public class BasinDashLine : MonoBehaviour
     public List<Vector3> vector3s = new List<Vector3>();
 
     public List<Vector2> vector2s = new List<Vector2>();
+    public List<Vector3> basinEdgePoints = new List<Vector3>();
 
     void Start()
     {
@@ -102,18 +103,18 @@ public class BasinDashLine : MonoBehaviour
 
     private void CalculateBasinMidpoint(BoxCollider b)
     {
-        Debug.Log("Basin posiion here :" + basinMovement.SelectedGameobject.transform.position);
-
+       
+        basinEdgePoints.Clear();
         Vector3 basinCenterPoint = CurrentBasin.transform.position;
-        Debug.Log("basinCenterPoint : " + CurrentBasin.transform.position);
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
-        Vector3 basinEdgePointOne = new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f);
-        Vector3 basinEdgePointTwo = new Vector3(basinCenterPoint.x, basinCenterPoint.y, - (basinCenterPoint.z + basinSize.z * 1f));
 
-        Vector3 basinEdgePointThree = new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
-        Vector3 basinEdgePointFour  =  new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
+        basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f));
+        basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, - (basinCenterPoint.z + basinSize.z * 1f)));
+        basinEdgePoints.Add(new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
+        basinEdgePoints.Add(new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
 
-        Debug.Log("basinCenterPointAll basinEdgePointsVal : " + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
+
+        //Debug.Log("basinCenterPointAll basinEdgePointsVal : " + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
 
     }
 

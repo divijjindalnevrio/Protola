@@ -16,6 +16,7 @@ public class CounterGenerator : MonoBehaviour
 
     [SerializeField] private Material grayMat;
     private Material defaultObjectMat;
+
     void Start()
     {
         SettingCounterSelected();

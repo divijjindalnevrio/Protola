@@ -51,6 +51,9 @@ public class BasinMovement : MonoBehaviour
     public event Action OnGameobjectMoving;
     public event Action OnCounterStopMoving;
     public event Action OnBasinStopMoving;
+    public event Action OnBasinMoving;
+    public event Action OnCounterMoving;
+
     private void Start()
     {
         basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
@@ -160,6 +163,7 @@ public class BasinMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
             currentCounter.transform.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
             OnGameobjectMoving();
+            OnCounterMoving();
 
         }
 
@@ -203,6 +207,7 @@ public class BasinMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).x, SelectedGameobject.transform.position.y, basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).z);
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
             OnGameobjectMoving();
+            OnBasinMoving();
         }
         ////
       

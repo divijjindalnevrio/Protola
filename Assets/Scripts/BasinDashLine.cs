@@ -19,16 +19,12 @@ public class BasinDashLine : MonoBehaviour
     void Start()
     {
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
-        basinMovement.OnGameobjectMoving += BasinMovement_OnGameobjectMoving;
+        basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
     }
 
-    private void BasinMovement_OnGameobjectMoving()
+    private void BasinMovement_OnBasinMoving()
     {
-        if(CurrentBasin != null)
-        {
-            AssignBasinAndGetBasinVertices();
-        }
-        
+        AssignBasinAndGetBasinVertices();
     }
 
     private void BasinsGenerator_OnBasinGenrate()
@@ -117,7 +113,7 @@ public class BasinDashLine : MonoBehaviour
         Vector3 basinEdgePointThree = new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
         Vector3 basinEdgePointFour  =  new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z);
 
-        Debug.Log("basinCenterPointAll basinEdgePointsVal :" + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
+        Debug.Log("basinCenterPointAll basinEdgePointsVal : " + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
 
     }
 

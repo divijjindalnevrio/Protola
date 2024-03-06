@@ -13784,6 +13784,7 @@ MonoBehaviour:
   basinDashLinePoints: []
   basinVertices: []
   vector3s: []
+  vector2s: []
 --- !u!1 &1234714367
 GameObject:
   m_ObjectHideFlags: 0
@@ -15846,6 +15847,7 @@ GameObject:
   - component: {fileID: 1426068427}
   - component: {fileID: 1426068426}
   - component: {fileID: 1426068428}
+  - component: {fileID: 1426068429}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -15993,6 +15995,22 @@ MonoBehaviour:
   currentHole: {fileID: 0}
   basinMovement: {fileID: 1227306144}
   IsHoleInstanciate: 0
+--- !u!114 &1426068429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426068421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be77e0337513a4fe182394d6005a3306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterGenerator: {fileID: 1426068424}
+  basinMovement: {fileID: 1227306144}
+  counterTopFourPoints: []
+  counterSizeDeformation: {fileID: 1426068425}
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0
@@ -18017,6 +18035,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.8627033, y: -0.47024965, z: 3.4125156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1674885934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674885935}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674885935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674885934}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: 3.02, z: 2.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26081,3 +26130,4 @@ SceneRoots:
   - {fileID: 1269921601}
   - {fileID: 1069976232}
   - {fileID: 323755543}
+  - {fileID: 1674885935}

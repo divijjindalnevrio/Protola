@@ -15,6 +15,7 @@ public class CounterSizeDeformation : MonoBehaviour
     private CounterGenerator counterGenerator;
     [SerializeField] private Transform currentCounter;
     [SerializeField] private BasinMovement basinMovement;
+    public Vector3 currentCounterPosition;
 
     void Start()
     {
@@ -47,7 +48,7 @@ public class CounterSizeDeformation : MonoBehaviour
 
        currentCounter.transform.Find("Counter").transform.localScale = new Vector3(width, currentCounter.transform.Find("Counter").transform.localScale.y, depth);
        currentCounter.position = new Vector3(currentCounter.position.x, thickness, currentCounter.position.z);
-
+       currentCounterPosition = currentCounter.transform.localPosition;
     }
 
     private void GettingCurrentCounter()

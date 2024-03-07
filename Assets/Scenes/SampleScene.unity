@@ -7779,6 +7779,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718375439}
   m_CullTransparentMesh: 1
+--- !u!1 &718992248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718992249}
+  m_Layer: 0
+  m_Name: checkPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718992249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718992248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04713632, y: -5.9187746, z: 3.4405293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725603788
 GameObject:
   m_ObjectHideFlags: 0
@@ -16159,6 +16190,9 @@ MonoBehaviour:
   - {fileID: 1729937153}
   - {fileID: 877803764}
   - {fileID: 2069493992}
+  basinEdgePoints: []
+  basinCenterPoint: {x: 0, y: 0, z: 0}
+  counterEdgePoints: []
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0
@@ -26659,3 +26693,4 @@ SceneRoots:
   - {fileID: 1729937154}
   - {fileID: 877803765}
   - {fileID: 2069493993}
+  - {fileID: 718992249}

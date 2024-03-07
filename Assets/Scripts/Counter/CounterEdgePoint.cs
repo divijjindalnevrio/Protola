@@ -16,10 +16,15 @@ public class CounterEdgePoint : MonoBehaviour
     [SerializeField] private List<Vector2> vector2s = new List<Vector2>();
 
     [SerializeField] private List<LineRenderer> lineRenderers;
-    List<Vector3> basinEdgePoints;
+
+    [SerializeField] List<Vector3> basinEdgePoints;
+    [SerializeField] private Vector3 basinCenterPoint;
+    [SerializeField] private List<Vector3> counterEdgePoints;
+
     void Start() 
     {
         basinEdgePoints = basinDashLine.basinEdgePoints;
+        Debug.Log("CounterEdgePoint BasinLength 0 : "+ basinEdgePoints.Count);
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
@@ -41,6 +46,8 @@ public class CounterEdgePoint : MonoBehaviour
 
     private void BasinMovement_OnBasinMoving()
     {
+        basinEdgePoints = basinDashLine.basinEdgePoints;
+        Debug.Log("CounterEdgePoint BasinLength 1 : " + basinEdgePoints.Count);
         GettingBasinCornerPoints();
     }
 
@@ -61,9 +68,9 @@ public class CounterEdgePoint : MonoBehaviour
             Debug.Log("GettingCounterEmptyGameobjectPointsPosition : " + child.transform.position);
         }
         basinEdgePoints = basinDashLine.basinEdgePoints;
-        Vector3 basinCenterPoint = CenterOfVectors(basinEdgePoints);
-        List<Vector3> counterEdgePoints = GetCounterEdgePoints(counterTopFourPoints, basinCenterPoint);
-        
+        Debug.Log("CounterEdgePoint BasinLength 2 : " + basinEdgePoints.Count);
+        basinCenterPoint = CenterOfVectors(basinEdgePoints);
+        counterEdgePoints = GetCounterEdgePoints(counterTopFourPoints, basinCenterPoint);
         DrawingLineRenderer(basinEdgePoints,counterEdgePoints, basinCenterPoint);
     }
 
@@ -75,10 +82,12 @@ public class CounterEdgePoint : MonoBehaviour
         float zMax = CounterEdgePositions.OrderBy(v => v.z).Last().z;
 
         List<Vector3> counterEdgePoints = new List<Vector3> {
-            new Vector3(basinCenterPoint.x,basinCenterPoint.y,zMax),
-            new Vector3(basinCenterPoint.x,basinCenterPoint.y,zMin),
             new Vector3(xMax,basinCenterPoint.y,basinCenterPoint.z),
             new Vector3(xMin,basinCenterPoint.y,basinCenterPoint.z),
+            new Vector3(basinCenterPoint.x,basinCenterPoint.y,zMax),
+            new Vector3(basinCenterPoint.x,basinCenterPoint.y,zMin),
+            
+
         };
 
         return counterEdgePoints;
@@ -97,13 +106,12 @@ public class CounterEdgePoint : MonoBehaviour
 
     private void DrawingLineRenderer(List<Vector3> basinEdgePoints, List<Vector3> counterEdgePoints, Vector3 basinCenterPoint)
     {
+        List<Vector3> BasinAndCounterEdgePoints = new List<Vector3>();
+        BasinAndCounterEdgePoints.AddRange(basinEdgePoints);
+        BasinAndCounterEdgePoints.AddRange(counterEdgePoints);
 
-        basinEdgePoints.AddRange(counterEdgePoints);
-        foreach (Vector3 basinEdgePoint in basinEdgePoints) {
-            Debug.Log("DrawingLineRenderer basinEdgePoint : " + basinEdgePoint);
-        }
-        FindCommonXVerticesAndDrawLine(basinEdgePoints, basinCenterPoint);
-        FindCommonZVerticesAndDrawLine(basinEdgePoints, basinCenterPoint);
+        FindCommonXVerticesAndDrawLine(BasinAndCounterEdgePoints, basinCenterPoint);
+        FindCommonZVerticesAndDrawLine(BasinAndCounterEdgePoints, basinCenterPoint);
     }
 
     private void FindCommonXVerticesAndDrawLine(List<Vector3> basinEdgePoints, Vector3 basinCenterPoint)

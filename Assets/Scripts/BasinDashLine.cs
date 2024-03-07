@@ -105,10 +105,10 @@ public class BasinDashLine : MonoBehaviour
 
     private void CalculateBasinMidpoint(BoxCollider b)
     {
-        basinEdgePoints.Clear();
         Vector3 basinCenterPoint = CurrentBasin.transform.position;
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
 
+        basinEdgePoints.Clear();
         basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f));
         basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, - (basinCenterPoint.z + basinSize.z * 1f)));
         basinEdgePoints.Add(new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z));

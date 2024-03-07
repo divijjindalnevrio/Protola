@@ -107,10 +107,10 @@ public class BasinDashLine : MonoBehaviour
     {
         Vector3 basinCenterPoint = CurrentBasin.transform.position;
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
-
+        Debug.Log("Basin size z : " + basinSize.z);
         basinEdgePoints.Clear();
         basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f));
-        basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, - (basinCenterPoint.z + basinSize.z * 1f)));
+        basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, (basinCenterPoint.z - basinSize.z * 1f)));
         basinEdgePoints.Add(new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
         basinEdgePoints.Add(new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
 

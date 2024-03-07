@@ -4923,6 +4923,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1227306143}
+        m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
+        m_MethodName: CallingBasinRotationEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &522729802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9269,6 +9281,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1227306143}
         m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
         m_MethodName: SettingLefttRotateValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1227306143}
+        m_TargetAssemblyTypeName: RotationScript, Assembly-CSharp
+        m_MethodName: CallingBasinRotationEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13948,6 +13972,7 @@ MonoBehaviour:
   CurrentBasin: {fileID: 0}
   b: {fileID: 0}
   basinMovement: {fileID: 1227306144}
+  rotationScript: {fileID: 1227306143}
   basinsGenerator: {fileID: 1227306146}
   basinDashLinePoints: []
   basinVertices: []
@@ -16190,9 +16215,8 @@ MonoBehaviour:
   - {fileID: 1729937153}
   - {fileID: 877803764}
   - {fileID: 2069493992}
+  rotationScript: {fileID: 1227306143}
   basinEdgePoints: []
-  basinCenterPoint: {x: 0, y: 0, z: 0}
-  counterEdgePoints: []
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0

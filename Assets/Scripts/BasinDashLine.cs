@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Unity.Mathematics;
 
 public class BasinDashLine : MonoBehaviour
 {
     public GameObject CurrentBasin;
     public BoxCollider b;
     public BasinMovement basinMovement;
+    [SerializeField] private RotationScript rotationScript;
     [SerializeField] private BasinsGenerator basinsGenerator;
     public List<GameObject> basinDashLinePoints = new List<GameObject>();
 
@@ -22,6 +24,25 @@ public class BasinDashLine : MonoBehaviour
     {
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
+        rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
+    }
+
+    private void RotationScript_OnBasinRotation()
+    {
+        Debug.Log("RotationScript_OnBasinRotation ABC "+ rotationScript.BasinRotationVal);
+        if (rotationScript.BasinRotationVal == 90 || rotationScript.BasinRotationVal == -90 || rotationScript.BasinRotationVal == 270 || rotationScript.BasinRotationVal == -270)
+        {
+            Debug.Log("RotationScript_OnBasinRotation ABC TRUE");
+            GetTheBasinVertices(true);
+        }
+        else
+        {
+            Debug.Log("RotationScript_OnBasinRotation ABC FALSE");
+            GetTheBasinVertices();
+        }
+        
+        
+       
     }
 
     private void BasinMovement_OnBasinMoving()
@@ -71,7 +92,7 @@ public class BasinDashLine : MonoBehaviour
         }  
     }
 
-    private void GetTheBasinVertices()
+    private void GetTheBasinVertices(bool BasinRotated = false)
     {
         MeshFilter basinMeshFilter = CurrentBasin.transform.Find("Cube").GetComponent<MeshFilter>();
         BoxCollider b = CurrentBasin.GetComponent<BoxCollider>();
@@ -88,7 +109,7 @@ public class BasinDashLine : MonoBehaviour
         vector3s.Add(b.center + new Vector3(b.size.x * 0.6f, b.size.y * 1f, b.size.z * 1f));
         vector3s.Add(b.center + new Vector3(-b.size.x * 0.6f, b.size.y * 1f, b.size.z * 1f));
         ConvertingToVectorTwo();
-        CalculateBasinMidpoint(b);
+        CalculateBasinMidpoint(b,BasinRotated);
         
     }
 
@@ -103,22 +124,35 @@ public class BasinDashLine : MonoBehaviour
         vector2s = vector2s.Distinct().ToList();
     }
 
-    private void CalculateBasinMidpoint(BoxCollider b)
+    private void CalculateBasinMidpoint(BoxCollider b, bool BasinRotated = false)
     {
         Vector3 basinCenterPoint = CurrentBasin.transform.position;
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
         Debug.Log("Basin size z : " + basinSize.z);
         basinEdgePoints.Clear();
-        basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f));
-        basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, (basinCenterPoint.z - basinSize.z * 1f)));
-        basinEdgePoints.Add(new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
-        basinEdgePoints.Add(new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
+
+        if (BasinRotated == false)
+        {
+            Debug.Log("RotationScript_OnBasinRotation ABC FALSE 2");
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, basinCenterPoint.z + basinSize.z * 1f));
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x, basinCenterPoint.y, (basinCenterPoint.z - basinSize.z * 1f)));
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x + basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x - basinSize.x, basinCenterPoint.y, basinCenterPoint.z));
+        }
+        else {
+            Debug.Log("RotationScript_OnBasinRotation ABC TRUE 2");
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x + +basinSize.z, basinCenterPoint.y, basinCenterPoint.z ));
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x - basinSize.z, basinCenterPoint.y, (basinCenterPoint.z )));
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x , basinCenterPoint.y, basinCenterPoint.z + basinSize.x));
+            basinEdgePoints.Add(new Vector3(basinCenterPoint.x , basinCenterPoint.y, basinCenterPoint.z - basinSize.x));
+        }
+        
 
 
         //Debug.Log("basinCenterPointAll basinEdgePointsVal : " + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
 
     }
 
-
+    
 
 }

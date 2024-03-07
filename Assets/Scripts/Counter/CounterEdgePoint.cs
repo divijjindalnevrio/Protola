@@ -16,23 +16,33 @@ public class CounterEdgePoint : MonoBehaviour
     [SerializeField] private List<Vector2> vector2s = new List<Vector2>();
 
     [SerializeField] private List<LineRenderer> lineRenderers;
+    [SerializeField] private RotationScript rotationScript;
 
-    [SerializeField] List<Vector3> basinEdgePoints;
-    [SerializeField] private Vector3 basinCenterPoint;
-    [SerializeField] private List<Vector3> counterEdgePoints;
+    [SerializeField] private List<Vector3> basinEdgePoints;
+     private Vector3 basinCenterPoint;
+     private List<Vector3> counterEdgePoints;
+
 
     void Start() 
     {
         basinEdgePoints = basinDashLine.basinEdgePoints;
-        Debug.Log("CounterEdgePoint BasinLength 0 : "+ basinEdgePoints.Count);
+        Debug.Log("CounterEdgePoint BasinLength 0 : " + basinEdgePoints.Count);
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
+        rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
+    }
+
+    private void RotationScript_OnBasinRotation()                                                     // <----- on basin rotation
+    {
+        Debug.Log("RotationScript_OnBasinRotation");
+        GettingBasinCornerPoints();
+       
     }
 
     private void BasinsGenerator_OnBasinGenrate()       // <----- on basin generate 
     {
-        GettingBasinCornerPointsObject();
+        GettingCounterCornerPointsObject();
         GettingBasinCornerPoints();
     }
 
@@ -40,7 +50,7 @@ public class CounterEdgePoint : MonoBehaviour
     {
         if(e == SelectedObject.basin)
         {
-            GettingBasinCornerPointsObject();
+            GettingCounterCornerPointsObject();
         }
     }
 
@@ -51,7 +61,7 @@ public class CounterEdgePoint : MonoBehaviour
         GettingBasinCornerPoints();
     }
 
-    private void GettingBasinCornerPointsObject()
+    private void GettingCounterCornerPointsObject()
     {
         TopFourPointsObj = basinMovement.currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").transform.
         Find("TopLineRenderer").gameObject;
@@ -201,4 +211,6 @@ public class CounterEdgePoint : MonoBehaviour
         }
         return sum / vectors.Count;
     }
+
+    
 }

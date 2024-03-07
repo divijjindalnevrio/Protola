@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RotationScript : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class RotationScript : MonoBehaviour
     private bool _isRotateButtonPressed;
     public float BasinRotationVal = 0f;
     public float CounterRotationVal = 0f;
+    public event Action OnBasinRotation;
 
     private void Start()
     {
@@ -36,8 +38,9 @@ public class RotationScript : MonoBehaviour
                 rotateObj = basinMovement.SelectedGameobject.transform;
                 Debug.Log("BASINROTATION value :" + rotateObj.transform.eulerAngles);
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
+               
             }
-
+            
         }
 
     }
@@ -105,6 +108,14 @@ public class RotationScript : MonoBehaviour
     {
         _isRotateButtonPressed = true;
     }
+
+    public void CallingBasinRotationEvent()
+    {
+        OnBasinRotation();
+    }
+
+
+    
         
 }
 

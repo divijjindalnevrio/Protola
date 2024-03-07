@@ -15,10 +15,11 @@ public class CounterEdgePoint : MonoBehaviour
     [SerializeField] private List<Vector3> counterTopFourPoints = new List<Vector3>();
     [SerializeField] private List<Vector2> vector2s = new List<Vector2>();
 
-    [SerializeField] private LineRenderer lineRenderer;
-
+    [SerializeField] private List<LineRenderer> lineRenderers;
+    List<Vector3> basinEdgePoints;
     void Start() 
     {
+        basinEdgePoints = basinDashLine.basinEdgePoints;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
@@ -26,30 +27,30 @@ public class CounterEdgePoint : MonoBehaviour
 
     private void BasinsGenerator_OnBasinGenrate()       // <----- on basin generate 
     {
-        GettingCounterEmptyGameobjectPoints();
-        GettingCounterEmptyGameobjectPointsPosition();
+        GettingBasinCornerPointsObject();
+        GettingBasinCornerPoints();
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
     {
         if(e == SelectedObject.basin)
         {
-            GettingCounterEmptyGameobjectPoints();
+            GettingBasinCornerPointsObject();
         }
     }
 
     private void BasinMovement_OnBasinMoving()
     {
-        GettingCounterEmptyGameobjectPointsPosition();
+        GettingBasinCornerPoints();
     }
 
-    private void GettingCounterEmptyGameobjectPoints()
+    private void GettingBasinCornerPointsObject()
     {
         TopFourPointsObj = basinMovement.currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").transform.
         Find("TopLineRenderer").gameObject;
     }
 
-    private void GettingCounterEmptyGameobjectPointsPosition()
+    private void GettingBasinCornerPoints()
     {
         counterTopFourPoints.Clear();
         foreach (Transform child in TopFourPointsObj.transform)
@@ -59,18 +60,28 @@ public class CounterEdgePoint : MonoBehaviour
 
             Debug.Log("GettingCounterEmptyGameobjectPointsPosition : " + child.transform.position);
         }
-        GetMinMaxValues(counterTopFourPoints);
-        ConvertingToVectorTwo();
-        DrawingLineRenderer();
+        basinEdgePoints = basinDashLine.basinEdgePoints;
+        Vector3 basinCenterPoint = CenterOfVectors(basinEdgePoints);
+        List<Vector3> counterEdgePoints = GetCounterEdgePoints(counterTopFourPoints, basinCenterPoint);
+        
+        DrawingLineRenderer(basinEdgePoints,counterEdgePoints, basinCenterPoint);
     }
 
-    private void GetMinMaxValues(List<Vector3> CounterEdgePositions) {
+    private List<Vector3> GetCounterEdgePoints(List<Vector3> CounterEdgePositions, Vector3 basinCenterPoint) {
         float xMin = CounterEdgePositions.OrderBy(v => v.x).First().x;
         float xMax = CounterEdgePositions.OrderBy(v => v.x).Last().x;
 
         float zMin = CounterEdgePositions.OrderBy(v => v.z).First().z;
         float zMax = CounterEdgePositions.OrderBy(v => v.z).Last().z;
-        Debug.Log("GettingCounterEmptyGameobjectPointsPosition : " + xMin +"    "+xMax+"    "+zMin+"    "+zMax);
+
+        List<Vector3> counterEdgePoints = new List<Vector3> {
+            new Vector3(basinCenterPoint.x,basinCenterPoint.y,zMax),
+            new Vector3(basinCenterPoint.x,basinCenterPoint.y,zMin),
+            new Vector3(xMax,basinCenterPoint.y,basinCenterPoint.z),
+            new Vector3(xMin,basinCenterPoint.y,basinCenterPoint.z),
+        };
+
+        return counterEdgePoints;
     }
 
     private void ConvertingToVectorTwo()
@@ -84,15 +95,102 @@ public class CounterEdgePoint : MonoBehaviour
         //vector2s = vector2s.Distinct().ToList();
     }
 
-    private void DrawingLineRenderer()
+    private void DrawingLineRenderer(List<Vector3> basinEdgePoints, List<Vector3> counterEdgePoints, Vector3 basinCenterPoint)
     {
-        List<Vector3> basinEdgePoints = basinDashLine.basinEdgePoints;
 
-        //if(basinEdgePoints[])
-        lineRenderer.SetPosition(0, basinEdgePoints[0]);
-        lineRenderer.SetPosition(1, basinEdgePoints[1]);
+        basinEdgePoints.AddRange(counterEdgePoints);
+        foreach (Vector3 basinEdgePoint in basinEdgePoints) {
+            Debug.Log("DrawingLineRenderer basinEdgePoint : " + basinEdgePoint);
+        }
+        FindCommonXVerticesAndDrawLine(basinEdgePoints, basinCenterPoint);
+        FindCommonZVerticesAndDrawLine(basinEdgePoints, basinCenterPoint);
+    }
 
+    private void FindCommonXVerticesAndDrawLine(List<Vector3> basinEdgePoints, Vector3 basinCenterPoint)
+    {
+        var groupedVectors = basinEdgePoints.GroupBy(v => v.x);
+        // Find the group(s) with the most occurrences
+        var maxCount = groupedVectors.Max(g => g.Count());
+
+        // Filter the groups to get only the group(s) with the most occurrences
+        var mostCommonXGroups = groupedVectors.Where(g => g.Count() == maxCount);
+
+        // Flatten the groups and extract the vectors
+        List<Vector3> vectorsWithMostCommonX = mostCommonXGroups.SelectMany(g => g).ToList();
+
+        Debug.Log($"Vectors with the most common x-axis value:");
+
+        int smallLinerendererposition = 0;
+        int bigLinerendererposition = 0;
+        for (int i = 0; i < vectorsWithMostCommonX.Count; ++i)
+        {
+            if (vectorsWithMostCommonX[i].z < basinCenterPoint.z)
+            {
+
+                lineRenderers[2].SetPosition(smallLinerendererposition, vectorsWithMostCommonX[i]);
+                smallLinerendererposition++;
+                Debug.Log("FindCommonZVerticesAndDrawLine Less : " + vectorsWithMostCommonX[i]);
+            }
+            else
+            {
+
+                lineRenderers[3].SetPosition(bigLinerendererposition, vectorsWithMostCommonX[i]);
+                bigLinerendererposition++;
+                Debug.Log("FindCommonZVerticesAndDrawLine More : " + vectorsWithMostCommonX[i]);
+            }
+
+        }
     }
 
 
+    private void FindCommonZVerticesAndDrawLine(List<Vector3> basinEdgePoints, Vector3 basinCenterPoint)
+    {
+
+
+        var groupedVectors = basinEdgePoints.GroupBy(v => v.z);
+        // Find the group(s) with the most occurrences
+        var maxCount = groupedVectors.Max(g => g.Count());
+
+        // Filter the groups to get only the group(s) with the most occurrences
+        var mostCommonXGroups = groupedVectors.Where(g => g.Count() == maxCount);
+
+        // Flatten the groups and extract the vectors
+        List<Vector3> vectorsWithMostCommonZ = mostCommonXGroups.SelectMany(g => g).ToList();
+
+        Debug.Log($"Vectors with the most common x-axis value:");
+        int smallLinerendererposition = 0;
+        int bigLinerendererposition = 0;
+        for (int i = 0; i < vectorsWithMostCommonZ.Count; ++i)
+        {
+            if (vectorsWithMostCommonZ[i].x < basinCenterPoint.x)
+            {
+                
+                lineRenderers[0].SetPosition(smallLinerendererposition, vectorsWithMostCommonZ[i]);
+                smallLinerendererposition++;
+                Debug.Log("FindCommonZVerticesAndDrawLine Less : "+ vectorsWithMostCommonZ[i]);
+            }
+            else {
+                
+                lineRenderers[1].SetPosition(bigLinerendererposition, vectorsWithMostCommonZ[i]);
+                bigLinerendererposition++;
+                Debug.Log("FindCommonZVerticesAndDrawLine More : " + vectorsWithMostCommonZ[i]);
+            }
+           
+        }
+    }
+
+    public Vector3 CenterOfVectors(List<Vector3> vectors)
+    {
+        Vector3 sum = Vector3.zero;
+        if (vectors == null || vectors.Count == 0)
+        {
+            return sum;
+        }
+
+        foreach (Vector3 vec in vectors)
+        {
+            sum += vec;
+        }
+        return sum / vectors.Count;
+    }
 }

@@ -12,7 +12,7 @@ public class RotationScript : MonoBehaviour
 
     private Quaternion target ;
     private bool _isRotateButtonPressed;
-    public float BasinRotationVal = 0f;
+    public float BasinRotationVal   = 0f;
     public float CounterRotationVal = 0f;
     public event Action OnBasinRotation;
 
@@ -51,21 +51,40 @@ public class RotationScript : MonoBehaviour
 
     IEnumerator RotateTo(float time)
     {
-        //Vector3 start = transform.position;
-       // Vector3 end = rotateObj;
-        float t = 0;
-        
-        while (t < 1)
+
+        if (basinMovement.selectedObject == SelectedObject.counter)
         {
-            yield return null;
-            t += Time.deltaTime / time;
-            // transform.position = Vector3.Lerp(start, end, t);
-            rotateObj = basinMovement.SelectedGameobject.transform;
-            rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
-            OnBasinRotation();
+            float t = 0;
+
+            while (t < 1)
+            {
+                yield return null;
+                t += Time.deltaTime / time;
+                // transform.position = Vector3.Lerp(start, end, t);
+                rotateObj = basinMovement.SelectedGameobject.transform.parent;
+                rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
+                // OnBasinRotation();
+            }
+            Debug.Log(" rotation got stoped here : ");
         }
+
+        if (basinMovement.selectedObject == SelectedObject.basin)
+        {
+            float t = 0;
+
+            while (t < 1)
+            {
+                yield return null;
+                t += Time.deltaTime / time;
+                // transform.position = Vector3.Lerp(start, end, t);
+                rotateObj = basinMovement.SelectedGameobject.transform;
+                rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
+                OnBasinRotation();
+            }
+            
+        }
+
        
-        //transform.position = end;
     }
     //
 
@@ -76,31 +95,58 @@ public class RotationScript : MonoBehaviour
         return objectRotation;
     }
 
-  
-    //public void SettingRightRotateValue()                  //<--------------- need to refactor here
-    //{
-    //    if(basinMovement.selectedObject != SelectedObject.none)
-    //    {
-    //        if(basinMovement.selectedObject == SelectedObject.basin)
-    //        {
-    //            BasinRotationVal = BasinRotationVal + 90f;
-    //            if (BasinRotationVal > 360)
-    //            {
-    //                BasinRotationVal = 90f;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            CounterRotationVal = CounterRotationVal + 90f;
-    //            if (CounterRotationVal > 360)
-    //            {
-    //                CounterRotationVal = 90f;
-    //            }
-    //        }
-            
-    //    }
+
+    public void SettingRightRotateValue()                  //<--------------- need to refactor here
+    {
+        //if (basinMovement.selectedObject != SelectedObject.none)
+        //{
+        //    if (basinMovement.selectedObject == SelectedObject.basin)
+        //    {
+        //        BasinRotationVal = BasinRotationVal + 90f;
+        //        if (BasinRotationVal > 360)
+        //        {
+        //            BasinRotationVal = 90f;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        CounterRotationVal = CounterRotationVal + 90f;
+        //        if (CounterRotationVal > 360)
+        //        {
+        //            CounterRotationVal = 90f;
+        //        }
+        //    }
+
+        //}
+
+
+        if (basinMovement.selectedObject == SelectedObject.counter)
+        {
+            CounterRotationVal = CounterRotationVal + 90f;
+            if (CounterRotationVal > 360)
+            {
+                CounterRotationVal = 90f;
+            }
+            StartCoroutine(RotateTo(1));
+        }
+
+        if (basinMovement.selectedObject == SelectedObject.basin)
+        {
+
+            BasinRotationVal = Mathf.Round(BasinRotationVal + 90f);
+            if (BasinRotationVal > 360)
+            {
+                BasinRotationVal = 90f;
+            }
+            StartCoroutine(RotateTo(1));
+            Debug.Log("it is got triggered : ");
+        }
+
        
-    //}
+        else { }
+
+
+    }
 
     public void SettingLefttRotateValue()
     {
@@ -125,8 +171,17 @@ public class RotationScript : MonoBehaviour
 
         //}
 
-        
-            if (basinMovement.selectedObject == SelectedObject.basin)
+        if (basinMovement.selectedObject == SelectedObject.counter)
+        {
+            CounterRotationVal = CounterRotationVal - 90f;
+            if (CounterRotationVal < -360)
+            {
+                CounterRotationVal = -90f;
+            }
+            StartCoroutine(RotateTo(1f));
+        }
+
+        if (basinMovement.selectedObject == SelectedObject.basin)
             {
 
                 BasinRotationVal = Mathf.Round(BasinRotationVal - 90f);
@@ -137,15 +192,8 @@ public class RotationScript : MonoBehaviour
                 StartCoroutine(RotateTo(1));
                 Debug.Log("it is got triggered : ");
             }
-            else
-            {
-                CounterRotationVal = CounterRotationVal - 90f;
-                if (CounterRotationVal < -360)
-                {
-                    CounterRotationVal = -90f;
-                }
-            }
-
+            
+        else { }
        
 
 

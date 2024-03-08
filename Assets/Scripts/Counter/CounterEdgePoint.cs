@@ -43,7 +43,7 @@ public class CounterEdgePoint : MonoBehaviour
     private void BasinsGenerator_OnBasinGenrate()       // <----- on basin generate 
     {
         GettingCounterCornerPointsObject();
-       // GettingBasinCornerPoints();
+        GettingBasinCornerPoints();
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)

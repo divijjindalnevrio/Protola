@@ -7,7 +7,7 @@ public class RotationScript : MonoBehaviour
 {
    
     [SerializeField] private Transform rotateObj;
-    [SerializeField] private float speed = 10;
+    [SerializeField] private float speed = 12;
     [SerializeField] private BasinMovement basinMovement;
 
     private Quaternion target ;
@@ -26,24 +26,48 @@ public class RotationScript : MonoBehaviour
         //<--------------- need to refactor here
 
 
-        if (basinMovement.SelectedGameobject != null && _isRotateButtonPressed && basinMovement.selectedObject != SelectedObject.none)
-        {
-            if (basinMovement.selectedObject == SelectedObject.counter)
-            {
-                rotateObj = basinMovement.SelectedGameobject.transform.parent;
-                rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
-            }
-            if (basinMovement.selectedObject == SelectedObject.basin)
-            {
-                rotateObj = basinMovement.SelectedGameobject.transform;
-                Debug.Log("BASINROTATION value :" + rotateObj.transform.eulerAngles);
-                rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
-               
-            }
-            
-        }
+        //if (basinMovement.SelectedGameobject != null && _isRotateButtonPressed && basinMovement.selectedObject != SelectedObject.none)
+        //{
+        //    if (basinMovement.selectedObject == SelectedObject.counter)
+        //    {
+        //        rotateObj = basinMovement.SelectedGameobject.transform.parent;
+        //        rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
+        //    }
+        //    if (basinMovement.selectedObject == SelectedObject.basin)
+        //    {
+        //        rotateObj = basinMovement.SelectedGameobject.transform;
+        //        Debug.Log("BASINROTATION value :" + rotateObj.transform.eulerAngles);
+        //        rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
+
+        //    }
+
+        //}
+
+      
+
 
     }
+    //
+
+    IEnumerator RotateTo(float time)
+    {
+        //Vector3 start = transform.position;
+       // Vector3 end = rotateObj;
+        float t = 0;
+        
+        while (t < 1)
+        {
+            yield return null;
+            t += Time.deltaTime / time;
+            // transform.position = Vector3.Lerp(start, end, t);
+            rotateObj = basinMovement.SelectedGameobject.transform;
+            rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
+            OnBasinRotation();
+        }
+       
+        //transform.position = end;
+    }
+    //
 
     private Quaternion RotationObject(GameObject gameObject, float RotationVal)
     {
@@ -53,42 +77,65 @@ public class RotationScript : MonoBehaviour
     }
 
   
-    public void SettingRightRotateValue()                  //<--------------- need to refactor here
-    {
-        if(basinMovement.selectedObject != SelectedObject.none)
-        {
-            if(basinMovement.selectedObject == SelectedObject.basin)
-            {
-                BasinRotationVal = BasinRotationVal + 90f;
-                if (BasinRotationVal > 360)
-                {
-                    BasinRotationVal = 90f;
-                }
-            }
-            else
-            {
-                CounterRotationVal = CounterRotationVal + 90f;
-                if (CounterRotationVal > 360)
-                {
-                    CounterRotationVal = 90f;
-                }
-            }
+    //public void SettingRightRotateValue()                  //<--------------- need to refactor here
+    //{
+    //    if(basinMovement.selectedObject != SelectedObject.none)
+    //    {
+    //        if(basinMovement.selectedObject == SelectedObject.basin)
+    //        {
+    //            BasinRotationVal = BasinRotationVal + 90f;
+    //            if (BasinRotationVal > 360)
+    //            {
+    //                BasinRotationVal = 90f;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            CounterRotationVal = CounterRotationVal + 90f;
+    //            if (CounterRotationVal > 360)
+    //            {
+    //                CounterRotationVal = 90f;
+    //            }
+    //        }
             
-        }
+    //    }
        
-    }
+    //}
 
     public void SettingLefttRotateValue()
     {
-        if (basinMovement.selectedObject != SelectedObject.none)
-        {
+        //if (basinMovement.selectedObject != SelectedObject.none)
+        //{
+        //    if (basinMovement.selectedObject == SelectedObject.basin)
+        //    {
+        //        BasinRotationVal = BasinRotationVal - 90f;
+        //        if (BasinRotationVal < -360)
+        //        {
+        //            BasinRotationVal = -90f;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        CounterRotationVal = CounterRotationVal - 90f;
+        //        if (CounterRotationVal < -360)
+        //        {
+        //            CounterRotationVal = -90f;
+        //        }
+        //    }
+
+        //}
+
+        
             if (basinMovement.selectedObject == SelectedObject.basin)
             {
-                BasinRotationVal = BasinRotationVal - 90f;
+
+                BasinRotationVal = Mathf.Round(BasinRotationVal - 90f);
                 if (BasinRotationVal < -360)
                 {
                     BasinRotationVal = -90f;
                 }
+                StartCoroutine(RotateTo(1));
+                Debug.Log("it is got triggered : ");
             }
             else
             {
@@ -99,7 +146,7 @@ public class RotationScript : MonoBehaviour
                 }
             }
 
-        }
+       
 
 
     }
@@ -111,7 +158,7 @@ public class RotationScript : MonoBehaviour
 
     public void CallingBasinRotationEvent()
     {
-        OnBasinRotation();
+        //OnBasinRotation();
     }
 
 

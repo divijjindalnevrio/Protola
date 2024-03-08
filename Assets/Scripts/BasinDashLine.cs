@@ -32,7 +32,7 @@ public class BasinDashLine : MonoBehaviour
         Debug.Log("RotationScript_OnBasinRotation ABC "+ rotationScript.BasinRotationVal);
         if (rotationScript.BasinRotationVal == 90 || rotationScript.BasinRotationVal == -90 || rotationScript.BasinRotationVal == 270 || rotationScript.BasinRotationVal == -270)
         {
-            Debug.Log("RotationScript_OnBasinRotation ABC TRUE");
+            Debug.Log("RotationScript_OnBasinRotation ABC TRUE");                   // on basin vertical 
             GetTheBasinVertices(true);
         }
         else

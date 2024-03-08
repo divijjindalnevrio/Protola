@@ -38,6 +38,7 @@ public class BasinsGenerator : MonoBehaviour
         //SettingBasinPosition(currentBasinObj);
         currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos, lastSelectedBasinRotation);
         currentBasin.name = "Basin";
+        basinMovement.currentBasin = currentBasin;
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
         selectedDashCube.name = "SelectedDashLineCube";
         selectedDashCube.transform.SetParent(currentBasin.transform, false);

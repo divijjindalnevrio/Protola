@@ -20,7 +20,8 @@ public class BasinMovement : MonoBehaviour
     public GameObject SelectedDashLineCube;
     public GameObject SelectedDashLineBasin;
     public GameObject SelectedGameobject;
-    private Transform currentBasin;
+    public GameObject currentBasin;
+
     public Transform counterWhole;
     public LayerMask layerMask;
     public LayerMask CounterlayerMask;
@@ -56,7 +57,7 @@ public class BasinMovement : MonoBehaviour
 
     private void Start()
     {
-        basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
+       // basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
         counterGenerator.OnCounterAdded += SettingCurrentSelectedObject;
         OnGameobjectSelected?.Invoke(this, selectedObject);
 
@@ -69,6 +70,7 @@ public class BasinMovement : MonoBehaviour
            
             CounterAndSinkMovementAndGerenartion();
         }
+
         if (Input.touchCount >= 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             _isSelected = false;
@@ -230,10 +232,11 @@ public class BasinMovement : MonoBehaviour
 
     }
 
-    private void SettingCurrentBasin()
-    {
-        currentBasin = basinsGenerator.currentBasin.transform;
-    }
+    //private void SettingCurrentBasin()
+    //{
+    //    currentBasin = basinsGenerator.currentBasin.transform;
+    //}
+
     private void SettingCurrentSelectedObject()
     {
         // setting added counter to selected

@@ -56,12 +56,12 @@ public class RotationScript : MonoBehaviour
         {
             float t = 0;
 
-            while (t < 1)
+            while (t < .5f)
             {
                 yield return null;
                 t += Time.deltaTime / time;
-                // transform.position = Vector3.Lerp(start, end, t);
-                rotateObj = basinMovement.SelectedGameobject.transform.parent;
+
+                rotateObj = basinMovement.currentCounter.transform;
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
                 // OnBasinRotation();
             }
@@ -72,12 +72,12 @@ public class RotationScript : MonoBehaviour
         {
             float t = 0;
 
-            while (t < 1)
+            while (t < .5f)
             {
                 yield return null;
                 t += Time.deltaTime / time;
                 // transform.position = Vector3.Lerp(start, end, t);
-                rotateObj = basinMovement.SelectedGameobject.transform;
+                rotateObj = basinMovement.currentBasin.transform;
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
                 OnBasinRotation();
             }

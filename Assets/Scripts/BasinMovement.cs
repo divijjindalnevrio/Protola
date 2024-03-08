@@ -207,6 +207,7 @@ public class BasinMovement : MonoBehaviour
                 basinsGenerator.BasinInstanciate();
             }
             isInstanciateBasinMoved = true;
+            rotationScript.BasinRotationVal = Mathf.Round(rotationScript.BasinRotationVal);
             Vector3 targetPosition = new Vector3(basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).x, SelectedGameobject.transform.position.y, basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).z);
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
             OnGameobjectMoving();

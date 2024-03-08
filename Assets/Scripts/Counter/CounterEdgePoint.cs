@@ -104,17 +104,6 @@ public class CounterEdgePoint : MonoBehaviour
         return counterEdgePoints;
     }
 
-    private void ConvertingToVectorTwo()
-    {
-        vector2s.Clear();
-        foreach (Vector3 val in counterTopFourPoints)
-        {
-            var vector2Val = new Vector3(val.x, val.z);
-            vector2s.Add(vector2Val);
-        }
-        //vector2s = vector2s.Distinct().ToList();
-    }
-
     private void DrawingLineRenderer(List<Vector3> basinEdgePoints, List<Vector3> counterEdgePoints, Vector3 basinCenterPoint)
     {
         List<Vector3> BasinAndCounterEdgePoints = new List<Vector3>();

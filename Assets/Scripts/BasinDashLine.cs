@@ -29,7 +29,13 @@ public class BasinDashLine : MonoBehaviour
 
     private void RotationScript_OnBasinRotation()
     {
-        Debug.Log("RotationScript_OnBasinRotation ABC "+ rotationScript.BasinRotationVal);
+        fun();
+
+    }
+
+    private void fun()
+    {
+        Debug.Log("RotationScript_OnBasinRotation ABC " + rotationScript.BasinRotationVal);
         if (rotationScript.BasinRotationVal == 90 || rotationScript.BasinRotationVal == -90 || rotationScript.BasinRotationVal == 270 || rotationScript.BasinRotationVal == -270)
         {
             Debug.Log("RotationScript_OnBasinRotation ABC TRUE");                   // on basin vertical 
@@ -40,9 +46,6 @@ public class BasinDashLine : MonoBehaviour
             Debug.Log("RotationScript_OnBasinRotation ABC FALSE");
             GetTheBasinVertices();
         }
-        
-        
-       
     }
 
     private void BasinMovement_OnBasinMoving()
@@ -58,7 +61,8 @@ public class BasinDashLine : MonoBehaviour
     private void AssignBasinAndGetBasinVertices()
     {
         AssignCurrentBasin();
-        GetTheBasinVertices();
+        //GetTheBasinVertices();
+        fun();
         RestTheSelectedDashLineBasin();
     }
     private void AssignCurrentBasin()

@@ -34,6 +34,7 @@ public class BasinDashLine : MonoBehaviour
         if(e == SelectedObject.basin)
         {
             BasinMeasurementLineRendererSetToActive();
+            AssignBasinAndGetBasinVertices();
         }
         else
         {

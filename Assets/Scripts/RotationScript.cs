@@ -81,7 +81,10 @@ public class RotationScript : MonoBehaviour
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
                 OnBasinRotation();
             }
-            
+            rotateObj.rotation = Quaternion.Euler(new Vector3(rotateObj.rotation.x, BasinRotationVal, rotateObj.rotation.z));
+
+
+
         }
 
        
@@ -134,6 +137,8 @@ public class RotationScript : MonoBehaviour
         {
 
             BasinRotationVal = Mathf.Round(BasinRotationVal + 90f);
+
+            
             if (BasinRotationVal > 360)
             {
                 BasinRotationVal = 90f;

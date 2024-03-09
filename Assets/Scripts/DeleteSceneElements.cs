@@ -20,8 +20,9 @@ public class DeleteSceneElements : MonoBehaviour
     {
         if (basinMovement.selectedObject == SelectedObject.basin)
         {
-            Destroy(basinMovement.SelectedGameobject);
+            Destroy(basinMovement.currentBasin);
             basinMovement.selectedObject = SelectedObject.none;
+            basinMovement.TriggerOnGameobjectSelectedEvent();
             worldCanvas.SettingWorldUiCanvasToFalse();
         }
         if (basinMovement.selectedObject == SelectedObject.counter)

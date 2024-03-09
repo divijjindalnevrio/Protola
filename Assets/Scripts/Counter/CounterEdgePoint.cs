@@ -51,7 +51,9 @@ public class CounterEdgePoint : MonoBehaviour
         if(e == SelectedObject.basin)
         {
             GettingCounterCornerPointsObject();
-           
+
+            //basinEdgePoints = basinDashLine.basinEdgePoints;
+            
         }
     }
 

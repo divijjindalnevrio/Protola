@@ -67,6 +67,7 @@ public class BasinsGenerator : MonoBehaviour
         basinMovement.DeselectingAllDashLines();
         currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
         basinMovement.selectedObject = SelectedObject.basin;
+        basinMovement.TriggerOnGameobjectSelectedEvent();
         worldCanvas.SettingWorldUiCanvasToTrue();
         basinMovement.SelectedGameobject = currentBasin;
     }

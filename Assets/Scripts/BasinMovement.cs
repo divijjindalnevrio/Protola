@@ -126,6 +126,7 @@ public class BasinMovement : MonoBehaviour
                 selectedObject = SelectedObject.basin;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
+                currentBasin = SelectedGameobject;
                 rotationScript.BasinRotationVal = 0f + SelectedGameobject.transform.eulerAngles.y;
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 OnGameobjectSelected.Invoke(this, selectedObject);
@@ -233,10 +234,6 @@ public class BasinMovement : MonoBehaviour
 
     }
 
-    //private void SettingCurrentBasin()
-    //{
-    //    currentBasin = basinsGenerator.currentBasin.transform;
-    //}
 
     private void SettingCurrentSelectedObject()
     {
@@ -245,5 +242,9 @@ public class BasinMovement : MonoBehaviour
         SelectedGameobject = counterGenerator.currentCounter.transform.Find("Counter").gameObject;
     }
 
+    public void TriggerOnGameobjectSelectedEvent()
+    {
+        OnGameobjectSelected(this, selectedObject);
+    }
    
 }

@@ -12,6 +12,7 @@ public class BasinDashLine : MonoBehaviour
     public BasinMovement basinMovement;
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private BasinsGenerator basinsGenerator;
+    [SerializeField] private GameObject basinMeasurementLineRenderer;
     public List<GameObject> basinDashLinePoints = new List<GameObject>();
 
     public List<Vector3> basinVertices = new List<Vector3>();
@@ -24,7 +25,20 @@ public class BasinDashLine : MonoBehaviour
     {
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
+        basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
+    }
+
+    private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
+    {
+        if(e == SelectedObject.basin)
+        {
+            BasinMeasurementLineRendererSetToActive();
+        }
+        else
+        {
+            BasinMeasurementLineRendererSetToFalse();
+        }
     }
 
     private void RotationScript_OnBasinRotation()
@@ -67,7 +81,7 @@ public class BasinDashLine : MonoBehaviour
     }
     private void AssignCurrentBasin()
     {
-        CurrentBasin = basinMovement.SelectedGameobject;
+        CurrentBasin = basinMovement.currentBasin;
         b = CurrentBasin.GetComponent<BoxCollider>();
     }
 
@@ -150,13 +164,19 @@ public class BasinDashLine : MonoBehaviour
             basinEdgePoints.Add(new Vector3(basinCenterPoint.x , basinCenterPoint.y, basinCenterPoint.z + basinSize.x));
             basinEdgePoints.Add(new Vector3(basinCenterPoint.x , basinCenterPoint.y, basinCenterPoint.z - basinSize.x));
         }
-        
-
-
-        //Debug.Log("basinCenterPointAll basinEdgePointsVal : " + basinEdgePointOne + basinEdgePointTwo + basinEdgePointThree + basinEdgePointFour);
 
     }
 
-    
+    public void BasinMeasurementLineRendererSetToActive()
+    {
+        basinMeasurementLineRenderer.SetActive(true);
+    }
+
+    public void BasinMeasurementLineRendererSetToFalse()
+    {
+        basinMeasurementLineRenderer.SetActive(false);
+    }
+
+
 
 }

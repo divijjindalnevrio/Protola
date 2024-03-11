@@ -171,20 +171,20 @@ public class CounterEdgePoint : MonoBehaviour
         Debug.Log($"Vectors with the most common x-axis value:");
         int smallLinerendererposition = 0;
         int bigLinerendererposition = 0;
+
         for (int i = 0; i < vectorsWithMostCommonZ.Count; ++i)
         {
             if (vectorsWithMostCommonZ[i].x < basinCenterPoint.x)
             {
-                
                 lineRenderers[0].SetPosition(smallLinerendererposition, vectorsWithMostCommonZ[i]);
                 smallLinerendererposition++;
-                Debug.Log("FindCommonZVerticesAndDrawLine Less : "+ vectorsWithMostCommonZ[i]);
+               
             }
             else {
                 
                 lineRenderers[1].SetPosition(bigLinerendererposition, vectorsWithMostCommonZ[i]);
                 bigLinerendererposition++;
-                Debug.Log("FindCommonZVerticesAndDrawLine More : " + vectorsWithMostCommonZ[i]);
+                
             }
            
         }
@@ -205,5 +205,6 @@ public class CounterEdgePoint : MonoBehaviour
         return sum / vectors.Count;
     }
 
-    
+
+
 }

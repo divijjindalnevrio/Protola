@@ -137,14 +137,12 @@ public class CounterEdgePoint : MonoBehaviour
         {
             if (vectorsWithMostCommonX[i].z < basinCenterPoint.z)
             {
-
                 lineRenderers[2].SetPosition(smallLinerendererposition, vectorsWithMostCommonX[i]);
                 smallLinerendererposition++;
                 Debug.Log("FindCommonZVerticesAndDrawLine Less : " + vectorsWithMostCommonX[i]);
             }
             else
             {
-
                 lineRenderers[3].SetPosition(bigLinerendererposition, vectorsWithMostCommonX[i]);
                 bigLinerendererposition++;
                 Debug.Log("FindCommonZVerticesAndDrawLine More : " + vectorsWithMostCommonX[i]);

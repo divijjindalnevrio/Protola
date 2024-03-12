@@ -49,11 +49,11 @@ public class MeasurementLineController : MonoBehaviour
     private void SettingTextFeildPosition(float XValOne, float XValTwo, float ZValOne, float ZValTwo)
     {
         MeasurementLineUi.SetActive(true);
-        measurementLinesInputFeilds[3].transform.position = basinDashLine.basinEdgePoints[0] + new Vector3(0, 0.2f, ZValOne/2);      // common in z axis
-        measurementLinesInputFeilds[2].transform.position = basinDashLine.basinEdgePoints[1] + new Vector3(0, 0.2f, ZValTwo/2);
+        measurementLinesInputFeilds[3].transform.position = basinDashLine.basinEdgePoints[0] + new Vector3(0, 0.2f,.4f);        // common in z axis    ZValOne/2
+        measurementLinesInputFeilds[2].transform.position = basinDashLine.basinEdgePoints[1] + new Vector3(0, 0.2f,-.4f);
 
-        measurementLinesInputFeilds[1].transform.position = basinDashLine.basinEdgePoints[2] + new Vector3(XValTwo/2 , 0.2f, 0);         // common in x axis
-        measurementLinesInputFeilds[0].transform.position = basinDashLine.basinEdgePoints[3] + new Vector3(XValOne/2, 0.2f, 0);
+        measurementLinesInputFeilds[1].transform.position = basinDashLine.basinEdgePoints[2] + new Vector3(0.4f, 0.2f, 0);         // common in x axis
+        measurementLinesInputFeilds[0].transform.position = basinDashLine.basinEdgePoints[3] + new Vector3(-0.4f, 0.2f, 0);
     }
 
     private void AssignMeasurementLineLengthToFeild()

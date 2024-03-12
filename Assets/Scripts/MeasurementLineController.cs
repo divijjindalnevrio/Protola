@@ -10,7 +10,6 @@ public class MeasurementLineController : MonoBehaviour
     [SerializeField] private BasinDashLine basinDashLine;
     [SerializeField] private CounterEdgePoint counterEdgePoint;
     [SerializeField] private List<LineRenderer> measurementLines = new List<LineRenderer>();
-    [SerializeField] private List<float> LineLength = new List<float>();
 
     [SerializeField] private List<GameObject> measurementLinesInputFeilds = new List<GameObject>();
     [SerializeField] private GameObject MeasurementLineUi;
@@ -29,42 +28,71 @@ public class MeasurementLineController : MonoBehaviour
     {
         if(basinMovement.selectedObject == SelectedObject.basin)
         {
-            LineLength.Clear();
-            float measurementLinesXValOne = measurementLines[0].GetPosition(0).x - measurementLines[0].GetPosition(1).x;
-            float measurementLinesXValTwo = measurementLines[1].GetPosition(0).x - measurementLines[1].GetPosition(1).x;
-            float measurementLinesZValOne = measurementLines[2].GetPosition(0).z - measurementLines[2].GetPosition(1).z;
-            float measurementLinesZValTwo = measurementLines[3].GetPosition(0).z - measurementLines[3].GetPosition(1).z;
+            for (int i = 0; i < measurementLines.Count; i++) {
+                Vector3 LineLengthVector = measurementLines[i].GetPosition(0) - measurementLines[i].GetPosition(1);
+                float LineLength = Mathf.Max(Mathf.Abs(LineLengthVector.x), Mathf.Abs(LineLengthVector.y), Mathf.Abs(LineLengthVector.z));
+                measurementLinesInputFeilds[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (LineLength * 100).ToString();
+                measurementLinesInputFeilds[i].transform.position = new Vector3(measurementLines[i].GetPosition(0).x, measurementLinesInputFeilds[i].transform.position.y, measurementLines[i].GetPosition(0).z);
 
-            LineLength.Add(Mathf.Abs(measurementLinesXValOne * 100));
-            LineLength.Add(Mathf.Abs(measurementLinesXValTwo * 100));
-            LineLength.Add(Mathf.Abs(measurementLinesZValOne * 100));
-            LineLength.Add(Mathf.Abs(measurementLinesZValTwo * 100));
-            SettingTextFeildPosition(measurementLinesXValOne, measurementLinesXValTwo, measurementLinesZValOne, measurementLinesZValTwo);
-            AssignMeasurementLineLengthToFeild();
+                if (Mathf.Abs(LineLengthVector.x) > Mathf.Abs(LineLengthVector.z))
+                {
+                    //float LineMidPositionX = (measurementLines[i].GetPosition(0).x - measurementLines[i].GetPosition(1).x) / 2;
+                    measurementLinesInputFeilds[i].transform.position += new Vector3(0.4f, 0f, 0f);
+                    if(measurementLines[i].GetPosition(0).x > measurementLines[i].GetPosition(1).x)
+                    {
+                        measurementLinesInputFeilds[i].transform.position += new Vector3(- 1f, 0f, 0f);
+                    }
+ 
+                }
+                else
+                {
+                    //float LineMidPositionZ = (measurementLines[i].GetPosition(0).z - measurementLines[i].GetPosition(1).z) / 2;
+                    //measurementLinesInputFeilds[i].transform.position = new Vector3(measurementLinesInputFeilds[i].transform.position.z, measurementLinesInputFeilds[i].transform.position.y, basinMovement.currentBasin.transform.position.z - LineMidPositionZ);
+                    measurementLinesInputFeilds[i].transform.position += new Vector3(0, 0f, 0.4f);
+                    if (measurementLines[i].GetPosition(0).z > measurementLines[i].GetPosition(1).z)
+                    {
+                        measurementLinesInputFeilds[i].transform.position += new Vector3(0f, 0f, -.5f);
+                    }
+                }
+
+            }
+            //LineLength.Clear();
+            //float measurementLinesXValOne = measurementLines[0].GetPosition(0).x - measurementLines[0].GetPosition(1).x;
+            //float measurementLinesXValTwo = measurementLines[1].GetPosition(0).x - measurementLines[1].GetPosition(1).x;
+            //float measurementLinesZValOne = measurementLines[2].GetPosition(0).z - measurementLines[2].GetPosition(1).z;
+            //float measurementLinesZValTwo = measurementLines[3].GetPosition(0).z - measurementLines[3].GetPosition(1).z;
+
+            //LineLength.Add(Mathf.Abs(measurementLinesXValOne * 100));
+            //LineLength.Add(Mathf.Abs(measurementLinesXValTwo * 100));
+            //LineLength.Add(Mathf.Abs(measurementLinesZValOne * 100));
+            //LineLength.Add(Mathf.Abs(measurementLinesZValTwo * 100));
+            //SettingTextFeildPosition(measurementLinesXValOne, measurementLinesXValTwo, measurementLinesZValOne, measurementLinesZValTwo);
+            //AssignMeasurementLineLengthToFeild();
            
         }
 
     }
 
-    private void SettingTextFeildPosition(float XValOne, float XValTwo, float ZValOne, float ZValTwo)
-    {
-        MeasurementLineUi.SetActive(true);
-        measurementLinesInputFeilds[3].transform.position = basinDashLine.basinEdgePoints[0] + new Vector3(0, 0.2f,.4f);        // common in z axis    ZValOne/2
-        measurementLinesInputFeilds[2].transform.position = basinDashLine.basinEdgePoints[1] + new Vector3(0, 0.2f,-.4f);
+    //private void SettingTextFeildPosition(float XValOne, float XValTwo, float ZValOne, float ZValTwo)
+    //{
+    //    MeasurementLineUi.SetActive(true);
+    //    measurementLinesInputFeilds[3].transform.position = basinDashLine.basinEdgePoints[0] + new Vector3(0, 0.2f,.4f);        // common in z axis    ZValOne/2
+    //    measurementLinesInputFeilds[2].transform.position = basinDashLine.basinEdgePoints[1] + new Vector3(0, 0.2f,-.4f);
 
-        measurementLinesInputFeilds[1].transform.position = basinDashLine.basinEdgePoints[2] + new Vector3(0.4f, 0.2f, 0);         // common in x axis
-        measurementLinesInputFeilds[0].transform.position = basinDashLine.basinEdgePoints[3] + new Vector3(-0.4f, 0.2f, 0);
-    }
+    //    measurementLinesInputFeilds[1].transform.position = basinDashLine.basinEdgePoints[2] + new Vector3(0.4f, 0.2f, 0);         // common in x axis
+    //    measurementLinesInputFeilds[0].transform.position = basinDashLine.basinEdgePoints[3] + new Vector3(-0.4f, 0.2f, 0);
+    //}
 
-    private void AssignMeasurementLineLengthToFeild()
-    {
-       for(int i = 0; i < LineLength.Count; i++)
-        {
-            measurementLinesInputFeilds[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = LineLength[i].ToString();
-        }
+
+    //private void AssignMeasurementLineLengthToFeild()
+    //{
+    //   for(int i = 0; i < LineLength.Count; i++)
+    //    {
+    //        measurementLinesInputFeilds[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = LineLength[i].ToString();
+    //    }
 
        
-    }
+    //}
 
 
 

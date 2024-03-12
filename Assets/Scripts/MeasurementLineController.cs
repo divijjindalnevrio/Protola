@@ -44,10 +44,10 @@ public class MeasurementLineController : MonoBehaviour
     private void SettingTextFeildPosition()
     {
         MeasurementLineUi.SetActive(true);
-        measurementLinesInputFeilds[2].transform.position = basinDashLine.basinEdgePoints[0] + new Vector3(0, 0.2f, 0.4f);
-        measurementLinesInputFeilds[3].transform.position = basinDashLine.basinEdgePoints[1] + new Vector3(0, 0.2f, 0);
-        measurementLinesInputFeilds[0].transform.position = basinDashLine.basinEdgePoints[2] + new Vector3(0, 0.2f, 0);
-        measurementLinesInputFeilds[1].transform.position = basinDashLine.basinEdgePoints[3] + new Vector3(0, 0.2f, 0);
+        measurementLinesInputFeilds[3].transform.position = basinDashLine.basinEdgePoints[0] + new Vector3(0, 0.2f, 0.4f);
+        measurementLinesInputFeilds[2].transform.position = basinDashLine.basinEdgePoints[1] + new Vector3(0, 0.2f, 0);
+        measurementLinesInputFeilds[1].transform.position = basinDashLine.basinEdgePoints[2] + new Vector3(0, 0.2f, 0);
+        measurementLinesInputFeilds[0].transform.position = basinDashLine.basinEdgePoints[3] + new Vector3(0, 0.2f, 0);
     }
 
     private void AssignMeasurementLineLengthToFeild()

@@ -14,10 +14,19 @@ public class MeasurementLineController : MonoBehaviour
     [SerializeField] private List<GameObject> measurementLinesInputFeilds = new List<GameObject>();
     [SerializeField] private GameObject MeasurementLineUi;
 
+    [SerializeField] private List<float> TextFieldValue = new List<float>();
+
     void Start()
     {
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
-        BasinsGenerator.OnBasinGenrate += CalculatingMeasurementLineLength;
+        BasinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
+        basinMovement.OnBasinStopMoving += GetInputTextField;
+    }
+
+    private void BasinsGenerator_OnBasinGenrate()
+    {
+        CalculatingMeasurementLineLength();
+        GetInputTextField();
     }
 
     private void BasinMovement_OnBasinMoving()
@@ -28,7 +37,6 @@ public class MeasurementLineController : MonoBehaviour
     private void Update()
     {
         //CalculatingMeasurementLineLength();
-
     }
 
     private void CalculatingMeasurementLineLength()
@@ -39,7 +47,8 @@ public class MeasurementLineController : MonoBehaviour
                 Vector3 LineLengthVector = measurementLines[i].GetPosition(0) - measurementLines[i].GetPosition(1);
                 float LineLength = Mathf.Max(Mathf.Abs(LineLengthVector.x), Mathf.Abs(LineLengthVector.y), Mathf.Abs(LineLengthVector.z));
                 measurementLinesInputFeilds[i].transform.GetChild(0).gameObject.GetComponent<TMP_InputField>().text = (LineLength).ToString();   //* 100
-                measurementLinesInputFeilds[i].transform.position = new Vector3(measurementLines[i].GetPosition(0).x, measurementLinesInputFeilds[i].transform.position.y, measurementLines[i].GetPosition(0).z);
+
+                 measurementLinesInputFeilds[i].transform.position = new Vector3(measurementLines[i].GetPosition(0).x, measurementLinesInputFeilds[i].transform.position.y, measurementLines[i].GetPosition(0).z);
 
                 if (Mathf.Abs(LineLengthVector.x) > Mathf.Abs(LineLengthVector.z))
                 {
@@ -59,12 +68,19 @@ public class MeasurementLineController : MonoBehaviour
                 }
 
             }
-           
-           
+
         }
 
     }
 
-    //private void 
+    private void GetInputTextField()
+    {
+        TextFieldValue.Clear();
+        for (int i = 0; i < measurementLines.Count; i++)
+        {
+            TextFieldValue.Add(float.Parse(measurementLinesInputFeilds[i].transform.GetChild(0).gameObject.GetComponent<TMP_InputField>().text));
+        }
+
+    }    
 
 }

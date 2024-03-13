@@ -15,6 +15,7 @@ public class MeasurementLineController : MonoBehaviour
     [SerializeField] private GameObject MeasurementLineUi;
 
     [SerializeField] private List<float> TextFieldValue = new List<float>();
+    [SerializeField] private 
 
     void Start()
     {
@@ -113,8 +114,5 @@ public class MeasurementLineController : MonoBehaviour
     //}
 
 
-    private void PlywoodLineRenderer()
-    {
-
-    }
+    
 }

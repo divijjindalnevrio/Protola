@@ -21,12 +21,27 @@ public class MeasurementLineController : MonoBehaviour
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
         BasinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
         basinMovement.OnBasinStopMoving += GetInputTextField;
+        basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+    }
+
+    private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
+    {
+        if (e == SelectedObject.basin)
+        {
+            MeasurementLineUi.SetActive(true);
+        }
+
+        else
+        {
+            MeasurementLineUi.SetActive(false);
+        }
     }
 
     private void BasinsGenerator_OnBasinGenrate()
     {
         CalculatingMeasurementLineLength();
         GetInputTextField();
+       // SetMeasurementLineUiActiveAndDecative();
     }
 
     private void BasinMovement_OnBasinMoving()
@@ -36,7 +51,7 @@ public class MeasurementLineController : MonoBehaviour
 
     private void Update()
     {
-        //CalculatingMeasurementLineLength();
+       
     }
 
     private void CalculatingMeasurementLineLength()
@@ -81,6 +96,19 @@ public class MeasurementLineController : MonoBehaviour
             TextFieldValue.Add(float.Parse(measurementLinesInputFeilds[i].transform.GetChild(0).gameObject.GetComponent<TMP_InputField>().text));
         }
 
-    }    
+    }
 
+    //private void SetMeasurementLineUiActiveAndDecative()
+    //{
+    //    if (basinMovement.selectedObject == SelectedObject.basin)
+    //    {
+    //        MeasurementLineUi.SetActive(true);
+    //    }
+
+    //    else
+    //    {
+    //        MeasurementLineUi.SetActive(false);
+    //    }
+        
+    //}
 }

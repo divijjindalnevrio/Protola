@@ -10,7 +10,7 @@ public class Plywoodcontroller : MonoBehaviour
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private Transform PlywoodCube;
 
-    [SerializeField] private List<GameObject> AllPlywoodCubes = new List<GameObject>();
+    public List<GameObject> AllPlywoodCubes = new List<GameObject>();
     [SerializeField] private List<GameObject> PlywoodInputTextFields = new List<GameObject>();
     [SerializeField] private List<Vector3> centerPosition = new List<Vector3>();
     private Transform PlywoodInputTextFieldParentObj;

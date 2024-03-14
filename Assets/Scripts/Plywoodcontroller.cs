@@ -14,16 +14,22 @@ public class Plywoodcontroller : MonoBehaviour
 
     void Start()
     {
+
+        AssignPlywood();
+        GettingAllInputFields();
+        GettingAllPlywoodCubeCenterPos();
+
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
-
-        
     }
+
 
     private void BasinMovement_OnCounterStopMoving()
     {
-        AssignPlywoodAndInputTextFieldObject();
+        AssignPlywood();
+        GettingAllPlywoodCubeCenterPos();
         SetPlywoodLineRendererActive();
+        SettingTextFieldToCenterPos();
     }
 
 
@@ -31,35 +37,51 @@ public class Plywoodcontroller : MonoBehaviour
     {
        if(e == SelectedObject.counter)
         {
-            AssignPlywoodAndInputTextFieldObject();
+           
+            AssignPlywood();
+            GettingAllPlywoodCubeCenterPos();
             SetPlywoodLineRendererActive();
+            SetTextFieldsActive();
             SettingTextFieldToCenterPos();
+            Debug.Log("cOUNTTER GOT SELECTED : END");
+
         }
 
         else
         {
-            AssignPlywoodAndInputTextFieldObject();
+            AssignPlywood();
             SetPlywoodLineRendererDeActive();
             if(PlywoodInputTextFields != null)
             {
                 SetTextFieldsDeActive();
             }
-            
         }
     
     }
 
-    private void AssignPlywoodAndInputTextFieldObject()
+    private void AssignPlywood()
     {
         PlywoodCube = basinMovement.currentCounter.transform.Find("Counter").transform.Find("PlywoodCubes").transform;
+       
+    }
 
+    private void GettingAllInputFields()
+    {
         Transform PlywoodInputTextFieldParentObj = basinMovement.currentCounter.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").transform;
-        foreach(Transform child in PlywoodInputTextFieldParentObj)
+        foreach (Transform child in PlywoodInputTextFieldParentObj)
         {
             PlywoodInputTextFields.Add(child.gameObject);
         }
     }
-    
+
+    private void GettingAllPlywoodCubeCenterPos()
+    {
+        centerPosition.Clear();
+        foreach (Transform child in PlywoodCube)
+        {
+            centerPosition.Add(child.transform.GetChild(1).transform.position);
+        }
+    }
 
     private void SetPlywoodLineRendererActive()
     {
@@ -71,7 +93,8 @@ public class Plywoodcontroller : MonoBehaviour
             child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0.05f, 0.05f);
             child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(0, firstPos.transform.position);
             child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(1, secondPos.transform.position);
-            centerPosition.Add(child.transform.GetChild(1).transform.position);
+
+            //centerPosition.Add(child.transform.GetChild(1).transform.position);
 
         }
     }
@@ -80,7 +103,7 @@ public class Plywoodcontroller : MonoBehaviour
     {
         foreach (Transform child in PlywoodCube)
         {
-            //child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
+          
             child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0f, 0f);
         }
     }
@@ -88,11 +111,20 @@ public class Plywoodcontroller : MonoBehaviour
 
     private void SettingTextFieldToCenterPos()
     {
-        //PlywoodInputTextFieldParentObj.gameObject.SetActive(true);
+        
         for (int i =0; i < PlywoodInputTextFields.Count; i++)
         {
-            Debug.Log("PlywoodInputTextFields : " + PlywoodInputTextFields.Count);
+           
             PlywoodInputTextFields[i].transform.position = centerPosition[i];
+        }
+    }
+
+
+    private void SetTextFieldsActive()
+    {
+        foreach (GameObject child in PlywoodInputTextFields)
+        {
+            child.SetActive(true);
         }
     }
 
@@ -103,6 +135,7 @@ public class Plywoodcontroller : MonoBehaviour
             child.SetActive(false);
         }
     }
-    
+
+   
 
 }

@@ -77,7 +77,7 @@ public class Plywoodcontroller : MonoBehaviour
         centerPosition.Clear();
         foreach (Transform child in PlywoodCube)
         {
-            centerPosition.Add(child.transform.GetChild(1).transform.position);
+            centerPosition.Add(child.transform.GetChild(0).transform.GetChild(1).transform.position);
         }
     }
 
@@ -85,12 +85,11 @@ public class Plywoodcontroller : MonoBehaviour
     {
         foreach (Transform child in PlywoodCube)
         {
-            Debug.Log("it came to here : 1");
-            GameObject firstPos  = child.transform.Find("TopNPoint").gameObject;
-            GameObject secondPos = child.transform.GetChild(2).gameObject;
-            child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0.05f, 0.05f);
-            child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(0, firstPos.transform.position);
-            child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(1, secondPos.transform.position);
+            GameObject firstPos  = child.transform.GetChild(0).transform.Find("TopNPoint").gameObject;
+            GameObject secondPos = child.transform.GetChild(0).transform.GetChild(2).gameObject;
+            child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0.05f, 0.05f);
+            child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(0, firstPos.transform.position);
+            child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(1, secondPos.transform.position);
 
             //centerPosition.Add(child.transform.GetChild(1).transform.position);
 
@@ -101,15 +100,12 @@ public class Plywoodcontroller : MonoBehaviour
     {
         foreach (Transform child in PlywoodCube)
         {
-          
-            child.transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0f, 0f);
+            child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0f, 0f);
         }
     }
 
-
     private void SettingTextFieldToCenterPos()
     {
-        
         for (int i =0; i < PlywoodInputTextFields.Count; i++)
         {
            

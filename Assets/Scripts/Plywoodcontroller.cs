@@ -37,13 +37,11 @@ public class Plywoodcontroller : MonoBehaviour
     {
        if(e == SelectedObject.counter)
         {
-           
             AssignPlywood();
             GettingAllPlywoodCubeCenterPos();
             SetPlywoodLineRendererActive();
             SetTextFieldsActive();
             SettingTextFieldToCenterPos();
-            Debug.Log("cOUNTTER GOT SELECTED : END");
 
         }
 

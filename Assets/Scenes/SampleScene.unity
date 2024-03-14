@@ -827,7 +827,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94314245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2383,7 +2383,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237708171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3709,7 +3709,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.012, y: 1.289, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.89, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 635905128}
@@ -7207,7 +7207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "2\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9524,7 +9524,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.52, y: 1.2876999, z: 0.8603369}
-  m_LocalScale: {x: 1, y: 0.64, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 295517152}
@@ -15079,7 +15079,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876307737}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -16392,7 +16392,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -17205,7 +17205,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -18657,7 +18657,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "2\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22915,7 +22915,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -23171,6 +23171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basinMovement: {fileID: 1227306144}
   PlywoodCube: {fileID: 0}
+  AllPlywoodCubes: []
   PlywoodInputTextFields: []
   centerPosition: []
 --- !u!1 &1428967735
@@ -25215,7 +25216,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -25907,7 +25908,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660602825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -27094,6 +27095,37 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1708360597}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1720217180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1720217181}
+  m_Layer: 7
+  m_Name: ---------------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1720217181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720217180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 977725682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1729937152
 GameObject:
   m_ObjectHideFlags: 0
@@ -29426,7 +29458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "2\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29670,7 +29702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "2\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -35454,6 +35486,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 205427067}
+    - targetCorrespondingSourceObject: {fileID: 4691396395964206424, guid: 01b09caa779404f07a5032410ed99bb6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1720217181}
     - targetCorrespondingSourceObject: {fileID: 4691396395964206424, guid: 01b09caa779404f07a5032410ed99bb6,
         type: 3}
       insertIndex: -1

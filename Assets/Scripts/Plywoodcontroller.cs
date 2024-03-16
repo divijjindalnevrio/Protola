@@ -13,6 +13,7 @@ public class Plywoodcontroller : MonoBehaviour
     public List<GameObject> AllPlywoodCubes = new List<GameObject>();
     [SerializeField] private List<GameObject> PlywoodInputTextFields = new List<GameObject>();
     [SerializeField] private List<Vector3> centerPosition = new List<Vector3>();
+    [SerializeField] private RotationScript rotationScript;
     private Transform PlywoodInputTextFieldParentObj;
 
 
@@ -26,6 +27,16 @@ public class Plywoodcontroller : MonoBehaviour
 
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
+        rotationScript.OnCounterRotation += RotationScript_OnCounterRotation;
+        
+    }
+
+    private void RotationScript_OnCounterRotation()
+    {
+        AssignPlywood();
+        GettingAllPlywoodCubeCenterPos();
+        SetPlywoodLineRendererActive();
+        SettingTextFieldToCenterPos();
     }
 
     private void Update()
@@ -94,7 +105,7 @@ public class Plywoodcontroller : MonoBehaviour
         }
     }
 
-    private void SetPlywoodLineRendererActive()
+    public void SetPlywoodLineRendererActive()
     {
         foreach (Transform child in PlywoodCube)
         {
@@ -164,5 +175,11 @@ public class Plywoodcontroller : MonoBehaviour
         }
     }
    
+
+    public void RunThisFun()
+    {
+        Debug.Log("Yes value is getting changed here :");
+    }
+
 
 }

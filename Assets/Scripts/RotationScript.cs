@@ -15,7 +15,9 @@ public class RotationScript : MonoBehaviour
     public float BasinRotationVal   = 0f;
     public float CounterRotationVal = 0f;
     public event Action OnBasinRotation;
-
+    public event Action OnCounterRotation;
+    public event Action OnCounterRotationStop;
+ 
     private void Start()
     {
        
@@ -23,25 +25,7 @@ public class RotationScript : MonoBehaviour
 
     void Update()
     {
-        //<--------------- need to refactor here
-
-
-        //if (basinMovement.SelectedGameobject != null && _isRotateButtonPressed && basinMovement.selectedObject != SelectedObject.none)
-        //{
-        //    if (basinMovement.selectedObject == SelectedObject.counter)
-        //    {
-        //        rotateObj = basinMovement.SelectedGameobject.transform.parent;
-        //        rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
-        //    }
-        //    if (basinMovement.selectedObject == SelectedObject.basin)
-        //    {
-        //        rotateObj = basinMovement.SelectedGameobject.transform;
-        //        Debug.Log("BASINROTATION value :" + rotateObj.transform.eulerAngles);
-        //        rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
-
-        //    }
-
-        //}
+       
 
       
 
@@ -63,9 +47,10 @@ public class RotationScript : MonoBehaviour
 
                 rotateObj = basinMovement.currentCounter.transform;
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, CounterRotationVal);
-                // OnBasinRotation();
+                OnCounterRotation?.Invoke();
             }
-            Debug.Log(" rotation got stoped here : ");
+            Debug.Log("rotation got stoped here :  counter");
+            OnCounterRotationStop?.Invoke();
         }
 
         if (basinMovement.selectedObject == SelectedObject.basin)

@@ -30,6 +30,7 @@ public class MeasurementLineController : MonoBehaviour
         if (e == SelectedObject.basin)
         {
             MeasurementLineUi.SetActive(true);
+            CalculatingMeasurementLineLength();
         }
 
         else

@@ -13732,6 +13732,41 @@ PrefabInstance:
       propertyPath: m_MinValue
       value: 5.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1426068430}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlywoodLineRendererActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Plywoodcontroller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8423729484070246523, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_text
@@ -19873,6 +19908,41 @@ PrefabInstance:
       propertyPath: m_MinValue
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1426068430}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlywoodLineRendererActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Plywoodcontroller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8423729484070246523, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_text
@@ -23175,6 +23245,7 @@ MonoBehaviour:
   AllPlywoodCubes: []
   PlywoodInputTextFields: []
   centerPosition: []
+  rotationScript: {fileID: 1227306143}
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0
@@ -35745,6 +35816,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1426068430}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlywoodLineRendererActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Plywoodcontroller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8649149049010730419, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}

@@ -72,6 +72,7 @@ public class Plywoodcontroller : MonoBehaviour
     {
        if(e == SelectedObject.counter)
         {
+            SetTextFieldsDeActive();
             AssignPlywood();
             GetAllPlywoods();
             GettingAllPlywoodCubeCenterPos();
@@ -102,6 +103,7 @@ public class Plywoodcontroller : MonoBehaviour
     private void GettingAllInputFields()
     {
         Transform PlywoodInputTextFieldParentObj = basinMovement.currentCounter.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").transform;
+        PlywoodInputTextFields.Clear();
         foreach (Transform child in PlywoodInputTextFieldParentObj)
         {
             PlywoodInputTextFields.Add(child.gameObject);

@@ -9,6 +9,7 @@ public class Plywoodcontroller : MonoBehaviour
 {
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private Transform PlywoodCube;
+    [SerializeField] private CounterGenerator counterGenerator;
 
     public List<GameObject> AllPlywoodCubes = new List<GameObject>();
     [SerializeField] private List<GameObject> PlywoodInputTextFields = new List<GameObject>();
@@ -28,7 +29,17 @@ public class Plywoodcontroller : MonoBehaviour
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
         rotationScript.OnCounterRotation += RotationScript_OnCounterRotation;
-        
+        counterGenerator.OnCounterAdded += CounterGenerator_OnCounterAdded;
+
+
+    }
+
+    private void CounterGenerator_OnCounterAdded()
+    {
+        AssignPlywood();
+        GetAllPlywoods();
+        SetTextFieldsDeActive();
+        GettingAllInputFields();
     }
 
     private void RotationScript_OnCounterRotation()
@@ -41,10 +52,10 @@ public class Plywoodcontroller : MonoBehaviour
 
     private void Update()
     {
-        if(AllPlywoodCubes != null && PlywoodInputTextFields != null )
-        {
-            IncreaseThePlywoodSize();
-        }
+        //if(AllPlywoodCubes != null && PlywoodInputTextFields != null )
+        //{
+        //    //IncreaseThePlywoodSize();
+        //}
        
     }
 
@@ -62,6 +73,7 @@ public class Plywoodcontroller : MonoBehaviour
        if(e == SelectedObject.counter)
         {
             AssignPlywood();
+            GetAllPlywoods();
             GettingAllPlywoodCubeCenterPos();
             SetPlywoodLineRendererActive();
             SetTextFieldsActive();
@@ -105,7 +117,7 @@ public class Plywoodcontroller : MonoBehaviour
         }
     }
 
-    public void SetPlywoodLineRendererActive()
+    private void SetPlywoodLineRendererActive()
     {
         foreach (Transform child in PlywoodCube)
         {
@@ -114,7 +126,8 @@ public class Plywoodcontroller : MonoBehaviour
             child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetWidth(0.05f, 0.05f);
             child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(0, firstPos.transform.position);
             child.transform.GetChild(0).transform.Find("LineRenderer").GetComponent<LineRenderer>().SetPosition(1, secondPos.transform.position);
-            AllPlywoodCubes.Add(child.gameObject);
+           // AllPlywoodCubes.Add(child.gameObject);
+
             //centerPosition.Add(child.transform.GetChild(1).transform.position);
 
         }
@@ -155,13 +168,14 @@ public class Plywoodcontroller : MonoBehaviour
 
     private void GetAllPlywoods()
     {
+        AllPlywoodCubes.Clear();
         foreach (Transform child in PlywoodCube)
         {
             AllPlywoodCubes.Add(child.gameObject);
         }
     }
 
-    private void IncreaseThePlywoodSize()
+    public void IncreaseThePlywoodSize()
     {
         for (int i = 0; i < PlywoodInputTextFields.Count; i++)
         {

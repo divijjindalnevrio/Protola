@@ -23,14 +23,20 @@ public class BasinBound : MonoBehaviour
 
     void Start()
     {
+        counterGenerator.OnCounterAdded += CounterGenerator_OnCounterAdded;
         basinMovement.OnCounterStopMoving += GetMaxAndMinXPosition;
         GettingMeshVertices();
         GetMaxAndMinXPosition();
     }
 
+    private void CounterGenerator_OnCounterAdded()
+    {
+        GetMaxAndMinXPosition();
+    }
 
     private void GettingMeshVertices()
     {
+        counterMeshFilter = basinMovement.currentCounter.transform.Find("Counter").GetComponent<MeshFilter>();
         GetTheVerticesOfCounter(counterMeshFilter);
         vertices.Clear();
         foreach (Vector3 index in Vertex)

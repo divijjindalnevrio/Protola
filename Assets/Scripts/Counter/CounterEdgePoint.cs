@@ -53,7 +53,7 @@ public class CounterEdgePoint : MonoBehaviour
             GettingCounterCornerPointsObject();
             GettingBasinCornerPoints();
 
-            //basinEdgePoints = basinDashLine.basinEdgePoints;
+
 
         }
     }

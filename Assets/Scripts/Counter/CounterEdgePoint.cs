@@ -42,6 +42,7 @@ public class CounterEdgePoint : MonoBehaviour
 
     private void BasinsGenerator_OnBasinGenrate()       // <----- on basin generate 
     {
+       
         GettingCounterCornerPointsObject();
         GettingBasinCornerPoints();
     }
@@ -53,15 +54,12 @@ public class CounterEdgePoint : MonoBehaviour
             GettingCounterCornerPointsObject();
             GettingBasinCornerPoints();
 
-
-
         }
     }
 
     private void BasinMovement_OnBasinMoving()
     {
         basinEdgePoints = basinDashLine.basinEdgePoints;
-        Debug.Log("CounterEdgePoint BasinLength 1 : " + basinEdgePoints.Count);
         GettingBasinCornerPoints();
     }
 
@@ -203,6 +201,8 @@ public class CounterEdgePoint : MonoBehaviour
         return sum / vectors.Count;
     }
 
+
+   
 
 
 }

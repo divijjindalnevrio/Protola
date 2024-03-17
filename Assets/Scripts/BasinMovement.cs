@@ -129,6 +129,7 @@ public class BasinMovement : MonoBehaviour
                 currentBasin = SelectedGameobject;
                 rotationScript.BasinRotationVal = 0f + SelectedGameobject.transform.eulerAngles.y;
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
+                GettingCounterMeshFilter();
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
                 basinBound.GetMaxAndMinXPosition();
@@ -246,5 +247,15 @@ public class BasinMovement : MonoBehaviour
     {
         OnGameobjectSelected(this, selectedObject);
     }
-   
+
+    private void GettingCounterMeshFilter()
+    {
+        if (currentBasin != null)
+        {
+            GameObject counterBaseObj = currentBasin.transform.parent.transform.parent.gameObject;
+            basinBound.counterMeshFilter = counterBaseObj.transform.Find("Counter").GetComponent<MeshFilter>();
+            currentCounter = counterBaseObj;
+            Debug.Log("rootObjName is here : " + basinBound.counterMeshFilter.gameObject.name);
+        }
+    }
 }

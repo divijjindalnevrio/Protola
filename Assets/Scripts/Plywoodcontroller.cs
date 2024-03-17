@@ -72,12 +72,13 @@ public class Plywoodcontroller : MonoBehaviour
     {
        if(e == SelectedObject.counter)
         {
-            SetTextFieldsDeActive();
+            //SetTextFieldsDeActive();
             AssignPlywood();
             GetAllPlywoods();
             GettingAllPlywoodCubeCenterPos();
             SetPlywoodLineRendererActive();
             SetTextFieldsActive();
+            GettingAllInputFields();
             SettingTextFieldToCenterPos();
 
         }
@@ -192,10 +193,13 @@ public class Plywoodcontroller : MonoBehaviour
     }
    
 
-    public void RunThisFun()
+    private void DeActiveAllTheTextFields()
     {
-        Debug.Log("Yes value is getting changed here :");
+        foreach (Transform child in counterGenerator.counterWhole.transform)
+        {
+            if (child.name == "WorldUiCanvas") continue;
+            child.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").gameObject.SetActive(false);
+        }
     }
-
 
 }

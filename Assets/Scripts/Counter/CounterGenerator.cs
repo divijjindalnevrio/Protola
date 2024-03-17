@@ -13,9 +13,9 @@ public class CounterGenerator : MonoBehaviour
     [SerializeField] private WorldCanvas worldCanvas;
     public event Action OnCounterAdded;
     private Quaternion lastSelectedCounterRotation = Quaternion.Euler(Vector3.zero);
-
     [SerializeField] private Material grayMat;
     private Material defaultObjectMat;
+   // public List<GameObject> TotalCounterInScene = new List<GameObject>();
 
     void Start()
     {
@@ -59,6 +59,7 @@ public class CounterGenerator : MonoBehaviour
         lastSelectedCounterRotation = SettinglastSelectedCounterRotation(lastSelectedCounterRotation);
 
         GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject, basinMovement.SelectedGameobject.transform.parent.position, lastSelectedCounterRotation);
+        //TotalCounterInScene.Add(cunterbase);
         cunterbase.transform.position = basinMovement.SelectedGameobject.transform.parent.transform.localPosition + new Vector3(5f,0f,0f);
         currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         DestroyPreviousBasins(cunterbase);

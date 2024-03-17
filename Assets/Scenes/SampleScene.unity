@@ -13735,11 +13735,16 @@ PrefabInstance:
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -13749,7 +13754,17 @@ PrefabInstance:
       objectReference: {fileID: 1426068430}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1426068425}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -13759,12 +13774,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangingSizeOfCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Plywoodcontroller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CounterSizeDeformation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8423729484070246523, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -19935,11 +19965,16 @@ PrefabInstance:
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -19949,7 +19984,17 @@ PrefabInstance:
       objectReference: {fileID: 1426068430}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1426068425}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -19959,12 +20004,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangingSizeOfCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Plywoodcontroller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CounterSizeDeformation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8423729484070246523, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -35869,11 +35929,16 @@ PrefabInstance:
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -35883,7 +35948,17 @@ PrefabInstance:
       objectReference: {fileID: 1426068430}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1426068425}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
@@ -35893,12 +35968,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangingSizeOfCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Plywoodcontroller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
         type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CounterSizeDeformation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513681717161044717, guid: 51c95432363e1435aad6177b86bbe9ce,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8649149049010730419, guid: 51c95432363e1435aad6177b86bbe9ce,

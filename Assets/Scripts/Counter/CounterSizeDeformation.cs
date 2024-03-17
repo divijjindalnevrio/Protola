@@ -23,6 +23,7 @@ public class CounterSizeDeformation : MonoBehaviour
         currentCounter = counterGenerator.currentCounter.transform;
         counterGenerator.OnCounterAdded += GettingCurrentCounter;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+        ChangingSizeOfCounter();
 
     }
 
@@ -36,11 +37,11 @@ public class CounterSizeDeformation : MonoBehaviour
 
     private void Update()
     {
-        ChangingSizeOfCounter();
+        //ChangingSizeOfCounter();
 
     }
 
-    private void ChangingSizeOfCounter()
+    public void ChangingSizeOfCounter()
     {
         width = widthSlider.value;
         thickness = thicknessSlider.value;

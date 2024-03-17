@@ -19,7 +19,7 @@ public class MainUiController : MonoBehaviour
     private string basin = "basin";
 
 
-    void Start()
+    void Start() 
     {
         // assign ui elements to dictonary!
         uiModel = GetComponent<UiModel>();

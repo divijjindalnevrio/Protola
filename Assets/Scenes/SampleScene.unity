@@ -23220,6 +23220,9 @@ MonoBehaviour:
   widthSlider: {fileID: 831580694}
   thicknessSlider: {fileID: 1187545048}
   depthSlider: {fileID: 1581739702}
+  width: 0
+  thickness: 0
+  depth: 0
   currentCounter: {fileID: 0}
   basinMovement: {fileID: 1227306144}
   currentCounterPosition: {x: 0, y: 0, z: 0}
@@ -23315,7 +23318,6 @@ MonoBehaviour:
   counterSizeDeformation: {fileID: 1426068425}
   basinDashLine: {fileID: 1227306149}
   basinsGenerator: {fileID: 1227306146}
-  basinBound: {fileID: 1227306148}
   counterTopFourPoints: []
   vector2s: []
   lineRenderers:
@@ -35592,7 +35594,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 842205aa2f26a4add898e3888d5375ba, type: 2}
+      objectReference: {fileID: 2100000, guid: 348582a15be6647b7964878aa90eb1ed, type: 2}
     - target: {fileID: 2290235269492327995, guid: 01b09caa779404f07a5032410ed99bb6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]

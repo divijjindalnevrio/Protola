@@ -31,8 +31,7 @@ public class CounterSizeDeformation : MonoBehaviour
     {
         if(e == SelectedObject.counter)
         {
-            currentCounter = basinMovement.currentCounter.transform;
-            Debug.Log("CURRENT COUNTER NAME : " + currentCounter.transform.name + currentCounter.transform.Find("Counter").transform.localScale);
+            GettingCurrentCounter();
             SetTheSizeValueOfCurrentCounter();
         }
 
@@ -50,12 +49,15 @@ public class CounterSizeDeformation : MonoBehaviour
 
     public void SetTheSizeValueOfCurrentCounter()
     {
-        Debug.Log("CURRENT COUNTER NAME PROBLEM ");
-        Debug.Log("SetTheSizeValueOfCurrentCounter : counterWidth :");
-        depthSlider.value = currentCounter.transform.Find("Counter").transform.localScale.z;
+       
+       // depthSlider.value = currentCounter.transform.Find("Counter").transform.localScale.z;
+        depthSlider.SetValueWithoutNotify(currentCounter.transform.Find("Counter").transform.localScale.z);
+        widthSlider.SetValueWithoutNotify(currentCounter.transform.Find("Counter").transform.localScale.x);
+        thicknessSlider.SetValueWithoutNotify(currentCounter.transform.position.y);
+
         //widthSlider.value = currentCounter.transform.Find("Counter").transform.localScale.x;
         //thicknessSlider.value = currentCounter.transform.localPosition.y;
-        
+
     }
 
     public void ChangingSizeOfCounter()
@@ -63,15 +65,15 @@ public class CounterSizeDeformation : MonoBehaviour
         width = widthSlider.value;
         thickness = thicknessSlider.value;
         depth = depthSlider.value;
-
-       currentCounter.transform.Find("Counter").transform.localScale = new Vector3(width, currentCounter.transform.Find("Counter").transform.localScale.y, depth);
-       currentCounter.position = new Vector3(currentCounter.position.x, thickness, currentCounter.position.z);
+        
+        currentCounter.transform.Find("Counter").transform.localScale = new Vector3(width, currentCounter.transform.Find("Counter").transform.localScale.y, depth);
+        currentCounter.position = new Vector3(currentCounter.position.x, thickness, currentCounter.position.z);
         currentCounterPosition = currentCounter.transform.localPosition;
     }
 
     private void GettingCurrentCounter()
     {
-        
+        currentCounter = basinMovement.currentCounter.transform;
     }
 
     

@@ -166,8 +166,8 @@ public class BasinMovement : MonoBehaviour
             }
             isInstanciateCounterMoved = true;
             counterGenerator.DisableAllBasinsCollider();
-            Vector3 targetPosition = new Vector3(raycastHit.point.x, counterWhole.position.y, raycastHit.point.z);
-            currentCounter.transform.position = Vector3.Lerp(counterWhole.position, targetPosition, Time.deltaTime * Counterspeed);
+            Vector3 targetPosition = new Vector3(raycastHit.point.x, currentCounter.transform.position.y, raycastHit.point.z);
+            currentCounter.transform.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
             OnGameobjectMoving();
 
         }

@@ -50,6 +50,7 @@ public class BasinMovement : MonoBehaviour
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
     public event Action OnGameobjectMoving;
+    public event Action OnGameobjectStopMoving;
     public event Action OnCounterStopMoving;
     public event Action OnBasinStopMoving;
     public event Action OnBasinMoving;
@@ -153,6 +154,7 @@ public class BasinMovement : MonoBehaviour
             Destroy(counterGenerator._instanciateCounter);
             isCounterInstanciate = false;
             counterGenerator.EnableAllBasinsCollider();
+            OnGameobjectStopMoving();
             OnCounterStopMoving();
         }
 
@@ -193,6 +195,7 @@ public class BasinMovement : MonoBehaviour
             Destroy(basinsGenerator.InstanciateBasin);
             isBasinInstanciate = false;
             basinCanMove = false;
+            OnGameobjectStopMoving();
             OnBasinStopMoving();
         }
         ///

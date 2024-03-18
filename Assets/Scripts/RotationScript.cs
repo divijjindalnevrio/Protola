@@ -23,16 +23,6 @@ public class RotationScript : MonoBehaviour
        
     }
 
-    void Update()
-    {
-       
-
-      
-
-
-    }
-    //
-
     IEnumerator RotateTo(float time)
     {
 

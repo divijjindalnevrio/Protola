@@ -23,7 +23,7 @@ public class BasinOverlapingController : MonoBehaviour
     private void BasinMovement_OnGameobjectMoving()
     {
         AddingRigidbodyToSelectedObject(basinMovement.SelectedGameobject);
-        SetColliderIsTriggerOff(basinMovement.SelectedGameobject);
+       // SetColliderIsTriggerOff(basinMovement.SelectedGameobject);
     }
 
     private void AddingRigidbodyToSelectedObject(GameObject selectedGameobject)
@@ -46,7 +46,6 @@ public class BasinOverlapingController : MonoBehaviour
         {
             DetectedObject = other.gameObject;
             Debug.Log("OBJECT NAEM : 1 " + " " + other.name);
-
         }
 
         else

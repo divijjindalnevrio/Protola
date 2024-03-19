@@ -20261,6 +20261,7 @@ GameObject:
   - component: {fileID: 1227306147}
   - component: {fileID: 1227306148}
   - component: {fileID: 1227306149}
+  - component: {fileID: 1227306150}
   m_Layer: 0
   m_Name: CounterWhole
   m_TagString: Untagged
@@ -20428,6 +20429,19 @@ MonoBehaviour:
   vector3s: []
   vector2s: []
   basinEdgePoints: []
+--- !u!114 &1227306150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227306140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e209f07505984cf2a7157dddf4fbb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basinMovement: {fileID: 1227306144}
 --- !u!1 &1233815184
 GameObject:
   m_ObjectHideFlags: 0
@@ -23176,7 +23190,6 @@ GameObject:
   - component: {fileID: 1426068428}
   - component: {fileID: 1426068429}
   - component: {fileID: 1426068430}
-  - component: {fileID: 1426068431}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -23375,19 +23388,6 @@ MonoBehaviour:
   PlywoodInputTextFields: []
   centerPosition: []
   rotationScript: {fileID: 1227306143}
---- !u!114 &1426068431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426068421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e209f07505984cf2a7157dddf4fbb40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basinMovement: {fileID: 1227306144}
 --- !u!1 &1428967735
 GameObject:
   m_ObjectHideFlags: 0
@@ -35695,7 +35695,7 @@ PrefabInstance:
     - target: {fileID: 5287037779034927808, guid: 01b09caa779404f07a5032410ed99bb6,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5479741783877467934, guid: 01b09caa779404f07a5032410ed99bb6,
         type: 3}

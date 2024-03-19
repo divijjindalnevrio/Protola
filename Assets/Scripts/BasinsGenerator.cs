@@ -11,11 +11,12 @@ public class BasinsGenerator : MonoBehaviour
     public GameObject currentBasin;
     public GameObject InstanciateBasin;
     public bool IsBasinGenerated = false;
-    [SerializeField] private BasinMovement basinMovement;
     public event Action OnBasinGenrate;
     private BasinTypeSO AllBasinsSo;
     private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
     private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
+    [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private BasinOverlapingController basinOverlapingController;
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private WorldCanvas worldCanvas;
     [SerializeField] private Material grayMat;
@@ -37,6 +38,7 @@ public class BasinsGenerator : MonoBehaviour
         Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
         //SettingBasinPosition(currentBasinObj);
         currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos,lastSelectedBasinRotation);
+        currentBasin.GetComponent<Collider>().isTrigger = true;
         currentBasin.name = "Basin";
         rotationScript.BasinRotationVal = Mathf.Round(rotationScript.BasinRotationVal); // here added now
         basinMovement.currentBasin = currentBasin;
@@ -85,6 +87,7 @@ public class BasinsGenerator : MonoBehaviour
         InstanciateBasin = Instantiate(selectedGameobject.gameObject,selectedGameobject.position, selectedGameobject.localRotation);
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
+        selectedGameobject.gameObject.AddComponent<BasinOverlapingController>();
         SettingGrayMatToOboject(selectedGameobject);
         basinMovement.isBasinInstanciate = true;
     }

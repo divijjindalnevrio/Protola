@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BasinOverlapingController : MonoBehaviour
 {
-   [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private BasinMovement basinMovement;
+    public GameObject DetectedObject;
 
     void Start()
     {
+        basinMovement = transform.root.transform.GetComponentInChildren<BasinMovement>();
         basinMovement.OnGameobjectMoving += BasinMovement_OnGameobjectMoving;
         basinMovement.OnGameobjectStopMoving += BasinMovement_OnGameobjectStopMoving;
     }
@@ -15,11 +17,13 @@ public class BasinOverlapingController : MonoBehaviour
     private void BasinMovement_OnGameobjectStopMoving()
     {
         RemovingTheRigidbody(basinMovement.SelectedGameobject);
+        Destroy(basinMovement.SelectedGameobject.GetComponent<BasinOverlapingController>());
     }
 
     private void BasinMovement_OnGameobjectMoving()
     {
         AddingRigidbodyToSelectedObject(basinMovement.SelectedGameobject);
+        SetColliderIsTriggerOff(basinMovement.SelectedGameobject);
     }
 
     private void AddingRigidbodyToSelectedObject(GameObject selectedGameobject)
@@ -29,9 +33,8 @@ public class BasinOverlapingController : MonoBehaviour
         rigidBody.useGravity = false;
         rigidBody.isKinematic = true;
         rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-        Debug.Log("rigidbody get set here ");
     }
-
+     
     private void RemovingTheRigidbody(GameObject selectedGameobject)
     {
         Destroy(selectedGameobject.GetComponent<Rigidbody>());
@@ -39,7 +42,25 @@ public class BasinOverlapingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OBJECT NAEM : " + other.name);
+        if(other.name != "Counter")
+        {
+            DetectedObject = other.gameObject;
+            Debug.Log("OBJECT NAEM : 1 " + " " + other.name);
+
+        }
+
+        else
+        {
+            return;
+        }
     }
-   
+
+    private void SetColliderIsTriggerOff(GameObject selectedObject)
+    {
+        selectedObject.GetComponent<BoxCollider>().isTrigger = false;
+    }
+
+
+
+
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20326,6 +20326,7 @@ MonoBehaviour:
     type: 3}
   SelectedGameobject: {fileID: 0}
   currentBasin: {fileID: 0}
+  LastPositionSelectedObject: {x: 0, y: 0, z: 0}
   counterWhole: {fileID: 0}
   layerMask:
     serializedVersion: 2
@@ -20344,6 +20345,8 @@ MonoBehaviour:
   rotationScript: {fileID: 1227306143}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
   basinBound: {fileID: 1227306148}
+  basinDashLine: {fileID: 1227306149}
+  basinOverlapingController: {fileID: 0}
 --- !u!114 &1227306146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20444,6 +20447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basinMovement: {fileID: 1227306144}
   DetectedObject: {fileID: 0}
+  IsBasinOverlaping: 0
 --- !u!1 &1233815184
 GameObject:
   m_ObjectHideFlags: 0
@@ -28799,6 +28803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basinMovement: {fileID: 1227306144}
+  rotationScript: {fileID: 1227306143}
   BasinsGenerator: {fileID: 1227306146}
   counterEdgePoint: {fileID: 0}
   measurementLines:
@@ -36640,6 +36645,7 @@ MonoBehaviour:
   SelectedDashLineBasin: {fileID: 0}
   SelectedGameobject: {fileID: 0}
   currentBasin: {fileID: 0}
+  LastPositionSelectedObject: {x: 0, y: 0, z: 0}
   counterWhole: {fileID: 0}
   layerMask:
     serializedVersion: 2
@@ -36658,6 +36664,8 @@ MonoBehaviour:
   rotationScript: {fileID: 0}
   counterTypeSO: {fileID: 11400000, guid: 56d8f4ea005a1474dbf6db6d393e3700, type: 2}
   basinBound: {fileID: 0}
+  basinDashLine: {fileID: 0}
+  basinOverlapingController: {fileID: 0}
 --- !u!1001 &8094339781833060473
 PrefabInstance:
   m_ObjectHideFlags: 0

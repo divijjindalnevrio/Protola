@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MeasurementLineController : MonoBehaviour
 {
     [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private RotationScript rotationScript;
     [SerializeField] private BasinsGenerator BasinsGenerator;
     [SerializeField] private CounterEdgePoint counterEdgePoint;
     [SerializeField] private List<LineRenderer> measurementLines = new List<LineRenderer>();
@@ -21,8 +22,27 @@ public class MeasurementLineController : MonoBehaviour
     {
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
         BasinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
-        basinMovement.OnBasinStopMoving += GetInputTextField;
+        basinMovement.OnBasinStopMoving += BasinMovement_OnBasinStopMoving;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+        basinMovement.OnGameobjectStopMoving += BasinMovement_OnGameobjectStopMoving;
+        rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
+    }
+
+    private void RotationScript_OnBasinRotation()
+    {
+        CalculatingMeasurementLineLength();
+    }
+
+    private void BasinMovement_OnGameobjectStopMoving()
+    {
+        CalculatingMeasurementLineLength();
+      
+    }
+
+    private void BasinMovement_OnBasinStopMoving()
+    {
+        GetInputTextField();
+        
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)

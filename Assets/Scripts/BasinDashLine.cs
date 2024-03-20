@@ -111,7 +111,7 @@ public class BasinDashLine : MonoBehaviour
         }  
     }
 
-    private void GetTheBasinVertices(bool BasinRotated = false)
+    public void GetTheBasinVertices(bool BasinRotated = false)
     {
         MeshFilter basinMeshFilter = CurrentBasin.transform.Find("Cube").GetComponent<MeshFilter>();
         BoxCollider b = CurrentBasin.GetComponent<BoxCollider>();
@@ -146,6 +146,7 @@ public class BasinDashLine : MonoBehaviour
     private void CalculateBasinMidpoint(BoxCollider b, bool BasinRotated = false)
     {
         Vector3 basinCenterPoint = CurrentBasin.transform.position;
+
         Vector3 basinSize = new Vector3(b.size.x, b.size.y, b.size.z);
         Debug.Log("Basin size z : " + basinSize.z);
         basinEdgePoints.Clear();
@@ -165,7 +166,7 @@ public class BasinDashLine : MonoBehaviour
             basinEdgePoints.Add(new Vector3(basinCenterPoint.x , basinCenterPoint.y, basinCenterPoint.z + basinSize.x));
             basinEdgePoints.Add(new Vector3(basinCenterPoint.x , basinCenterPoint.y, basinCenterPoint.z - basinSize.x));
         }
-
+        Debug.Log("BasinMovement_OnGameobjectStopMoving_CHECK CenterPoint Of Basin : " );
     }
 
     public void BasinMeasurementLineRendererSetToActive()

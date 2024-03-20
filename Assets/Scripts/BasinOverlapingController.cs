@@ -43,7 +43,7 @@ public class BasinOverlapingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name != "Counter")
+        if(other.name != "Counter" && other.name != "BasinClone")
         {
             DetectedObject = other.gameObject;
             basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.red;
@@ -55,7 +55,7 @@ public class BasinOverlapingController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name != "Counter")
+        if (other.name != "Counter" && other.name != "BasinClone")
         {
             IsBasinOverlaping = true;
         }

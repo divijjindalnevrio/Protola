@@ -85,6 +85,7 @@ public class BasinsGenerator : MonoBehaviour
     {
         Transform selectedGameobject = basinMovement.SelectedGameobject.transform;
         InstanciateBasin = Instantiate(selectedGameobject.gameObject,selectedGameobject.position, selectedGameobject.localRotation);
+        InstanciateBasin.gameObject.name = "BasinClone";
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
         selectedGameobject.gameObject.AddComponent<BasinOverlapingController>();

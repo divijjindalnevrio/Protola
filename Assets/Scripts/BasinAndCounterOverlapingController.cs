@@ -6,7 +6,7 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
 {
     [SerializeField] private BasinMovement basinMovement;
     public GameObject DetectedObject;
-    public bool IsBasinOverlaping = false;
+    public bool IsGameobjectOverlaping = false;
 
     void Start()
     {
@@ -43,44 +43,65 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name != "Counter" && other.name != "BasinClone")
+      
+        if(basinMovement.SelectedGameobject.tag == "Counter")
         {
-            DetectedObject = other.gameObject;
-            basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.red;
+            Debug.Log("cOUNTER GOT TRIGGERED : counter");
+
         }
 
-        else { return; }
-        
+        else if(basinMovement.SelectedGameobject.tag == "Basin")
+        {
+            if (other.name != "Counter" && other.name != "BasinClone")
+            {
+                DetectedObject = other.gameObject;
+                basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.red;
+            }
+
+            else { return; }
+        }
+
+
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name != "Counter" && other.name != "BasinClone")
+        if (basinMovement.SelectedGameobject.tag == "Counter")
         {
-            IsBasinOverlaping = true;
+            Debug.Log("cOUNTER GOT TRIGGERED : counter");
+            IsGameobjectOverlaping = true;
         }
-        else { return; }
+
+        else if (basinMovement.SelectedGameobject.tag == "Basin")
+        {
+            if (other.name != "Counter" && other.name != "BasinClone")
+            {
+                IsGameobjectOverlaping = true;
+            }
+            else { return; }
+        }
        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.white;
-        IsBasinOverlaping = false;
+        if (basinMovement.SelectedGameobject.tag == "Counter")
+        {
+            Debug.Log("cOUNTER GOT TRIGGERED : counter");
+            IsGameobjectOverlaping = false;
+
+        }
+
+        else if (basinMovement.SelectedGameobject.tag == "Basin")
+        {
+            basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.white;
+            IsGameobjectOverlaping = false;
+        }
+       
     }
 
-    private void SetColliderIsTriggerOff(GameObject selectedObject)
-    {
-        selectedObject.GetComponent<BoxCollider>().isTrigger = false;
-    }
+    
 
-
-
-    //private void BasinOverlap()
-    //{
-    //    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().material.color = Color.red;
-
-    //}
 
 
 }

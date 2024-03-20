@@ -198,10 +198,10 @@ public class BasinMovement : MonoBehaviour
             isBasinInstanciate = false;
             basinCanMove = false;
             
-            bool _IsBasinOverlaping = SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsBasinOverlaping;
+            bool _IsGameobjectOverlaping = SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsGameobjectOverlaping;
             OnBasinStopMoving();
 
-            if(_IsBasinOverlaping)
+            if(_IsGameobjectOverlaping)
             {
                 SelectedGameobject.transform.position = LastPositionSelectedObject;
             }

@@ -15,6 +15,7 @@ public class CounterGenerator : MonoBehaviour
     private Quaternion lastSelectedCounterRotation = Quaternion.Euler(Vector3.zero);
     [SerializeField] private Material grayMat;
     private Material defaultObjectMat;
+    [SerializeField] private BasinAndCounterOverlapingController BasinAndCounterOverlapingController;
    // public List<GameObject> TotalCounterInScene = new List<GameObject>();
 
     void Start()
@@ -27,7 +28,7 @@ public class CounterGenerator : MonoBehaviour
     {
         GameObject currentCounter = basinMovement.currentCounter;
         _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, currentObjRotation);
-
+        basinMovement.SelectedGameobject.AddComponent<BasinAndCounterOverlapingController>();
         _instanciateCounter.transform.parent = counterWhole.transform.parent;
         SettingGrayMatToOboject(currentCounter.transform);
 

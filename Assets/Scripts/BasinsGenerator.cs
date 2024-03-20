@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -16,7 +16,7 @@ public class BasinsGenerator : MonoBehaviour
     private Dictionary<string, GameObject> basins = new Dictionary<string, GameObject>();
     private Quaternion lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
     [SerializeField] private BasinMovement basinMovement;
-    [SerializeField] private BasinOverlapingController basinOverlapingController;
+    [SerializeField] private BasinAndCounterOverlapingController BasinAndCounterOverlapingController;
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private WorldCanvas worldCanvas;
     [SerializeField] private Material grayMat;
@@ -88,7 +88,7 @@ public class BasinsGenerator : MonoBehaviour
         InstanciateBasin.gameObject.name = "BasinClone";
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
-        selectedGameobject.gameObject.AddComponent<BasinOverlapingController>();
+        selectedGameobject.gameObject.AddComponent<BasinAndCounterOverlapingController>();
         SettingGrayMatToOboject(selectedGameobject);
         basinMovement.isBasinInstanciate = true;
     }

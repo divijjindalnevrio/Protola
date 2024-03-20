@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasinOverlapingController : MonoBehaviour
+public class BasinAndCounterOverlapingController : MonoBehaviour
 {
     [SerializeField] private BasinMovement basinMovement;
     public GameObject DetectedObject;
@@ -18,7 +18,7 @@ public class BasinOverlapingController : MonoBehaviour
     private void BasinMovement_OnGameobjectStopMoving()
     {
         RemovingTheRigidbody(basinMovement.SelectedGameobject);
-        Destroy(basinMovement.SelectedGameobject.GetComponent<BasinOverlapingController>());
+        Destroy(basinMovement.SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>());
     }
 
     private void BasinMovement_OnGameobjectMoving()

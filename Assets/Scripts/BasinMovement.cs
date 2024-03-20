@@ -47,7 +47,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private CounterTypeSO counterTypeSO;
     [SerializeField] private BasinBound basinBound;
     [SerializeField] private BasinDashLine basinDashLine;
-    [SerializeField] private BasinOverlapingController basinOverlapingController;
+    [SerializeField] private BasinAndCounterOverlapingController BasinAndCounterOverlapingController;
 
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
@@ -198,14 +198,14 @@ public class BasinMovement : MonoBehaviour
             isBasinInstanciate = false;
             basinCanMove = false;
             
-            bool _IsBasinOverlaping = SelectedGameobject.GetComponent<BasinOverlapingController>().IsBasinOverlaping;
+            bool _IsBasinOverlaping = SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsBasinOverlaping;
             OnBasinStopMoving();
 
             if(_IsBasinOverlaping)
             {
                 SelectedGameobject.transform.position = LastPositionSelectedObject;
             }
-           // basinDashLine.GetTheBasinVertices();
+            basinDashLine.GetTheBasinVertices();
             OnGameobjectStopMoving();
         }
         ///

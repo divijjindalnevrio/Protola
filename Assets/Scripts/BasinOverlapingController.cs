@@ -6,6 +6,7 @@ public class BasinOverlapingController : MonoBehaviour
 {
     [SerializeField] private BasinMovement basinMovement;
     public GameObject DetectedObject;
+    public bool IsBasinOverlaping = false;
 
     void Start()
     {
@@ -45,13 +46,27 @@ public class BasinOverlapingController : MonoBehaviour
         if(other.name != "Counter")
         {
             DetectedObject = other.gameObject;
-            Debug.Log("OBJECT NAEM : 1 " + " " + other.name);
+            basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.red;
         }
 
-        else
+        else { return; }
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name != "Counter")
         {
-            return;
+            IsBasinOverlaping = true;
         }
+        else { return; }
+       
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.white;
+        IsBasinOverlaping = false;
     }
 
     private void SetColliderIsTriggerOff(GameObject selectedObject)
@@ -60,6 +75,12 @@ public class BasinOverlapingController : MonoBehaviour
     }
 
 
+
+    //private void BasinOverlap()
+    //{
+    //    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+    //}
 
 
 }

@@ -21,6 +21,7 @@ public class BasinMovement : MonoBehaviour
     public GameObject SelectedDashLineBasin;
     public GameObject SelectedGameobject;
     public GameObject currentBasin;
+    [SerializeField] private Vector3 LastPositionSelectedObject;
 
     public Transform counterWhole;
     public LayerMask layerMask;
@@ -45,7 +46,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private CounterTypeSO counterTypeSO;
     [SerializeField] private BasinBound basinBound;
- 
+    [SerializeField] private BasinOverlapingController basinOverlapingController;
 
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
@@ -197,6 +198,13 @@ public class BasinMovement : MonoBehaviour
             basinCanMove = false;
             OnGameobjectStopMoving();
             OnBasinStopMoving();
+            bool _IsBasinOverlaping = SelectedGameobject.GetComponent<BasinOverlapingController>().IsBasinOverlaping;
+
+            if(_IsBasinOverlaping)
+            {
+                SelectedGameobject.transform.position = LastPositionSelectedObject;
+            }
+            
         }
         ///
 
@@ -207,8 +215,10 @@ public class BasinMovement : MonoBehaviour
 
         if(basinCanMove)
         {
+           
             if (isBasinInstanciate == false)
             {
+                LastPositionSelectedObject = SelectedGameobject.transform.position;     // storing last selectdObject position.
                 basinsGenerator.BasinInstanciate();
             }
             isInstanciateBasinMoved = true;
@@ -260,5 +270,10 @@ public class BasinMovement : MonoBehaviour
             currentCounter = counterBaseObj;
             Debug.Log("rootObjName is here : " + basinBound.counterMeshFilter.gameObject.name);
         }
+    }
+
+    private void MoveSelectedObjectPreviousPosition()
+    {
+        SelectedGameobject.transform.position = new Vector3(0, 0, 0);
     }
 }

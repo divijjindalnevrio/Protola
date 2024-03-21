@@ -156,6 +156,11 @@ public class BasinMovement : MonoBehaviour
             Destroy(counterGenerator._instanciateCounter);
             isCounterInstanciate = false;
             counterGenerator.EnableAllBasinsCollider();
+            bool _IsGameobjectOverlaping = SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsGameobjectOverlaping;
+            if (_IsGameobjectOverlaping)
+            {
+                SelectedGameobject.transform.position = LastPositionSelectedObject;
+            }
             OnGameobjectStopMoving();
             OnCounterStopMoving();
         }
@@ -166,6 +171,7 @@ public class BasinMovement : MonoBehaviour
             if (isCounterInstanciate == false)
             {
                 counterGenerator.CounterInstanciate(SelectedGameobject.transform.rotation);
+                LastPositionSelectedObject = SelectedGameobject.transform.position;
                 isCounterInstanciate = true;
             }
             isInstanciateCounterMoved = true;

@@ -25,8 +25,15 @@ public class BasinDashLine : MonoBehaviour
     {
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
         basinMovement.OnBasinMoving += BasinMovement_OnBasinMoving;
+        basinMovement.OnBasinStopMoving += BasinMovement_OnBasinStopMoving;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
+    }
+
+    private void BasinMovement_OnBasinStopMoving()
+    {
+        AssignBasinAndGetBasinVertices();
+        fun();
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)

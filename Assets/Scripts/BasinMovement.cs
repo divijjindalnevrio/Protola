@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
-public enum SelectedObject { none,basin, counter, hole }
+public enum SelectedObject {none,basin, counter, hole}
 public class BasinMovement : MonoBehaviour
 {
     [SerializeField] private UiModel uiModel;
@@ -205,13 +205,13 @@ public class BasinMovement : MonoBehaviour
             basinCanMove = false;
             
             bool _IsGameobjectOverlaping = SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsGameobjectOverlaping;
-            OnBasinStopMoving();
 
             if(_IsGameobjectOverlaping)
             {
                 SelectedGameobject.transform.position = LastPositionSelectedObject;
             }
             basinDashLine.GetTheBasinVertices();
+            OnBasinStopMoving();
             OnGameobjectStopMoving();
         }
         ///

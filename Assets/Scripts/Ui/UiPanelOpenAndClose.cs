@@ -12,7 +12,20 @@ public class UiPanelOpenAndClose : MonoBehaviour
     void Start()
     {
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+       // basinMovement.OnGameobjectMoving += BasinMovement_OnGameobjectMoving;
     }
+
+    //private void BasinMovement_OnGameobjectMoving()
+    //{
+    //    StartCoroutine("CloseUiMenu");
+        
+    //}
+
+    //IEnumerator CloseUiMenu()
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    CloseMainUiPanel();
+    //}
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
     {

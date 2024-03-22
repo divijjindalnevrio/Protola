@@ -13,6 +13,7 @@ public class WorldCanvas : MonoBehaviour
     {
         WorldUiCanvasButtons = transform.Find("AllWorldButtons").gameObject;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+        
         basinMovement.OnGameobjectMoving += SettingWorldUiCanvasToFalse;
         basinMovement.OnGameobjectStopMoving += SettingWorldUiCanvasToTrue;
         basinMovement.OnCounterStopMoving += SettingWorldUiCanvasToTrue;
@@ -22,9 +23,20 @@ public class WorldCanvas : MonoBehaviour
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
     {
-       if(e != SelectedObject.none)
+        if(e != SelectedObject.none)
         {
-            SettingWorldUiCanvasToTrue();
+            if(e == SelectedObject.basin)
+            {
+                WorldUiCanvasButtons.transform.Find("AddCanvas").gameObject.SetActive(false);
+                SettingWorldUiCanvasToTrue();
+            }
+            else
+            {
+
+                SettingWorldUiCanvasToTrue();
+                WorldUiCanvasButtons.transform.Find("AddCanvas").gameObject.SetActive(true);
+            }
+            
         }
         else
         {

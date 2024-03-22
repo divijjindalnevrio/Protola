@@ -37,6 +37,7 @@ public class MainUiController : MonoBehaviour
         var OnGameobjectSelectedArgs = e;
         if (e == SelectedObject.basin)
         {
+            AddObject();
             ShowBasinModelUi();
         }
 
@@ -206,6 +207,7 @@ public class MainUiController : MonoBehaviour
         DeselectAllButtons(palaceAndBaseColorButtonsTop);
         palaceAndBaseColorButtonsTop.Find("PalaceColor").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
+        SurfaceSizeAndColorButtonsTop.gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["PalaceAndBaseColorButtonsTop"].SetActive(true);
         uiModel.UiButtonsAndElementsDict["PalaceColorsContent"].transform.gameObject.SetActive(true);
     }
@@ -215,6 +217,7 @@ public class MainUiController : MonoBehaviour
         DeselectAllButtons(palaceAndBaseColorButtonsTop);
         palaceAndBaseColorButtonsTop.Find("Granulates").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
+        SurfaceSizeAndColorButtonsTop.gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["GranulatesContent"].transform.gameObject.SetActive(true);
 
     }
@@ -223,8 +226,8 @@ public class MainUiController : MonoBehaviour
         DeselectAllButtons(palaceAndBaseColorButtonsTop);
         palaceAndBaseColorButtonsTop.Find("BaseColor").Find("Background").GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("PalaceAndBaseColorButtonsTop");
+        SurfaceSizeAndColorButtonsTop.gameObject.SetActive(true);
         baseColorsContent.gameObject.SetActive(true);
-       
 
     }
 
@@ -235,6 +238,7 @@ public class MainUiController : MonoBehaviour
         .GetComponent<Image>().color = Color.cyan;
         SetBackgroundAndContenetActive("SurfaceSizeAndColorButtonsTop");
         uiModel.UiButtonsAndElementsDict["AddObjectContent"].SetActive(true);
+        ShowBasinModelUi();
     }
         
     public void ShowBasinModelUi()
@@ -243,11 +247,12 @@ public class MainUiController : MonoBehaviour
        
         sinkButtonsTop.Find("Model").transform.Find("Background")
         .GetComponent<Image>().color = Color.cyan;
-        SetBackgroundAndContenetActive("SinkButtonsTop");   // active top buttons here 
-        uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform.gameObject.SetActive(true);
+       // SetBackgroundAndContenetActive("SinkButtonsTop");   // active top buttons here 
+       // uiModel.UiButtonsAndElementsDict["SinkButtonsTop"].transform.gameObject.SetActive(true);
         uiModel.UiButtonsAndElementsDict["SinkModelContent"].SetActive(true);
         uiModel.UiButtonsAndElementsDict["SinkModelContent"].transform.Find("Buttons").transform.Find("Round").GetComponent<Button>().Select();
         SettingSinkShapeContentToActive(uiModel.lastModelShapeActiveName);                       // <--- checking here the last active model shape
+        uiModel.UiButtonsAndElementsDict["AddObjectContent"].transform.GetChild(0).transform.Find("Sink").Find("SelectedState").gameObject.SetActive(true);
     }
 
     private void SetBackgroundAndContenetActive(string contenet)

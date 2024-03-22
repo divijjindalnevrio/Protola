@@ -14,6 +14,7 @@ public class WorldCanvas : MonoBehaviour
         WorldUiCanvasButtons = transform.Find("AllWorldButtons").gameObject;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnGameobjectMoving += SettingWorldUiCanvasToFalse;
+        basinMovement.OnGameobjectStopMoving += SettingWorldUiCanvasToTrue;
         basinMovement.OnCounterStopMoving += SettingWorldUiCanvasToTrue;
         basinMovement.OnBasinStopMoving += SettingWorldUiCanvasToTrue;
         counterGenerator.OnCounterAdded += SettingWorldUiCanvasToTrue;

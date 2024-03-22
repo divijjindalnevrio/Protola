@@ -28,6 +28,7 @@ public class CounterGenerator : MonoBehaviour
     {
         GameObject currentCounter = basinMovement.currentCounter;
         _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, currentObjRotation);
+        _instanciateCounter.name = "CounterBaseClone";
         basinMovement.SelectedGameobject.AddComponent<BasinAndCounterOverlapingController>();
         _instanciateCounter.transform.parent = counterWhole.transform.parent;
         SettingGrayMatToOboject(currentCounter.transform);
@@ -61,6 +62,7 @@ public class CounterGenerator : MonoBehaviour
 
         GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject, basinMovement.SelectedGameobject.transform.parent.position, lastSelectedCounterRotation);
         //TotalCounterInScene.Add(cunterbase);
+        cunterbase.name = "CounterBase";
         cunterbase.transform.position = basinMovement.SelectedGameobject.transform.parent.transform.localPosition + new Vector3(5f,0f,0f);
         currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         DestroyPreviousBasins(cunterbase);

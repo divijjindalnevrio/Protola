@@ -68,8 +68,13 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
     {
         if (basinMovement.SelectedGameobject.tag == "Counter")
         {
-            Debug.Log("cOUNTER GOT TRIGGERED : counter");
-            IsGameobjectOverlaping = true;
+            if (other.transform.parent.name == "CounterBase")
+            {
+                Debug.Log("cOUNTER GOT TRIGGERED : counter");
+                IsGameobjectOverlaping = true;
+            }
+            else { return; }
+           
         }
 
         else if (basinMovement.SelectedGameobject.tag == "Basin")

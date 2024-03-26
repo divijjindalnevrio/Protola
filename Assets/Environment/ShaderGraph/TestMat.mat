@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8406626904618342646
+--- !u!114 &-7535616514483087100
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,14 +20,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_repeatableTexures
-  m_Shader: {fileID: -6465566751694194690, guid: 8a31523d64b154c83aa7ded15e17a784,
+  m_Name: TestMat
+  m_Shader: {fileID: -6465566751694194690, guid: 8d57a811f61b943a59cf588a3b98d9e6,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -38,9 +38,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 97fa4efb4de0b4f179bd7bdfbffe2b82, type: 3}
-        m_Scale: {x: 2, y: 2}
-        m_Offset: {x: 3.66, y: 0}
+        m_Texture: {fileID: 2800000, guid: 6b6e7f103c9f949bc9f6e46fc38c3c85, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -57,8 +57,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 1
-    - _threshold: 0
+    - _threshold: 0.011
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

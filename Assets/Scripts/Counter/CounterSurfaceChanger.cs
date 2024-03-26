@@ -86,15 +86,14 @@ public class CounterSurfaceChanger : MonoBehaviour
         else
         {
             // for counter
-
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
 
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = colors[color];
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].color = colors[color];
             // for plywood 
             foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
             {
                 obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
-                obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = colors[color];
+                obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color = colors[color];
             }
 
             lastSelectedColor = colors[color];

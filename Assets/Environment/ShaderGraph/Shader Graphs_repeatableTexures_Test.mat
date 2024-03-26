@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shader Graphs_repeatableTexures_Test
-  m_Shader: {fileID: -6465566751694194690, guid: 8a31523d64b154c83aa7ded15e17a784,
+  m_Shader: {fileID: -6465566751694194690, guid: a88c90b128277468fa3a642079f7d17f,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,8 +37,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AlphaTexture:
+        m_Texture: {fileID: 2800000, guid: b3fae4a4962884e659746886e2187079, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 97fa4efb4de0b4f179bd7bdfbffe2b82, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6636dc5eaca1e4078922730cd5ffa191, type: 3}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 3.66, y: 0}
     - unity_Lightmaps:
@@ -58,7 +62,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1
-    - _threshold: 0
+    - _threshold: 0.158
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

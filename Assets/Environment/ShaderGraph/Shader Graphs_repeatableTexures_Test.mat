@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_repeatableTexures
-  m_Shader: {fileID: -6465566751694194690, guid: a88c90b128277468fa3a642079f7d17f,
+  m_Name: Shader Graphs_repeatableTexures_Test
+  m_Shader: {fileID: -6465566751694194690, guid: 8a31523d64b154c83aa7ded15e17a784,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

@@ -39,9 +39,11 @@ public class CounterSurfaceChanger : MonoBehaviour
         else
         {
             selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].color = Color.white;
-            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].mainTexture = counterTex[material];
+            Material mat =  selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0];
+            mat.SetTexture("_Texture2D", counterTex[material]);
+            mat.SetTexture("_AlphaTexture", Texture2D.whiteTexture);
             ChangingThePlywoodSurface(material);
-            Debug.Log("Counter color got changed : ");
+            
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.renderQueue = 3002;
         }
         
@@ -115,8 +117,12 @@ public class CounterSurfaceChanger : MonoBehaviour
     {
         foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
         {
-            obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].color = Color.white;
-            obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = counterTex[material];
+            Material mat = obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1];
+            mat.color = Color.white;
+            obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", counterTex[material]);
+            obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+
+            //obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].
         }
     }
 }

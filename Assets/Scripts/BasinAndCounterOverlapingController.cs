@@ -43,10 +43,15 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      
         if(basinMovement.SelectedGameobject.tag == "Counter")
         {
-            Debug.Log("cOUNTER GOT TRIGGERED : counter");
+            if(other.transform.parent.name == "CounterBase")
+            {
+                basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = Color.red;
+
+            }
+            else {return;}
+            
 
         }
 
@@ -57,8 +62,7 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
                 DetectedObject = other.gameObject;
                 basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.red;
             }
-
-            else { return; }
+            else {return;}
         }
 
 
@@ -92,7 +96,8 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
     {
         if (basinMovement.SelectedGameobject.tag == "Counter")
         {
-            Debug.Log("cOUNTER GOT TRIGGERED : counter");
+            
+            basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = Color.white;
             IsGameobjectOverlaping = false;
 
         }

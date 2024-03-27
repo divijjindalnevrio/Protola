@@ -29,6 +29,7 @@ public class CounterGenerator : MonoBehaviour
         GameObject currentCounter = basinMovement.currentCounter;
         _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, currentObjRotation);
         _instanciateCounter.name = "CounterBaseClone";
+        _instanciateCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         basinMovement.SelectedGameobject.AddComponent<BasinAndCounterOverlapingController>();
         _instanciateCounter.transform.parent = counterWhole.transform.parent;
         SettingGrayMatToOboject(currentCounter.transform);

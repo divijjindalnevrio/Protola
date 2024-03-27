@@ -8,6 +8,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     [SerializeField] private List<Texture> counterTex = new List<Texture>();
     [SerializeField] private List<Texture> counterGranulateTex = new List<Texture>();
+    [SerializeField] private List<Texture> counterGranulateTexMap = new List<Texture>();
     [SerializeField] private Texture colorDefaultTex;
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private MainUiController mainUiController;
@@ -35,8 +36,8 @@ public class CounterSurfaceChanger : MonoBehaviour
 
         else
         {
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = Color.white;
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = counterTex[material];
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].color = Color.white;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].mainTexture = counterTex[material];
             ChangingThePlywoodSurface(material);
             Debug.Log("Counter color got changed : ");
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.renderQueue = 3002;
@@ -58,8 +59,11 @@ public class CounterSurfaceChanger : MonoBehaviour
         else
         {
             // for counter
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = counterGranulateTex[material];
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].SetTexture("Texture2D", counterGranulateTex[material]);
+            //Debug.Log("granulate textures here : " + selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].GetTexture("Texture2D").name);
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].SetTexture("AlphaTexture", counterGranulateTexMap[material]);
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = lastSelectedColor;
+            Debug.Log("granulate textures here : " + material);
             // for plywood 
             foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
             {
@@ -107,7 +111,7 @@ public class CounterSurfaceChanger : MonoBehaviour
     {
         foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
         {
-            obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+            obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].color = Color.white;
             obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = counterTex[material];
         }
     }

@@ -45,8 +45,9 @@ public class CounterSurfaceChanger : MonoBehaviour
             mat.SetTexture("_Texture2D", counterTex[material]);
             mat.SetTexture("_AlphaTexture", Texture2D.whiteTexture);
             ChangingThePlywoodSurface(material);
-            
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.renderQueue = 3002;
+
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
         }
         
     }

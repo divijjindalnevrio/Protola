@@ -9,12 +9,12 @@ public class MaskObject : MonoBehaviour
     private void OnEnable()
     {
         ObjMasked = GameObject.FindGameObjectWithTag("Counter");
-        Debug.Log("topRootObjectname : " + this.transform.root.name);
-    }
+      }
 
     void Start()
     {
-        ObjMasked.GetComponent<MeshRenderer>().material.renderQueue = 3002;
+        ObjMasked.GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
+        ObjMasked.GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
     }
 
 

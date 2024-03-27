@@ -70,7 +70,8 @@ public class CounterGenerator : MonoBehaviour
         basinMovement.currentCounter = cunterbase;
         cunterbase.transform.SetParent(counterWhole.transform, false);
         OnCounterAdded();
-        currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().material.renderQueue = 3002;
+        currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
+        currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
     }
 
     private Quaternion SettinglastSelectedCounterRotation(Quaternion rotaionval)

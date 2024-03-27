@@ -7,7 +7,6 @@ using UnityEngine;
 public class CounterSurfaceChanger : MonoBehaviour
 {
     [SerializeField] private List<Material> counterMat = new List<Material>();
-
     [SerializeField] private List<Texture> counterTex = new List<Texture>();
     [SerializeField] private List<Texture> counterGranulateTex = new List<Texture>();
     [SerializeField] private List<Texture> counterGranulateTexMap = new List<Texture>();
@@ -16,6 +15,9 @@ public class CounterSurfaceChanger : MonoBehaviour
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
     [SerializeField] private Plywoodcontroller plywoodcontroller;
+
+    [SerializeField] private Texture2D DefaultColorTexture;
+    [SerializeField] private Texture2D DefaultColorTextureMap;
     private Color lastSelectedColor = Color.white;
     private Color basinlastSelectedColor = Color.white;
     public List<Color> colors = new List<Color>();
@@ -96,13 +98,16 @@ public class CounterSurfaceChanger : MonoBehaviour
         else
         {
             // for counter
-            selectedObjcet.transform.GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
-
+            Material mat = selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0];
+            mat.SetTexture("__Texture2D", DefaultColorTexture);
+            mat.SetTexture("_AlphaTexture", DefaultColorTextureMap);
             selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].color = colors[color];
             // for plywood 
             foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
             {
-                obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = colorDefaultTex;
+                Material plywoodMat = obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0];
+                plywoodMat.SetTexture("__Texture2D", DefaultColorTexture);
+                plywoodMat.SetTexture("_AlphaTexture", DefaultColorTextureMap);
                 obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color = colors[color];
             }
 

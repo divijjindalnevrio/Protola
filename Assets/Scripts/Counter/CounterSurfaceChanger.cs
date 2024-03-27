@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class CounterSurfaceChanger : MonoBehaviour
 {
@@ -59,15 +61,17 @@ public class CounterSurfaceChanger : MonoBehaviour
         else
         {
             // for counter
-            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].SetTexture("Texture2D", counterGranulateTex[material]);
-            //Debug.Log("granulate textures here : " + selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].GetTexture("Texture2D").name);
-            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].SetTexture("AlphaTexture", counterGranulateTexMap[material]);
+
+            Material mat = selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0];
+            mat.SetTexture("_Texture2D", counterGranulateTex[material]);
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", counterGranulateTexMap[material]);
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = lastSelectedColor;
             Debug.Log("granulate textures here : " + material);
             // for plywood 
             foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
             {
-                obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = counterGranulateTex[material];
+                obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D",counterGranulateTex[material]);
+                obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", counterGranulateTexMap[material]);
                 obje.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = lastSelectedColor;
             }
 

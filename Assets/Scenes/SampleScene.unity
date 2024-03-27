@@ -3204,7 +3204,8 @@ GameObject:
   - component: {fileID: 320172410}
   - component: {fileID: 320172409}
   - component: {fileID: 320172412}
-  m_Layer: 8
+  - component: {fileID: 320172413}
+  m_Layer: 10
   m_Name: RotateCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3307,6 +3308,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2085961b7fe3e4601bd234bf079b8ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &320172413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320172407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb416074654f446f28215df71ae40926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredUIComparison: 8
+  uiElementsToApplyTo: []
 --- !u!1 &323755541
 GameObject:
   m_ObjectHideFlags: 0
@@ -5907,7 +5922,7 @@ GameObject:
   - component: {fileID: 522729803}
   - component: {fileID: 522729802}
   - component: {fileID: 522729801}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10060,7 +10075,8 @@ GameObject:
   - component: {fileID: 749940162}
   - component: {fileID: 749940161}
   - component: {fileID: 749940160}
-  m_Layer: 0
+  - component: {fileID: 749940164}
+  m_Layer: 10
   m_Name: DeleteCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10162,6 +10178,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!114 &749940164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749940158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb416074654f446f28215df71ae40926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredUIComparison: 8
+  uiElementsToApplyTo: []
 --- !u!1 &750730331
 GameObject:
   m_ObjectHideFlags: 0
@@ -10174,7 +10204,7 @@ GameObject:
   - component: {fileID: 750730335}
   - component: {fileID: 750730334}
   - component: {fileID: 750730333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11407,7 +11437,7 @@ GameObject:
   - component: {fileID: 784348336}
   - component: {fileID: 784348335}
   - component: {fileID: 784348334}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14602,14 +14632,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022433464}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.00941125, z: -0, w: 0.9999557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1979668098}
   m_Father: {fileID: 1227306141}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.078, z: 0}
 --- !u!114 &1022433466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18757,7 +18787,7 @@ GameObject:
   - component: {fileID: 1320347369}
   - component: {fileID: 1320347368}
   - component: {fileID: 1320347367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20717,7 +20747,7 @@ GameObject:
   - component: {fileID: 1467146615}
   - component: {fileID: 1467146617}
   - component: {fileID: 1467146616}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21377,7 +21407,7 @@ GameObject:
   - component: {fileID: 1520966726}
   - component: {fileID: 1520966728}
   - component: {fileID: 1520966727}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26612,7 +26642,8 @@ GameObject:
   - component: {fileID: 1938889594}
   - component: {fileID: 1938889593}
   - component: {fileID: 1938889592}
-  m_Layer: 0
+  - component: {fileID: 1938889596}
+  m_Layer: 10
   m_Name: AddCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26714,6 +26745,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!114 &1938889596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938889590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb416074654f446f28215df71ae40926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredUIComparison: 8
+  uiElementsToApplyTo: []
 --- !u!1 &1948135958
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class WorldUiScaler : MonoBehaviour
     [SerializeField] private GameObject worldUiObject;
     private float dist;
     [SerializeField] private Vector3 InitialScale;
+    [SerializeField] private bool IsSliderMoving = false;
 
     private void Start()
     {
@@ -17,7 +18,16 @@ public class WorldUiScaler : MonoBehaviour
 
     void Update()
     {
-        CalculatingSizeOfWorldUiCanvas();
+        if(IsSliderMoving != true)
+        {
+            CalculatingSizeOfWorldUiCanvas();
+        }
+       
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            IncreaseTheCircleSize(0.01f);
+
+        }
     }
 
     private Vector3 CalculatingSizeOfWorldUiCanvas()
@@ -26,7 +36,7 @@ public class WorldUiScaler : MonoBehaviour
         dist = Vector3.Distance(worldUiObject.transform.position, mainCamera.transform.position);
         Canvas worldUiCanvas = worldUiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Canvas>();
         Vector3 vect = (Vector3.one * dist / 3) / 50;
-        if(vect.x >= InitialScale.x)
+        if(vect.x >= InitialScale.x && vect.x <= 0.13f)
         {
             GetAllTheWorldUiCanvas(vect);
         }
@@ -41,4 +51,14 @@ public class WorldUiScaler : MonoBehaviour
             canvas.transform.localScale = vect;
         }
     }
+
+    private void IncreaseTheCircleSize(float val)
+    {
+        foreach (Transform canvas in worldUiObject.transform)
+        {
+            canvas.transform.localScale += Vector3.one * val;
+        }
+
+    }
+
 }

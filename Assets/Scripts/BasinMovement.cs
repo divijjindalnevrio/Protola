@@ -143,17 +143,17 @@ public class BasinMovement : MonoBehaviour
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
                 basinBound.GetMaxAndMinXPosition();
             }
-            else if(raycastHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                if(Time.time - touchTime <= 0.5f)
-                {
-                    Debug.Log("SelectedObject.none triggerd : 1");
-                    selectedObject = SelectedObject.none;
-                    SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
-                    OnGameobjectSelected.Invoke(this, selectedObject);
-                }
-                else { return raycastHit; }
-            }
+            //else if(raycastHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Ended)
+            //{
+            //    if(Time.time - touchTime <= 0.5f)
+            //    {
+            //        Debug.Log("SelectedObject.none triggerd : 1");
+            //        selectedObject = SelectedObject.none;
+            //        SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            //        OnGameobjectSelected.Invoke(this, selectedObject);
+            //    }
+            //    else { return raycastHit; }
+            //}
         }
 
         return raycastHit;

@@ -58,6 +58,8 @@ public class BasinMovement : MonoBehaviour
     public event Action OnBasinMoving;
     public event Action OnCounterMoving;
 
+    private float touchTime;
+
     private void Start()
     {
        // basinsGenerator.OnBasinGenrate += SettingCurrentBasin;
@@ -110,6 +112,10 @@ public class BasinMovement : MonoBehaviour
     {
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
+            Debug.Log("it entered here : ");
+             touchTime = Time.time;
+            Debug.Log("it entered here : " + touchTime);
+
             if (raycastHit.collider.tag == "Counter")
             {
                 selectedObject = SelectedObject.counter;
@@ -137,11 +143,16 @@ public class BasinMovement : MonoBehaviour
                 SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
                 basinBound.GetMaxAndMinXPosition();
             }
-            else if(raycastHit.collider.tag == "Grid")
+            else if(raycastHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                selectedObject = SelectedObject.none;
-                SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
-                OnGameobjectSelected.Invoke(this, selectedObject);
+                if(Time.time - touchTime <= 0.5f)
+                {
+                    Debug.Log("SelectedObject.none triggerd : 1");
+                    selectedObject = SelectedObject.none;
+                    SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+                    OnGameobjectSelected.Invoke(this, selectedObject);
+                }
+                else { return raycastHit; }
             }
         }
 
@@ -182,11 +193,20 @@ public class BasinMovement : MonoBehaviour
 
         }
 
-        if (Input.GetTouch(0).phase == TouchPhase.Began && raycastHit.collider.tag == "Grid")
+        if (Input.GetTouch(0).phase == TouchPhase.Ended && raycastHit.collider.tag == "Grid")
         {
-            selectedObject = SelectedObject.none;
-            OnGameobjectSelected.Invoke(this, selectedObject);
-            currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            Debug.Log("SelectedObject.none triggerd : " + touchTime + " " + Time.time);
+            float diference = Time.time - touchTime;
+            if (diference <= 0.2f)
+            {
+                
+                Debug.Log("SelectedObject.none triggerd : diference " + diference);
+                selectedObject = SelectedObject.none;
+                OnGameobjectSelected.Invoke(this, selectedObject);
+                currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            }
+            else { return raycastHit; }
+           
 
         }
 
@@ -238,11 +258,20 @@ public class BasinMovement : MonoBehaviour
         }
         ////
       
-        if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (rayHit.collider.tag == "Grid" && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
-            selectedObject = SelectedObject.none;
-            OnGameobjectSelected.Invoke(this, selectedObject);
-            SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            float diference = Time.time - touchTime;
+            if (diference <= 0.2f)
+            {
+                Debug.Log("SelectedObject.none triggerd : 3");
+                selectedObject = SelectedObject.none;
+                OnGameobjectSelected.Invoke(this, selectedObject);
+                SelectedGameobject.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+            }
+            else { return; }
+
+
+
         }
 
     }

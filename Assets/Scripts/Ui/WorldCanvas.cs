@@ -27,14 +27,13 @@ public class WorldCanvas : MonoBehaviour
         {
             if(e == SelectedObject.basin)
             {
-                WorldUiCanvasButtons.transform.Find("AddCanvas").gameObject.SetActive(false);
+                WorldUiCanvasButtons.transform.Find("CircularPath").transform.Find("AddCanvas").gameObject.SetActive(false);
                 SettingWorldUiCanvasToTrue();
             }
             else
             {
-
                 SettingWorldUiCanvasToTrue();
-                WorldUiCanvasButtons.transform.Find("AddCanvas").gameObject.SetActive(true);
+                WorldUiCanvasButtons.transform.Find("CircularPath").transform.Find("AddCanvas").gameObject.SetActive(true);
             }
             
         }

@@ -32,7 +32,8 @@ public class Plywoodcontroller : MonoBehaviour
         counterGenerator.OnCounterAdded += CounterGenerator_OnCounterAdded;
         PlywoodInputTextFieldParentObj = basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject;
 
-
+        IncreaseThePlywoodSize();
+        PlywoodInputTextFieldParentObj.SetActive(false);
 
 
     }

@@ -68,7 +68,6 @@ public class WorldUiScaler : MonoBehaviour
     {
         widthSliderNewVal = WidthSlider.value;
         float circleIndicatorNewVal = (widthSliderNewVal * circleIndicatorInitialVal) / widthSliderInitialVal;
-        
         CircleIndicatorGameObject.transform.localScale = Vector3.one * circleIndicatorNewVal;
 
     }

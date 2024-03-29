@@ -12,4 +12,5 @@ public class SliderDrag : MonoBehaviour, IPointerUpHandler
 
         Debug.Log("Sliding finished");
     }
+    
 }

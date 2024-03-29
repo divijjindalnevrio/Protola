@@ -15,7 +15,7 @@ public class Plywoodcontroller : MonoBehaviour
     [SerializeField] private List<GameObject> PlywoodInputTextFields = new List<GameObject>();
     [SerializeField] private List<Vector3> centerPosition = new List<Vector3>();
     [SerializeField] private RotationScript rotationScript;
-    private Transform PlywoodInputTextFieldParentObj;
+    private GameObject PlywoodInputTextFieldParentObj;
 
 
     void Start()
@@ -30,6 +30,7 @@ public class Plywoodcontroller : MonoBehaviour
         basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
         rotationScript.OnCounterRotation += RotationScript_OnCounterRotation;
         counterGenerator.OnCounterAdded += CounterGenerator_OnCounterAdded;
+        PlywoodInputTextFieldParentObj = basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject;
 
 
     }
@@ -48,15 +49,6 @@ public class Plywoodcontroller : MonoBehaviour
         GettingAllPlywoodCubeCenterPos();
         SetPlywoodLineRendererActive();
         SettingTextFieldToCenterPos();
-    }
-
-    private void Update()
-    {
-        //if(AllPlywoodCubes != null && PlywoodInputTextFields != null )
-        //{
-        //    //IncreaseThePlywoodSize();
-        //}
-       
     }
 
     private void BasinMovement_OnCounterStopMoving()
@@ -104,7 +96,8 @@ public class Plywoodcontroller : MonoBehaviour
 
     private void GettingAllInputFields()
     {
-        Transform PlywoodInputTextFieldParentObj = basinMovement.currentCounter.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").transform;
+        //Transform PlywoodInputTextFieldParentObj = basinMovement.currentCounter.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").transform;
+        Transform PlywoodInputTextFieldParentObj = basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels");
         PlywoodInputTextFields.Clear();
         foreach (Transform child in PlywoodInputTextFieldParentObj)
         {
@@ -156,11 +149,12 @@ public class Plywoodcontroller : MonoBehaviour
 
     private void SetTextFieldsActive()
     {
-        foreach (GameObject child in PlywoodInputTextFields)
-        {
-            child.SetActive(true);
-            Debug.Log("SetTextFieldsActive : " + child.name);
-        }
+        //foreach (GameObject child in PlywoodInputTextFields)
+        //{
+        //    child.SetActive(true);
+        //    Debug.Log("SetTextFieldsActive : " + child.name);
+        //}
+        PlywoodInputTextFieldParentObj.SetActive(true);
     }
 
     private void SetTextFieldsDeActive()
@@ -197,16 +191,23 @@ public class Plywoodcontroller : MonoBehaviour
 
     private void DeActiveAllTheTextFields()
     {
-        foreach (Transform child in counterGenerator.counterWhole.transform)
-        {
-            if (child.name == "WorldUiCanvas") continue;
-             GameObject PlywoodInputTextFielsObj = child.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").gameObject;
-            foreach(Transform textField in PlywoodInputTextFielsObj.transform)
-            {
-                textField.gameObject.SetActive(false);
-            }
+        //foreach (Transform child in counterGenerator.counterWhole.transform)
+        //{
+        //    if (child.name == "WorldUiCanvas") continue;
+        //    GameObject PlywoodInputTextFielsObj = child.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").gameObject;
+        //    foreach (Transform textField in PlywoodInputTextFielsObj.transform)
+        //    {
+        //        textField.gameObject.SetActive(false);
+        //    }
 
-        }
+        //}
+       
+        PlywoodInputTextFieldParentObj.SetActive(false);
     }
 
+    public void ChangeThePlywoodTextFeildToCenter()
+    {
+        GettingAllPlywoodCubeCenterPos();
+        SettingTextFieldToCenterPos();
+    }
 }

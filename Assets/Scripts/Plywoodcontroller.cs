@@ -39,7 +39,7 @@ public class Plywoodcontroller : MonoBehaviour
     {
         AssignPlywood();
         GetAllPlywoods();
-        SetTextFieldsDeActive();
+       // SetTextFieldsDeActive();
         GettingAllInputFields();
     }
 
@@ -146,17 +146,6 @@ public class Plywoodcontroller : MonoBehaviour
         }
     }
 
-
-    private void SetTextFieldsActive()
-    {
-        //foreach (GameObject child in PlywoodInputTextFields)
-        //{
-        //    child.SetActive(true);
-        //    Debug.Log("SetTextFieldsActive : " + child.name);
-        //}
-        PlywoodInputTextFieldParentObj.SetActive(true);
-    }
-
     private void SetTextFieldsDeActive()
     {
         foreach(GameObject child in PlywoodInputTextFields)
@@ -187,21 +176,14 @@ public class Plywoodcontroller : MonoBehaviour
             AllPlywoodCubes[i].transform.localScale = new Vector3(1, plywoodLength, 1);
         }
     }
-   
 
-    private void DeActiveAllTheTextFields()
+    public void SetTextFieldsActive()
     {
-        //foreach (Transform child in counterGenerator.counterWhole.transform)
-        //{
-        //    if (child.name == "WorldUiCanvas") continue;
-        //    GameObject PlywoodInputTextFielsObj = child.transform.Find("Counter").transform.Find("PlywoodInputTextFiels").gameObject;
-        //    foreach (Transform textField in PlywoodInputTextFielsObj.transform)
-        //    {
-        //        textField.gameObject.SetActive(false);
-        //    }
-
-        //}
-       
+        PlywoodInputTextFieldParentObj.SetActive(true);
+    }
+    
+    public void DeActiveAllTheTextFields()
+    {
         PlywoodInputTextFieldParentObj.SetActive(false);
     }
 

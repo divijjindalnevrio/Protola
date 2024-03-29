@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,10 @@ public class WorldUiScaler : MonoBehaviour
     [SerializeField] private Vector3 InitialScale;
     [SerializeField] private bool IsSliderMoving = false;
     [SerializeField] private Slider WidthSlider;
+    [SerializeField] private Plywoodcontroller plywoodcontroller;
+    [SerializeField] private BasinMovement basinMovement;
     public float counterSize;
+    public event Action OnCameraFarAway;
 
     float widthSliderInitialVal;
     float widthSliderNewVal;
@@ -24,34 +28,40 @@ public class WorldUiScaler : MonoBehaviour
         widthSliderInitialVal = WidthSlider.value;
         circleIndicatorInitialVal = worldUiObject.transform.localScale.x;
         InitialScale = CalculatingSizeOfWorldUiCanvas();
+        
     }
 
     void Update()
     {
-        if (IsSliderMoving != true)
-        {
-            CalculatingSizeOfWorldUiCanvas();
-        }
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    IncreaseTheCircleSize(0.01f);
-
-        //}
+        CalculatingSizeOfWorldUiCanvas();
     }
 
     private Vector3 CalculatingSizeOfWorldUiCanvas()
     {
-        
         dist = Vector3.Distance(worldUiObject.transform.position, mainCamera.transform.position);
+        Debug.Log("Distance counter and camera : " + dist);
         Canvas worldUiCanvas = worldUiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Canvas>();
         Vector3 vect = (Vector3.one * dist / 3) / 50;
-        if(vect.x >= InitialScale.x && vect.x <= 0.13f)
+        if (vect.x >= InitialScale.x && vect.x <= 0.13f)
         {
             GetAllTheWorldUiCanvas(vect);
         }
-        
+
+ 
+        SettingTextFeildActiveAndDeactive();
         return vect;
+    }
+
+    private void SettingTextFeildActiveAndDeactive()
+    {
+        if (dist >= 15)
+        {
+            plywoodcontroller.DeActiveAllTheTextFields();
+        }
+        if (dist < 15 && dist > 14)
+        {
+            plywoodcontroller.SetTextFieldsActive();
+        }
     }
 
     void GetAllTheWorldUiCanvas(Vector3 vect)
@@ -61,8 +71,6 @@ public class WorldUiScaler : MonoBehaviour
             canvas.transform.localScale = vect;
         }
     }
-
-
 
     public void IncreaseTheCircleSize(GameObject CircleIndicatorGameObject)
     {

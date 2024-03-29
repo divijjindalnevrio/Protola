@@ -7,10 +7,10 @@ using UnityEngine;
 public class CounterSurfaceChanger : MonoBehaviour
 {
     [SerializeField] private List<Material> counterMat = new List<Material>();
-    [SerializeField] private List<Texture> counterTex = new List<Texture>();
-    [SerializeField] private List<Texture> counterGranulateTex = new List<Texture>();
-    [SerializeField] private List<Texture> counterGranulateTexMap = new List<Texture>();
-    [SerializeField] private Texture colorDefaultTex;
+    [SerializeField] private List<Texture2D> counterTex = new List<Texture2D>();
+    [SerializeField] private List<Texture2D> counterGranulateTex = new List<Texture2D>();
+    [SerializeField] private List<Texture2D> counterGranulateTexMap = new List<Texture2D>();
+    [SerializeField] private Texture2D colorDefaultTex;
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
@@ -60,6 +60,7 @@ public class CounterSurfaceChanger : MonoBehaviour
         if (selectedObjcet.CompareTag("Basin"))
         {
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTexture = counterGranulateTex[material];
+            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(4, 4);
             selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = basinlastSelectedColor;
         }
 
@@ -71,6 +72,8 @@ public class CounterSurfaceChanger : MonoBehaviour
             mat.SetTexture("_Texture2D", counterGranulateTex[material]);
             selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", counterGranulateTexMap[material]);
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = lastSelectedColor;
+            DefaultColorTexture = counterGranulateTex[material];
+            DefaultColorTextureMap = counterGranulateTexMap[material];
             Debug.Log("granulate textures here : " + material);
             // for plywood 
             foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)

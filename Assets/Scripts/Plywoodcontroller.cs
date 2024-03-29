@@ -33,6 +33,8 @@ public class Plywoodcontroller : MonoBehaviour
         PlywoodInputTextFieldParentObj = basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject;
 
 
+
+
     }
 
     private void CounterGenerator_OnCounterAdded()

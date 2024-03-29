@@ -28,8 +28,9 @@ public class CounterGenerator : MonoBehaviour
     {
         GameObject currentCounter = basinMovement.currentCounter;
         _instanciateCounter = Instantiate(currentCounter, currentCounter.transform.position, currentObjRotation);
-        _instanciateCounter.name = "CounterBaseClone";
+        _instanciateCounter.name = currentCounter.transform.parent.name;
         _instanciateCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
+        BasinAndCounterOverlapingController.SelectedCounterInitialColor = currentCounter.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color;
         basinMovement.SelectedGameobject.AddComponent<BasinAndCounterOverlapingController>();
         _instanciateCounter.transform.parent = counterWhole.transform.parent;
         SettingGrayMatToOboject(currentCounter.transform);
@@ -39,7 +40,9 @@ public class CounterGenerator : MonoBehaviour
     private void SettingGrayMatToOboject(Transform selectedGameobject)
     {
         defaultObjectMat = selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material;
-        selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material = grayMat;
+        Debug.Log("CHECKING_COUNTER_COLOR_CHANGE_ISSUE : COUNTER IS SELECTED");
+        //BasinAndCounterOverlapingController.SelectedCounterInitialMaterial = defaultObjectMat;
+        //selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().materials[0] = grayMat;
     }
 
     private void SetObjectDefaultMat()

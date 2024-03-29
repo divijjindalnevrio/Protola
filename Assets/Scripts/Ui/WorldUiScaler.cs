@@ -17,7 +17,7 @@ public class WorldUiScaler : MonoBehaviour
     [SerializeField] private Plywoodcontroller plywoodcontroller;
     [SerializeField] private BasinMovement basinMovement;
     public float counterSize;
-    public event Action OnCameraFarAway;
+    
 
     float widthSliderInitialVal;
     float widthSliderNewVal;
@@ -47,8 +47,13 @@ public class WorldUiScaler : MonoBehaviour
             GetAllTheWorldUiCanvas(vect);
         }
 
- 
-        SettingTextFeildActiveAndDeactive();
+        if(basinMovement.selectedObject == SelectedObject.counter)
+        {
+            SettingTextFeildActiveAndDeactive();
+        }
+       
+
+
         return vect;
     }
 

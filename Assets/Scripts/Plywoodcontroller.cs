@@ -15,7 +15,7 @@ public class Plywoodcontroller : MonoBehaviour
     [SerializeField] private List<GameObject> PlywoodInputTextFields = new List<GameObject>();
     [SerializeField] private List<Vector3> centerPosition = new List<Vector3>();
     [SerializeField] private RotationScript rotationScript;
-    private GameObject PlywoodInputTextFieldParentObj;
+    public GameObject PlywoodInputTextFieldParentObj;
 
 
     void Start()
@@ -41,6 +41,7 @@ public class Plywoodcontroller : MonoBehaviour
         GetAllPlywoods();
        // SetTextFieldsDeActive();
         GettingAllInputFields();
+        ChangeThePlywoodTextFeildToCenter();
     }
 
     private void RotationScript_OnCounterRotation()
@@ -57,6 +58,8 @@ public class Plywoodcontroller : MonoBehaviour
         GettingAllPlywoodCubeCenterPos();
         SetPlywoodLineRendererActive();
         SettingTextFieldToCenterPos();
+        SetTextFieldsActive();
+        Debug.Log("SetTextFieldsActive got active here : ");
     }
 
 
@@ -72,7 +75,7 @@ public class Plywoodcontroller : MonoBehaviour
             SetTextFieldsActive();
             GettingAllInputFields();
             SettingTextFieldToCenterPos();
-            DeActiveAllTheTextFields();
+            //DeActiveAllTheTextFields();
             SetTextFieldsActive();
         }
 

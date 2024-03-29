@@ -174,6 +174,8 @@ public class BasinMovement : MonoBehaviour
             }
             OnGameobjectStopMoving();
             OnCounterStopMoving();
+            Debug.Log("CHECKING_COUNTER_COLOR_CHANGE_ISSUE : COUNTER IS RELEASED");
+            SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = BasinAndCounterOverlapingController.SelectedCounterInitialColor;
         }
 
         if (raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -233,6 +235,7 @@ public class BasinMovement : MonoBehaviour
             basinDashLine.GetTheBasinVertices();
             OnBasinStopMoving();
             OnGameobjectStopMoving();
+            
         }
         ///
 

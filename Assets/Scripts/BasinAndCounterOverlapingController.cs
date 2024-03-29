@@ -7,6 +7,7 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
     [SerializeField] private BasinMovement basinMovement;
     public GameObject DetectedObject;
     public bool IsGameobjectOverlaping = false;
+    public static Color SelectedCounterInitialColor;
 
     void Start()
     {
@@ -45,8 +46,9 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
     {
         if(basinMovement.SelectedGameobject.tag == "Counter")
         {
-            if(other.transform.parent.name == "CounterBase")
+            if(other.transform.parent.name.Contains("CounterBase") && other.transform.parent.name != basinMovement.SelectedGameobject.transform.parent.name)
             {
+                Debug.Log("CondionalCheck : Working");
                 basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = Color.red;
 
             }
@@ -72,7 +74,7 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
     {
         if (basinMovement.SelectedGameobject.tag == "Counter")
         {
-            if (other.transform.parent.name == "CounterBase")
+            if (other.transform.parent.name.Contains("CounterBase") && other.transform.parent.name != basinMovement.SelectedGameobject.transform.parent.name)
             {
                 Debug.Log("cOUNTER GOT TRIGGERED : counter");
                 IsGameobjectOverlaping = true;

@@ -369,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -379,17 +379,17 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -429,12 +429,12 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 158.195
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -504,7 +504,7 @@ PrefabInstance:
     - target: {fileID: 8685062323749600815, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -2207,45 +2207,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
---- !u!21 &241215834
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Default UI Material
-  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &251296607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5611,6 +5572,45 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2090859802}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &455126047
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &465113410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6343,7 +6343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1094763375}
+  m_Material: {fileID: 1758282956}
   m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -7074,7 +7074,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -7084,17 +7084,17 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -7134,12 +7134,12 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 98.19501
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -7209,7 +7209,7 @@ PrefabInstance:
     - target: {fileID: 8685062323749600815, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -7967,32 +7967,32 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.6603774
+      value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.015574936
+      value: 0.21568628
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.2528269
+      value: 0.13333334
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
-      value: 0.65882355
+      value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.011764707
+      value: 0.21568628
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.25490198
+      value: 0.13333334
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -8111,7 +8111,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -8121,17 +8121,17 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -8171,12 +8171,12 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 38.195007
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -145
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -8246,7 +8246,7 @@ PrefabInstance:
     - target: {fileID: 8685062323749600815, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -10248,32 +10248,32 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.051886797
+      value: 0.3254902
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.7913541
+      value: 0.3019608
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 1
+      value: 0.3019608
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
-      value: 0.050980397
+      value: 0.3254902
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.79215693
+      value: 0.3019608
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.9803922
+      value: 0.3019608
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -10590,9 +10590,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1426068424}
-        m_TargetAssemblyTypeName: CounterGenerator, Assembly-CSharp
-        m_MethodName: AddingCounter
+      - m_Target: {fileID: 1457605050}
+        m_TargetAssemblyTypeName: ButtonClickScript, Assembly-CSharp
+        m_MethodName: AddCounter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10614,7 +10614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 241215834}
+  m_Material: {fileID: 455126047}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -11875,7 +11875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1094763375}
+  m_Material: {fileID: 1758282956}
   m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -15241,17 +15241,17 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.24313727
+      value: 0.20392157
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.3529412
+      value: 0.24313726
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.9607844
+      value: 0.29803923
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -15271,17 +15271,17 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
-      value: 0.24313727
+      value: 0.20392159
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.3529412
+      value: 0.24313727
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.9607844
+      value: 0.29803923
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -15975,45 +15975,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075853381}
   m_CullTransparentMesh: 1
---- !u!21 &1094763375
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Default UI Material
-  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1102648457
 GameObject:
   m_ObjectHideFlags: 0
@@ -17423,45 +17384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1215579512
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Default UI Material
-  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1221289241
 GameObject:
   m_ObjectHideFlags: 0
@@ -18122,32 +18044,32 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 1
+      value: 0.7137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.2783019
+      value: 0.7137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.35412666
+      value: 0.7137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
+      value: 0.7137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.2784314
+      value: 0.7137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.3529412
+      value: 0.7137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -19397,7 +19319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1215579512}
+  m_Material: {fileID: 1970267072}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -20586,15 +20508,11 @@ MonoBehaviour:
   DefaultColorTextureMap: {fileID: 2800000, guid: f7798f086704e4e528efc45c9a44a0f9,
     type: 3}
   colors:
-  - {r: 0.9607844, g: 0.3529412, b: 0.24313727, a: 0}
-  - {r: 0.9803922, g: 0.78823537, b: 0.054901965, a: 0}
-  - {r: 0.45098042, g: 0.1137255, b: 0.20784315, a: 0}
-  - {r: 0.2509804, g: 0, b: 0.65882355, a: 0}
-  - {r: 0.3529412, g: 0.2784314, b: 1, a: 0}
-  - {r: 0.3137255, g: 1, b: 0.46274513, a: 0}
-  - {r: 0.6509804, g: 0, b: 0.08627451, a: 0}
-  - {r: 0.09019608, g: 0.3647059, b: 0.14901961, a: 0}
-  - {r: 0.9686275, g: 0.5882353, b: 0.41176474, a: 0}
+  - {r: 0.29803923, g: 0.24313726, b: 0.20392157, a: 0}
+  - {r: 0.3019608, g: 0.3019608, b: 0.3254902, a: 0}
+  - {r: 0.5137255, g: 0.5137255, b: 0.5529412, a: 0}
+  - {r: 0.13333334, g: 0.21568628, b: 0.15686275, a: 0}
+  - {r: 0.7137255, g: 0.7137255, b: 0.7137255, a: 0}
 --- !u!114 &1426068427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20670,6 +20588,7 @@ MonoBehaviour:
   PlywoodInputTextFields: []
   centerPosition: []
   rotationScript: {fileID: 1227306143}
+  PlywoodInputTextFieldParentObj: {fileID: 0}
 --- !u!114 &1426068431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21004,6 +20923,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451858543}
   m_CullTransparentMesh: 1
+--- !u!1 &1457605049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1457605052}
+  - component: {fileID: 1457605051}
+  - component: {fileID: 1457605050}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1457605050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457605049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8be91c2550cd4871bc72aed164f3070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: {fileID: 1393768697}
+  checkAndCreateCounterCopyScript: {fileID: 1457605051}
+  basinMovement: {fileID: 1227306144}
+--- !u!114 &1457605051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457605049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b643f766e7720477a8cbf17b5302fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCubeMaxAreaPoints: []
+  counterBase: {fileID: 1227306140}
+--- !u!4 &1457605052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457605049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42076206, y: -0.47780418, z: -3.0340319}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1467005463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21175,32 +21156,32 @@ PrefabInstance:
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.20555036
+      value: 0.5529412
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.11320755
+      value: 0.5137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.4528302
+      value: 0.5137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
-      value: 0.20392159
+      value: 0.5529412
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.1137255
+      value: 0.5137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.45098042
+      value: 0.5137255
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -21338,7 +21319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1094763375}
+  m_Material: {fileID: 1758282956}
   m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -22014,7 +21995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1094763375}
+  m_Material: {fileID: 1758282956}
   m_Color: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -24396,6 +24377,45 @@ Transform:
   - {fileID: 641463807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1758282956
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1759320848
 GameObject:
   m_ObjectHideFlags: 0
@@ -25391,7 +25411,7 @@ PrefabInstance:
     - target: {fileID: 1393140328705846775, guid: 38ec390c05c8a4ac982c4caff26943e0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4303043140291851635, guid: 38ec390c05c8a4ac982c4caff26943e0,
         type: 3}
@@ -25848,7 +25868,7 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -25858,17 +25878,17 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -25908,12 +25928,12 @@ PrefabInstance:
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 218.195
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 4074593259439720414, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -25983,7 +26003,7 @@ PrefabInstance:
     - target: {fileID: 8685062323749600815, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9045765744856106460, guid: 16cfdbf2cf3ab4821937aa8cc00fa13d,
         type: 3}
@@ -28583,6 +28603,45 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1964602097}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1970267072
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1972354270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33600,3 +33659,4 @@ SceneRoots:
   - {fileID: 1753131381}
   - {fileID: 1985297441}
   - {fileID: 1948135962}
+  - {fileID: 1457605052}

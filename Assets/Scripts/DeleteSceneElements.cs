@@ -9,6 +9,7 @@ public class DeleteSceneElements : MonoBehaviour
     private CounterGenerator counterGenerator;
     [SerializeField] private WorldCanvas worldCanvas;
 
+
     void Start()
     {
         basinMovement = transform.Find("CounterWhole").GetComponent<BasinMovement>();
@@ -30,6 +31,7 @@ public class DeleteSceneElements : MonoBehaviour
             Destroy(basinMovement.SelectedGameobject.transform.parent.gameObject);
             basinMovement.selectedObject = SelectedObject.none;
             worldCanvas.SettingWorldUiCanvasToFalse();
+            basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject.SetActive(false);
         }
     }
 }

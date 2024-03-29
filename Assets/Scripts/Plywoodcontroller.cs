@@ -181,6 +181,9 @@ public class Plywoodcontroller : MonoBehaviour
             }
             AllPlywoodCubes[i].transform.localScale = new Vector3(1, plywoodLength, 1);
         }
+        GettingAllPlywoodCubeCenterPos(); //Added later rember below too
+        SettingTextFieldToCenterPos();
+        SetPlywoodLineRendererActive();
     }
 
     public void SetTextFieldsActive()
@@ -198,4 +201,5 @@ public class Plywoodcontroller : MonoBehaviour
         GettingAllPlywoodCubeCenterPos();
         SettingTextFieldToCenterPos();
     }
+
 }

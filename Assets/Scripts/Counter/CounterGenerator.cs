@@ -40,7 +40,6 @@ public class CounterGenerator : MonoBehaviour
     private void SettingGrayMatToOboject(Transform selectedGameobject)
     {
         defaultObjectMat = selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material;
-        Debug.Log("CHECKING_COUNTER_COLOR_CHANGE_ISSUE : COUNTER IS SELECTED");
         //BasinAndCounterOverlapingController.SelectedCounterInitialMaterial = defaultObjectMat;
         //selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().materials[0] = grayMat;
     }
@@ -76,6 +75,7 @@ public class CounterGenerator : MonoBehaviour
         OnCounterAdded();
         currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
         currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
+        Debug.Log("came to here :");
     }
 
     private Quaternion SettinglastSelectedCounterRotation(Quaternion rotaionval)

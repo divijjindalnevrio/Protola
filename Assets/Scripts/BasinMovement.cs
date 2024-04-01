@@ -110,7 +110,7 @@ public class BasinMovement : MonoBehaviour
 
     private RaycastHit CheckAndUpdateSelectedElement(RaycastHit raycastHit)
     {
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.GetTouch(0).phase == TouchPhase.Began && rotationScript.isGameobjectRotation == false)
         {
             Debug.Log("it entered here : ");
              touchTime = Time.time;

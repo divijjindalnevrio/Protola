@@ -17,6 +17,7 @@ public class RotationScript : MonoBehaviour
     public event Action OnBasinRotation;
     public event Action OnCounterRotation;
     public event Action OnCounterRotationStop;
+    public bool isGameobjectRotation = false;
  
     private void Start()
     {
@@ -32,6 +33,7 @@ public class RotationScript : MonoBehaviour
 
             while (t < .5f)
             {
+                isGameobjectRotation = true;
                 yield return null;
                 t += Time.deltaTime / time;
 
@@ -40,6 +42,7 @@ public class RotationScript : MonoBehaviour
                 OnCounterRotation?.Invoke();
             }
             Debug.Log("rotation got stoped here :  counter");
+            isGameobjectRotation = false;
             OnCounterRotationStop?.Invoke();
         }
 
@@ -49,6 +52,7 @@ public class RotationScript : MonoBehaviour
 
             while (t < .5f)
             {
+                isGameobjectRotation = true;
                 yield return null;
                 t += Time.deltaTime / time;
                 // transform.position = Vector3.Lerp(start, end, t);
@@ -56,6 +60,7 @@ public class RotationScript : MonoBehaviour
                 rotateObj.rotation = RotationObject(rotateObj.gameObject, BasinRotationVal);
                 OnBasinRotation();
             }
+            isGameobjectRotation = false;
             rotateObj.rotation = Quaternion.Euler(new Vector3(rotateObj.rotation.x, BasinRotationVal, rotateObj.rotation.z));
 
 

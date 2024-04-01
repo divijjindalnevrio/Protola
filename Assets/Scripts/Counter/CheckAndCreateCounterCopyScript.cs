@@ -10,8 +10,10 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
     [SerializeField] private List<Vector3> mainCubeMaxAreaPoints;
     [SerializeField] private GameObject counterBase;
     [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private WorldCanvas worldCanvas;
 
-    private List<Vector3> getMainCubeMaxAreaPoints(Vector3 counter1Point, Bounds counter1Bounds, Bounds counter2Bounds) {
+    private List<Vector3> getMainCubeMaxAreaPoints(Vector3 counter1Point, Bounds counter1Bounds, Bounds counter2Bounds)
+    {
         List<Vector3> mainCubeMaxAreaPoints = new List<Vector3>();
         float xdelta = ((counter1Bounds.size.x / 2 + counter2Bounds.size.x / 2) + 0.01f);
         float zdelta = ((counter1Bounds.size.z / 2 + counter2Bounds.size.z / 2) + 0.01f);
@@ -64,8 +66,9 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
         }
 
         DestroyPreviousBasins(newCounter);
-        basinMovement.currentCounter = newCounter;
-
+        SettingCounterSelected(newCounter);
+        newCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
+        newCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
 
     }
 
@@ -82,13 +85,15 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
         }
     }
 
-    //private void SettingBasinSelected()
-    //{
-    //    basinMovement.DeselectingAllDashLines();
-    //    currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
-    //    basinMovement.selectedObject = SelectedObject.basin;
-    //    basinMovement.TriggerOnGameobjectSelectedEvent();
-    //    worldCanvas.SettingWorldUiCanvasToTrue();
-    //    basinMovement.SelectedGameobject = currentBasin;
-    //}
+    private void SettingCounterSelected(GameObject newCounter)
+    {
+        basinMovement.DeselectingAllDashLines();
+        newCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+        basinMovement.selectedObject = SelectedObject.counter;
+        basinMovement.currentCounter = newCounter;
+        basinMovement.SelectedGameobject = newCounter.transform.Find("Counter").gameObject;
+        basinMovement.TriggerOnGameobjectSelectedEvent();
+        worldCanvas.SettingWorldUiCanvasToTrue();
+       
+    }
 }

@@ -64,7 +64,6 @@ public class CounterGenerator : MonoBehaviour
         lastSelectedCounterRotation = SettinglastSelectedCounterRotation(lastSelectedCounterRotation);
 
         GameObject cunterbase = Instantiate(basinMovement.SelectedGameobject.transform.parent.gameObject, basinMovement.SelectedGameobject.transform.parent.position, lastSelectedCounterRotation);
-        //TotalCounterInScene.Add(cunterbase);
         cunterbase.name = "CounterBase";
         cunterbase.transform.position = basinMovement.SelectedGameobject.transform.parent.transform.localPosition + new Vector3(5f,0f,0f);
         currentCounter.transform.Find("Counter").transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
@@ -75,7 +74,6 @@ public class CounterGenerator : MonoBehaviour
         OnCounterAdded();
         currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
         currentCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
-        Debug.Log("came to here :");
     }
 
     private Quaternion SettinglastSelectedCounterRotation(Quaternion rotaionval)

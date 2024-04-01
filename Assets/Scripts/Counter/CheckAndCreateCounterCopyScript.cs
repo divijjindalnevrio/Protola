@@ -9,6 +9,8 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
     
     [SerializeField] private List<Vector3> mainCubeMaxAreaPoints;
     [SerializeField] private GameObject counterBase;
+    [SerializeField] private BasinMovement basinMovement;
+
     private List<Vector3> getMainCubeMaxAreaPoints(Vector3 counter1Point, Bounds counter1Bounds, Bounds counter2Bounds) {
         List<Vector3> mainCubeMaxAreaPoints = new List<Vector3>();
         float xdelta = ((counter1Bounds.size.x / 2 + counter2Bounds.size.x / 2) + 0.01f);
@@ -32,15 +34,15 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
         Bounds targetCounterBounds = targetCounter.transform.GetComponent<MeshRenderer>().bounds;
         Bounds counterBounds = counter.transform.GetComponent<MeshRenderer>().bounds;
         mainCubeMaxAreaPoints = getMainCubeMaxAreaPoints(targetCounterPoint, targetCounterBounds, counterBounds);
-        
-       
+
+        GameObject newCounter = null;
 
         foreach (Vector3 mainCubeMaxAreaPoint in mainCubeMaxAreaPoints) {
             hitColliders = Physics.OverlapBox(mainCubeMaxAreaPoint, transform.localScale / 2, Quaternion.identity);
             List<Collider> colliders = hitColliders.ToList();
             if (colliders.Count == 0)
             {
-                GameObject newCounter = Instantiate(counterParent, mainCubeMaxAreaPoint,Quaternion.identity,counterBase.transform);
+                newCounter = Instantiate(counterParent, mainCubeMaxAreaPoint,Quaternion.identity,counterBase.transform);
                 newCounter.gameObject.name = "CounterBase" + Time.time;
                 Debug.Log("Intsantiated at : "+ mainCubeMaxAreaPoint);
                 cubeInstanciated = true;
@@ -60,7 +62,33 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
             checkAndInstantiateCounter(nextCounter.transform.parent.gameObject, counterParent);
 
         }
-        
-        
+
+        DestroyPreviousBasins(newCounter);
+        basinMovement.currentCounter = newCounter;
+
+
     }
+
+
+    private static void DestroyPreviousBasins(GameObject cunterbase)
+    {
+        Transform basinParent = cunterbase.transform.Find("Basin").transform;
+        if (basinParent.childCount > 0)
+        {
+            foreach (Transform child in basinParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
+    //private void SettingBasinSelected()
+    //{
+    //    basinMovement.DeselectingAllDashLines();
+    //    currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+    //    basinMovement.selectedObject = SelectedObject.basin;
+    //    basinMovement.TriggerOnGameobjectSelectedEvent();
+    //    worldCanvas.SettingWorldUiCanvasToTrue();
+    //    basinMovement.SelectedGameobject = currentBasin;
+    //}
 }

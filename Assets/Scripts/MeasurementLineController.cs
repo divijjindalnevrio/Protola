@@ -58,6 +58,7 @@ public class MeasurementLineController : MonoBehaviour
 
         else
         {
+            //MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
             MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -67,7 +68,7 @@ public class MeasurementLineController : MonoBehaviour
     {
         CalculatingMeasurementLineLength();
         GetInputTextField();
-       // SetMeasurementLineUiActiveAndDecative();
+
     }
 
     private void BasinMovement_OnBasinMoving()

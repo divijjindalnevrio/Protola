@@ -24,7 +24,7 @@ public class CounterEdgePoint : MonoBehaviour
      private List<Vector3> counterEdgePoints;
 
 
-    void Start() 
+    void Start()
     {
         basinEdgePoints = basinDashLine.basinEdgePoints;
         Debug.Log("CounterEdgePoint BasinLength 0 : " + basinEdgePoints.Count);
@@ -33,7 +33,13 @@ public class CounterEdgePoint : MonoBehaviour
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
         rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
         basinMovement.OnGameobjectStopMoving += BasinMovement_OnGameobjectStopMoving;
+        //rotationScript.OnCounterRotation += RotationScript_OnCounterRotation;
     }
+
+    //private void RotationScript_OnCounterRotation()
+    //{
+    //    GettingBasinCornerPoints();
+    //}
 
     private void BasinMovement_OnGameobjectStopMoving()
     {
@@ -44,7 +50,8 @@ public class CounterEdgePoint : MonoBehaviour
             GettingBasinCornerPoints();
            
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             Debug.Log("BasinMovement_OnGameobjectStopMoving_CHECK : ERR : " + e);
         }
         

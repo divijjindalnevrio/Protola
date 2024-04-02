@@ -40,11 +40,13 @@ public class BasinDashLine : MonoBehaviour
     {
         if(e == SelectedObject.basin)
         {
+            rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
             BasinMeasurementLineRendererSetToActive();
             AssignBasinAndGetBasinVertices();
         }
         else
         {
+            rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
             BasinMeasurementLineRendererSetToFalse();
         }
     }
@@ -57,7 +59,7 @@ public class BasinDashLine : MonoBehaviour
 
     private void fun()
     {
-        Debug.Log("RotationScript_OnBasinRotation ABC " + rotationScript.BasinRotationVal);
+        
         if (rotationScript.BasinRotationVal == 90 || rotationScript.BasinRotationVal == -90 || rotationScript.BasinRotationVal == 270 || rotationScript.BasinRotationVal == -270)
         {
             Debug.Log("RotationScript_OnBasinRotation ABC TRUE");                   // on basin vertical 

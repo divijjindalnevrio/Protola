@@ -80,6 +80,7 @@ public class Plywoodcontroller : MonoBehaviour
             SettingTextFieldToCenterPos();
             //DeActiveAllTheTextFields();
             SetTextFieldsActive();
+            SettingTheTextFieldValues();
         }
 
         else
@@ -200,6 +201,14 @@ public class Plywoodcontroller : MonoBehaviour
     {
         GettingAllPlywoodCubeCenterPos();
         SettingTextFieldToCenterPos();
+    }
+
+    private void SettingTheTextFieldValues()
+    {
+        for(int i = 0; i < PlywoodInputTextFields.Count; i++)
+        {
+            PlywoodInputTextFields[i].transform.GetChild(0).GetComponent<TMP_InputField>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
+        }
     }
 
 }

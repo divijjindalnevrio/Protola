@@ -49,14 +49,16 @@ public class MeasurementLineController : MonoBehaviour
     {
         if (e == SelectedObject.basin)
         {
-           // MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
+            MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
+            MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(true);
+            GetAllTheMeasurementLinesInputFeilds();
             CalculatingMeasurementLineLength();
         }
 
         else
         {
-           // MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
+            MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
@@ -120,9 +122,11 @@ public class MeasurementLineController : MonoBehaviour
 
     private void GetAllTheMeasurementLinesInputFeilds()
     {
-        foreach(GameObject textField in MeasurementLineUi.transform.GetChild(0))
+        measurementLinesInputFeilds.Clear();
+        GameObject measurementUiTextField = MeasurementLineUi.transform.GetChild(0).gameObject;
+        foreach (Transform textField in measurementUiTextField.transform)
         {
-            measurementLinesInputFeilds.Add(textField);
+            measurementLinesInputFeilds.Add(textField.gameObject);
         }
     }
 

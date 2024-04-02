@@ -35,7 +35,7 @@ public class BasinsGenerator : MonoBehaviour
         lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
         lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
 
-        Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
+        //Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
         //SettingBasinPosition(currentBasinObj);
         currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos,lastSelectedBasinRotation);
         currentBasin.GetComponent<Collider>().isTrigger = true;

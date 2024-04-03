@@ -8,6 +8,7 @@ public class DeleteSceneElements : MonoBehaviour
     private BasinMovement basinMovement;
     private CounterGenerator counterGenerator;
     [SerializeField] private WorldCanvas worldCanvas;
+    [SerializeField] private CheckAndCreateCounterCopyScript checkAndCreateCounterCopyScript;
 
 
     void Start()
@@ -28,10 +29,24 @@ public class DeleteSceneElements : MonoBehaviour
         }
         if (basinMovement.selectedObject == SelectedObject.counter)
         {
-            Destroy(basinMovement.SelectedGameobject.transform.parent.gameObject);
+            GameObject selectedObject = basinMovement.SelectedGameobject.transform.parent.gameObject;
+            Destroy(selectedObject);
+            RemovingCounterFromDict(selectedObject);
             basinMovement.selectedObject = SelectedObject.none;
             worldCanvas.SettingWorldUiCanvasToFalse();
             basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject.SetActive(false);
         }
+    }
+
+
+    private void RemovingCounterFromDict(GameObject obj)
+    {
+        checkAndCreateCounterCopyScript.TotalCounterInScene.Remove(obj.name);
+
+        if (checkAndCreateCounterCopyScript.TotalCounterInScene.Count == 0)
+        {
+            Debug.Log("TotalCounterInScene : remaining counter zero");
+        }
+        Debug.Log(" TotalCounterInScene : " + checkAndCreateCounterCopyScript.TotalCounterInScene.Count);
     }
 }

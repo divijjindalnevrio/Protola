@@ -16,7 +16,7 @@ public class CounterGenerator : MonoBehaviour
     [SerializeField] private Material grayMat;
     private Material defaultObjectMat;
     [SerializeField] private BasinAndCounterOverlapingController BasinAndCounterOverlapingController;
-   // public List<GameObject> TotalCounterInScene = new List<GameObject>();
+    //public List<GameObject> TotalCounterInScene = new List<GameObject>();
 
     void Start()
     {

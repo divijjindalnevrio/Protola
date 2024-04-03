@@ -27,7 +27,6 @@ public class WorldUiScaler : MonoBehaviour
         widthSliderInitialVal = WidthSlider.value;
         circleIndicatorInitialVal = worldUiObject.transform.localScale.x;
         InitialScale = CalculatingSizeOfWorldUiCanvas();
-        
     }
 
     void Update()
@@ -50,8 +49,6 @@ public class WorldUiScaler : MonoBehaviour
         {
             SettingTextFeildActiveAndDeactive();
         }
-       
-
 
         return vect;
     }

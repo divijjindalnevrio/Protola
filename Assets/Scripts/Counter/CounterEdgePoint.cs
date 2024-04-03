@@ -33,13 +33,8 @@ public class CounterEdgePoint : MonoBehaviour
         basinsGenerator.OnBasinGenrate += BasinsGenerator_OnBasinGenrate;
         rotationScript.OnBasinRotation += RotationScript_OnBasinRotation;
         basinMovement.OnGameobjectStopMoving += BasinMovement_OnGameobjectStopMoving;
-        //rotationScript.OnCounterRotation += RotationScript_OnCounterRotation;
+        
     }
-
-    //private void RotationScript_OnCounterRotation()
-    //{
-    //    GettingBasinCornerPoints();
-    //}
 
     private void BasinMovement_OnGameobjectStopMoving()
     {

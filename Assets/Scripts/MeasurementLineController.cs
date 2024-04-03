@@ -49,7 +49,10 @@ public class MeasurementLineController : MonoBehaviour
     {
         if (e == SelectedObject.basin)
         {
-            MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
+            if (MeasurementLineUi != null)
+            {
+                MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
+            }
             MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(true);
             GetAllTheMeasurementLinesInputFeilds();
@@ -58,7 +61,11 @@ public class MeasurementLineController : MonoBehaviour
 
         else
         {
-            //MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
+           if(MeasurementLineUi != null)
+            {
+                MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
+            }
+           
             MeasurementLineUi = basinMovement.currentCounter.transform.Find("MeasurementLineUi").gameObject;
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(false);
         }

@@ -9,6 +9,7 @@ public class DeleteSceneElements : MonoBehaviour
     private CounterGenerator counterGenerator;
     [SerializeField] private WorldCanvas worldCanvas;
     [SerializeField] private CheckAndCreateCounterCopyScript checkAndCreateCounterCopyScript;
+    [SerializeField] private GameObject SceneReloadButton;
 
 
     void Start()
@@ -45,8 +46,8 @@ public class DeleteSceneElements : MonoBehaviour
 
         if (checkAndCreateCounterCopyScript.TotalCounterInScene.Count == 0)
         {
-            Debug.Log("TotalCounterInScene : remaining counter zero");
+            SceneReloadButton.SetActive(true);
         }
-        Debug.Log(" TotalCounterInScene : " + checkAndCreateCounterCopyScript.TotalCounterInScene.Count);
     }
+    
 }

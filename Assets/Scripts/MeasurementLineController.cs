@@ -10,6 +10,7 @@ public class MeasurementLineController : MonoBehaviour
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private BasinsGenerator BasinsGenerator;
     [SerializeField] private CounterEdgePoint counterEdgePoint;
+    [SerializeField] private GameObject BasinMeasurementLineRenderer;
     [SerializeField] private List<LineRenderer> measurementLines = new List<LineRenderer>();
 
     [SerializeField] private List<GameObject> measurementLinesInputFeilds = new List<GameObject>();
@@ -57,6 +58,7 @@ public class MeasurementLineController : MonoBehaviour
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(true);
             GetAllTheMeasurementLinesInputFeilds();
             CalculatingMeasurementLineLength();
+            //BasinMeasurementLineRenderer.transform.position = basinMovement.currentCounter.transform.position;
         }
 
         else
@@ -138,6 +140,10 @@ public class MeasurementLineController : MonoBehaviour
         }
     }
 
+    //public void UpdatingMeasurementLinePositionFromSlider()
+    //{
+    //    BasinMeasurementLineRenderer.transform.position = basinMovement.currentCounter.transform.position;
+    //}
 
 
 

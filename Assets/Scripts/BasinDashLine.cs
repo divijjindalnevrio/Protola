@@ -40,14 +40,14 @@ public class BasinDashLine : MonoBehaviour
     {
         if(e == SelectedObject.basin)
         {
-            //rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
+            rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
             Debug.Log("rotationScript.BasinRotationVal : "  + rotationScript.BasinRotationVal);
             BasinMeasurementLineRendererSetToActive();
             AssignBasinAndGetBasinVertices();
         }
         else
         {
-           // rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
+            rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
             Debug.Log("rotationScript.BasinRotationVal : 1 " + rotationScript.BasinRotationVal);
             BasinMeasurementLineRendererSetToFalse();
         }

@@ -221,7 +221,11 @@ public class CounterEdgePoint : MonoBehaviour
     }
 
 
-   
+    public void UpdatingMeasurementLineFromSlider()
+    {
+        GettingCounterCornerPointsObject();
+        GettingBasinCornerPoints();
+    }
 
 
 }

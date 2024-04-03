@@ -121,7 +121,8 @@ public class BasinMovement : MonoBehaviour
                 selectedObject = SelectedObject.counter;
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
-                rotationScript.CounterRotationVal = 0f + SelectedGameobject.transform.eulerAngles.y;
+                rotationScript.CounterRotationVal = 0f + Mathf.FloorToInt(SelectedGameobject.transform.eulerAngles.y);
+               
                 currentCounter = SelectedGameobject.transform.parent.gameObject;
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 if (basinsGenerator.InstanciateBasin != null)
@@ -136,7 +137,7 @@ public class BasinMovement : MonoBehaviour
                 DeselectingAllDashLines();
                 SelectedGameobject = raycastHit.collider.gameObject;
                 currentBasin = SelectedGameobject;
-                rotationScript.BasinRotationVal = 0f + SelectedGameobject.transform.eulerAngles.y;
+                rotationScript.BasinRotationVal = 0f + Mathf.FloorToInt(SelectedGameobject.transform.eulerAngles.y);
                 SelectedGameobject.transform.localPosition = new Vector3(SelectedGameobject.transform.localPosition.x, SelectedGameobject.transform.localPosition.y + .0010f, SelectedGameobject.transform.localPosition.z);
                 GettingCounterMeshFilter();
                 OnGameobjectSelected.Invoke(this, selectedObject);

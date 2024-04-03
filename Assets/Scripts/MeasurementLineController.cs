@@ -58,7 +58,6 @@ public class MeasurementLineController : MonoBehaviour
             MeasurementLineUi.transform.GetChild(0).gameObject.SetActive(true);
             GetAllTheMeasurementLinesInputFeilds();
             CalculatingMeasurementLineLength();
-            //BasinMeasurementLineRenderer.transform.position = basinMovement.currentCounter.transform.position;
         }
 
         else

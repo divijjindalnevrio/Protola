@@ -41,7 +41,7 @@ public class BasinDashLine : MonoBehaviour
         if(e == SelectedObject.basin)
         {
             rotationScript.BasinRotationVal = Mathf.FloorToInt(rotationScript.BasinRotationVal);
-            Debug.Log("rotationScript.BasinRotationVal : "  + rotationScript.BasinRotationVal);
+
             BasinMeasurementLineRendererSetToActive();
             AssignBasinAndGetBasinVertices();
         }
@@ -84,7 +84,7 @@ public class BasinDashLine : MonoBehaviour
         AssignBasinAndGetBasinVertices();
     }
 
-    private void AssignBasinAndGetBasinVertices()
+    public void AssignBasinAndGetBasinVertices()
     {
         AssignCurrentBasin();
         //GetTheBasinVertices();

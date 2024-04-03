@@ -223,8 +223,10 @@ public class CounterEdgePoint : MonoBehaviour
 
     public void UpdatingMeasurementLineFromSlider()
     {
+        Debug.Log("UpdatingMeasurementLineFromSlider : 1");
         GettingCounterCornerPointsObject();
         GettingBasinCornerPoints();
+        Debug.Log("UpdatingMeasurementLineFromSlider : 2");
     }
 
 

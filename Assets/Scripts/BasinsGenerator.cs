@@ -47,7 +47,7 @@ public class BasinsGenerator : MonoBehaviour
         selectedDashCube.transform.SetParent(currentBasin.transform, false);
         currentBasin.transform.parent = basinMovement.currentCounter.transform.Find("Basin").transform;
         SettingBasinSelected();
-        currentBasin.transform.localPosition = new Vector3(lastSelectedBasinPos.x, 0.02f, lastSelectedBasinPos.z);
+        currentBasin.transform.localPosition = new Vector3(lastSelectedBasinPos.x, 0.04f, lastSelectedBasinPos.z);
         OnBasinGenrate?.Invoke();
     }
 

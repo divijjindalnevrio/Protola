@@ -12,7 +12,6 @@ public class WorldUiScaler : MonoBehaviour
     [SerializeField] private GameObject worldUiObject;
     private float dist;
     [SerializeField] private Vector3 InitialScale;
-    [SerializeField] private bool IsSliderMoving = false;
     [SerializeField] private Slider WidthSlider;
     [SerializeField] private Plywoodcontroller plywoodcontroller;
     [SerializeField] private BasinMovement basinMovement;
@@ -74,6 +73,7 @@ public class WorldUiScaler : MonoBehaviour
         foreach(Transform canvas in worldUiObject.transform)
         {
             canvas.transform.localScale = vect;
+           // worldUiObject.transform.GetChild(0).transform.localScale = vect;
         }
     }
 

@@ -40,8 +40,6 @@ public class UiButtonsGenerator : MonoBehaviour
         }
     }
 
-
-
     public void HighlightPalaceButton(int button)
     {
         DisableAllHighLightButton(palaceColorButtons);

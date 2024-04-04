@@ -218,7 +218,7 @@ public class BasinMovement : MonoBehaviour
 
     private void SinkMovement(RaycastHit rayHit)
     {
-        _isSelected = true;
+       
 
         if (isInstanciateBasinMoved && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
@@ -247,7 +247,8 @@ public class BasinMovement : MonoBehaviour
 
         if(basinCanMove)
         {
-           
+            _isSelected = true;
+
             if (isBasinInstanciate == false)
             {
                 LastPositionSelectedObject = SelectedGameobject.transform.position;     // storing last selectdObject position.

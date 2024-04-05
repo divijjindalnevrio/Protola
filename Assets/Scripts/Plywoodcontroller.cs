@@ -15,7 +15,7 @@ public class Plywoodcontroller : MonoBehaviour
     [SerializeField] private List<GameObject> PlywoodInputTextFields = new List<GameObject>();
     [SerializeField] private List<Vector3> centerPosition = new List<Vector3>();
     [SerializeField] private RotationScript rotationScript;
-    public GameObject PlywoodInputTextFieldParentObj;
+    private GameObject PlywoodInputTextFieldParentObj;
 
 
     void Start()
@@ -32,7 +32,8 @@ public class Plywoodcontroller : MonoBehaviour
         counterGenerator.OnCounterAdded += CounterGenerator_OnCounterAdded;
         PlywoodInputTextFieldParentObj = basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject;
 
-        IncreaseThePlywoodSize();
+        //IncreaseThePlywoodSize();
+        
         PlywoodInputTextFieldParentObj.SetActive(false);
 
 
@@ -80,7 +81,8 @@ public class Plywoodcontroller : MonoBehaviour
             SettingTextFieldToCenterPos();
             //DeActiveAllTheTextFields();
             SetTextFieldsActive();
-            SettingTheTextFieldValues();
+
+            //SettingTheTextFieldValues();
         }
 
         else

@@ -26,7 +26,7 @@ public class TextFieldController : MonoBehaviour
 
     void Update()
     {
-        
+       
     }
 
     private void SetTextFieldToUnIntractable()

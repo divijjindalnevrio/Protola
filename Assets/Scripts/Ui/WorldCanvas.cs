@@ -5,13 +5,16 @@ using System;
 
 public class WorldCanvas : MonoBehaviour
 {
-    private GameObject WorldUiCanvasButtons;
+    [SerializeField] GameObject worldUiObject;
+    private GameObject CountersWorldUiCanvasButtons;
+    private GameObject BasinWorldUiCanvasButtons;
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private CounterGenerator counterGenerator;
 
     void Start()
     {
-        WorldUiCanvasButtons = transform.Find("AllWorldButtons").gameObject;
+        CountersWorldUiCanvasButtons = worldUiObject.transform.GetChild(0).gameObject;
+        BasinWorldUiCanvasButtons = worldUiObject.transform.GetChild(1).gameObject;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         
         basinMovement.OnGameobjectMoving += SettingWorldUiCanvasToFalse;
@@ -19,6 +22,7 @@ public class WorldCanvas : MonoBehaviour
         basinMovement.OnCounterStopMoving += SettingWorldUiCanvasToTrue;
         basinMovement.OnBasinStopMoving += SettingWorldUiCanvasToTrue;
         counterGenerator.OnCounterAdded += SettingWorldUiCanvasToTrue;
+
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
@@ -27,13 +31,17 @@ public class WorldCanvas : MonoBehaviour
         {
             if(e == SelectedObject.basin)
             {
-                WorldUiCanvasButtons.transform.Find("CircularPath").transform.Find("AddCanvas").gameObject.SetActive(false);
-                SettingWorldUiCanvasToTrue();
+                BasinWorldUiCanvasButtons.SetActive(true);
+                CountersWorldUiCanvasButtons.SetActive(false);
+                BasinWorldUiCanvasButtons.transform.parent.position = basinMovement.SelectedGameobject.transform.position;
+                
             }
             else
             {
-                SettingWorldUiCanvasToTrue();
-                WorldUiCanvasButtons.transform.Find("CircularPath").transform.Find("AddCanvas").gameObject.SetActive(true);
+                BasinWorldUiCanvasButtons.SetActive(false);
+                CountersWorldUiCanvasButtons.SetActive(true);
+                
+                CountersWorldUiCanvasButtons.transform.parent.position = basinMovement.currentCounter.transform.position;
             }
             
         }
@@ -44,15 +52,18 @@ public class WorldCanvas : MonoBehaviour
 
     }
 
+
+
     public void SettingWorldUiCanvasToTrue()
     {
-        WorldUiCanvasButtons.SetActive(true);
-        WorldUiCanvasButtons.transform.parent.position = basinMovement.currentCounter.transform.position;
+        CountersWorldUiCanvasButtons.SetActive(true);
+        CountersWorldUiCanvasButtons.transform.parent.position = basinMovement.currentCounter.transform.position;
+
     }
 
     public void SettingWorldUiCanvasToFalse()
     {
-        WorldUiCanvasButtons.SetActive(false);
+        CountersWorldUiCanvasButtons.SetActive(false);
     }
 
 

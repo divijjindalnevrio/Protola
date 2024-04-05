@@ -35,7 +35,7 @@ public class MobilemaxCamera : MonoBehaviour
     //private Vector3 CameraPosition;
     //private Vector3 Targetposition;
     //private Vector3 MoveDistance;
-    public bool isCameraStatic = true;
+   
 
 
     void Start() { Init(); }
@@ -75,7 +75,7 @@ public class MobilemaxCamera : MonoBehaviour
         // If Control and Alt and Middle button? ZOOM!
         if (Input.touchCount == 2)
         {
-            isCameraStatic = false;
+           
             Touch touchZero = Input.GetTouch(0);
 
             Touch touchOne = Input.GetTouch(1);

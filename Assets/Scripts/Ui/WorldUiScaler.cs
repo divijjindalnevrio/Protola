@@ -10,6 +10,7 @@ public class WorldUiScaler : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject worldUiObject;
+    private GameObject selectedWorldUiObject;
     private float dist;
     [SerializeField] private Vector3 InitialScale;
     [SerializeField] private Slider WidthSlider;
@@ -24,26 +25,54 @@ public class WorldUiScaler : MonoBehaviour
 
     private void Start()
     {
+        selectedWorldUiObject = worldUiObject.transform.GetChild(0).gameObject;
+        //basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         widthSliderInitialVal = WidthSlider.value;
-        circleIndicatorInitialVal = worldUiObject.transform.localScale.x;
+        circleIndicatorInitialVal = selectedWorldUiObject.transform.localScale.x;
         InitialScale = CalculatingSizeOfWorldUiCanvas();
+        
+    }
+
+    private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
+    {
+        
+        if (e == SelectedObject.counter)
+        {
+            selectedWorldUiObject = worldUiObject.transform.GetChild(0).gameObject;
+        }
+        else if (e == SelectedObject.basin)
+        {
+            selectedWorldUiObject = worldUiObject.transform.GetChild(1).gameObject;
+        }
     }
 
     void Update()
     {
+        
         CalculatingSizeOfWorldUiCanvas();
     }
 
     private Vector3 CalculatingSizeOfWorldUiCanvas()
     {
-        dist = Vector3.Distance(worldUiObject.transform.position, mainCamera.transform.position);
-        Debug.Log("Distance counter and camera : " + dist);
-        Canvas worldUiCanvas = worldUiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Canvas>();
-        Vector3 vect = (Vector3.one * dist / 3) / 50;
-        if (vect.x >= InitialScale.x && vect.x <= 0.13f)
+        dist = Vector3.Distance(selectedWorldUiObject.transform.position, mainCamera.transform.position);
+       
+        Canvas worldUiCanvas = selectedWorldUiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Canvas>();
+
+        Vector3 vect;
+
+        if (dist < 11.0f)
         {
+            vect = (Vector3.one * dist / 3)/2;
+            //Debug.Log("DCAC 0 : " + dist + "  " + vect.x + " " + InitialScale.x);
+            GetAndResizeWorldUIControlPanelButtons(vect);
+        }
+        else {
+            vect = (Vector3.one * dist / 3) / 50;
+            //Debug.Log("DCAC 1 : " + dist + "  " + vect.x + " " + InitialScale.x);
             GetAllTheWorldUiCanvas(vect);
         }
+
+        
 
         if(basinMovement.selectedObject == SelectedObject.counter)
         {
@@ -67,11 +96,20 @@ public class WorldUiScaler : MonoBehaviour
 
     void GetAllTheWorldUiCanvas(Vector3 vect)
     {
-        foreach(Transform canvas in worldUiObject.transform)
+        foreach(Transform canvas in selectedWorldUiObject.transform)
         {
+            Debug.Log("DCAC  : " + canvas.name);
             canvas.transform.localScale = vect;
            // worldUiObject.transform.GetChild(0).transform.localScale = vect;
         }
+    }
+
+    void GetAndResizeWorldUIControlPanelButtons(Vector3 vect)
+    {
+        selectedWorldUiObject.transform.GetChild(0).transform.GetChild(0).transform.localScale = vect;
+        selectedWorldUiObject.transform.GetChild(0).transform.GetChild(1).transform.localScale = vect;
+        selectedWorldUiObject.transform.GetChild(0).transform.GetChild(2).transform.localScale = vect;
+        
     }
 
     public void IncreaseTheCircleSize(GameObject CircleIndicatorGameObject)

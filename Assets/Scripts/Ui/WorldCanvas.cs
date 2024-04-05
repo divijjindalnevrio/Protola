@@ -36,6 +36,7 @@ public class WorldCanvas : MonoBehaviour
                 BasinWorldUiCanvasButtons.transform.parent.position = basinMovement.SelectedGameobject.transform.position;
                 
             }
+
             else
             {
                 BasinWorldUiCanvasButtons.SetActive(false);
@@ -52,18 +53,29 @@ public class WorldCanvas : MonoBehaviour
 
     }
 
-
-
     public void SettingWorldUiCanvasToTrue()
     {
-        CountersWorldUiCanvasButtons.SetActive(true);
-        CountersWorldUiCanvasButtons.transform.parent.position = basinMovement.currentCounter.transform.position;
-
+        if(basinMovement.selectedObject != SelectedObject.none)
+        {
+            if (basinMovement.selectedObject == SelectedObject.counter)
+            {
+                CountersWorldUiCanvasButtons.SetActive(true);
+                BasinWorldUiCanvasButtons.SetActive(false);
+                CountersWorldUiCanvasButtons.transform.parent.position = basinMovement.currentCounter.transform.position;
+            }
+            else
+            {
+                BasinWorldUiCanvasButtons.SetActive(true);
+                CountersWorldUiCanvasButtons.SetActive(false);
+                BasinWorldUiCanvasButtons.transform.parent.position = basinMovement.SelectedGameobject.transform.position;
+            }
+        }
     }
 
     public void SettingWorldUiCanvasToFalse()
     {
         CountersWorldUiCanvasButtons.SetActive(false);
+        BasinWorldUiCanvasButtons.SetActive(false);
     }
 
 

@@ -29,6 +29,7 @@ public class Plywoodcontroller : MonoBehaviour
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
         basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
         rotationScript.OnCounterRotation += RotationScript_OnCounterRotation;
+        basinMovement.OnCounterMoving += BasinMovement_OnCounterMoving;
         counterGenerator.OnCounterAdded += CounterGenerator_OnCounterAdded;
         PlywoodInputTextFieldParentObj = basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject;
 
@@ -37,6 +38,11 @@ public class Plywoodcontroller : MonoBehaviour
         PlywoodInputTextFieldParentObj.SetActive(false);
 
 
+    }
+
+    private void BasinMovement_OnCounterMoving()
+    {
+        IncreaseThePlywoodSize();
     }
 
     private void CounterGenerator_OnCounterAdded()
@@ -54,6 +60,7 @@ public class Plywoodcontroller : MonoBehaviour
         GettingAllPlywoodCubeCenterPos();
         SetPlywoodLineRendererActive();
         SettingTextFieldToCenterPos();
+        IncreaseThePlywoodSize();
     }
 
     private void BasinMovement_OnCounterStopMoving()
@@ -63,6 +70,7 @@ public class Plywoodcontroller : MonoBehaviour
         SetPlywoodLineRendererActive();
         SettingTextFieldToCenterPos();
         SetTextFieldsActive();
+        
         Debug.Log("SetTextFieldsActive got active here : ");
     }
 
@@ -83,6 +91,7 @@ public class Plywoodcontroller : MonoBehaviour
             SetTextFieldsActive();
 
             SettingTheTextFieldValues();
+            IncreaseThePlywoodSize();     // if the input textfield open should close here.
         }
 
         else

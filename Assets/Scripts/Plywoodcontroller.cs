@@ -82,7 +82,7 @@ public class Plywoodcontroller : MonoBehaviour
             //DeActiveAllTheTextFields();
             SetTextFieldsActive();
 
-            //SettingTheTextFieldValues();
+            SettingTheTextFieldValues();
         }
 
         else
@@ -92,6 +92,7 @@ public class Plywoodcontroller : MonoBehaviour
             if(PlywoodInputTextFields != null)
             {
                 DeActiveAllTheTextFields();
+                IncreaseThePlywoodSize();
             }
         }
     
@@ -176,17 +177,21 @@ public class Plywoodcontroller : MonoBehaviour
     {
         for (int i = 0; i < PlywoodInputTextFields.Count; i++)
         {
-            float plywoodLength = float.Parse(PlywoodInputTextFields[i].transform.GetChild(0).GetComponent<TMP_InputField>().text);
+            float plywoodLength = float.Parse(PlywoodInputTextFields[i].transform.GetChild(1).transform.GetChild(0).GetComponent<TMP_InputField>().text);
             if(plywoodLength > 10)
             {
                 plywoodLength = 10;
-                PlywoodInputTextFields[i].transform.GetChild(0).GetComponent<TMP_InputField>().text = "10";
+                PlywoodInputTextFields[i].transform.GetChild(1).transform.GetChild(0).GetComponent<TMP_InputField>().text = "10";
             }
-            AllPlywoodCubes[i].transform.localScale = new Vector3(1, plywoodLength, 1);
+            PlywoodInputTextFields[i].transform.GetChild(1).gameObject.SetActive(false);
+            PlywoodInputTextFields[i].transform.GetChild(0).gameObject.SetActive(true);
+            PlywoodInputTextFields[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = plywoodLength.ToString();
+           AllPlywoodCubes[i].transform.localScale = new Vector3(1, plywoodLength, 1);
         }
         GettingAllPlywoodCubeCenterPos(); //Added later rember below too
         SettingTextFieldToCenterPos();
         SetPlywoodLineRendererActive();
+
     }
 
     public void SetTextFieldsActive()
@@ -209,8 +214,9 @@ public class Plywoodcontroller : MonoBehaviour
     {
         for(int i = 0; i < PlywoodInputTextFields.Count; i++)
         {
-            PlywoodInputTextFields[i].transform.GetChild(0).GetComponent<TMP_InputField>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
+            PlywoodInputTextFields[i].transform.GetChild(1).GetChild(0).GetComponent<TMP_InputField>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
+            PlywoodInputTextFields[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
         }
     }
-
+    
 }

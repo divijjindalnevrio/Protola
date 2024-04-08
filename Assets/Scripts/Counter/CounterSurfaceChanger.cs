@@ -18,19 +18,27 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     [SerializeField] private Texture2D DefaultColorTexture;
     [SerializeField] private Texture2D DefaultColorTextureMap;
+    private GameObject selectedObjcet;
     private Color lastSelectedColor = Color.white;
     private Color basinlastSelectedColor = Color.white;
     public List<Color> colors = new List<Color>();
 
     void Start()
     {
-        
+        basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
+        SetTheMaterialPriority();
+    }
+
+    private void BasinMovement_OnCounterStopMoving()
+    {
+        SetTheMaterialPriority();
     }
 
     public void ChangingCounterSurfaceTexture(int material)
     {
-        GameObject selectedObjcet = basinMovement.SelectedGameobject;
-        if(selectedObjcet == null) { return; }
+        selectedObjcet = basinMovement.SelectedGameobject;
+
+        if (selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))
         {
@@ -54,7 +62,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void ChangingSurfaceGranulateTexture(int material)
     {
-        GameObject selectedObjcet = basinMovement.SelectedGameobject;
+        selectedObjcet = basinMovement.SelectedGameobject;
         if (selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))
@@ -89,7 +97,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void ChangingCounterSurfaceColor(int color)
     {
-        GameObject selectedObjcet = basinMovement.SelectedGameobject;
+        selectedObjcet = basinMovement.SelectedGameobject;
         if (selectedObjcet == null) { return; }
 
         if (selectedObjcet.CompareTag("Basin"))
@@ -133,5 +141,12 @@ public class CounterSurfaceChanger : MonoBehaviour
 
             //obje.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].
         }
+    }
+
+    private void SetTheMaterialPriority()
+    {
+        selectedObjcet = basinMovement.SelectedGameobject;
+        selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
+        selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
     }
 }

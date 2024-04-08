@@ -41,6 +41,9 @@ public class BasinMovement : MonoBehaviour
     public SelectedObject selectedObject;
     
     public Material defaultMat;
+    [SerializeField] private Material DefaultColor;
+    [SerializeField] private Material shaderMat;
+    [SerializeField] private Material trasparentMat;
     [SerializeField] private BasinsGenerator basinsGenerator;
     [SerializeField] private CounterGenerator counterGenerator;
     [SerializeField] private RotationScript rotationScript;
@@ -57,7 +60,6 @@ public class BasinMovement : MonoBehaviour
     public event Action OnBasinStopMoving;
     public event Action OnBasinMoving;
     public event Action OnCounterMoving;
-
     private float touchTime;
 
     private void Start()
@@ -173,10 +175,16 @@ public class BasinMovement : MonoBehaviour
             {
                 currentCounter.transform.position = LastPositionSelectedObject;
             }
+            //OnGameobjectStopMoving();
+            //OnCounterStopMoving();
+
+            // Assigning the materials to counter.
+            List<Material> matlist = new List<Material> {shaderMat, DefaultColor};
+            SelectedGameobject.gameObject.GetComponent<MeshRenderer>().SetMaterials(matlist);
+
+            SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = BasinAndCounterOverlapingController.SelectedCounterInitialColor;
             OnGameobjectStopMoving();
             OnCounterStopMoving();
-            Debug.Log("CHECKING_COUNTER_COLOR_CHANGE_ISSUE : COUNTER IS RELEASED");
-            SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = BasinAndCounterOverlapingController.SelectedCounterInitialColor;
         }
 
         if (raycastHit.collider.tag == "Counter" && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -186,12 +194,18 @@ public class BasinMovement : MonoBehaviour
             {
                 counterGenerator.CounterInstanciate(SelectedGameobject.transform.rotation);
                 LastPositionSelectedObject = SelectedGameobject.transform.position;
+           
                 isCounterInstanciate = true;
             }
             isInstanciateCounterMoved = true;
             counterGenerator.DisableAllBasinsCollider();
             Vector3 targetPosition = new Vector3(raycastHit.point.x, currentCounter.transform.position.y, raycastHit.point.z);
             currentCounter.transform.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
+
+            // Assigning the materials to counter.
+            List<Material> matlist = new List<Material> { trasparentMat, trasparentMat };
+            SelectedGameobject.gameObject.GetComponent<MeshRenderer>().SetMaterials(matlist);
+
             OnGameobjectMoving();
 
         }

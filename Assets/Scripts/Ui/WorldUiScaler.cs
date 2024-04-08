@@ -98,7 +98,7 @@ public class WorldUiScaler : MonoBehaviour
     {
         foreach(Transform canvas in selectedWorldUiObject.transform)
         {
-            Debug.Log("DCAC  : " + canvas.name);
+           
             canvas.transform.localScale = vect;
            // worldUiObject.transform.GetChild(0).transform.localScale = vect;
         }

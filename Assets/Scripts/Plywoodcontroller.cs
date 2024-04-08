@@ -229,10 +229,8 @@ public class Plywoodcontroller : MonoBehaviour
     }
 
 
-
     public void SetTheInputFieldSelected(int plywoodIndex)
     {
-
         PlywoodInputTextFields[plywoodIndex].transform.GetChild(1).GetChild(0).GetComponent<TMP_InputField>().Select();
     }
 }

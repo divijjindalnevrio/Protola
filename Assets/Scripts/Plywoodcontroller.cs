@@ -227,5 +227,12 @@ public class Plywoodcontroller : MonoBehaviour
             PlywoodInputTextFields[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
         }
     }
-    
+
+
+
+    public void SetTheInputFieldSelected(int plywoodIndex)
+    {
+
+        PlywoodInputTextFields[plywoodIndex].transform.GetChild(1).GetChild(0).GetComponent<TMP_InputField>().Select();
+    }
 }

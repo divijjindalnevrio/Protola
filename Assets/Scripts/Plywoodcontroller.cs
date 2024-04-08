@@ -17,6 +17,8 @@ public class Plywoodcontroller : MonoBehaviour
     [SerializeField] private RotationScript rotationScript;
     private GameObject PlywoodInputTextFieldParentObj;
 
+    [SerializeField] private List<Material> counterMaterials = new List<Material>();
+
 
     void Start()
     {
@@ -43,6 +45,8 @@ public class Plywoodcontroller : MonoBehaviour
     private void BasinMovement_OnCounterMoving()
     {
         IncreaseThePlywoodSize();
+        SetThePlywoodTransparent();
+
     }
 
     private void CounterGenerator_OnCounterAdded()
@@ -70,7 +74,9 @@ public class Plywoodcontroller : MonoBehaviour
         SetPlywoodLineRendererActive();
         SettingTextFieldToCenterPos();
         SetTextFieldsActive();
-        
+        SetTheDefaultPlywoodMaterial();
+
+
         Debug.Log("SetTextFieldsActive got active here : ");
     }
 
@@ -233,4 +239,25 @@ public class Plywoodcontroller : MonoBehaviour
     {
         PlywoodInputTextFields[plywoodIndex].transform.GetChild(1).GetChild(0).GetComponent<TMP_InputField>().Select();
     }
+
+    private void SetThePlywoodTransparent()
+    {
+        List<Material> matlist = new List<Material> { counterMaterials[2], counterMaterials[2] };
+        foreach (GameObject plywood in AllPlywoodCubes)
+        {
+            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().SetMaterials(matlist);
+        }
+    }
+
+    private void SetTheDefaultPlywoodMaterial()
+    {
+        List<Material> matlist = new List<Material> { counterMaterials[0], counterMaterials[1] };
+        foreach (GameObject plywood in AllPlywoodCubes)
+        {
+            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().SetMaterials(matlist);
+        }
+
+    }
+
+
 }

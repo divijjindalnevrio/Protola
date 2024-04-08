@@ -205,7 +205,7 @@ public class BasinMovement : MonoBehaviour
             // Assigning the materials to counter.
             List<Material> matlist = new List<Material> { trasparentMat, trasparentMat };
             SelectedGameobject.gameObject.GetComponent<MeshRenderer>().SetMaterials(matlist);
-
+            OnCounterMoving();
             OnGameobjectMoving();
 
         }

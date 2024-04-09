@@ -203,8 +203,12 @@ public class BasinMovement : MonoBehaviour
             currentCounter.transform.position = Vector3.Lerp(currentCounter.transform.position, targetPosition, Time.deltaTime * Counterspeed);
 
             // Assigning the materials to counter.
-            List<Material> matlist = new List<Material> { trasparentMat, trasparentMat };
-            SelectedGameobject.gameObject.GetComponent<MeshRenderer>().SetMaterials(matlist);
+            if (SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsGameobjectOverlaping == false)
+            {
+                List<Material> matlist = new List<Material> { trasparentMat, trasparentMat };
+                SelectedGameobject.gameObject.GetComponent<MeshRenderer>().SetMaterials(matlist);
+            }
+
             OnCounterMoving();
             OnGameobjectMoving();
 

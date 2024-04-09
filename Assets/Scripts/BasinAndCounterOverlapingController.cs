@@ -53,9 +53,10 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
                 try
                 {
                     
-                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].SetColor("_BaseMap", Color.red);
-                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].SetColor("_BaseMap", Color.red);
-                   
+                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].color = Color.red;
+                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = Color.red;
+                    //                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].SetColor("_BaseMap", Color.red);
+
                 }
                 catch (Exception e) {
                     Debug.Log("BasinAndCounterOverlapingController CHECK ERR : "+e);

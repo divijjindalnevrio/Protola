@@ -252,6 +252,9 @@ public class BasinMovement : MonoBehaviour
                 SelectedGameobject.transform.position = LastPositionSelectedObject;
             }
             basinDashLine.GetTheBasinVertices();
+            List<Material> matlist = new List<Material> { shaderMat, DefaultColor };
+            SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().SetMaterials(matlist);
+
             OnBasinStopMoving();
             OnGameobjectStopMoving();
             
@@ -276,6 +279,13 @@ public class BasinMovement : MonoBehaviour
             rotationScript.BasinRotationVal = Mathf.Round(rotationScript.BasinRotationVal);
             Vector3 targetPosition = new Vector3(basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).x, SelectedGameobject.transform.position.y, basinBound.ClapOnXAxis(rayHit, SelectedGameobject.transform).z);
             SelectedGameobject.transform.position = Vector3.Lerp(SelectedGameobject.transform.position, targetPosition, Time.deltaTime * speed);
+
+            if(SelectedGameobject.GetComponent<BasinAndCounterOverlapingController>().IsGameobjectOverlaping == false)
+            {
+                List<Material> matlist = new List<Material> { trasparentMat, trasparentMat };
+                SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().SetMaterials(matlist);
+            }
+
             OnGameobjectMoving();
             OnBasinMoving();
         }

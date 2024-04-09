@@ -55,7 +55,7 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
                     
                     basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].color = Color.red;
                     basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = Color.red;
-                    //                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].SetColor("_BaseMap", Color.red);
+                   
 
                 }
                 catch (Exception e) {
@@ -74,7 +74,8 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
             if (other.name != "Counter" && other.name != "BasinClone")
             {
                 DetectedObject = other.gameObject;
-                basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material.color = Color.red;
+                basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0].color = Color.red;
+                basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color = Color.red;
             }
             else {return;}
         }

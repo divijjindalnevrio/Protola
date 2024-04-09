@@ -193,15 +193,15 @@ public class Plywoodcontroller : MonoBehaviour
         for (int i = 0; i < PlywoodInputTextFields.Count; i++)
         {
             float plywoodLength = float.Parse(PlywoodInputTextFields[i].transform.GetChild(1).transform.GetChild(0).GetComponent<TMP_InputField>().text);
-            if(plywoodLength > 10)
+            if(plywoodLength > 10000)
             {
-                plywoodLength = 10;
-                PlywoodInputTextFields[i].transform.GetChild(1).transform.GetChild(0).GetComponent<TMP_InputField>().text = "10";
+                plywoodLength = 10000;
+                PlywoodInputTextFields[i].transform.GetChild(1).transform.GetChild(0).GetComponent<TMP_InputField>().text = "10000";
             }
             PlywoodInputTextFields[i].transform.GetChild(1).gameObject.SetActive(false);
             PlywoodInputTextFields[i].transform.GetChild(0).gameObject.SetActive(true);
             PlywoodInputTextFields[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = plywoodLength.ToString();
-           AllPlywoodCubes[i].transform.localScale = new Vector3(1, plywoodLength, 1);
+           AllPlywoodCubes[i].transform.localScale = new Vector3(1, plywoodLength/1000, 1);
         }
         GettingAllPlywoodCubeCenterPos(); //Added later rember below too
         SettingTextFieldToCenterPos();

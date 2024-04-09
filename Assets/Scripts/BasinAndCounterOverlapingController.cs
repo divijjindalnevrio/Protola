@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,8 +49,18 @@ public class BasinAndCounterOverlapingController : MonoBehaviour
         {
             if(other.transform.parent.name.Contains("CounterBase") && other.transform.parent.name != basinMovement.SelectedGameobject.transform.parent.name)
             {
-                Debug.Log("CondionalCheck : Working");
-                basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = Color.red;
+                Debug.Log("BasinAndCounterOverlapingController CHECK");
+                try
+                {
+                    
+                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].SetColor("_BaseMap", Color.red);
+                    basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].SetColor("_BaseMap", Color.red);
+                   
+                }
+                catch (Exception e) {
+                    Debug.Log("BasinAndCounterOverlapingController CHECK ERR : "+e);
+                }
+                
 
             }
             else {return;}

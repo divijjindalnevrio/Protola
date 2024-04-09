@@ -229,8 +229,8 @@ public class Plywoodcontroller : MonoBehaviour
     {
         for(int i = 0; i < PlywoodInputTextFields.Count; i++)
         {
-            PlywoodInputTextFields[i].transform.GetChild(1).GetChild(0).GetComponent<TMP_InputField>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
-            PlywoodInputTextFields[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = (AllPlywoodCubes[i].transform.localScale.y).ToString();
+            PlywoodInputTextFields[i].transform.GetChild(1).GetChild(0).GetComponent<TMP_InputField>().text = ((AllPlywoodCubes[i].transform.localScale.y) * 1000).ToString();
+            PlywoodInputTextFields[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = ((AllPlywoodCubes[i].transform.localScale.y) * 1000).ToString();
         }
     }
 

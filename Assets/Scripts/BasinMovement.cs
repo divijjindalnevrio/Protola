@@ -93,6 +93,7 @@ public class BasinMovement : MonoBehaviour
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, CounterlayerMask))
             {
+                
                 CheckAndUpdateSelectedElement(raycastHit);
                 if (selectedObject == SelectedObject.counter)
                 {
@@ -222,8 +223,6 @@ public class BasinMovement : MonoBehaviour
             float diference = Time.time - touchTime;
             if (diference <= 0.2f)
             {
-                
-                Debug.Log("SelectedObject.none triggerd : diference " + diference);
                 selectedObject = SelectedObject.none;
                 OnGameobjectSelected.Invoke(this, selectedObject);
                 currentCounter.transform.GetChild(0).transform.Find("SelectedDashLineCube").gameObject.SetActive(false);

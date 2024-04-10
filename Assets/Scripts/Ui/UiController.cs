@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class UiController : MonoBehaviour
 {
     public BasinMovement basinMovement;
+    public bool inputFieldSelected = false;
 
     void Start()
     {
@@ -15,22 +16,23 @@ public class UiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsPointerOverUIObject())
+        if(inputFieldSelected == false)
         {
-            BasinMovement._isSelected = true;
-            basinMovement.isPointerOverUI = true;
-            Debug.Log("pointerisovermainui");
-        }
-        else
-        {
-            basinMovement.isPointerOverUI = false;
-        }
-    }
-    private void OnMouseEnter()
-    {
-       // Debug.Log("there you go we onmouseEnter");
-    }
+            if (IsPointerOverUIObject())
+            {
+                BasinMovement._isSelected = true;
+                basinMovement.isPointerOverUI = true;
+            
+            }
+            else
+            {
+                basinMovement.isPointerOverUI = false;
+            }
 
+        }
+        
+    }
+   
     public bool IsPointerOverUIObject()      //Called to check if the pointer is over a ui object
     {
         bool value = false;
@@ -38,10 +40,27 @@ public class UiController : MonoBehaviour
         {
             int Index = i;
             value = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(Index).fingerId);
+
             if (value)
                 break;
         }
         return value;
     }
+
+    public void SetInputFieldSelected()
+    {
+      
+        BasinMovement._isSelected = false;
+        inputFieldSelected = true;
+    }
+
+    public void SetInputFieldSelectedToFalse()
+    {
+        Debug.Log(" SetInputFieldSelected GOT TRIGGERED : ");
+        BasinMovement._isSelected = false;
+        inputFieldSelected = false;
+    }
+
+  
 }
 

@@ -41,9 +41,6 @@ public class CounterGenerator : MonoBehaviour
     private void GettingDefaultMatToOboject(Transform selectedGameobject)
     {
         defaultObjectMat = selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material;
-      
-
-
     }
 
     private void SetObjectDefaultMat()

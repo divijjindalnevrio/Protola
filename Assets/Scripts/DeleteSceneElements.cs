@@ -34,6 +34,7 @@ public class DeleteSceneElements : MonoBehaviour
             Destroy(selectedObject);
             RemovingCounterFromDict(selectedObject);
             basinMovement.selectedObject = SelectedObject.none;
+            basinMovement.TriggerOnGameobjectSelectedEvent();
             worldCanvas.SettingWorldUiCanvasToFalse();
             basinMovement.counterWhole.transform.Find("PlywoodInputTextFiels").gameObject.SetActive(false);
         }

@@ -24,7 +24,7 @@ public class DeleteSceneElements : MonoBehaviour
         if (basinMovement.selectedObject == SelectedObject.basin)
         {
             Destroy(basinMovement.currentBasin);
-           basinMovement.selectedObject = SelectedObject.none;
+            basinMovement.selectedObject = SelectedObject.none;
             basinMovement.TriggerOnGameobjectSelectedEvent();
             worldCanvas.SettingWorldUiCanvasToFalse();
         }

@@ -18,6 +18,7 @@ public class CounterGenerator : MonoBehaviour
     [SerializeField] private BasinAndCounterOverlapingController BasinAndCounterOverlapingController;
     [SerializeField] private Plywoodcontroller plywoodcontroller;
     [SerializeField] private Material defaultMat;
+    private Material plywoodMat;
 
     void Start()
     {
@@ -41,12 +42,14 @@ public class CounterGenerator : MonoBehaviour
     private void GettingDefaultMatToOboject(Transform selectedGameobject)
     {
         defaultObjectMat = selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material;
+        plywoodMat = selectedGameobject.Find("Counter").transform.Find("PlywoodCubes").GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[0];
     }
 
     private void SetObjectDefaultMat()
     {
         basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().material = defaultObjectMat;
-        plywoodcontroller.SetTheDefaultPlywoodMaterial(defaultObjectMat, defaultMat);
+        plywoodcontroller.SetTheDefaultPlywoodMaterial(plywoodMat, defaultMat);
+
     }
 
     private void SettingCounterSelected()

@@ -26,12 +26,12 @@ public class CounterSurfaceChanger : MonoBehaviour
     void Start()
     {
         basinMovement.OnCounterStopMoving += BasinMovement_OnCounterStopMoving;
-        SetTheMaterialPriority();
+       // SetTheMaterialPriority();
     }
 
     private void BasinMovement_OnCounterStopMoving()
     {
-        SetTheMaterialPriority();
+        //SetTheMaterialPriority();
     }
 
     public void ChangingCounterSurfaceTexture(int material)

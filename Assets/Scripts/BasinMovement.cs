@@ -51,6 +51,7 @@ public class BasinMovement : MonoBehaviour
     [SerializeField] private BasinBound basinBound;
     [SerializeField] private BasinDashLine basinDashLine;
     [SerializeField] private BasinAndCounterOverlapingController BasinAndCounterOverlapingController;
+    [SerializeField] private Plywoodcontroller plywoodcontroller;
 
 
     public event EventHandler<SelectedObject> OnGameobjectSelected;
@@ -179,8 +180,9 @@ public class BasinMovement : MonoBehaviour
             //OnCounterStopMoving();
 
             // Assigning the materials to counter.
-            List<Material> matlist = new List<Material> {shaderMat, DefaultColor};
+            List<Material> matlist = new List<Material> { shaderMat, DefaultColor };
             SelectedGameobject.gameObject.GetComponent<MeshRenderer>().SetMaterials(matlist);
+            plywoodcontroller.SetTheDefaultPlywoodMaterial(shaderMat, DefaultColor);
 
             SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = BasinAndCounterOverlapingController.SelectedCounterInitialColor;
             OnGameobjectStopMoving();

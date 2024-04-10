@@ -74,7 +74,7 @@ public class Plywoodcontroller : MonoBehaviour
         SetPlywoodLineRendererActive();
         SettingTextFieldToCenterPos();
         SetTextFieldsActive();
-        SetTheDefaultPlywoodMaterial();
+//        SetTheDefaultPlywoodMaterial();
 
 
         Debug.Log("SetTextFieldsActive got active here : ");
@@ -249,9 +249,9 @@ public class Plywoodcontroller : MonoBehaviour
         }
     }
 
-    private void SetTheDefaultPlywoodMaterial()
+    public void SetTheDefaultPlywoodMaterial(Material shaderMat, Material colorMat)
     {
-        List<Material> matlist = new List<Material> { counterMaterials[0], counterMaterials[1] };
+        List<Material> matlist = new List<Material> { shaderMat, colorMat };
         foreach (GameObject plywood in AllPlywoodCubes)
         {
             plywood.transform.GetChild(0).GetComponent<MeshRenderer>().SetMaterials(matlist);

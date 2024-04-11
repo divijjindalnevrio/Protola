@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UiController : MonoBehaviour
+public class UiController : MonoBehaviour, IPointerEnterHandler
 {
     public BasinMovement basinMovement;
     public bool inputFieldSelected = false;
@@ -13,16 +13,18 @@ public class UiController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if(inputFieldSelected == false)
         {
             if (IsPointerOverUIObject())
             {
-                BasinMovement._isSelected = true;
+                //BasinMovement._isSelected = true;
                 basinMovement.isPointerOverUI = true;
-            
+
+
+
             }
             else
             {
@@ -61,6 +63,10 @@ public class UiController : MonoBehaviour
         inputFieldSelected = false;
     }
 
-  
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("Nameabc: " + eventData.pointerCurrentRaycast.gameObject.name);
+        //Debug.Break();
+    }
 }
 

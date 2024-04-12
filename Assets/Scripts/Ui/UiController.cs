@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UiController : MonoBehaviour, IPointerEnterHandler
+public class UiController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public BasinMovement basinMovement;
     public bool inputFieldSelected = false;
+    [SerializeField] private bool IsPointerOnMainUi = false;
 
     void Start()
     {
@@ -16,23 +17,28 @@ public class UiController : MonoBehaviour, IPointerEnterHandler
     
     void Update()
     {
-        if(inputFieldSelected == false)
+
+        if (IsPointerOverUIObject())
         {
-            if (IsPointerOverUIObject())
+            if (IsPointerOnMainUi)
             {
-                //BasinMovement._isSelected = true;
-                basinMovement.isPointerOverUI = true;
-
-
-
+                BasinMovement._isSelected = true;                   // rotation stop
+                //basinMovement.isPointerOverUI = false;
+                basinMovement.isPointerOverUI = true;          // raycast detection off
             }
             else
             {
-                basinMovement.isPointerOverUI = false;
+                BasinMovement._isSelected = false;
+                basinMovement.isPointerOverUI = true;
             }
 
         }
-        
+        else
+        {
+            basinMovement.isPointerOverUI = false;
+            BasinMovement._isSelected = false;
+        }
+
     }
    
     public bool IsPointerOverUIObject()      //Called to check if the pointer is over a ui object
@@ -52,21 +58,32 @@ public class UiController : MonoBehaviour, IPointerEnterHandler
     public void SetInputFieldSelected()
     {
       
-        BasinMovement._isSelected = false;
-        inputFieldSelected = true;
+        //BasinMovement._isSelected = false;
+        //inputFieldSelected = true;
     }
 
     public void SetInputFieldSelectedToFalse()
     {
-        Debug.Log(" SetInputFieldSelected GOT TRIGGERED : ");
-        BasinMovement._isSelected = false;
-        inputFieldSelected = false;
+        //Debug.Log(" SetInputFieldSelected GOT TRIGGERED : ");
+        //BasinMovement._isSelected = false;
+        //inputFieldSelected = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Nameabc: " + eventData.pointerCurrentRaycast.gameObject.name);
-        //Debug.Break();
+        Debug.Log("Nameabc: " + eventData.pointerCurrentRaycast.gameObject.transform.root.name);
+        string rootObj = "UiCanvas";
+        if (eventData.pointerCurrentRaycast.gameObject.transform.root.name == rootObj)
+        {
+            IsPointerOnMainUi = true;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        BasinMovement._isSelected = false;
+        basinMovement.isPointerOverUI = false;
+        IsPointerOnMainUi = false;
     }
 }
 

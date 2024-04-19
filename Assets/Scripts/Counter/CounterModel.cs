@@ -12,8 +12,7 @@ public class CounterModel
     public Vector3 position;
     public string texture;
     public string alphaTexture;
-    public string granulate;
     public string colourHexCode;
-    public int[] plywoodTextfield;
+    public List<float> plywoodTextfield = new List<float>();
 
 }

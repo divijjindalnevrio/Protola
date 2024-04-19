@@ -113,7 +113,7 @@ public class Plywoodcontroller : MonoBehaviour
     
     }
 
-    private void AssignPlywood()
+    public void AssignPlywood()
     {
         PlywoodCube = basinMovement.currentCounter.transform.Find("Counter").transform.Find("PlywoodCubes").transform;
        
@@ -179,7 +179,7 @@ public class Plywoodcontroller : MonoBehaviour
         }
     }
 
-    private void GetAllPlywoods()
+    public void GetAllPlywoods()
     {
         AllPlywoodCubes.Clear();
         foreach (Transform child in PlywoodCube)

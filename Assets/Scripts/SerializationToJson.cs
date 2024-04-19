@@ -10,6 +10,7 @@ public class SerializationToJson : MonoBehaviour
     private CounterTypeSO counterTypeSO;
     [SerializeField] private TextAsset jsonFile;
     [SerializeField] private CounterSurfaceChanger counterSurfaceChanger;
+    [SerializeField] private Plywoodcontroller plywoodcontroller;
     
 
     void Start()
@@ -37,10 +38,14 @@ public class SerializationToJson : MonoBehaviour
         string mainTexture = textureMat.GetTexture("_Texture2D").name;
         string AlphaTexture = textureMat.GetTexture("_AlphaTexture").name;
         counterTypeSO.SettingTexture(mainTexture, AlphaTexture);
-        Debug.Log("there is a masin texture : " + mainTexture + AlphaTexture);
-        File.WriteAllText(Application.dataPath + "/ saveJson.json", jsonFormat);
 
-        
+        counterTypeSO.SetPlywoodLength(plywoodcontroller.AllPlywoodCubes);
+        Debug.Log("there is a masin texture : " + mainTexture + AlphaTexture);
+
+        File.WriteAllText(Application.dataPath + "/ saveJson.json", jsonFormat);
+       
+
+
     }
 
     public void CreateInstanceOfSo()
@@ -56,5 +61,8 @@ public class SerializationToJson : MonoBehaviour
         counter = JsonUtility.FromJson<CounterModel>(jsonFileString);
         return counter;
     }
+
+
+   
 
 }

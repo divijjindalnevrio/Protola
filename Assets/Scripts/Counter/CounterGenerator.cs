@@ -43,6 +43,7 @@ public class CounterGenerator : MonoBehaviour
     {
         defaultObjectMat = selectedGameobject.Find("Counter").GetComponent<MeshRenderer>().material;
         plywoodMat = selectedGameobject.Find("Counter").transform.Find("PlywoodCubes").GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[0];
+        defaultMat = selectedGameobject.Find("Counter").transform.Find("PlywoodCubes").GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[1];
     }
 
     private void SetObjectDefaultMat()

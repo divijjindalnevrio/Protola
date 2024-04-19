@@ -20,6 +20,7 @@ public class BasinsGenerator : MonoBehaviour
     [SerializeField] private RotationScript rotationScript;
     [SerializeField] private WorldCanvas worldCanvas;
     [SerializeField] private Material grayMat;
+    [SerializeField] private Material basinColorMat;
     private Material defaultObjectMat;
 
     void Start()
@@ -89,20 +90,24 @@ public class BasinsGenerator : MonoBehaviour
         InstanciateBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(false);
         InstanciateBasin.transform.parent = basinMovement.currentCounter.transform.GetChild(1).transform;
         selectedGameobject.gameObject.AddComponent<BasinAndCounterOverlapingController>();
-        SettingGrayMatToOboject(selectedGameobject);
+        GettingGrayMat(selectedGameobject);
         basinMovement.isBasinInstanciate = true;
     }
 
 
-    public void SettingGrayMatToOboject(Transform selectedGameobject)
+    public void GettingGrayMat(Transform selectedGameobject)
     {
         defaultObjectMat = selectedGameobject.Find("Cube").GetComponent<MeshRenderer>().material;
-        selectedGameobject.Find("Cube").GetComponent<MeshRenderer>().material = grayMat;
+        basinColorMat = selectedGameobject.Find("Cube").GetComponent<MeshRenderer>().materials[1];
+        // selectedGameobject.Find("Cube").GetComponent<MeshRenderer>().material = grayMat;
     }
 
     private void SetObjectDefaultMat()
     {
-        basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material = defaultObjectMat;
+        List<Material> matlist = new List<Material> { defaultObjectMat, basinColorMat };
+        //basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().material = defaultObjectMat;
+        basinMovement.SelectedGameobject.transform.Find("Cube").GetComponent<MeshRenderer>().SetMaterials(matlist);
+
     }
 
     private void SettingBasinToDict()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -22,6 +23,8 @@ public class CounterSurfaceChanger : MonoBehaviour
     private Color lastSelectedColor = Color.white;
     private Color basinlastSelectedColor = Color.white;
     public List<Color> colors = new List<Color>();
+    public Dictionary<string, Texture2D> AllTextures = new Dictionary<string, Texture2D>();
+    //public List<Texture2D> allTextures = new List<Texture2D>();
 
     void Start()
     {
@@ -73,7 +76,7 @@ public class CounterSurfaceChanger : MonoBehaviour
              Material mat = selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0];
             mat.SetTexture("_Texture2D", counterGranulateTex[material]);
             mat.SetTexture("_AlphaTexture", counterGranulateTexMap[material]);
-            selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color = lastSelectedColor;
+            //selectedObjcet.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color = lastSelectedColor;
             DefaultColorTexture = counterGranulateTex[material];
             DefaultColorTextureMap = counterGranulateTexMap[material];
         }
@@ -88,7 +91,7 @@ public class CounterSurfaceChanger : MonoBehaviour
             selectedObjcet.transform.GetComponent<MeshRenderer>().material.color = lastSelectedColor;
             DefaultColorTexture = counterGranulateTex[material];
             DefaultColorTextureMap = counterGranulateTexMap[material];
-            Debug.Log("granulate textures here : " + material);
+        
             // for plywood 
             foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
             {
@@ -159,5 +162,16 @@ public class CounterSurfaceChanger : MonoBehaviour
         selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
     }
 
-    
+
+    public void SetAllTexturesToDict()
+    {
+        List<Texture2D> allTextures = new List<Texture2D>();
+        allTextures = counterTex.Concat(counterGranulateTex).Concat(counterGranulateTexMap).ToList();
+        foreach (Texture2D texture in allTextures)
+        {
+            AllTextures.Add(texture.name, texture);
+        }
+        Debug.Log("SetAllTexturesToDict values all : " + AllTextures.Count);
+    }
+   
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MobilemaxCamera : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class MobilemaxCamera : MonoBehaviour
     //private Vector3 CameraPosition;
     //private Vector3 Targetposition;
     //private Vector3 MoveDistance;
-   
+
+   [SerializeField] private bool isZooming = false;
 
 
     void Start() { Init(); }
@@ -75,7 +77,7 @@ public class MobilemaxCamera : MonoBehaviour
         // If Control and Alt and Middle button? ZOOM!
         if (Input.touchCount == 2)
         {
-           
+
             Touch touchZero = Input.GetTouch(0);
 
             Touch touchOne = Input.GetTouch(1);
@@ -98,6 +100,13 @@ public class MobilemaxCamera : MonoBehaviour
 
             desiredDistance += deltaMagDiff * Time.deltaTime * zoomRate * 0.0025f * Mathf.Abs(desiredDistance);
         }
+
+        else
+        {
+            Debug.Log("It entered here zoom : ");
+            MouseWheeling();
+
+        }
         // If middle mouse and left alt are selected? ORBIT
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
@@ -105,18 +114,19 @@ public class MobilemaxCamera : MonoBehaviour
             xDeg += touchposition.x * xSpeed * 0.002f;
             yDeg -= touchposition.y * ySpeed * 0.002f;
             yDeg = ClampAngle(yDeg, yMinLimit, yMaxLimit);
-
+            desiredRotation = Quaternion.Euler(yDeg, xDeg, 0);
+            currentRotation = transform.rotation;
+            rotation = Quaternion.Lerp(currentRotation, desiredRotation, Time.deltaTime * zoomDampening);
+            transform.rotation = rotation;
+            MovingCamera();
         }
-        desiredRotation = Quaternion.Euler(yDeg, xDeg, 0);
-        currentRotation = transform.rotation;
-        rotation = Quaternion.Lerp(currentRotation, desiredRotation, Time.deltaTime * zoomDampening);
-        transform.rotation = rotation;
-
+       
 
         if (Input.GetMouseButtonDown(1))
         {
             FirstPosition = Input.mousePosition;
             lastOffset = targetOffset;
+             MovingCamera();
         }
 
         if (Input.GetMouseButton(1))
@@ -124,12 +134,21 @@ public class MobilemaxCamera : MonoBehaviour
             SecondPosition = Input.mousePosition;
             delta = SecondPosition - FirstPosition;
             targetOffset = lastOffset + transform.right * delta.x * 0.01f + transform.up * delta.y * 0.01f;
-
+            Debug.Log("TargetOffset value here : " + targetOffset);
+            MovingCamera();
         }
+
 
         ////////Orbit Position
 
         // affect the desired Zoom distance if we roll the scrollwheel
+       
+
+
+    }
+
+    private void MovingCamera()
+    {
         desiredDistance = Mathf.Clamp(desiredDistance, minDistance, maxDistance);
         currentDistance = Mathf.Lerp(currentDistance, desiredDistance, Time.deltaTime * zoomDampening);
 
@@ -138,11 +157,8 @@ public class MobilemaxCamera : MonoBehaviour
         position = position - targetOffset;
 
         transform.position = position;
-
-
-
-
     }
+
     private static float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360)
@@ -151,4 +167,23 @@ public class MobilemaxCamera : MonoBehaviour
             angle -= 360;
         return Mathf.Clamp(angle, min, max);
     }
+
+    void MouseWheeling()
+    {
+       
+        Vector3 pos = transform.position;
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            pos = pos - transform.forward;
+            transform.position = pos;
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            pos = pos + transform.forward;
+            transform.position = pos;
+            
+        }
+    }
+
+   
 }

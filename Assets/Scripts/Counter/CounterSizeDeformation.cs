@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,11 @@ public class CounterSizeDeformation : MonoBehaviour
     private CounterGenerator counterGenerator;
     [SerializeField] private Transform currentCounter;
     [SerializeField] private BasinMovement basinMovement;
+    [SerializeField] private SerializationToJson serializationToJson;
     public Vector3 currentCounterPosition;
+    [SerializeField] private Color colour;
+    [SerializeField] private CounterSurfaceChanger counterSurfaceChanger;
+
 
     void Start()
     {
@@ -23,6 +28,7 @@ public class CounterSizeDeformation : MonoBehaviour
         currentCounter = counterGenerator.currentCounter.transform;
         counterGenerator.OnCounterAdded += GettingCurrentCounter;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
+        SetTheInitialCounterfromJson();
         ChangingSizeOfCounter();
 
     }
@@ -35,17 +41,7 @@ public class CounterSizeDeformation : MonoBehaviour
             SetTheSizeValueOfCurrentCounter();
         }
 
-
     }
-
-    private void Update()
-    {
-       // Debug.Log("SetTheSizeValueOfCurrentCounter : counterWidth : " + currentCounter.transform.localScale);
-        
-        //ChangingSizeOfCounter();
-
-    }
-
 
     public void SetTheSizeValueOfCurrentCounter()
     {
@@ -76,5 +72,48 @@ public class CounterSizeDeformation : MonoBehaviour
         currentCounter = basinMovement.currentCounter.transform;
     }
 
-    
+    public void SetTheInitialCounterfromJson()
+    {
+        CounterModel model = serializationToJson.ReadingJson();
+        if(model != null)
+        {
+            Debug.Log("SetTheInitialSizeOfCounter eneterd : " + model.depth);
+            Transform counter = currentCounter.transform.Find("Counter").transform;
+            counter.localScale = new Vector3(model.width, counter.localScale.y, model.depth);
+            basinMovement.currentCounter.transform.position = new Vector3(currentCounter.localScale.x, model.thickness, currentCounter.localScale.z);
+            currentCounter.rotation = Quaternion.Euler(model.rotaton);
+            currentCounter.position = model.position;
+
+            //setting color below
+           
+           
+            ColorUtility.TryParseHtmlString(model.colourHexCode, out colour);
+            currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[1].color = colour;
+            currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+            SetTheSizeValueOfCurrentCounter();
+
+            // setting texture below
+
+            Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
+            currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", mainTexture);
+
+            // setting alpha
+            if(model.alphaTexture != "UnityWhite")
+            {
+                // for granulate
+                Texture2D alphaTexture = counterSurfaceChanger.AllTextures[model.alphaTexture];                                         
+                currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
+            }
+            else
+            {
+                currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+            }
+
+
+
+        }
+       
+    }
+
+  
 }

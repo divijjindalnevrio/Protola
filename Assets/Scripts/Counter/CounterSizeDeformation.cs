@@ -104,7 +104,7 @@ public class CounterSizeDeformation : MonoBehaviour
 
             for (int i = 0; i < 4; i++)
             {
-                plywoodcontroller.AllPlywoodCubes[i].transform.localScale = new Vector3(1f, 1f, 1f);
+                plywoodcontroller.AllPlywoodCubes[i].transform.localScale = new Vector3(1,model.plywoodTextfield[i],1);
                 Debug.Log("model.plywoodTextfield : " + model.plywoodTextfield[i]);
             }
 

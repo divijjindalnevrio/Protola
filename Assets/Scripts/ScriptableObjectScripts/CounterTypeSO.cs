@@ -41,7 +41,7 @@ public class CounterTypeSO : ScriptableObject
         counterModel.plywoodTextfield.Clear();
         for (int i = 0; i < plywoods.Count; i++)
         {
-            counterModel.plywoodTextfield.Add(plywoods[i].transform.localScale.x);
+            counterModel.plywoodTextfield.Add(2f);
         }
 
     }

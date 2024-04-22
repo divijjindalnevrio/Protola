@@ -12,11 +12,12 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private WorldCanvas worldCanvas;
     public Dictionary<string, GameObject> TotalCounterInScene = new Dictionary<string, GameObject>();
+    //public List<GameObject> allCounterObject = new List<GameObject>();
 
     private void Start()
     {
         TotalCounterInScene.Add(basinMovement.currentCounter.name, basinMovement.currentCounter);
-        //Debug.Log("TotalCounterInScene : " + TotalCounterInScene[basinMovement.currentCounter.name].name);
+        
     }
     private List<Vector3> getMainCubeMaxAreaPoints(Vector3 counter1Point, Bounds counter1Bounds, Bounds counter2Bounds)
     {

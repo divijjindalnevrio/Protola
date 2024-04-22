@@ -32,7 +32,7 @@ public class CounterSizeDeformation : MonoBehaviour
         currentCounter = counterGenerator.currentCounter.transform;
         counterGenerator.OnCounterAdded += GettingCurrentCounter;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
-        SetTheInitialCounterfromJson();
+        //SetTheInitialCounterfromJson();
         ChangingSizeOfCounter();
 
     }

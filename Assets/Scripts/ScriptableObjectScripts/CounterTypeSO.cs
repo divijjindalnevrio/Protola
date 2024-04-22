@@ -36,12 +36,12 @@ public class CounterTypeSO : ScriptableObject
         counterModel.colourHexCode = hexCode.Insert(0, "#");
     }
 
-    public void SetPlywoodLength(List<GameObject> plywoods)
+    public void SetPlywoodLength(List<GameObject> plywoods, float length)
     {
         counterModel.plywoodTextfield.Clear();
         for (int i = 0; i < plywoods.Count; i++)
         {
-            counterModel.plywoodTextfield.Add(2f);
+            counterModel.plywoodTextfield.Add(length);
         }
 
     }

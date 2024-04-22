@@ -53,9 +53,8 @@ public class SerializationToJson : MonoBehaviour
             
         }
 
-        string jsonData = string.Join(" ", counterJson);
-     
-        File.WriteAllText(Application.dataPath + "/saveJson.json", jsonData);
+        string jsonData = string.Join(",", counterJson);
+        File.WriteAllText(Application.dataPath + "/saveJson.json", $"[{jsonData}]");
 
         //Vector3 rotation = basinMovement.currentCounter.transform.eulerAngles;
         //Vector3 position = basinMovement.currentCounter.transform.position;
@@ -111,4 +110,9 @@ public class SerializationToJson : MonoBehaviour
     }
 
 
+    
+
+   
+
 }
+

@@ -17,22 +17,23 @@ public class SerializationToJson : MonoBehaviour
     private List<GameObject> allCounters = new List<GameObject>();
     [SerializeField] private List<string> counterJson = new List<string>();
     private float plywoodLenth = 0f;
+    
+   
 
     void Start()
     {
         counterSurfaceChanger.SetAllTexturesToDict();
         counterTypeSO = (CounterTypeSO)Resources.Load("Counter");
-       
     }
         
     //creating json at the end
     public void CreatingJsonFile()              
     {
         ConvertingCounterDictToList();
+        SceneModel sceneModel = new SceneModel();
 
         foreach(GameObject counter in allCounters)
         {
-
             Vector3 rotation = counter.transform.eulerAngles;
             Vector3 position = counter.transform.position;
 
@@ -47,16 +48,24 @@ public class SerializationToJson : MonoBehaviour
             string mainTexture = textureMat.GetTexture("_Texture2D").name;
             string AlphaTexture = textureMat.GetTexture("_AlphaTexture").name;
             counterTypeSO.SettingTexture(mainTexture, AlphaTexture);
+            GetAllPlywoodsLength(currentCounter);
 
-            GetAllPlywoods(currentCounter);
-            counterJson.Add(JsonUtility.ToJson(counterTypeSO.counterModel, true));
             
+            Transform basins  =  counter.transform.Find("Basin").transform;
+            foreach(Transform basin in basins)
+            {
+                // = basin.transform.rotation.y;
+
+            }
+
+           
+            sceneModel.allCounter.Add(counterTypeSO.counterModel);
+
         }
 
-        string jsonData = string.Join(",", counterJson);
-        File.WriteAllText(Application.dataPath + "/saveJson.json", $"[{jsonData}]");
-       
+        File.WriteAllText(Application.dataPath + "/saveJson.json", JsonUtility.ToJson(sceneModel, true));
     }
+
 
     public void CreateInstanceOfSo()
     {
@@ -77,7 +86,7 @@ public class SerializationToJson : MonoBehaviour
         allCounters = checkAndCreateCounterCopyScript.TotalCounterInScene.Values.ToList();
     }
 
-    public void GetAllPlywoods(Transform plywoodCube)
+    public void GetAllPlywoodsLength(Transform plywoodCube)
     {
         plywoodLenth = plywoodLenth + 1f;
         List<GameObject> AllPlywoodCubes = new List<GameObject>();

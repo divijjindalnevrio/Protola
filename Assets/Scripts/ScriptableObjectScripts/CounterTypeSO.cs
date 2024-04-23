@@ -13,6 +13,12 @@ public class CounterTypeSO : ScriptableObject
     public List<GameObject> counterType = new List<GameObject>();
     private string str;
 
+
+    public void MakeNewObject()
+    {
+        counterModel = new CounterModel();
+    }
+
     public void SettingCounterSize(float width, float thickness, float depth)
     {
         counterModel.width = width;
@@ -45,8 +51,9 @@ public class CounterTypeSO : ScriptableObject
         }
     }
 
-    public void AssignBasinList()
+    public void AssignBasinList(List<BasinModel> basinModels)
     {
-
+       // counterModel.allbasins.Clear();
+        counterModel.allbasins = basinModels;
     }
 }   

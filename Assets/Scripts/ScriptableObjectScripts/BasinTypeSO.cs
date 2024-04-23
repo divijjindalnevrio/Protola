@@ -7,7 +7,7 @@ public class BasinTypeSO : ScriptableObject
 {
     public BasinModel basinModel;
     public List<GameObject> BasinType = new List<GameObject>();
-
+    
 
     public void SetBasinRotationAndPosition(Vector3 rotation, Vector3 position)
     {

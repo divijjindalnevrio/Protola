@@ -14,5 +14,6 @@ public class CounterModel
     public string alphaTexture;
     public string colourHexCode;
     public List<float> plywoodTextfield = new List<float>();
+    public List<BasinModel> allbasins = new List<BasinModel>();
 
 }

@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SceneModel
 {
-   public List<CounterModel> allCounter = new List<CounterModel>();
+   public List<CounterModel> allCounters = new List<CounterModel>();
+   public List<BasinModel> allBasins = new List<BasinModel>();
+
+   
 }

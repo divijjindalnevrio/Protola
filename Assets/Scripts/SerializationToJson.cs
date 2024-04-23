@@ -24,6 +24,7 @@ public class SerializationToJson : MonoBehaviour
     {
         counterSurfaceChanger.SetAllTexturesToDict();
         counterTypeSO = (CounterTypeSO)Resources.Load("Counter");
+        basinTypeSO = (BasinTypeSO)Resources.Load("AllBasinSo");
     }
         
     //creating json at the end
@@ -54,13 +55,25 @@ public class SerializationToJson : MonoBehaviour
             Transform basins  =  counter.transform.Find("Basin").transform;
             foreach(Transform basin in basins)
             {
-                // = basin.transform.rotation.y;
+                Vector3 basinRotation = basin.eulerAngles;
+
+                Material basinMat = currentCounter.GetComponent<MeshRenderer>().materials[0];
+                string basinmainTexture = textureMat.GetTexture("_Texture2D").name;
+                string basinAlphaTexture = textureMat.GetTexture("_AlphaTexture").name;
+                                                                                                
+                Color basinColor = currentCounter.GetComponent<MeshRenderer>().materials[1].color;
+                string ColorHexCode = ColorUtility.ToHtmlStringRGBA(basinColor);
+
+                basinTypeSO.SetBasinRotationAndPosition(basinRotation, basin.transform.position);
+                basinTypeSO.SettingTexture(basinmainTexture, basinAlphaTexture);
+                basinTypeSO.SetTheColor(ColorHexCode);
+                sceneModel.allBasins.Add(basinTypeSO.basinModel);
 
             }
 
            
-            sceneModel.allCounter.Add(counterTypeSO.counterModel);
-
+            sceneModel.allCounters.Add(counterTypeSO.counterModel);
+            
         }
 
         File.WriteAllText(Application.dataPath + "/saveJson.json", JsonUtility.ToJson(sceneModel, true));

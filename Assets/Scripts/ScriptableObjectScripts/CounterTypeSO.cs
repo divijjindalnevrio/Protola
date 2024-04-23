@@ -43,7 +43,10 @@ public class CounterTypeSO : ScriptableObject
         {
             counterModel.plywoodTextfield.Add(length);
         }
+    }
+
+    public void AssignBasinList()
+    {
 
     }
-    
 }   

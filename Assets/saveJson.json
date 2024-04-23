@@ -1,5 +1,5 @@
 {
-    "allCounter": [
+    "allCounters": [
         {
             "width": 5.400000095367432,
             "depth": 2.200000047683716,
@@ -18,11 +18,29 @@
             "alphaTexture": "GranulateTexture2Map",
             "colourHexCode": "#C0C0C0FF",
             "plywoodTextfield": [
-                2.0,
-                2.0,
-                2.0,
-                2.0
-            ]
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "allbasins": []
+        }
+    ],
+    "allBasins": [
+        {
+            "rotaton": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": -1.1180000305175782,
+                "y": 3.0399999618530275,
+                "z": 0.0
+            },
+            "texture": "GranulateTexture2",
+            "alphaTexture": "GranulateTexture2Map",
+            "colourHexCode": "#C0C0C0FF"
         }
     ]
 }

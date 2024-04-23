@@ -10,13 +10,13 @@
                 "z": 0.0
             },
             "position": {
-                "x": 1.8675005435943604,
+                "x": 2.3894948959350588,
                 "y": 3.0,
-                "z": -1.7426376342773438
+                "z": -0.26925182342529299
             },
-            "texture": "translucent_green_Ice_912B",
-            "alphaTexture": "UnityWhite",
-            "colourHexCode": "#FFFFFFFF",
+            "texture": "GranulateTexture2",
+            "alphaTexture": "GranulateTexture2Map",
+            "colourHexCode": "#C0C0C0FF",
             "plywoodTextfield": [
                 1.0,
                 1.0,
@@ -31,9 +31,9 @@
                         "z": 0.0
                     },
                     "position": {
-                        "x": 3.090810775756836,
-                        "y": 3.0409998893737795,
-                        "z": -1.842637538909912
+                        "x": 2.3894948959350588,
+                        "y": 3.0399999618530275,
+                        "z": -0.26925182342529299
                     },
                     "texture": "GranulateTexture2",
                     "alphaTexture": "GranulateTexture2Map",
@@ -51,13 +51,13 @@
                 "z": 0.0
             },
             "position": {
-                "x": 8.322508811950684,
+                "x": 8.991018295288086,
                 "y": 3.0,
-                "z": -1.6872248649597169
+                "z": -0.23708295822143556
             },
-            "texture": "goldrush_gemstone_819SAR",
-            "alphaTexture": "UnityWhite",
-            "colourHexCode": "#FFFFFFFF",
+            "texture": "GranulateTexture2",
+            "alphaTexture": "GranulateTexture2Map",
+            "colourHexCode": "#C0C0C0FF",
             "plywoodTextfield": [
                 2.0,
                 2.0,
@@ -68,99 +68,28 @@
                 {
                     "rotaton": {
                         "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 9.980222702026368,
-                        "y": 3.0409998893737795,
-                        "z": -1.7872247695922852
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                },
-                {
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 8.322508811950684,
-                        "y": 3.0399999618530275,
-                        "z": -1.6872248649597169
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                }
-            ]
-        },
-        {
-            "width": 5.400000095367432,
-            "depth": 2.200000047683716,
-            "thickness": 3.0,
-            "rotaton": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "position": {
-                "x": 5.136571884155273,
-                "y": 3.0,
-                "z": 2.8482770919799806
-            },
-            "texture": "goldrush_gemstone_819SAR",
-            "alphaTexture": "UnityWhite",
-            "colourHexCode": "#FFFFFFFF",
-            "plywoodTextfield": [
-                3.0,
-                3.0,
-                3.0,
-                3.0
-            ],
-            "allbasins": [
-                {
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 6.83657169342041,
-                        "y": 3.0399999618530275,
-                        "z": 2.748277187347412
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                },
-                {
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 3.4365720748901369,
-                        "y": 3.0409998893737795,
-                        "z": 2.948276996612549
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                },
-                {
-                    "rotaton": {
-                        "x": 0.0,
                         "y": 90.0,
                         "z": 0.0
                     },
                     "position": {
-                        "x": 5.136571884155273,
+                        "x": 10.691018104553223,
+                        "y": 3.0409998893737795,
+                        "z": -0.33708298206329348
+                    },
+                    "texture": "GranulateTexture2",
+                    "alphaTexture": "GranulateTexture2Map",
+                    "colourHexCode": "#C0C0C0FF"
+                },
+                {
+                    "rotaton": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "position": {
+                        "x": 8.991018295288086,
                         "y": 3.0399999618530275,
-                        "z": 2.8482770919799806
+                        "z": -0.23708295822143556
                     },
                     "texture": "GranulateTexture2",
                     "alphaTexture": "GranulateTexture2Map",

@@ -12,7 +12,7 @@ public class SerializationToJson : MonoBehaviour
     [SerializeField] private CounterSurfaceChanger counterSurfaceChanger;
     [SerializeField] private Plywoodcontroller plywoodcontroller;
     [SerializeField] private CheckAndCreateCounterCopyScript checkAndCreateCounterCopyScript;
-    private List<GameObject> allCounters = new List<GameObject>();
+    [SerializeField] private List<GameObject> allCounters = new List<GameObject>();
     [SerializeField] private List<string> counterJson = new List<string>();
     private float plywoodLenth = 0f;
 
@@ -28,7 +28,6 @@ public class SerializationToJson : MonoBehaviour
     //creating json at the end
     public void CreatingJsonFile()              
     {
-
         ConvertingCounterDictToList();
         SceneModel sceneModel = new SceneModel();
 
@@ -116,12 +115,13 @@ public class SerializationToJson : MonoBehaviour
         counterModel.SetPlywoodLength(AllPlywoodCubes, plywoodLenth);
     }
 
-    public void DeserializingJson()
+    public SceneModel DeserializingJson()
     {
-        SceneModel sceneModel1 = new SceneModel();
+        SceneModel sceneModel = new SceneModel();
         string jsonString = jsonFile.ToString();
-        sceneModel1 =  JsonUtility.FromJson<SceneModel>(jsonString);
-        Debug.Log("DeserializingJson : " + sceneModel1.allCounters.Count);
+        sceneModel =  JsonUtility.FromJson<SceneModel>(jsonString);
+        Debug.Log("DeserializingJson : " + sceneModel.allCounters.Count);
+        return sceneModel;
     }
 
 

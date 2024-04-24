@@ -23,6 +23,7 @@ public class CounterSizeDeformation : MonoBehaviour
     [SerializeField] private Plywoodcontroller plywoodcontroller;
 
 
+
     void Start()
     {
         plywoodcontroller.AssignPlywood();
@@ -32,9 +33,8 @@ public class CounterSizeDeformation : MonoBehaviour
         currentCounter = counterGenerator.currentCounter.transform;
         counterGenerator.OnCounterAdded += GettingCurrentCounter;
         basinMovement.OnGameobjectSelected += BasinMovement_OnGameobjectSelected;
-        //SetTheInitialCounterfromJson();
         ChangingSizeOfCounter();
-
+        
     }
 
     private void BasinMovement_OnGameobjectSelected(object sender, SelectedObject e)
@@ -44,20 +44,13 @@ public class CounterSizeDeformation : MonoBehaviour
             GettingCurrentCounter();
             SetTheSizeValueOfCurrentCounter();
         }
-
     }
 
     public void SetTheSizeValueOfCurrentCounter()
     {
-       
-       // depthSlider.value = currentCounter.transform.Find("Counter").transform.localScale.z;
         depthSlider.SetValueWithoutNotify(currentCounter.transform.Find("Counter").transform.localScale.z);
         widthSlider.SetValueWithoutNotify(currentCounter.transform.Find("Counter").transform.localScale.x);
         thicknessSlider.SetValueWithoutNotify(currentCounter.transform.position.y);
-
-        //widthSlider.value = currentCounter.transform.Find("Counter").transform.localScale.x;
-        //thicknessSlider.value = currentCounter.transform.localPosition.y;
-
     }
 
     public void ChangingSizeOfCounter()
@@ -79,9 +72,9 @@ public class CounterSizeDeformation : MonoBehaviour
     public void SetTheInitialCounterfromJson()
     {
         CounterModel model = serializationToJson.ReadingJson();
+
         if(model != null)
         {
-            Debug.Log("SetTheInitialSizeOfCounter eneterd : " + model.depth);
             Transform counter = currentCounter.transform.Find("Counter").transform;
             counter.localScale = new Vector3(model.width, counter.localScale.y, model.depth);
             basinMovement.currentCounter.transform.position = new Vector3(currentCounter.localScale.x, model.thickness, currentCounter.localScale.z);
@@ -91,12 +84,10 @@ public class CounterSizeDeformation : MonoBehaviour
 
             //setting color below
 
-
             ColorUtility.TryParseHtmlString(model.colourHexCode, out colour);
             currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[1].color = colour;
             currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
             
-
             // setting texture below
 
             Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
@@ -114,7 +105,6 @@ public class CounterSizeDeformation : MonoBehaviour
                 // for granulate
                 Texture2D alphaTexture = counterSurfaceChanger.AllTextures[model.alphaTexture];                                         
                 currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
-
                 
                 SetTheDefaultPlywoodMaterial(mainTexture, counterSurfaceChanger.AllTextures[model.alphaTexture]);
             }

@@ -10,9 +10,9 @@
                 "z": 0.0
             },
             "position": {
-                "x": 1.0713493824005128,
+                "x": 4.2920002937316898,
                 "y": 3.0,
-                "z": -0.21384620666503907
+                "z": 0.0
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",
@@ -23,6 +23,81 @@
                 1.0,
                 1.0
             ],
+            "allbasins": []
+        },
+        {
+            "width": 5.400000095367432,
+            "depth": 2.200000047683716,
+            "thickness": 3.0,
+            "rotaton": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": 9.702000617980957,
+                "y": 3.0,
+                "z": 0.0
+            },
+            "texture": "GranulateTexture2",
+            "alphaTexture": "GranulateTexture2Map",
+            "colourHexCode": "#C0C0C0FF",
+            "plywoodTextfield": [
+                2.0,
+                2.0,
+                2.0,
+                2.0
+            ],
+            "allbasins": []
+        },
+        {
+            "width": 5.400000095367432,
+            "depth": 2.200000047683716,
+            "thickness": 3.0,
+            "rotaton": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": 15.112001419067383,
+                "y": 3.0,
+                "z": 0.0
+            },
+            "texture": "GranulateTexture2",
+            "alphaTexture": "GranulateTexture2Map",
+            "colourHexCode": "#C0C0C0FF",
+            "plywoodTextfield": [
+                3.0,
+                3.0,
+                3.0,
+                3.0
+            ],
+            "allbasins": []
+        },
+        {
+            "width": 5.400000095367432,
+            "depth": 2.200000047683716,
+            "thickness": 3.0,
+            "rotaton": {
+                "x": 0.0,
+                "y": 270.26513671875,
+                "z": 0.0
+            },
+            "position": {
+                "x": 20.522001266479493,
+                "y": 3.0,
+                "z": 0.0
+            },
+            "texture": "GranulateTexture2",
+            "alphaTexture": "GranulateTexture2Map",
+            "colourHexCode": "#C0C0C0FF",
+            "plywoodTextfield": [
+                4.0,
+                4.0,
+                4.0,
+                4.0
+            ],
             "allbasins": [
                 {
                     "rotaton": {
@@ -31,24 +106,9 @@
                         "z": 0.0
                     },
                     "position": {
-                        "x": 2.7713494300842287,
-                        "y": 3.0420000553131105,
-                        "z": -0.313846230506897
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                },
-                {
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 1.0713493824005128,
+                        "x": 20.522001266479493,
                         "y": 3.0399999618530275,
-                        "z": -0.21384620666503907
+                        "z": 0.0
                     },
                     "texture": "GranulateTexture2",
                     "alphaTexture": "GranulateTexture2Map",
@@ -66,36 +126,20 @@
                 "z": 0.0
             },
             "position": {
-                "x": 6.481349945068359,
+                "x": -1.1180000305175782,
                 "y": 3.0,
-                "z": -0.21384620666503907
+                "z": 0.0
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",
             "colourHexCode": "#C0C0C0FF",
             "plywoodTextfield": [
-                2.0,
-                2.0,
-                2.0,
-                2.0
+                5.0,
+                5.0,
+                5.0,
+                5.0
             ],
-            "allbasins": [
-                {
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 6.481349945068359,
-                        "y": 3.0399999618530275,
-                        "z": -0.21384620666503907
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                }
-            ]
+            "allbasins": []
         }
     ]
 }

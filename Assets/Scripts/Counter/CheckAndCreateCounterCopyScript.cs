@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 public class CheckAndCreateCounterCopyScript : MonoBehaviour
 {
-    
     [SerializeField] private List<Vector3> mainCubeMaxAreaPoints;
     [SerializeField] private GameObject counterBase;
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private WorldCanvas worldCanvas;
     public Dictionary<string, GameObject> TotalCounterInScene = new Dictionary<string, GameObject>();
-    //public List<GameObject> allCounterObject = new List<GameObject>();
-
+      
     private void Start()
     {
-        TotalCounterInScene.Add(basinMovement.currentCounter.name, basinMovement.currentCounter);
-        
+        //TotalCounterInScene.Add(basinMovement.currentCounter.name, basinMovement.currentCounter);
+        GameObject InitialCounter = basinMovement.counterWhole.Find("CounterBase").gameObject;
+        TotalCounterInScene.Add(InitialCounter.name, InitialCounter);
+
     }
     private List<Vector3> getMainCubeMaxAreaPoints(Vector3 counter1Point, Bounds counter1Bounds, Bounds counter2Bounds)
     {
@@ -32,7 +32,7 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
     }
 
 
-    public void checkAndInstantiateCounter(GameObject targetCounterParent, GameObject counterParent)
+    public void checkAndInstantiateCounter(GameObject targetCounterParent, GameObject counterParent, int Uid)
     {
         GameObject targetCounter = targetCounterParent.transform.GetChild(0).gameObject;
         GameObject counter = counterParent.transform.GetChild(0).gameObject;
@@ -52,7 +52,7 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
             if (colliders.Count == 0)
             {
                 newCounter = Instantiate(counterParent, mainCubeMaxAreaPoint,Quaternion.identity,counterBase.transform);
-                newCounter.gameObject.name = "CounterBase" + Time.time;
+                newCounter.gameObject.name = "CounterBase" + Time.time + Uid;
                 TotalCounterInScene.Add(newCounter.name, newCounter);
                 Debug.Log("TotalCounterInScene : " + TotalCounterInScene[newCounter.name].name + TotalCounterInScene.Count);
                 Debug.Log("Intsantiated at : "+ mainCubeMaxAreaPoint);
@@ -70,7 +70,7 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
             }
         }
         if (cubeInstanciated == false) {
-            checkAndInstantiateCounter(nextCounter.transform.parent.gameObject, counterParent);
+            checkAndInstantiateCounter(nextCounter.transform.parent.gameObject, counterParent, 1);
 
         }
 
@@ -80,7 +80,6 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
         newCounter.transform.Find("Counter").GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
 
     }
-
 
     private static void DestroyPreviousBasins(GameObject cunterbase)
     {

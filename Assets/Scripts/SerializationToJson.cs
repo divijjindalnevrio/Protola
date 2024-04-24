@@ -22,13 +22,13 @@ public class SerializationToJson : MonoBehaviour
     void Start()
     {
         counterSurfaceChanger.SetAllTexturesToDict();
-        DeserializingJson();
+        //DeserializingJson();
     }
         
     //creating json at the end
     public void CreatingJsonFile()              
     {
-        ConvertingCounterDictToList();
+        GettingCounterList();
         SceneModel sceneModel = new SceneModel();
 
         foreach(GameObject counter in allCounters)
@@ -99,9 +99,9 @@ public class SerializationToJson : MonoBehaviour
         return counter;
     }
 
-    private void ConvertingCounterDictToList()
+    private void GettingCounterList()
     {
-        allCounters = checkAndCreateCounterCopyScript.TotalCounterInScene.Values.ToList();
+        allCounters = checkAndCreateCounterCopyScript.ConvertingCounterDictToList();
     }
 
     public void GetAllPlywoodsLength(Transform plywoodCube, CounterModel counterModel)

@@ -22,6 +22,7 @@ public class SerializationToJson : MonoBehaviour
     void Start()
     {
         counterSurfaceChanger.SetAllTexturesToDict();
+        DeserializingJson();
     }
         
     //creating json at the end
@@ -36,7 +37,6 @@ public class SerializationToJson : MonoBehaviour
             Debug.Log("running this foreachloop 1 " + allCounters.Count);
             CounterModel counterModel = new CounterModel();
 
-            //basinModels.Clear();
             Vector3 rotation = counter.transform.eulerAngles;
             Vector3 position = counter.transform.position;
 
@@ -116,10 +116,17 @@ public class SerializationToJson : MonoBehaviour
         counterModel.SetPlywoodLength(AllPlywoodCubes, plywoodLenth);
     }
 
+    public void DeserializingJson()
+    {
+        SceneModel sceneModel1 = new SceneModel();
+        string jsonString = jsonFile.ToString();
+        sceneModel1 =  JsonUtility.FromJson<SceneModel>(jsonString);
+        Debug.Log("DeserializingJson : " + sceneModel1.allCounters.Count);
+    }
 
-       
 
-   
+  
+
 
 }
 

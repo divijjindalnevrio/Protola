@@ -46,7 +46,7 @@ public class SerializationToJson : MonoBehaviour
             string mainTexture = textureMat.GetTexture("_Texture2D").name;
             string AlphaTexture = textureMat.GetTexture("_AlphaTexture").name;
             counterModel.SettingTexture(mainTexture, AlphaTexture);
-            GetAllPlywoodsLength(currentCounter, counterModel);
+            GetAllPlywoodsLength(basinMovement.counterWhole.Find("PlywoodInputTextFiels"), counterModel);
 
             
             Transform basins  =  counter.transform.Find("Basin").transform;

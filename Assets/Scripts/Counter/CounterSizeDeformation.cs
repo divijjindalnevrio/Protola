@@ -114,11 +114,14 @@ public class CounterSizeDeformation : MonoBehaviour
             {
                 plywoods[j].transform.localScale = new Vector3(1, model.plywoodTextfield[j], 1);
             }
-            //for(int j = 0; j < model.allbasins.Count; j++)
-            //{
-            //    basinsGenerator.BasinGererator(model.allbasins[j].name);
-            //    Debug.Log("basin got generated : " + model.allbasins[j].name);
-            //}
+            // basingeneration.
+            Debug.Log("basin got generated :1  " + model.allbasins.Count);
+            for (int b = 0; b <= model.allbasins.Count - 1; b++)
+            {
+                Debug.Log("basin got generated : 2");
+                basinsGenerator.BasinGererator(model.allbasins[b].name);
+                Debug.Log("basin got generated : " + model.allbasins[b].name + "count : " + model.allbasins.Count);
+            }
 
             // setting alpha
             if (model.alphaTexture != "UnityWhite")

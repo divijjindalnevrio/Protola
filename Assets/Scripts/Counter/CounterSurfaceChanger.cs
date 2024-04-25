@@ -146,7 +146,6 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     }
 
-
     private void ChangingThePlywoodSurface(int material)
     {
         foreach (GameObject obje in plywoodcontroller.AllPlywoodCubes)
@@ -176,7 +175,6 @@ public class CounterSurfaceChanger : MonoBehaviour
         {
             AllTextures.Add(texture.name, texture);
         }
-        Debug.Log("SetAllTexturesToDict values all : " + AllTextures.Count);
     }
    
 }

@@ -21,7 +21,7 @@ public class SerializationToJson : MonoBehaviour
   
     void Start()
     {
-        counterSurfaceChanger.SetAllTexturesToDict();
+       // counterSurfaceChanger.SetAllTexturesToDict();
         //DeserializingJson();
     }
         

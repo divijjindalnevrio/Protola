@@ -26,6 +26,7 @@ public class CounterSizeDeformation : MonoBehaviour
     [SerializeField] private ButtonClickScript buttonClickScript;
 
     [SerializeField] private List<GameObject> counters = new List<GameObject>();
+    [SerializeField] private List<Transform> plywoods = new List<Transform>();
 
     void Start()
     {
@@ -84,7 +85,6 @@ public class CounterSizeDeformation : MonoBehaviour
         foreach (int i in Enumerable.Range(0, Scenemodel.allCounters.Count))
         {
             CounterModel model = Scenemodel.allCounters[i];
-            Debug.Log("Each Counter value 101: " + counters[i].name);
 
             Transform counter = counters[i].transform;
             counter.Find("Counter").localScale = new Vector3(model.width, 0.07f, model.depth);
@@ -92,34 +92,31 @@ public class CounterSizeDeformation : MonoBehaviour
             counter.rotation = Quaternion.Euler(model.rotaton);
             counter.position = model.position;
             SetTheSizeValueOfCurrentCounter();
-            Debug.Log("ConstructSceneFromSceneModel ALL texture value : " + counterSurfaceChanger.AllTextures.Count);
-            //setting color below
 
+            //setting color below
+            plywoods.Clear();
+            Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
             ColorUtility.TryParseHtmlString(model.colourHexCode, out colour);
             counter.Find("Counter").GetComponent<MeshRenderer>().materials[1].color = colour;
             counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+            ChangingPlywoodSurface(mainTexture, Texture2D.whiteTexture, "Color");
 
             // setting texture below
-         
-            Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
+
+            //Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
+            
             counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", mainTexture);
+            ChangingPlywoodSurface(mainTexture, Texture2D.whiteTexture, "Texture");
 
             //plywood length changing below
 
-            GameObject plywoodCubeParent = counter.Find("Counter").Find("PlywoodCubes").gameObject;
-            List<Transform> plywoods = new List<Transform>();
-
-            foreach(Transform textField in plywoodCubeParent.transform)
-            {
-                plywoods.Add(textField);
-            }
-
-            foreach (int j in Enumerable.Range(0, plywoods.Count))
+           
+            GettingPlywoods(counter);
+            for (int j = 0; j < plywoods.Count; j++)
             {
                 plywoods[j].transform.localScale = new Vector3(1, model.plywoodTextfield[j], 1);
             }
-
-
+ 
             // setting alpha
             if (model.alphaTexture != "UnityWhite")
             {
@@ -127,16 +124,61 @@ public class CounterSizeDeformation : MonoBehaviour
                 Texture2D alphaTexture = counterSurfaceChanger.AllTextures[model.alphaTexture];
                 counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
 
-                SetTheDefaultPlywoodMaterial(mainTexture, counterSurfaceChanger.AllTextures[model.alphaTexture]);
+                //SetTheDefaultPlywoodMaterial(mainTexture, counterSurfaceChanger.AllTextures[model.alphaTexture]);
+                ChangingPlywoodSurface(mainTexture, alphaTexture, "Granulate");
             }
             else
             {
                 counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
 
-                SetTheDefaultPlywoodMaterial(mainTexture, Texture2D.whiteTexture);
+                // SetTheDefaultPlywoodMaterial(mainTexture, Texture2D.whiteTexture);
+                ChangingPlywoodSurface(mainTexture, Texture2D.whiteTexture, "Texture");
             }
         }
 
+    }
+
+   
+
+    private void GettingPlywoods(Transform counter)
+    {
+        GameObject plywoodCubeParent = counter.Find("Counter").Find("PlywoodCubes").gameObject;
+
+        foreach (Transform plywood in plywoodCubeParent.transform)
+        {
+            plywoods.Add(plywood);
+        }
+    }
+
+    private void ChangingPlywoodSurface(Texture2D _mainTexture, Texture2D _alphaTexture, string _surfaceChangein)
+    {
+        foreach (int j in Enumerable.Range(0, plywoods.Count))
+        {
+            if(_surfaceChangein == "Texture")
+            {
+                // plywood texture change
+                Material mat = plywoods[j].transform.GetChild(0).GetComponent<MeshRenderer>().materials[0];
+                mat.SetTexture("_Texture2D", _mainTexture);
+                mat.SetTexture("_AlphaTexture", _alphaTexture);
+            }
+
+            if(_surfaceChangein == "Granulate")
+            {
+                Material mat = plywoods[j].transform.GetChild(0).GetComponent<MeshRenderer>().materials[0];
+                mat.SetTexture("_Texture2D", _mainTexture);
+                mat.SetTexture("_AlphaTexture", _alphaTexture);
+                plywoods[j].transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color = colour;
+            }
+            if (_surfaceChangein == "Color")
+            {
+                // plywood color change
+                plywoods[j].transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color = colour;
+                Material mat = plywoods[j].transform.GetChild(0).GetComponent<MeshRenderer>().materials[0];
+                mat.SetTexture("_Texture2D", _mainTexture);
+                mat.SetTexture("_AlphaTexture", _alphaTexture);
+            }
+            
+        }
     }
 
     private void SetTheDefaultPlywoodMaterial(Texture2D texture, Texture2D alpha)
@@ -149,6 +191,4 @@ public class CounterSizeDeformation : MonoBehaviour
         }
 
     }
-
-
 }

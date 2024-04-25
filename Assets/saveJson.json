@@ -31,13 +31,13 @@
             "thickness": 3.0,
             "rotaton": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 270.2535095214844,
                 "z": 0.0
             },
             "position": {
-                "x": 0.37903523445129397,
+                "x": -1.2203055620193482,
                 "y": 3.0,
-                "z": -0.8487911224365234
+                "z": 0.46503543853759768
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",
@@ -56,13 +56,13 @@
             "thickness": 3.0,
             "rotaton": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 270.29754638671877,
                 "z": 0.0
             },
             "position": {
-                "x": 10.837259292602539,
+                "x": 14.561073303222657,
                 "y": 3.0,
-                "z": -4.8234052658081059
+                "z": -8.584857940673829
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulatetextureMap",
@@ -73,23 +73,7 @@
                 3.0,
                 3.0
             ],
-            "allbasins": [
-                {
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
-                        "x": 10.837259292602539,
-                        "y": 3.0409998893737795,
-                        "z": -4.8234052658081059
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                }
-            ]
+            "allbasins": []
         },
         {
             "width": 5.400000095367432,
@@ -114,7 +98,23 @@
                 4.0,
                 4.0
             ],
-            "allbasins": []
+            "allbasins": [
+                {
+                    "rotaton": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "position": {
+                        "x": 6.9169721603393559,
+                        "y": 3.0399999618530275,
+                        "z": 6.22454309463501
+                    },
+                    "texture": "GranulateTexture2",
+                    "alphaTexture": "GranulateTexture2Map",
+                    "colourHexCode": "#C0C0C0FF"
+                }
+            ]
         },
         {
             "width": 5.400000095367432,
@@ -126,9 +126,9 @@
                 "z": 0.0
             },
             "position": {
-                "x": 20.522001266479493,
+                "x": 16.65943145751953,
                 "y": 3.0,
-                "z": 0.0
+                "z": 3.454404830932617
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",

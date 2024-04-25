@@ -16,9 +16,6 @@ public class SerializationToJson : MonoBehaviour
     [SerializeField] private List<string> counterJson = new List<string>();
     private float plywoodLenth = 0f;
 
-   
-    
-  
     void Start()
     {
        // counterSurfaceChanger.SetAllTexturesToDict();
@@ -66,6 +63,7 @@ public class SerializationToJson : MonoBehaviour
                 Color basinColor = basin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color;
                 string ColorHexCode = ColorUtility.ToHtmlStringRGBA(basinColor);
 
+                basinModel.name = basin.name;
                 basinModel.SetBasinRotationAndPosition(basinRotation, basin.transform.position);
                 basinModel.SettingTexture(basinmainTexture, basinAlphaTexture);
                 basinModel.SetTheColor(ColorHexCode);

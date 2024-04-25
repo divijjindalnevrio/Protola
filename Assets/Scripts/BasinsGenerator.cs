@@ -23,9 +23,14 @@ public class BasinsGenerator : MonoBehaviour
     [SerializeField] private Material basinColorMat;
     private Material defaultObjectMat;
 
-    void Start()
+    private void Awake()
     {
         SettingBasinToDict();
+    }
+
+    void Start()
+    {
+      //  SettingBasinToDict();
         basinMovement.OnBasinStopMoving += SetObjectDefaultMat;
     }
 
@@ -36,11 +41,9 @@ public class BasinsGenerator : MonoBehaviour
         lastSelectedBasinRotation = Quaternion.Euler(Vector3.zero);
         lastSelectedBasinPos = SettinglastSelectedBasinPos(lastSelectedBasinPos);
 
-        //Transform currentBasinObj = this.transform.Find("CounterBase").transform.Find("Basin").transform;
-        //SettingBasinPosition(currentBasinObj);
         currentBasin = Instantiate(basins[basinName], CounterSO.CurrenetCounter.transform.position + lastSelectedBasinPos,lastSelectedBasinRotation);
         currentBasin.GetComponent<Collider>().isTrigger = true;
-        currentBasin.name = "Basin";
+        currentBasin.name = basinName;
         rotationScript.BasinRotationVal = Mathf.Round(rotationScript.BasinRotationVal); // here added now
         basinMovement.currentBasin = currentBasin;
         GameObject selectedDashCube = Instantiate(SelectedDashLineBasin, Vector3.zero, Quaternion.identity);
@@ -116,6 +119,7 @@ public class BasinsGenerator : MonoBehaviour
         foreach (GameObject basin in AllBasinsSo.BasinType)
         {
             basins.Add(basin.name, basin);
+            Debug.Log("allbasinsNameStoredInDict :" + basin.name);
         }
     }
 }

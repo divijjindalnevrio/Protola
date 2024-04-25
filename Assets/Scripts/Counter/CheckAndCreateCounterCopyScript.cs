@@ -19,9 +19,6 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
     }
     private void Start()
     {
-        //TotalCounterInScene.Add(basinMovement.currentCounter.name, basinMovement.currentCounter);
-       
-
     }
     private List<Vector3> getMainCubeMaxAreaPoints(Vector3 counter1Point, Bounds counter1Bounds, Bounds counter2Bounds)
     {

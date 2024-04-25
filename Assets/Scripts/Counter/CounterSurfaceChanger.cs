@@ -29,6 +29,7 @@ public class CounterSurfaceChanger : MonoBehaviour
     private void Awake()
     {
         SetAllTexturesToDict();
+        //SetTheMaterialPriority();           // added later 
     }
 
     void Start()
@@ -161,9 +162,17 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     private void SetTheMaterialPriority()
     {
-        selectedObjcet = basinMovement.SelectedGameobject;
-        selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
-        selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
+        if(basinMovement.selectedObject == SelectedObject.counter)
+        {
+            selectedObjcet = basinMovement.SelectedGameobject;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[0].renderQueue = 3003;
+            selectedObjcet.transform.GetComponent<MeshRenderer>().materials[1].renderQueue = 3002;
+        }
+        if(basinMovement.selectedObject == SelectedObject.basin)
+        {
+
+        }
+        
     }
 
 

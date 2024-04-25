@@ -51,7 +51,6 @@ public class CounterModel
 
     public void AssignBasinList(List<BasinModel> basinModels)
     {
-        // counterModel.allbasins.Clear();
         allbasins = basinModels;
     }
 }

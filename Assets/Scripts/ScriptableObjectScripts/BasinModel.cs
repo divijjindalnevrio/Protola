@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class BasinModel 
 {
+    public string name;
     public Vector3 rotaton;
     public Vector3 position;
     public string texture;

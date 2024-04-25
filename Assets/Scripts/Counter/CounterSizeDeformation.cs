@@ -16,6 +16,7 @@ public class CounterSizeDeformation : MonoBehaviour
     [SerializeField] private float depth;
     private CounterGenerator counterGenerator;
     [SerializeField] private Transform currentCounter;
+    [SerializeField] private BasinsGenerator basinsGenerator;
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private SerializationToJson serializationToJson;
     public Vector3 currentCounterPosition;
@@ -103,20 +104,22 @@ public class CounterSizeDeformation : MonoBehaviour
 
             // setting texture below
 
-            //Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
-            
             counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", mainTexture);
             ChangingPlywoodSurface(mainTexture, Texture2D.whiteTexture, "Texture");
 
             //plywood length changing below
-
            
             GettingPlywoods(counter);
             for (int j = 0; j < plywoods.Count; j++)
             {
                 plywoods[j].transform.localScale = new Vector3(1, model.plywoodTextfield[j], 1);
             }
- 
+            //for(int j = 0; j < model.allbasins.Count; j++)
+            //{
+            //    basinsGenerator.BasinGererator(model.allbasins[j].name);
+            //    Debug.Log("basin got generated : " + model.allbasins[j].name);
+            //}
+
             // setting alpha
             if (model.alphaTexture != "UnityWhite")
             {
@@ -124,14 +127,11 @@ public class CounterSizeDeformation : MonoBehaviour
                 Texture2D alphaTexture = counterSurfaceChanger.AllTextures[model.alphaTexture];
                 counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
 
-                //SetTheDefaultPlywoodMaterial(mainTexture, counterSurfaceChanger.AllTextures[model.alphaTexture]);
                 ChangingPlywoodSurface(mainTexture, alphaTexture, "Granulate");
             }
             else
             {
                 counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
-
-                // SetTheDefaultPlywoodMaterial(mainTexture, Texture2D.whiteTexture);
                 ChangingPlywoodSurface(mainTexture, Texture2D.whiteTexture, "Texture");
             }
         }
@@ -181,14 +181,5 @@ public class CounterSizeDeformation : MonoBehaviour
         }
     }
 
-    private void SetTheDefaultPlywoodMaterial(Texture2D texture, Texture2D alpha)
-    {
-        foreach (GameObject plywood in plywoodcontroller.AllPlywoodCubes)
-        {
-            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", texture);
-            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alpha);
-            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color = colour;
-        }
-
-    }
+   
 }

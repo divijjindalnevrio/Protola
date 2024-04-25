@@ -24,7 +24,12 @@ public class CounterSurfaceChanger : MonoBehaviour
     private Color basinlastSelectedColor = Color.white;
     public List<Color> colors = new List<Color>();
     public Dictionary<string, Texture2D> AllTextures = new Dictionary<string, Texture2D>();
-    //public List<Texture2D> allTextures = new List<Texture2D>();
+    public List<Texture2D> allTextures = new List<Texture2D>();
+
+    private void Awake()
+    {
+        SetAllTexturesToDict();
+    }
 
     void Start()
     {
@@ -165,7 +170,7 @@ public class CounterSurfaceChanger : MonoBehaviour
 
     public void SetAllTexturesToDict()
     {
-        List<Texture2D> allTextures = new List<Texture2D>();
+       // List<Texture2D> allTextures = new List<Texture2D>();
         allTextures = counterTex.Concat(counterGranulateTex).Concat(counterGranulateTexMap).ToList();
         foreach (Texture2D texture in allTextures)
         {

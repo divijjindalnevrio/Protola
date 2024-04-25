@@ -83,54 +83,59 @@ public class CounterSizeDeformation : MonoBehaviour
 
         foreach (int i in Enumerable.Range(0, Scenemodel.allCounters.Count))
         {
+            CounterModel model = Scenemodel.allCounters[i];
             Debug.Log("Each Counter value 101: " + counters[i].name);
+
+            Transform counter = counters[i].transform;
+            counter.Find("Counter").localScale = new Vector3(model.width, 0.07f, model.depth);
+            counter.transform.position = new Vector3(counter.localScale.x, model.thickness, counter.localScale.z);
+            counter.rotation = Quaternion.Euler(model.rotaton);
+            counter.position = model.position;
+            SetTheSizeValueOfCurrentCounter();
+            Debug.Log("ConstructSceneFromSceneModel ALL texture value : " + counterSurfaceChanger.AllTextures.Count);
+            //setting color below
+
+            ColorUtility.TryParseHtmlString(model.colourHexCode, out colour);
+            counter.Find("Counter").GetComponent<MeshRenderer>().materials[1].color = colour;
+            counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+
+            // setting texture below
+         
+            Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
+            counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", mainTexture);
+
+            //plywood length changing below
+
+            GameObject plywoodCubeParent = counter.Find("Counter").Find("PlywoodCubes").gameObject;
+            List<Transform> plywoods = new List<Transform>();
+
+            foreach(Transform textField in plywoodCubeParent.transform)
+            {
+                plywoods.Add(textField);
+            }
+
+            foreach (int j in Enumerable.Range(0, plywoods.Count))
+            {
+                plywoods[j].transform.localScale = new Vector3(1, model.plywoodTextfield[j], 1);
+            }
+
+
+            // setting alpha
+            if (model.alphaTexture != "UnityWhite")
+            {
+                // for granulate
+                Texture2D alphaTexture = counterSurfaceChanger.AllTextures[model.alphaTexture];
+                counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
+
+                SetTheDefaultPlywoodMaterial(mainTexture, counterSurfaceChanger.AllTextures[model.alphaTexture]);
+            }
+            else
+            {
+                counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+
+                SetTheDefaultPlywoodMaterial(mainTexture, Texture2D.whiteTexture);
+            }
         }
-
-        //if (model != null)
-        //{
-        //    Transform counter = currentCounter.transform.Find("Counter").transform;
-        //    counter.localScale = new Vector3(model.width, counter.localScale.y, model.depth);
-        //    basinMovement.currentCounter.transform.position = new Vector3(currentCounter.localScale.x, model.thickness, currentCounter.localScale.z);
-        //    currentCounter.rotation = Quaternion.Euler(model.rotaton);
-        //    currentCounter.position = model.position;
-        //    SetTheSizeValueOfCurrentCounter();
-
-        //    //setting color below
-
-        //    ColorUtility.TryParseHtmlString(model.colourHexCode, out colour);
-        //    currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[1].color = colour;
-        //    currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
-
-        //    // setting texture below
-
-        //    Texture2D mainTexture = counterSurfaceChanger.AllTextures[model.texture];
-        //    currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", mainTexture);
-
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        plywoodcontroller.AllPlywoodCubes[i].transform.localScale = new Vector3(1,model.plywoodTextfield[i],1);
-        //        Debug.Log("model.plywoodTextfield : " + model.plywoodTextfield[i]);
-        //    }
-
-        //    // setting alpha
-        //    if (model.alphaTexture != "UnityWhite")
-        //    {
-        //        // for granulate
-        //        Texture2D alphaTexture = counterSurfaceChanger.AllTextures[model.alphaTexture];                                         
-        //        currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
-
-        //        SetTheDefaultPlywoodMaterial(mainTexture, counterSurfaceChanger.AllTextures[model.alphaTexture]);
-        //    }
-        //    else
-        //    {
-        //        currentCounter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
-
-        //        SetTheDefaultPlywoodMaterial(mainTexture, Texture2D.whiteTexture);
-        //    }
-
-        // set plywood length
-
-        //}
 
     }
 

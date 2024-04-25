@@ -30,8 +30,7 @@ public class SerializationToJson : MonoBehaviour
     {
         GettingCounterList();
         SceneModel sceneModel = new SceneModel();
-
-        foreach(GameObject counter in allCounters)
+        foreach (GameObject counter in allCounters)
         {
             Debug.Log("running this foreachloop 1 " + allCounters.Count);
             CounterModel counterModel = new CounterModel();

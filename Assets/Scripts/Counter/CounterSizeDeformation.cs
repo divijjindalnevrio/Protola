@@ -77,15 +77,21 @@ public class CounterSizeDeformation : MonoBehaviour
     public void ConstructSceneFromSceneModel()
     {
         SceneModel Scenemodel = serializationToJson.DeserializingJson();
-        for(int i = 0; i < Scenemodel.allCounters.Count - 1; i++)
-        {
-            buttonClickScript.AddCounter(i);
-        }
-        counters = checkAndCreateCounterCopyScript.ConvertingCounterDictToList();
+        //for (int i = 0; i < Scenemodel.allCounters.Count - 1; i++)
+        //{
+        //    buttonClickScript.AddCounter(i);
+        //}
+        //counters = checkAndCreateCounterCopyScript.ConvertingCounterDictToList();
 
         foreach (int i in Enumerable.Range(0, Scenemodel.allCounters.Count))
         {
             CounterModel model = Scenemodel.allCounters[i];
+
+            if (i > 0)
+            {
+                buttonClickScript.AddCounter(i);
+            }
+            counters = checkAndCreateCounterCopyScript.ConvertingCounterDictToList();
 
             Transform counter = counters[i].transform;
             counter.Find("Counter").localScale = new Vector3(model.width, 0.07f, model.depth);
@@ -120,6 +126,7 @@ public class CounterSizeDeformation : MonoBehaviour
             {
                 Debug.Log("basin got generated : 2");
                 basinsGenerator.BasinGererator(model.allbasins[b].name);
+               // basinMovement.SelectedGameobject = counter.Find("Counter").gameObject;
                 Debug.Log("basin got generated : " + model.allbasins[b].name + "count : " + model.allbasins.Count);
             }
 
@@ -137,6 +144,8 @@ public class CounterSizeDeformation : MonoBehaviour
                 counter.Find("Counter").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
                 ChangingPlywoodSurface(mainTexture, Texture2D.whiteTexture, "Texture");
             }
+            
+           // buttonClickScript.AddCounter(i);
         }
 
     }

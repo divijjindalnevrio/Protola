@@ -10,9 +10,9 @@
                 "z": 0.0
             },
             "position": {
-                "x": -4.146268367767334,
+                "x": 1.0423939228057862,
                 "y": 3.0,
-                "z": -7.367314338684082
+                "z": -6.936031341552734
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",
@@ -35,13 +35,13 @@
                 "z": 0.0
             },
             "position": {
-                "x": 1.7272405624389649,
+                "x": -1.2941120862960816,
                 "y": 3.0,
-                "z": 0.005042843520641327
+                "z": 2.144484043121338
             },
-            "texture": "GranulateTexture2",
-            "alphaTexture": "GranulateTexture2Map",
-            "colourHexCode": "#C0C0C0FF",
+            "texture": "rain_cloud_519SA",
+            "alphaTexture": "UnityWhite",
+            "colourHexCode": "#FFFFFFFF",
             "plywoodTextfield": [
                 2.0,
                 2.0,
@@ -57,9 +57,9 @@
                         "z": 0.0
                     },
                     "position": {
-                        "x": 1.7272405624389649,
+                        "x": -1.2941120862960816,
                         "y": 3.0399999618530275,
-                        "z": 0.005042843520641327
+                        "z": 2.144484043121338
                     },
                     "texture": "GranulateTexture2",
                     "alphaTexture": "GranulateTexture2Map",
@@ -73,49 +73,57 @@
             "thickness": 3.0,
             "rotaton": {
                 "x": 0.0,
-                "y": 270.29754638671877,
+                "y": 0.0,
                 "z": 0.0
             },
             "position": {
-                "x": 14.738924026489258,
+                "x": 8.146858215332032,
                 "y": 3.0,
-                "z": -9.85628890991211
+                "z": 2.897963285446167
             },
-            "texture": "GranulateTexture2",
-            "alphaTexture": "GranulatetextureMap",
-            "colourHexCode": "#83838D00",
+            "texture": "translucent_green_Ice_912B",
+            "alphaTexture": "UnityWhite",
+            "colourHexCode": "#FFFFFFFF",
             "plywoodTextfield": [
                 3.0,
                 3.0,
                 3.0,
                 3.0
             ],
-            "allbasins": []
-        },
-        {
-            "width": 5.400000095367432,
-            "depth": 2.200000047683716,
-            "thickness": 3.0,
-            "rotaton": {
-                "x": 0.0,
-                "y": 270.19158935546877,
-                "z": 0.0
-            },
-            "position": {
-                "x": 7.438249588012695,
-                "y": 3.0,
-                "z": 5.300961971282959
-            },
-            "texture": "translucent_green_Ice_912B",
-            "alphaTexture": "UnityWhite",
-            "colourHexCode": "#FFFFFFFF",
-            "plywoodTextfield": [
-                4.0,
-                4.0,
-                4.0,
-                4.0
-            ],
-            "allbasins": []
+            "allbasins": [
+                {
+                    "name": "700B",
+                    "rotaton": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "position": {
+                        "x": 9.846858024597168,
+                        "y": 3.0420000553131105,
+                        "z": 2.7979631423950197
+                    },
+                    "texture": "GranulateTexture2",
+                    "alphaTexture": "GranulateTexture2Map",
+                    "colourHexCode": "#C0C0C0FF"
+                },
+                {
+                    "name": "700B",
+                    "rotaton": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "position": {
+                        "x": 8.146858215332032,
+                        "y": 3.0399999618530275,
+                        "z": 2.897963285446167
+                    },
+                    "texture": "GranulateTexture2",
+                    "alphaTexture": "GranulateTexture2Map",
+                    "colourHexCode": "#C0C0C0FF"
+                }
+            ]
         },
         {
             "width": 5.400000095367432,
@@ -127,18 +135,18 @@
                 "z": 0.0
             },
             "position": {
-                "x": 16.65943145751953,
+                "x": 11.519829750061036,
                 "y": 3.0,
-                "z": 3.454404830932617
+                "z": -6.642878532409668
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",
             "colourHexCode": "#C0C0C0FF",
             "plywoodTextfield": [
-                5.0,
-                5.0,
-                5.0,
-                5.0
+                4.0,
+                4.0,
+                4.0,
+                4.0
             ],
             "allbasins": []
         }

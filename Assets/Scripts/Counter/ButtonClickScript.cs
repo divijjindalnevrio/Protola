@@ -10,14 +10,19 @@ public class ButtonClickScript : MonoBehaviour
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private CounterSizeDeformation counterSizeDeformation;
 
-
     private void Start()
     {
     }
     public void AddCounter(int Uid)
     {
-       GameObject counter = basinMovement.SelectedGameobject.transform.parent.gameObject;
-       checkAndCreateCounterCopyScript.checkAndInstantiateCounter(counter, counter, Uid);
+        //GameObject counter = basinMovement.SelectedGameobject.transform.parent.gameObject;
+        GameObject counter = basinMovement.currentCounter.gameObject;
+        checkAndCreateCounterCopyScript.checkAndInstantiateCounter(counter, counter, Uid);
+    }
+
+    public void AddCounterOnMakingScene()
+    {
+        //GameObject counter = basinMovement.SelectedGameobject.transform.parent.gameObject;
     }
 
    

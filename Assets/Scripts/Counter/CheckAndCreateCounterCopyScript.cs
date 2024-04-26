@@ -72,7 +72,6 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
         }
         if (cubeInstanciated == false) {
             checkAndInstantiateCounter(nextCounter.transform.parent.gameObject, counterParent, 1);
-
         }
 
         DestroyPreviousBasins(newCounter);
@@ -111,5 +110,13 @@ public class CheckAndCreateCounterCopyScript : MonoBehaviour
         List<GameObject> allCounters = new List<GameObject>();
         allCounters = TotalCounterInScene.Values.ToList();
         return allCounters;
+    }
+
+    public void GenerateCounter(GameObject counter ,int Uid)
+    {
+        GameObject newCounter = Instantiate(counter, Vector3.zero, Quaternion.identity);
+        newCounter.name = "CounterBase" + Time.time + Uid;
+        TotalCounterInScene.Add(newCounter.name, newCounter);
+
     }
 }

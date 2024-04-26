@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class SerializationToJson : MonoBehaviour
@@ -16,6 +17,9 @@ public class SerializationToJson : MonoBehaviour
     [SerializeField] private CheckAndCreateCounterCopyScript checkAndCreateCounterCopyScript;
     [SerializeField] private List<GameObject> allCounters = new List<GameObject>();
     [SerializeField] private List<string> counterJson = new List<string>();
+    [SerializeField] private GameObject inputFieldEncodedString;
+
+    public string EncodedString;
     private float plywoodLenth = 0f;
 
     void Start()
@@ -79,13 +83,15 @@ public class SerializationToJson : MonoBehaviour
         }
 
         //File.WriteAllText(Application.dataPath + "/saveJson.json", JsonUtility.ToJson(sceneModel, true));
-        EncodingToBase64String(sceneModel);
+        EncodedString= EncodingToBase64String(sceneModel);
+        inputFieldEncodedString.GetComponent<TMP_InputField>().text = EncodedString;
     }
 
-    private static void EncodingToBase64String(SceneModel sceneModel)
+    private String EncodingToBase64String(SceneModel sceneModel)
     {
         byte[] bytesToEncode = Encoding.UTF8.GetBytes(JsonUtility.ToJson(sceneModel, true));
         string encodedText = Convert.ToBase64String(bytesToEncode);
+        return encodedText;
         Debug.Log("encodedText " + encodedText);
     }
 
@@ -128,7 +134,13 @@ public class SerializationToJson : MonoBehaviour
         return sceneModel;
     }
 
-
+    public void CopyString()
+    {
+        TextEditor textEditor = new TextEditor();
+        textEditor.text = EncodedString;
+        textEditor.SelectAll();
+        textEditor.Copy();
+    }
   
 
 

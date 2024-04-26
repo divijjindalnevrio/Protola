@@ -130,8 +130,7 @@ public class CounterSizeDeformation : MonoBehaviour
                 ColorUtility.TryParseHtmlString(model.allbasins[b].colourHexCode, out basinColour);
                 currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color = basinColour;
 
-                Texture2D texture = counterSurfaceChanger.AllTextures[model.allbasins[b].texture];
-//               
+                Texture2D texture = counterSurfaceChanger.AllTextures[model.allbasins[b].texture]; 
                 currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", texture);
 
                 if(model.allbasins[b].alphaTexture == "UnityWhite")
@@ -144,7 +143,6 @@ public class CounterSizeDeformation : MonoBehaviour
                     currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alpha);
                 }
                
-
                 Debug.Log("basin got generated : " + model.allbasins[b].name + "count : " + model.allbasins.Count);
             }
 

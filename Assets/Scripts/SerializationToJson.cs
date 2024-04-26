@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 public class SerializationToJson : MonoBehaviour
@@ -18,13 +20,13 @@ public class SerializationToJson : MonoBehaviour
 
     void Start()
     {
-       // counterSurfaceChanger.SetAllTexturesToDict();
-        //DeserializingJson();
+   
     }
         
     //creating json at the end
-    public void CreatingJsonFile()              
+    public void CreatingJsonFile()
     {
+        Debug.Log("CreatingJsonFile generated");
         GettingCounterList();
         SceneModel sceneModel = new SceneModel();
         foreach (GameObject counter in allCounters)
@@ -48,8 +50,7 @@ public class SerializationToJson : MonoBehaviour
             counterModel.SettingTexture(mainTexture, AlphaTexture);
             GetAllPlywoodsLength(basinMovement.counterWhole.Find("PlywoodInputTextFiels"), counterModel);
 
-            
-            Transform basins  =  counter.transform.Find("Basin").transform;
+            Transform basins = counter.transform.Find("Basin").transform;
             List<BasinModel> basinList = new List<BasinModel>();
             foreach (Transform basin in basins)
             {
@@ -57,9 +58,9 @@ public class SerializationToJson : MonoBehaviour
                 Vector3 basinRotation = basin.eulerAngles;
 
                 Material basinMat = basin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0];
-                string basinmainTexture  = basinMat.GetTexture("_Texture2D").name;
+                string basinmainTexture = basinMat.GetTexture("_Texture2D").name;
                 string basinAlphaTexture = basinMat.GetTexture("_AlphaTexture").name;
-                                                                                                
+
                 Color basinColor = basin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color;
                 string ColorHexCode = ColorUtility.ToHtmlStringRGBA(basinColor);
 
@@ -71,16 +72,22 @@ public class SerializationToJson : MonoBehaviour
 
             }
 
-            Debug.Log("total number of basin in basinList :" + basinList.Count);
             counterModel.AssignBasinList(basinList);
-            
+
             sceneModel.allCounters.Add(counterModel);
-            
+
         }
 
-        File.WriteAllText(Application.dataPath + "/saveJson.json", JsonUtility.ToJson(sceneModel, true));
+        //File.WriteAllText(Application.dataPath + "/saveJson.json", JsonUtility.ToJson(sceneModel, true));
+        EncodingToBase64String(sceneModel);
     }
 
+    private static void EncodingToBase64String(SceneModel sceneModel)
+    {
+        byte[] bytesToEncode = Encoding.UTF8.GetBytes(JsonUtility.ToJson(sceneModel, true));
+        string encodedText = Convert.ToBase64String(bytesToEncode);
+        Debug.Log("encodedText " + encodedText);
+    }
 
     public void CreateInstanceOfSo()
     {

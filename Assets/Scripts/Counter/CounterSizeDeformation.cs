@@ -20,7 +20,8 @@ public class CounterSizeDeformation : MonoBehaviour
     [SerializeField] private BasinMovement basinMovement;
     [SerializeField] private SerializationToJson serializationToJson;
     public Vector3 currentCounterPosition;
-    [SerializeField] private Color colour;
+    private Color colour;
+    private Color basinColour;
     [SerializeField] private CounterSurfaceChanger counterSurfaceChanger;
     [SerializeField] private Plywoodcontroller plywoodcontroller;
     [SerializeField] private CheckAndCreateCounterCopyScript checkAndCreateCounterCopyScript;
@@ -77,11 +78,6 @@ public class CounterSizeDeformation : MonoBehaviour
     public void ConstructSceneFromSceneModel()
     {
         SceneModel Scenemodel = serializationToJson.DeserializingJson();
-        //for (int i = 0; i < Scenemodel.allCounters.Count - 1; i++)
-        //{
-        //    buttonClickScript.AddCounter(i);
-        //}
-        //counters = checkAndCreateCounterCopyScript.ConvertingCounterDictToList();
 
         foreach (int i in Enumerable.Range(0, Scenemodel.allCounters.Count))
         {
@@ -126,7 +122,29 @@ public class CounterSizeDeformation : MonoBehaviour
             {
                 Debug.Log("basin got generated : 2");
                 basinsGenerator.BasinGererator(model.allbasins[b].name);
-               // basinMovement.SelectedGameobject = counter.Find("Counter").gameObject;
+                // basinMovement.SelectedGameobject = counter.Find("Counter").gameObject;
+                GameObject currentBasin = basinMovement.SelectedGameobject;
+                currentBasin.transform.position = model.allbasins[b].position;
+                currentBasin.transform.rotation = Quaternion.Euler(model.allbasins[b].rotaton);
+
+                ColorUtility.TryParseHtmlString(model.allbasins[b].colourHexCode, out basinColour);
+                currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[1].color = basinColour;
+
+                Texture2D texture = counterSurfaceChanger.AllTextures[model.allbasins[b].texture];
+//               
+                currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", texture);
+
+                if(model.allbasins[b].alphaTexture == "UnityWhite")
+                {
+                    currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", Texture2D.whiteTexture);
+                }
+                else
+                {
+                    Texture2D alpha = counterSurfaceChanger.AllTextures[model.allbasins[b].alphaTexture];
+                    currentBasin.transform.Find("Cube").GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alpha);
+                }
+               
+
                 Debug.Log("basin got generated : " + model.allbasins[b].name + "count : " + model.allbasins.Count);
             }
 
@@ -193,5 +211,5 @@ public class CounterSizeDeformation : MonoBehaviour
         }
     }
 
-   
+
 }

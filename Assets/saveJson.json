@@ -23,7 +23,24 @@
                 1.0,
                 1.0
             ],
-            "allbasins": []
+            "allbasins": [
+                {
+                    "name": "uc_350",
+                    "rotaton": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "position": {
+                        "x": 1.0423939228057862,
+                        "y": 3.0399999618530275,
+                        "z": -6.936031341552734
+                    },
+                    "texture": "translucent_green_Ice_912B",
+                    "alphaTexture": "UnityWhite",
+                    "colourHexCode": "#FFFFFFFF"
+                }
+            ]
         },
         {
             "width": 5.400000095367432,
@@ -35,9 +52,9 @@
                 "z": 0.0
             },
             "position": {
-                "x": -1.2941120862960816,
+                "x": -1.4922147989273072,
                 "y": 3.0,
-                "z": 2.144484043121338
+                "z": 1.9170985221862794
             },
             "texture": "rain_cloud_519SA",
             "alphaTexture": "UnityWhite",
@@ -50,18 +67,18 @@
             ],
             "allbasins": [
                 {
-                    "name": "700B",
+                    "name": "OV_43",
                     "rotaton": {
                         "x": 0.0,
                         "y": 0.0,
                         "z": 0.0
                     },
                     "position": {
-                        "x": -1.2941120862960816,
+                        "x": -1.4922147989273072,
                         "y": 3.0399999618530275,
-                        "z": 2.144484043121338
+                        "z": 1.9170985221862794
                     },
-                    "texture": "GranulateTexture2",
+                    "texture": "BasinGranulatetexture2",
                     "alphaTexture": "GranulateTexture2Map",
                     "colourHexCode": "#C0C0C0FF"
                 }
@@ -99,24 +116,8 @@
                         "z": 0.0
                     },
                     "position": {
-                        "x": 9.846858024597168,
-                        "y": 3.0420000553131105,
-                        "z": 2.7979631423950197
-                    },
-                    "texture": "GranulateTexture2",
-                    "alphaTexture": "GranulateTexture2Map",
-                    "colourHexCode": "#C0C0C0FF"
-                },
-                {
-                    "name": "700B",
-                    "rotaton": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "position": {
                         "x": 8.146858215332032,
-                        "y": 3.0399999618530275,
+                        "y": 3.0409998893737795,
                         "z": 2.897963285446167
                     },
                     "texture": "GranulateTexture2",
@@ -135,9 +136,9 @@
                 "z": 0.0
             },
             "position": {
-                "x": 11.519829750061036,
+                "x": 11.627105712890625,
                 "y": 3.0,
-                "z": -6.642878532409668
+                "z": -7.326247215270996
             },
             "texture": "GranulateTexture2",
             "alphaTexture": "GranulateTexture2Map",

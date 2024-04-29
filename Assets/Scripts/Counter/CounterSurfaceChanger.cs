@@ -16,7 +16,7 @@ public class CounterSurfaceChanger : MonoBehaviour
     [SerializeField] private MainUiController mainUiController;
     [SerializeField] private UiModel uiModel;
     [SerializeField] private Plywoodcontroller plywoodcontroller;
-
+    
     [SerializeField] private Texture2D DefaultColorTexture;
     [SerializeField] private Texture2D DefaultColorTextureMap;
     private GameObject selectedObjcet;

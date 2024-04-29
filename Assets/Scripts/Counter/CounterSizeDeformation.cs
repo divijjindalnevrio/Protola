@@ -10,7 +10,7 @@ public class CounterSizeDeformation : MonoBehaviour
     [SerializeField] private Slider widthSlider;
     [SerializeField] private Slider thicknessSlider;
     [SerializeField] private Slider depthSlider;
-
+    
     [SerializeField] private float width;
     [SerializeField] private float thickness;
     [SerializeField] private float depth;

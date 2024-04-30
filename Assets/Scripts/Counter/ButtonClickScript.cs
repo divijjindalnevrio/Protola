@@ -12,6 +12,7 @@ public class ButtonClickScript : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
     }
     public void AddCounter(int Uid)
     {
@@ -25,5 +26,6 @@ public class ButtonClickScript : MonoBehaviour
         //GameObject counter = basinMovement.SelectedGameobject.transform.parent.gameObject;
     }
 
+    
    
 }

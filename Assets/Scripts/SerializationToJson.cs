@@ -143,7 +143,15 @@ public class SerializationToJson : MonoBehaviour
         textEditor.SelectAll();
         textEditor.Copy();
     }
-  
+
+    public void SetBackgroundDeActive()
+    {
+        GameObject.Find("Main Camera").GetComponent<MobilemaxCamera>().enabled = false;
+    }
+    public void SetBackgroundActive()
+    {
+        GameObject.Find("Main Camera").GetComponent<MobilemaxCamera>().enabled = true;
+    }
 
 
 }

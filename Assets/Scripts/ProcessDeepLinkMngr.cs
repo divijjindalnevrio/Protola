@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,17 +10,21 @@ public class ProcessDeepLinkMngr : MonoBehaviour
     public static ProcessDeepLinkMngr Instance { get; private set; }
     private void Awake()
     {
+        Debug.Log("onDeepLinkActivated : 1");
         if (Instance == null)
         {
+            Debug.Log("onDeepLinkActivated : 2");
             Instance = this;
             Application.deepLinkActivated += onDeepLinkActivated;
             if (!String.IsNullOrEmpty(Application.absoluteURL))
             {
-                // Cold start and Application.absoluteURL not null so process Deep Link.
+                Debug.Log("onDeepLinkActivated : 3");
                 onDeepLinkActivated(Application.absoluteURL);
             }
             // Initialize DeepLink Manager global variable.
+           
             DontDestroyOnLoad(gameObject);
+            Debug.Log("onDeepLinkActivated : 4");
         }
         else
         {
@@ -34,14 +39,12 @@ public class ProcessDeepLinkMngr : MonoBehaviour
 
     private void onDeepLinkActivated(string url)
     {
-        // Update DeepLink Manager global variable, so URL can be accessed from anywhere.
-
-        // Decode the URL to determine action.
-        // In this example, the app expects a link formatted like this:
-        // unitydl://mylink?scene1
-        string sceneName = url.Split("?"[0])[1];
-        
-        SceneManager.LoadScene(sceneName);
+        Debug.Log("onDeepLinkActivated : " + url);
+        string json = url.Replace("https://protola.nevrio.tech/", "");
+        Debug.Log("onDeepLinkActivated : " + json);
+        byte[] decodedBytes = Convert.FromBase64String(json);
+        string decodedText = Encoding.UTF8.GetString(decodedBytes);
+        Debug.Log("onDeepLinkActivated : " + decodedText);
     }
 }
 

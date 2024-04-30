@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools">
     <application>
         <activity android:name="com.unity3d.player.UnityPlayerActivity"
-                  android:theme="@style/UnityThemeSelector">
+                  android:theme="@style/UnityThemeSelector"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="protola.nevrio.tech/share/" />
+                <data android:scheme="https" android:host="protola.nevrio.tech"/>
             </intent-filter>
             <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
         </activity>

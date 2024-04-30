@@ -26,6 +26,7 @@ public class CounterSizeDeformation : MonoBehaviour
     [SerializeField] private Plywoodcontroller plywoodcontroller;
     [SerializeField] private CheckAndCreateCounterCopyScript checkAndCreateCounterCopyScript;
     [SerializeField] private ButtonClickScript buttonClickScript;
+   
 
     [SerializeField] private List<GameObject> counters = new List<GameObject>();
     [SerializeField] private List<Transform> plywoods = new List<Transform>();

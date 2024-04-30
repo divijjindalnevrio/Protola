@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class ProcessDeepLinkMngr : MonoBehaviour
 {
     public static ProcessDeepLinkMngr Instance { get; private set; }
+    public string decodedText;
     private void Awake()
     {
         Debug.Log("onDeepLinkActivated : 1");
@@ -43,7 +44,7 @@ public class ProcessDeepLinkMngr : MonoBehaviour
         string json = url.Replace("https://protola.nevrio.tech/", "");
         Debug.Log("onDeepLinkActivated : " + json);
         byte[] decodedBytes = Convert.FromBase64String(json);
-        string decodedText = Encoding.UTF8.GetString(decodedBytes);
+        decodedText = Encoding.UTF8.GetString(decodedBytes);
         Debug.Log("onDeepLinkActivated : " + decodedText);
     }
 }

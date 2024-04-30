@@ -18,6 +18,7 @@ public class SerializationToJson : MonoBehaviour
     [SerializeField] private List<GameObject> allCounters = new List<GameObject>();
     [SerializeField] private List<string> counterJson = new List<string>();
     [SerializeField] private GameObject inputFieldEncodedString;
+    [SerializeField] private ProcessDeepLinkMngr processDeepLinkMngr;
 
     public string EncodedString;
     private float plywoodLenth = 0f;
@@ -119,6 +120,7 @@ public class SerializationToJson : MonoBehaviour
     public void GetAllPlywoodsLength(Transform plywoodCube, CounterModel counterModel)
     {
         plywoodLenth = plywoodLenth + 1f;
+
         List<GameObject> AllPlywoodCubes = new List<GameObject>();
         foreach (Transform child in plywoodCube)
         {
@@ -131,7 +133,7 @@ public class SerializationToJson : MonoBehaviour
     {
         SceneModel sceneModel = new SceneModel();
         string jsonString = jsonFile.ToString();
-        sceneModel =  JsonUtility.FromJson<SceneModel>(jsonString);
+        sceneModel =  JsonUtility.FromJson<SceneModel>(processDeepLinkMngr.decodedText);
         Debug.Log("DeserializingJson : " + sceneModel.allCounters.Count);
         return sceneModel;
     }

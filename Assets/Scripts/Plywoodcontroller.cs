@@ -107,7 +107,7 @@ public class Plywoodcontroller : MonoBehaviour
             if(PlywoodInputTextFields != null)
             {
                 DeActiveAllTheTextFields();
-                IncreaseThePlywoodSize();
+               // IncreaseThePlywoodSize();
             }
         }
     

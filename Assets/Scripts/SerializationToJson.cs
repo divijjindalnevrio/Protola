@@ -86,7 +86,7 @@ public class SerializationToJson : MonoBehaviour
         //File.WriteAllText(Application.dataPath + "/saveJson.json", JsonUtility.ToJson(sceneModel, true));
         string BaseURL = "https://protola.nevrio.tech/";
         EncodedString = BaseURL+EncodingToBase64String(sceneModel);
-        
+        Debug.Log("jsoncheck : " + JsonUtility.ToJson(sceneModel, true));
         inputFieldEncodedString.GetComponent<TMP_InputField>().text = EncodedString;
     }
 

@@ -40,13 +40,17 @@ public class CounterModel
         this.colourHexCode = hexCode.Insert(0, "#");
     }
 
-    public void SetPlywoodLength(List<GameObject> plywoods, float length)
+    public void SetPlywoodLength(List<GameObject> plywoods)
     {
-        this.plywoodTextfield.Clear();
+        //this.plywoodTextfield.Clear();
         for (int i = 0; i < plywoods.Count; i++)
         {
-            this.plywoodTextfield.Add(length);
+            this.plywoodTextfield.Add(plywoods[i].transform.localScale.y);
         }
+        //foreach(GameObject childPlywood in plywoods)
+        //{
+        //    plywoodTextfield.Add(childPlywood.transform.localScale.y);
+        //}
     }
 
     public void AssignBasinList(List<BasinModel> basinModels)

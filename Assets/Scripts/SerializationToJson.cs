@@ -53,7 +53,7 @@ public class SerializationToJson : MonoBehaviour
             string mainTexture = textureMat.GetTexture("_Texture2D").name;
             string AlphaTexture = textureMat.GetTexture("_AlphaTexture").name;
             counterModel.SettingTexture(mainTexture, AlphaTexture);
-            GetAllPlywoodsLength(basinMovement.counterWhole.Find("PlywoodInputTextFiels"), counterModel);
+            GetAllPlywoodsLength(currentCounter.Find("PlywoodCubes"), counterModel);
 
             Transform basins = counter.transform.Find("Basin").transform;
             List<BasinModel> basinList = new List<BasinModel>();
@@ -119,14 +119,12 @@ public class SerializationToJson : MonoBehaviour
 
     public void GetAllPlywoodsLength(Transform plywoodCube, CounterModel counterModel)
     {
-        plywoodLenth = plywoodLenth + 1f;
-
         List<GameObject> AllPlywoodCubes = new List<GameObject>();
         foreach (Transform child in plywoodCube)
         {
             AllPlywoodCubes.Add(child.gameObject);
         }
-        counterModel.SetPlywoodLength(AllPlywoodCubes, plywoodLenth);
+        counterModel.SetPlywoodLength(AllPlywoodCubes);
     }
 
     public SceneModel DeserializingJson()
@@ -134,7 +132,7 @@ public class SerializationToJson : MonoBehaviour
         SceneModel sceneModel = new SceneModel();
         string jsonString = jsonFile.ToString();
         sceneModel =  JsonUtility.FromJson<SceneModel>(processDeepLinkMngr.decodedText);
-        Debug.Log("DeserializingJson : " + sceneModel.allCounters.Count);
+        Debug.Log("DeserializingJson101 : " + processDeepLinkMngr.decodedText);
         return sceneModel;
     }
 

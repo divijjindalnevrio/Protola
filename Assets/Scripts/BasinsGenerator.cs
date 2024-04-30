@@ -22,6 +22,7 @@ public class BasinsGenerator : MonoBehaviour
     [SerializeField] private Material grayMat;
     [SerializeField] private Material basinColorMat;
     private Material defaultObjectMat;
+    public bool isBasinGreratorButtonPressed = true;
 
     private void Awake()
     {
@@ -71,7 +72,11 @@ public class BasinsGenerator : MonoBehaviour
     private void SettingBasinSelected()
     {
         basinMovement.DeselectingAllDashLines();
-        currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+        if(isBasinGreratorButtonPressed)
+        {
+            currentBasin.transform.Find("SelectedDashLineCube").gameObject.SetActive(true);
+        }
+        
         basinMovement.selectedObject = SelectedObject.basin;
         basinMovement.TriggerOnGameobjectSelectedEvent();
         worldCanvas.SettingWorldUiCanvasToTrue();

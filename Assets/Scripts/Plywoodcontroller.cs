@@ -98,6 +98,7 @@ public class Plywoodcontroller : MonoBehaviour
 
             SettingTheTextFieldValues();
             IncreaseThePlywoodSize();     // if the input textfield open should close here.
+            SetCurrentCounterTextures();
         }
 
         else
@@ -259,5 +260,24 @@ public class Plywoodcontroller : MonoBehaviour
 
     }
 
+    private void SetCurrentCounterTextures()
+    {
+        Texture texture =  basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].GetTexture("_Texture2D");
+        Texture alphaTexture = basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].GetTexture("_AlphaTexture");
+        Color color = basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color;
+        Debug.Log("SetCurrentCounterTextures : " + texture.name + " " + alphaTexture.name + " " + color);
+
+
+        foreach (GameObject plywood in AllPlywoodCubes)
+        {
+            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", texture);
+            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
+            plywood.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].color = color;
+        }
+        //basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].SetTexture("_Texture2D", texture);
+        //basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[0].SetTexture("_AlphaTexture", alphaTexture);
+        //basinMovement.SelectedGameobject.GetComponent<MeshRenderer>().materials[1].color = color;
+        //SetTheDefaultPlywoodMaterial(shaderMat, colorMat);
+    }
 
 }

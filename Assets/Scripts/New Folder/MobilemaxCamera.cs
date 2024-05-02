@@ -101,12 +101,6 @@ public class MobilemaxCamera : MonoBehaviour
             desiredDistance += deltaMagDiff * Time.deltaTime * zoomRate * 0.0025f * Mathf.Abs(desiredDistance);
         }
 
-        else
-        {
-            Debug.Log("It entered here zoom : ");
-            MouseWheeling();
-
-        }
         // If middle mouse and left alt are selected? ORBIT
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
@@ -168,22 +162,22 @@ public class MobilemaxCamera : MonoBehaviour
         return Mathf.Clamp(angle, min, max);
     }
 
-    void MouseWheeling()
-    {
+    //void MouseWheeling()
+    //{
        
-        Vector3 pos = transform.position;
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            pos = pos - transform.forward;
-            transform.position = pos;
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            pos = pos + transform.forward;
-            transform.position = pos;
+    //    Vector3 pos = transform.position;
+    //    if (Input.GetAxis("Mouse ScrollWheel") < 0)
+    //    {
+    //        pos = pos - transform.forward;
+    //        transform.position = pos;
+    //    }
+    //    if (Input.GetAxis("Mouse ScrollWheel") > 0)
+    //    {
+    //        pos = pos + transform.forward;
+    //        transform.position = pos;
             
-        }
-    }
+    //    }
+    //}
 
    
 }

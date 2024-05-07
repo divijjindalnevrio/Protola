@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 public class ShareAndRate : MonoBehaviour
 {
     public SerializationToJson serializationToJson;
+    public DeepLinkControler deepLinkControler;
 
     string subject = "protola";
     string body;
@@ -23,7 +24,8 @@ public class ShareAndRate : MonoBehaviour
 
     public void OnAndroidTextSharingClick()
     {
-        body = serializationToJson.EncodedString;
+        //body = serializationToJson.EncodedString;
+        body = deepLinkControler.shareData;
         StartCoroutine(ShareAndroidText());
 
     }

@@ -14,14 +14,18 @@ public class ShareAndRate : MonoBehaviour
 
 
 #if UNITY_IPHONE
- [DllImport("__Internal")]
- private static extern void sampleMethod (string iosPath, string message);
+ //[DllImport("__Internal")]
+ //private static extern void sampleMethod (string iosPath, string message);
  
- [DllImport("__Internal")]
- private static extern void sampleTextMethod (string message);
+ //[DllImport("__Internal")]
+ //private static extern void sampleTextMethod (string message);
  
 #endif
 
+    private void Start()
+    {
+        
+    }
     public void OnAndroidTextSharingClick()
     {
         //body = serializationToJson.EncodedString;
@@ -60,8 +64,8 @@ public class ShareAndRate : MonoBehaviour
     {
 
 #if UNITY_IPHONE || UNITY_IPAD
-  string shareMessage = "Wow I Just Share Text ";
-  sampleTextMethod (shareMessage);
+  //string shareMessage = "Wow I Just Share Text ";
+  //sampleTextMethod (shareMessage);
   
 #endif
     }

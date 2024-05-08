@@ -1,22 +1,34 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.Networking;
 
 public class Spin : MonoBehaviour
 {
-
     // Use this for initialization
     void Start()
     {
-        Branch.initSession(CallbackWithBranchUniversalObject);
+        try
+        {
+            Branch.initSession(CallbackWithBranchUniversalObject);
+            Debug.Log("ShareDeepLink : Spin : ");
+        }
+        catch (Exception e)
+        {
+            Debug.Log("ShareDeepLink : Spin : " + e);
+        }
+
     }
 
-    void CallbackWithBranchUniversalObject(BranchUniversalObject buo,
+
+    public void CallbackWithBranchUniversalObject(BranchUniversalObject buo,
                                             BranchLinkProperties linkProps,
                                             string error)
     {
+        Debug.Log("Deeplink params entered:  " + linkProps);
         if (error != null)
         {
-            Debug.LogError("Error : "
+            Debug.LogError("Error : "           
                                     + error);
         }
         else if (linkProps.controlParams.Count > 0)
@@ -27,10 +39,5 @@ public class Spin : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //rotate 90 degress per second
-        transform.Rotate(Vector3.up * Time.deltaTime * 90);
-    }
+
 }

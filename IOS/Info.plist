@@ -23,16 +23,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.0</string>
+	<string>1.1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>https*</string>
-				<string>https://</string>
+				<string>protola</string>
 			</array>
 		</dict>
 	</array>
@@ -76,6 +73,8 @@
 	<dict>
 		<key>live</key>
 		<string>key_live_al70Y2AcCk6tYIi007s3nenmtEhTLCTi</string>
+		<key>test</key>
+		<string>key_test_lj384ZvfEc9s9Lm254r6kacouyhTGwOB</string>
 	</dict>
 </dict>
 </plist>

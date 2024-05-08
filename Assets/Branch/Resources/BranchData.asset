@@ -17,9 +17,11 @@ MonoBehaviour:
   liveAndroidPathPrefix: 
   liveAppLinks:
   - 85kjc.app.link/Protola
-  testBranchKey: 
-  testBranchUri: 
+  testBranchKey: key_test_lj384ZvfEc9s9Lm254r6kacouyhTGwOB
+  testBranchUri: protola
   testAndroidPathPrefix: 
-  testAppLinks: []
-  enableLogging: 0
-  testMode: 0
+  testAppLinks:
+  - 85kjc.test-app.link
+  - 85kjc-alternate.test-app.link
+  enableLogging: 1
+  testMode: 1

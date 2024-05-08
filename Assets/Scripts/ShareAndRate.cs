@@ -28,7 +28,7 @@ public class ShareAndRate : MonoBehaviour
     }
     public void OnAndroidTextSharingClick()
     {
-        //body = serializationToJson.EncodedString;
+       // body = serializationToJson.EncodedString;
         body = deepLinkControler.shareData;
         StartCoroutine(ShareAndroidText());
 

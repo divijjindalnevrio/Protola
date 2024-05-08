@@ -49,15 +49,19 @@ public class Branch : MonoBehaviour {
      * Initialize session and receive information about how it opened.
      */
     public static void initSession(BranchCallbackWithBranchUniversalObject callback) {
-		if (_sessionCounter == 0) {
-			++_sessionCounter;
-			_isFirstSessionInited = true;
-			autoInitCallbackWithBUO = callback;
+	
+	
+			if (_sessionCounter == 0)
+			{
+				++_sessionCounter;
+				_isFirstSessionInited = true;
+				autoInitCallbackWithBUO = callback;
+				var callbackId = _getNextCallbackId();
+				_branchCallbacks[callbackId] = callback;
+				_initSessionWithUniversalObjectCallback(callbackId);
 
-			var callbackId = _getNextCallbackId ();
-			_branchCallbacks [callbackId] = callback;
-			_initSessionWithUniversalObjectCallback (callbackId);
-		}
+			}
+
 	}
 
 	/**
